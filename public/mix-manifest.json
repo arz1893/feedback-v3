@@ -1,0 +1,14 @@
+{
+    "/js/moment/moment.js": "/js/moment/moment.js",
+    "/js/app.js": "/js/app.js",
+    "/css/admin-lte/template_all.css": "/css/admin-lte/template_all.css",
+    "/js/vue/vue.js": "/js/vue/vue.js",
+    "/js/lodash/lodash.js": "/js/lodash/lodash.js",
+    "/js/bootstrap/bootstrap-datepicker.js": "/js/bootstrap/bootstrap-datepicker.js",
+    "/js/axios/axios.js": "/js/axios/axios.js",
+    "/js/vee-validate/vee-validate.js": "/js/vee-validate/vee-validate.js",
+    "/js/jquery/jquery.js": "/js/jquery/jquery.js",
+    "/js/bootstrap/bootstrap.js": "/js/bootstrap/bootstrap.js",
+    "/js/bootstrap/tooltip.js": "/js/bootstrap/tooltip.js",
+    "/js/admin-lte/adminlte.min.js": "/js/admin-lte/adminlte.min.js"
+}
