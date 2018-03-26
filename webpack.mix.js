@@ -22,4 +22,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('node_modules/moment/moment.js', 'public/js/moment/')
     .js('node_modules/vee-validate/dist/vee-validate.js', 'public/js/vee-validate/')
     .js('resources/assets/js/admin-lte/adminlte.min.js', 'public/js/admin-lte/')
+    .js('resources/assets/js/vue-assets/master_data/product/vue_add_product.js', 'public/js/vue-assets/master_data/product/')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css');

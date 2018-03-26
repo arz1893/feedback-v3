@@ -368,7 +368,7 @@
                     [this.element, events]
                 ];
             }
-            // component: input + button
+            // components: input + button
             else if (this.component && this.inputField.length) {
                 this._events = [
                     // For components that are not readonly, allow keyboard nav
@@ -704,11 +704,11 @@
 			// edge, fudge it sideways
 			else {
 				if (offset.left < 0) {
-					// component is outside the window on the left side. Move it into visible range
+					// components is outside the window on the left side. Move it into visible range
 					this.picker.addClass('datepicker-orient-left');
 					left -= offset.left - visualPadding;
 				} else if (left + calendarWidth > windowWidth) {
-					// the calendar passes the widow right edge. Align it to component right side
+					// the calendar passes the widow right edge. Align it to components right side
 					this.picker.addClass('datepicker-orient-right');
 					left += width - calendarWidth;
 				} else {
@@ -2032,7 +2032,7 @@
 			if ($this.data('datepicker'))
 				return;
 			e.preventDefault();
-			// component click requires us to explicitly show it
+			// components click requires us to explicitly show it
 			datepickerPlugin.call($this, 'show');
 		}
 	);

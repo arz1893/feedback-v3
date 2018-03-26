@@ -20,13 +20,13 @@
     <link rel="stylesheet" href="{{ asset('/css/ionicons/css/ionicons.css') }}">
     <!-- Material icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {{--<!-- Data Table -->--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/datatables/datatables.css') }}">--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/datatables/responsive.dataTables.css') }}">--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/datatables/responsive.bootstrap.css') }}">--}}
-    {{--<!-- Select 2 -->--}}
-    {{--<link href="{{ asset('/css/select2/select2.min.css') }}" rel="stylesheet">--}}
-    {{--<link href="{{ asset('/css/select2/select2-bootstrap.min.css') }}" rel="stylesheet">--}}
+    <!-- Data Table -->
+    <link rel="stylesheet" href="{{ asset('/css/datatables/datatables.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/datatables/responsive.dataTables.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/datatables/responsive.bootstrap.css') }}">
+    <!-- Select 2 -->
+    <link href="{{ asset('/css/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/select2/select2-bootstrap.min.css') }}" rel="stylesheet">
     {{--<!-- Selectize -->--}}
     {{--<link href="{{ asset('/css/selectize/selectize.css') }}" rel="stylesheet">--}}
     {{--<!-- Fancy Tree -->--}}
@@ -271,24 +271,24 @@
             <!-- AdminLTE App -->
             <script src="{{ mix('/js/admin-lte/adminlte.min.js') }}" type="text/javascript"></script>
             <!-- Vue JS -->
-            <script src="{{ mix('/js/vue/vue.js') }}" type="text/javascript"></script>
+            {{--<script src="{{ mix('/js/vue/vue.js') }}" type="text/javascript"></script>--}}
             <!-- Lodash JS -->
-            <script src="{{ mix('/js/lodash/lodash.js') }}" type="text/javascript"></script>
+            {{--<script src="{{ mix('/js/lodash/lodash.js') }}" type="text/javascript"></script>--}}
             <!-- Vee Validate -->
             <script src="{{ mix('/js/vee-validate/vee-validate.js') }}" type="text/javascript"></script>
             <!-- Axios JS -->
-            <script src="{{ asset('/js/axios/axios.js') }}" type="text/javascript"></script>
-            {{--<!-- Data Table -->--}}
-            {{--<script src="{{ asset('/js/datatables/datatables.js') }}" type="text/javascript"></script>--}}
-            {{--<script src="{{ asset('/js/datatables/dataTables.bootstrap.js') }}" type="text/javascript"></script>--}}
-            {{--<script src="{{ asset('/js/datatables/dataTables.responsive.js') }}" type="text/javascript"></script>--}}
-            {{--<script src="{{ asset('/js/datatables/responsive.bootstrap.js') }}" type="text/javascript"></script>--}}
-            {{--<!-- Jquery validation -->--}}
-            {{--<script src="{{ asset('/js/jquery-validate/jquery.validate.js') }}" type="text/javascript"></script>--}}
+            {{--<script src="{{ asset('/js/axios/axios.js') }}" type="text/javascript"></script>--}}
+            <!-- Data Table -->
+            <script src="{{ asset('/js/datatables/datatables.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/datatables/dataTables.bootstrap.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/datatables/dataTables.responsive.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/datatables/responsive.bootstrap.js') }}" type="text/javascript"></script>
+            <!-- Select 2 -->
+            <script src="{{ asset('js/select2/select2.min.js') }}" type="text/javascript"></script>
+            <!-- Jquery validation -->
+            <script src="{{ asset('js/jquery-validation/jquery.validate.js') }}" type="text/javascript"></script>
             {{--<script src="{{ asset('/js/functions.js') }}" type="text/javascript"></script>--}}
             {{--<script src="{{ asset('/js/form-validation.js') }}" type="text/javascript"></script>--}}
-            {{--<!-- Select 2 -->--}}
-            {{--<script src="{{ asset('/js/select2/select2.min.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Selectize -->--}}
             {{--<script src="{{ asset('/js/selectize/selectize.min.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Fancy Tree -->--}}
@@ -310,6 +310,6 @@
 
             @stack('scripts')
 
-            {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+            <script src="{{ asset('js/init.js') }}"></script>
 </body>
 </html>

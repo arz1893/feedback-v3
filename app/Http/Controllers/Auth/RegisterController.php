@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Tenant;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\UserGroup;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -48,11 +51,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ];
+
+        $messages = [
+            'name.required' => 'Please enter your business name',
+            'category_id' => 'You haven\'t select business category',
+            'email.required' => 'PLease enter your email address',
+            'email.unique' => 'This email address has already taken',
+            'password.required' => 'Please enter your password',
+        ];
+
+        return Validator::make($data, $rules, $messages);
     }
 
     /**
@@ -63,10 +76,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $tenant = Tenant::create([
+            'systemId' => (string) Str::orderedUuid(),
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'country_id' => $data['country_id'],
+            'address' => $data['address'],
+            'description' => $data['description']
         ]);
+
+
+        $userGroup = UserGroup::where('name', 'Administrator')->first();
+
+        $user = User::create([
+            'systemId' => (string) Str::orderedUuid(),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'usergroupId' => $userGroup->systemId,
+            'tenantId' => $tenant->systemId,
+            'active' => 1,
+        ]);
+
+        return $user;
     }
 }

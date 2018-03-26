@@ -21,9 +21,12 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "datatables.net-dt": "^1.10.16",
         "font-awesome": "^4.7.0",
         "ionicons": "^3.0.0",
+        "jquery-validation": "^1.17.0",
         "moment": "^2.21.0",
+        "select2": "^4.0.6-rc.1",
         "vee-validate": "^2.0.6"
     }
 }
