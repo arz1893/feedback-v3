@@ -13,11 +13,11 @@ window.VeeValidate = require('vee-validate');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
+ * the page. Then, you may begin adding add-components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('add-product', require('./components/AddProductFormComponent.vue'));
+Vue.component('add-product', require('./add-components/AddProductFormComponent.vue'));
 
 const add_product = new Vue({
     el: '#add_product'

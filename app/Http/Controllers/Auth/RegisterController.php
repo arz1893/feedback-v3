@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -77,7 +78,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $tenant = Tenant::create([
-            'systemId' => (string) Str::orderedUuid(),
+            'systemId' => Uuid::generate(4),
             'name' => $data['name'],
             'email' => $data['email'],
             'country_id' => $data['country_id'],
@@ -89,7 +90,7 @@ class RegisterController extends Controller
         $userGroup = UserGroup::where('name', 'Administrator')->first();
 
         $user = User::create([
-            'systemId' => (string) Str::orderedUuid(),
+            'systemId' => Uuid::generate(4),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),

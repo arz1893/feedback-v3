@@ -1648,11 +1648,11 @@
 				1 type (only|nth|...)
 				2 what (child|of-type)
 				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
-				4 xn-components of xn+y argument ([+-]?\d*n|)
-				5 sign of xn-components
-				6 x of xn-components
-				7 sign of y-components
-				8 y of y-components
+				4 xn-add-components of xn+y argument ([+-]?\d*n|)
+				5 sign of xn-add-components
+				6 x of xn-add-components
+				7 sign of y-add-components
+				8 y of y-add-components
 			*/
                         match[1] = match[1].toLowerCase();
 

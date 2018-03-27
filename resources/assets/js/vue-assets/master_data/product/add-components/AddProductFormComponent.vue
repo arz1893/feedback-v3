@@ -32,8 +32,6 @@
             </div>
         </div>
 
-        <pre lang="json">{{ product }}</pre>
-
         <div class="form-group">
             <button type="button" class="btn btn-primary" @click="validateBeforeSubmit()">
                 <i class="fa fa-plus"></i> Add Product
@@ -124,7 +122,7 @@
                             fileName: vm.fileName,
                             tenantId: vm.tenantid
                         }).then(response => {
-                            console.log(response.data);
+                            window.location.replace(window.location.protocol + "//" + window.location.host + '/product');
                         }).catch(error => {
                             console.log(error);
                         })

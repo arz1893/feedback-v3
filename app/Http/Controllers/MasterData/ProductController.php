@@ -19,8 +19,7 @@ use Webpatser\Uuid\Uuid;
 class ProductController extends Controller
 {
     public function index() {
-        $products = Product::where('tenantId', Auth::user()->tenantId)->orderBy('created_at', 'desc')->get();
-        return view('master_data.product.product_index', compact('products'));
+        return view('master_data.product.product_index');
     }
 
     public function create() {
@@ -28,56 +27,56 @@ class ProductController extends Controller
         return view('master_data.product.product_add', compact('selectTags'));
     }
 
-    public function store(ProductRequest $request) {
-        $tenant = Tenant::findOrFail($request->tenantId);
-        $id = (string) Str::orderedUuid();
-        $image = $request->file('image_cover');
-        if(!is_null($image)) {
-            $filename = $id . '_' . $image->getClientOriginalName();
-
-            $product = Product::create([
-                'systemId' => $id,
-                'name' => $request->name,
-                'description' => $request->description,
-                'metric' => $request->metric,
-                'price' => $request->price,
-                'img' => '/uploaded_images/' . $tenant->email . '/' . $filename,
-                'tenantId' => $request->tenantId
-            ]);
-
-            ProductCategory::create([
-                'name' => 'General',
-                'productId' => $product->systemId
-            ]);
-
-            $product->tags()->sync($request->input('tags'));
-
-            if(!file_exists(public_path('uploaded_images/' . $tenant->email))) {
-                mkdir(public_path('uploaded_images/' . $tenant->email), 0777, true);
-                $image->move(public_path('uploaded_images/' . $tenant->email . '/'), $filename);
-            } else {
-                $image->move(public_path('uploaded_images/' . $tenant->email . '/'), $filename);
-            }
-        } else {
-            $product = Product::create([
-                'systemId' => $id,
-                'name' => $request->name,
-                'description' => $request->description,
-                'metric' => $request->metric,
-                'price' => $request->price,
-                'tenantId' => $request->tenantId
-            ]);
-
-            ProductCategory::create([
-                'name' => 'General',
-                'productId' => $product->systemId
-            ]);
-
-            $product->tags()->sync($request->input('tags'));
-
-        }
-        return redirect('product')->with('status', 'Product has been added');
-    }
+//    public function store(ProductRequest $request) {
+//        $tenant = Tenant::findOrFail($request->tenantId);
+//        $id = (string) Str::orderedUuid();
+//        $image = $request->file('image_cover');
+//        if(!is_null($image)) {
+//            $filename = $id . '_' . $image->getClientOriginalName();
+//
+//            $product = Product::create([
+//                'systemId' => $id,
+//                'name' => $request->name,
+//                'description' => $request->description,
+//                'metric' => $request->metric,
+//                'price' => $request->price,
+//                'img' => '/uploaded_images/' . $tenant->email . '/' . $filename,
+//                'tenantId' => $request->tenantId
+//            ]);
+//
+//            ProductCategory::create([
+//                'name' => 'General',
+//                'productId' => $product->systemId
+//            ]);
+//
+//            $product->tags()->sync($request->input('tags'));
+//
+//            if(!file_exists(public_path('uploaded_images/' . $tenant->email))) {
+//                mkdir(public_path('uploaded_images/' . $tenant->email), 0777, true);
+//                $image->move(public_path('uploaded_images/' . $tenant->email . '/'), $filename);
+//            } else {
+//                $image->move(public_path('uploaded_images/' . $tenant->email . '/'), $filename);
+//            }
+//        } else {
+//            $product = Product::create([
+//                'systemId' => $id,
+//                'name' => $request->name,
+//                'description' => $request->description,
+//                'metric' => $request->metric,
+//                'price' => $request->price,
+//                'tenantId' => $request->tenantId
+//            ]);
+//
+//            ProductCategory::create([
+//                'name' => 'General',
+//                'productId' => $product->systemId
+//            ]);
+//
+//            $product->tags()->sync($request->input('tags'));
+//
+//        }
+//        return redirect('product')->with('status', 'Product has been added');
+//    }
 
     public function show(Product $product) {
         $productCategories = ProductCategory::where('productId', $product->systemId)->where('parent_id', null)->get();
@@ -141,7 +140,7 @@ class ProductController extends Controller
     }
 
     public function getProductList(Request $request, $tenant_id) {
-        $products = Product::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(24);
+        $products = Product::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(20);
         return new ProductCollection($products);
     }
 

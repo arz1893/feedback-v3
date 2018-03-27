@@ -199,7 +199,7 @@
                                     <!-- User Account Menu -->
                                         <li class="dropdown user user-menu">
                                             <!-- Menu Toggle Button -->
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <a role="button" class="dropdown-toggle" data-toggle="dropdown">
                                                 <!-- The user image in the navbar-->
                                                 <img src="{{ asset('default-images/admin-user.png') }}" class="user-image" alt="User Image">
                                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -269,7 +269,7 @@
             <script src="{{ mix('/js/bootstrap/bootstrap.js') }}" type="text/javascript"></script>
             <script src="{{ mix('/js/bootstrap/tooltip.js') }}" type="text/javascript"></script>
             <!-- AdminLTE App -->
-            <script src="{{ mix('/js/admin-lte/adminlte.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/admin-lte/adminlte.min.js') }}" type="text/javascript"></script>
             <!-- Vue JS -->
             {{--<script src="{{ mix('/js/vue/vue.js') }}" type="text/javascript"></script>--}}
             <!-- Lodash JS -->

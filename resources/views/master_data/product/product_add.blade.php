@@ -21,8 +21,6 @@
 
 @section('main-content')
 
-    @include('layouts.errors.error_list')
-
     <div id="add_product">
         <add-product tenantId="{{ Auth::user()->tenantId }}"></add-product>
     </div>
