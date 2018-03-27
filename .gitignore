@@ -5,3 +5,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/public/attachment/
+/public/default-images/
+/public/uploaded_images/

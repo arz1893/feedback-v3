@@ -13,6 +13,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Resources\MasterData\Product as ProductResource;
+use Intervention\Image\ImageManagerStatic as InterventionImage;
+use Webpatser\Uuid\Uuid;
 
 class ProductController extends Controller
 {
@@ -141,6 +143,33 @@ class ProductController extends Controller
     public function getProductList(Request $request, $tenant_id) {
         $products = Product::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(24);
         return new ProductCollection($products);
+    }
+
+    public function addProduct(Request $request) {
+        $tags = [];
+        $uploadedImage = $request->product['image'];
+        $id = Uuid::generate(4);
+        $tenant = Tenant::findOrFail($request->tenantId);
+        $fileName = $id . '_' . $request->fileName;
+        for($i=0;$i<count($request->product['tags']);$i++) {
+            array_push($tags, $request->product['tags'][$i]['systemId']);
+        }
+
+        if($uploadedImage !== '') {
+            InterventionImage::make($uploadedImage)->save(public_path('uploaded_images/' . $tenant->email . '/' . $fileName));
+            $newProduct = Product::create([
+                'systemId' => $id,
+                'name' => $request->product['name'],
+                'description' => $request->product['description'],
+                'img' => '/uploaded_images/' . $tenant->email . '/' . $fileName,
+                'tenantId' => $request->tenantId
+            ]);
+
+            $newProduct->tags()->sync($tags);
+            return ['message' => 'success'];
+        } else {
+            return ['message' => 'error!'];
+        }
     }
 
     public function filterProductList(Request $request, $tenant_id, $tags) {

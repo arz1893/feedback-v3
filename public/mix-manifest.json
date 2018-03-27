@@ -7,9 +7,11 @@
     "/js/lodash/lodash.js": "/js/lodash/lodash.js",
     "/js/bootstrap/bootstrap-datepicker.js": "/js/bootstrap/bootstrap-datepicker.js",
     "/js/axios/axios.js": "/js/axios/axios.js",
-    "/js/vee-validate/vee-validate.js": "/js/vee-validate/vee-validate.js",
     "/js/jquery/jquery.js": "/js/jquery/jquery.js",
     "/js/bootstrap/bootstrap.js": "/js/bootstrap/bootstrap.js",
     "/js/bootstrap/tooltip.js": "/js/bootstrap/tooltip.js",
-    "/js/admin-lte/adminlte.min.js": "/js/admin-lte/adminlte.min.js"
+    "/js/admin-lte/adminlte.min.js": "/js/admin-lte/adminlte.min.js",
+    "/js/vee-validate/vee-validate.js": "/js/vee-validate/vee-validate.js",
+    "/js/vue-multiselect/vue-multiselect.min.js": "/js/vue-multiselect/vue-multiselect.min.js",
+    "/css/vue-multiselect/vue-multiselect.min.css": "/css/vue-multiselect/vue-multiselect.min.css"
 }

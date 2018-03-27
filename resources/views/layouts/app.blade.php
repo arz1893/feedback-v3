@@ -275,7 +275,7 @@
             <!-- Lodash JS -->
             {{--<script src="{{ mix('/js/lodash/lodash.js') }}" type="text/javascript"></script>--}}
             <!-- Vee Validate -->
-            <script src="{{ mix('/js/vee-validate/vee-validate.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/vee-validate/vee-validate.js') }}" type="text/javascript"></script>
             <!-- Axios JS -->
             {{--<script src="{{ asset('/js/axios/axios.js') }}" type="text/javascript"></script>--}}
             <!-- Data Table -->

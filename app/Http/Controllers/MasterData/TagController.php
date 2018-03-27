@@ -52,7 +52,12 @@ class TagController extends Controller
     }
 
     public function generateSelectTag($tenant_id) {
-        $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->pluck('systemId', 'name');
-        return ['selectOption' => $tags];
+        $selectOption = array();
+        $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
+
+        foreach ($tags as $tag) {
+            array_push($selectOption, ['systemId' => $tag->systemId, 'name' => $tag->name]);
+        }
+        return $selectOption;
     }
 }

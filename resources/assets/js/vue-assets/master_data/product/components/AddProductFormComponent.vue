@@ -1,8 +1,9 @@
 <template>
     <div class="col-md-6 col-md-offset-3">
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{'has-error' : errors.has('name')}">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Product's name" v-model="product.name"/>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Product's name" v-model="product.name" v-validate="'required'"/>
+            <span v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</span>
         </div>
 
         <div class="form-group">
@@ -12,18 +13,17 @@
 
         <div class="form-group">
             <label for="select_tags">Tags</label>
-            <tag-component :tenantId="tenantId"></tag-component>
+            <multiselect id="select_tags" v-model="product.tags" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :hide-selected="true" :preserve-search="true" placeholder="Choose Tag" label="name" track-by="name"></multiselect>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{'has-error': errors.has('image_cover')}">
             <label for="image_cover">Choose image</label>
-            <input type="file" accept="image/*" class="form-control-file" name="image_cover" id="image_cover" aria-describedby="fileHelp" v-on:change='previewImage($event)'>
+            <input type="file" accept="image/*" class="form-control-file" name="image_cover" id="image_cover" aria-describedby="fileHelp" v-on:change='previewImage($event)' v-validate="'required|image'">
             <small id="fileHelp" class="form-text text-muted">Choose your product's image</small>
         </div>
 
         <div class="form-group" v-if="showAttachment" style="width: 180px;">
             <span class="mailbox-attachment-icon has-img"><img src="" id="preview"></span>
-
             <div class="mailbox-attachment-info">
                 <a @click="clearAttachment($event)" class="btn btn-danger btn-xs pull-right" data-toggle="tooltip" data-placement="bottom" title="delete attachment">
                     <i class="fa fa-close"></i>
@@ -32,8 +32,10 @@
             </div>
         </div>
 
+        <pre lang="json">{{ product }}</pre>
+
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" @click="validateBeforeSubmit()">
                 <i class="fa fa-plus"></i> Add Product
             </button>
         </div>
@@ -41,19 +43,98 @@
 </template>
 
 <script>
+    import MultiSelect from 'vue-multiselect';
+
+    Vue.component('multiselect', MultiSelect);
+
+    Vue.use(VeeValidate);
+
     export default {
-        name: "AddProductFormComponent",
-        props: {
-            product: Object,
-            showAttachment: Boolean,
-            tenantId: String
+        name: "add-product",
+        props: ['tenantid'],
+        components: {
+            MultiSelect
         },
-        mounted() {
-            console.log(this.tenantId);
+        created() {
+            this.getTagList();
+        },
+        data() {
+            return {
+                product: {
+                    name: '',
+                    description: '',
+                    tags: [],
+                    image: ''
+                },
+                fileName: '',
+                showAttachment: false,
+                options: []
+            }
+        },
+        methods: {
+            getTagList() {
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/tag/' + this.tenantid + '/generate-select-tag';
+                axios.get(url).then(response => {
+                    this.options = response.data;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+
+            previewImage: function (event) {
+                let files = event.target.files || event.dataTransfer.files;
+                this.createImage(files[0]);
+
+                var uploadedImage = event.target;
+                if(uploadedImage.files && uploadedImage.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#preview').attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(uploadedImage.files[0]);
+                }
+                this.showAttachment = true;
+            },
+
+            clearAttachment: function(event) {
+                $('#preview').removeAttr('src');
+                $('#attachment').val("");
+                $('#image_cover').val("");
+                this.product.image = '';
+                this.showAttachment = false;
+            },
+
+            createImage: function(file) {
+                let reader = new FileReader();
+                let vm = this;
+                vm.fileName = file.name;
+                reader.onload = (e) => {
+                    vm.product.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+
+            validateBeforeSubmit: function () {
+                const url = window.location.protocol + "//" + window.location.host + "/api/" + 'product/add-product/';
+                let vm = this;
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        axios.post(url, {
+                            product: vm.product,
+                            fileName: vm.fileName,
+                            tenantId: vm.tenantid
+                        }).then(response => {
+                            console.log(response.data);
+                        }).catch(error => {
+                            console.log(error);
+                        })
+                    }
+                });
+            }
         }
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>

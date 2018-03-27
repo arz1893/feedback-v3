@@ -1,7 +1,13 @@
 @extends('home')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/vue-multiselect/vue-multiselect.min.css') }}">
+@endpush
+
 @push('scripts')
     <script src="{{ mix('js/vue-assets/master_data/product/vue_add_product.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/vue-multiselect/vue-multiselect.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/vee-validate/vee-validate.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -17,8 +23,8 @@
 
     @include('layouts.errors.error_list')
 
-    {{ Form::hidden('tenantId', Auth::user()->tenantId, ['id' => 'tenantId']) }}
-
-    <div id="add_product"></div>
+    <div id="add_product">
+        <add-product tenantId="{{ Auth::user()->tenantId }}"></add-product>
+    </div>
 
 @endsection

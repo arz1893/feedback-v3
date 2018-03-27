@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /* Tag List API */
 Route::get('tag/{tenant_id}/get-tag-list', 'MasterData\TagController@getTagList');
 Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@generateSelectTag');
+
+/* Master Product */
+Route::post('product/add-product', 'MasterData\ProductController@addProduct');

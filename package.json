@@ -27,6 +27,7 @@
         "jquery-validation": "^1.17.0",
         "moment": "^2.21.0",
         "select2": "^4.0.6-rc.1",
-        "vee-validate": "^2.0.6"
+        "vee-validate": "^2.0.6",
+        "vue-multiselect": "^2.1.0"
     }
 }
