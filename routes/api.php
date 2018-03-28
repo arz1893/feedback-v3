@@ -23,4 +23,6 @@ Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@gene
 
 /* Master Product */
 Route::get('product/{tenantId}/get-all-product', 'MasterData\ProductController@getProductList');
+Route::get('product/{tenant_id}/filter-product-list/{tags}', 'MasterData\ProductController@filterProductList');
+Route::get('product/{tenant_id}/filter-by-name/{searchString}', 'MasterData\ProductController@filterByName');
 Route::post('product/add-product', 'MasterData\ProductController@addProduct');

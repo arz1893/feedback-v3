@@ -1,7 +1,12 @@
 @extends('home')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/vue-multiselect/vue-multiselect.min.css') }}">
+@endpush
+
 @push('scripts')
     <script src="{{ mix('js/vue-assets/master_data/product/vue_index_product.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/vue-multiselect/vue-multiselect.min.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -19,8 +24,10 @@
     </a>
     <br><br>
 
+    {{ Form::hidden('tenantId', Auth::user()->tenantId, ['id' => 'tenantId']) }}
+
     <div id="master_product_index">
-        <product-index-component tenantId="{{ Auth::user()->tenantId }}"></product-index-component>
+        <product-index-component tenantId="{{ Auth::user()->tenantId }}" v-bind:selectOptions="{{ json_encode($selectOptions) }}"></product-index-component>
     </div>
 
 @endsection

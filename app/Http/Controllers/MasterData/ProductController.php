@@ -19,7 +19,12 @@ use Webpatser\Uuid\Uuid;
 class ProductController extends Controller
 {
     public function index() {
-        return view('master_data.product.product_index');
+        $selectOptions = [];
+        $tags = Tag::where('recOwner', Auth::user()->tenantId)->orderBy('name', 'asc')->get();
+        foreach ($tags as $tag) {
+            array_push($selectOptions, ['id' => $tag->systemId, 'name' => $tag->name]);
+        }
+        return view('master_data.product.product_index', compact('selectOptions'));
     }
 
     public function create() {
@@ -140,7 +145,7 @@ class ProductController extends Controller
     }
 
     public function getProductList(Request $request, $tenant_id) {
-        $products = Product::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(20);
+        $products = Product::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(15);
         return new ProductCollection($products);
     }
 
