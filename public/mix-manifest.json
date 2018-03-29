@@ -1,5 +1,6 @@
 {
     "/js/moment/moment.js": "/js/moment/moment.js",
+    "/js/vue-assets/master_data/product/vue_edit_product.js": "/js/vue-assets/master_data/product/vue_edit_product.js",
     "/js/vue-assets/master_data/product/vue_add_product.js": "/js/vue-assets/master_data/product/vue_add_product.js",
     "/js/vue-assets/master_data/product/vue_index_product.js": "/js/vue-assets/master_data/product/vue_index_product.js",
     "/js/app.js": "/js/app.js",

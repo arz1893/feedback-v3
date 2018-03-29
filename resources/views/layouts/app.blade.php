@@ -29,10 +29,10 @@
     <link href="{{ asset('/css/select2/select2-bootstrap.min.css') }}" rel="stylesheet">
     {{--<!-- Selectize -->--}}
     {{--<link href="{{ asset('/css/selectize/selectize.css') }}" rel="stylesheet">--}}
-    {{--<!-- Fancy Tree -->--}}
-    {{--<link href="{{ asset('/css/fancytree/skin-material/ui.fancytree.css') }}" rel="stylesheet" class="skinswitcher">--}}
-    {{--<!-- Context Menu Dependency -->--}}
-    {{--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.css" />--}}
+    <!-- Fancy Tree -->
+    <link href="{{ asset('/css/fancytree/skin-material/ui.fancytree.css') }}" rel="stylesheet" class="skinswitcher">
+    <!-- Context Menu Dependency -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.css" />
     {{--<!-- Light Gallery -->--}}
     {{--<link rel="stylesheet" href="{{ asset('/css/lightgallery/css/lightgallery.css') }}">--}}
     {{--<!-- Bootsrap date picker -->--}}
@@ -89,13 +89,13 @@
                         <!-- User Account Menu -->
                             <li class="dropdown user user-menu">
                                 <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="user_menu">
                                     <!-- The user image in the navbar-->
                                     <img src="{{ asset('default-images/admin-user.png') }}" class="user-image" alt="User Image">
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                     <span class="hidden-xs">{{ Auth::user()->name }}</span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" id="dropdown_user">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <img src="{{ asset('default-images/admin-user.png') }}" class="img-circle" alt="User Image">
@@ -270,14 +270,8 @@
             <script src="{{ mix('/js/bootstrap/tooltip.js') }}" type="text/javascript"></script>
             <!-- AdminLTE App -->
             <script src="{{ asset('/js/admin-lte/adminlte.min.js') }}" type="text/javascript"></script>
-            <!-- Vue JS -->
-            {{--<script src="{{ mix('/js/vue/vue.js') }}" type="text/javascript"></script>--}}
-            <!-- Lodash JS -->
-            {{--<script src="{{ mix('/js/lodash/lodash.js') }}" type="text/javascript"></script>--}}
             <!-- Vee Validate -->
             <script src="{{ asset('/js/vee-validate/vee-validate.js') }}" type="text/javascript"></script>
-            <!-- Axios JS -->
-            {{--<script src="{{ asset('/js/axios/axios.js') }}" type="text/javascript"></script>--}}
             <!-- Data Table -->
             <script src="{{ asset('/js/datatables/datatables.js') }}" type="text/javascript"></script>
             <script src="{{ asset('/js/datatables/dataTables.bootstrap.js') }}" type="text/javascript"></script>
@@ -291,12 +285,12 @@
             {{--<script src="{{ asset('/js/form-validation.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Selectize -->--}}
             {{--<script src="{{ asset('/js/selectize/selectize.min.js') }}" type="text/javascript"></script>--}}
-            {{--<!-- Fancy Tree -->--}}
-            {{--<script src="{{ asset('/js/fancytree/jquery.fancytree-all-deps.min.js') }}" type="text/javascript"></script>--}}
-            {{--<script src="{{ asset('/js/fancytree/jquery.fancytree.glyph.js') }}" type="text/javascript"></script>--}}
-            {{--<!-- Context Menu Dependency -->--}}
-            {{--<script src="{{ asset('/js/fancytree/jquery-ui.custom.js') }}"></script>--}}
-            {{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.js"></script>--}}
+            <!-- Fancy Tree -->
+            <script src="{{ asset('/js/fancytree/jquery.fancytree-all-deps.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/fancytree/jquery.fancytree.glyph.js') }}" type="text/javascript"></script>
+            <!-- Context Menu Dependency -->
+            <script src="{{ asset('/js/fancytree/jquery-ui.custom.js') }}"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.js"></script>
             {{--<!-- Fancy Tree Context Menu -->--}}
             {{--<script src="{{ asset('/js/fancytree/jquery.ui-contextmenu.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Light Gallery -->--}}

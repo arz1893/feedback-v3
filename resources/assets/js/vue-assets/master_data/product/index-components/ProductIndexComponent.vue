@@ -77,13 +77,13 @@
                 <tbody>
                 <tr v-for="product in products">
                     <td>
-                        <a role="button">
+                        <a role="button" v-bind:href="product.show_product_url">
                             <img v-if="product.img !== ''" v-bind:src="product.img" style="width: 75px; height: 50px;">
                             <img v-else v-bind:src="default_image" style="width: 75px; height: 50px;">
                         </a>
                     </td>
                     <td>
-                        <a role="button">
+                        <a role="button" v-bind:href="product.show_product_url">
                             {{ product.name }}
                         </a>
                     </td>
@@ -96,9 +96,9 @@
                         <div v-else>-</div>
                     </td>
                     <td>
-                        <button class="btn btn-warning">
+                        <a v-bind:href="product.show_edit_product_url" role="button" class="btn btn-warning">
                             <i class="fa fa-pencil-square"></i>
-                        </button>
+                        </a>
                         <button class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>
                         </button>

@@ -25,4 +25,7 @@ Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@gene
 Route::get('product/{tenantId}/get-all-product', 'MasterData\ProductController@getProductList');
 Route::get('product/{tenant_id}/filter-product-list/{tags}', 'MasterData\ProductController@filterProductList');
 Route::get('product/{tenant_id}/filter-by-name/{searchString}', 'MasterData\ProductController@filterByName');
+Route::get('product/{product_id}/get-product', 'MasterData\ProductController@getProduct');
 Route::post('product/add-product', 'MasterData\ProductController@addProduct');
+Route::post('product/{product_id}/change-picture', 'MasterData\ProductController@changePicture');
+Route::post('product/update-product', 'MasterData\ProductController@updateProduct');
