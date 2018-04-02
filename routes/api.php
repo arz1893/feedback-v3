@@ -29,3 +29,8 @@ Route::get('product/{product_id}/get-product', 'MasterData\ProductController@get
 Route::post('product/add-product', 'MasterData\ProductController@addProduct');
 Route::post('product/{product_id}/change-picture', 'MasterData\ProductController@changePicture');
 Route::post('product/update-product', 'MasterData\ProductController@updateProduct');
+Route::post('product/delete-product', 'MasterData\ProductController@deleteProduct');
+
+/* Master Service */
+Route::get('service/{tenantId}/get-all-service', 'MasterData\ServiceController@getServiceList');
+Route::post('service/add-service', 'MasterData\ServiceController@addService');

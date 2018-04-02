@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="text-center">
             <ul v-show="pagination.currentPage !== ''" class="pagination">
                 <li v-bind:class="{disabled:pagination.prevPage === null}">
@@ -64,6 +63,10 @@
             </div>
         </div>
 
+        <div class="alert alert-success" role="alert" id="alert_success" style="display: none;">
+            <strong>Info!</strong> Product has been deleted
+        </div>
+
         <div class="table-responsive" v-show="errorMessage === ''">
             <table class="table table-bordered table-striped" cellspacing="0" width="100%" id="table_product">
                 <thead>
@@ -99,7 +102,7 @@
                         <a v-bind:href="product.show_edit_product_url" role="button" class="btn btn-warning">
                             <i class="fa fa-pencil-square"></i>
                         </a>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_product" :data-id="product.systemId" @click="getProduct($event)">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </td>
@@ -134,6 +137,26 @@
         </div>
 
         <input type="hidden" v-bind:value="tenantid" name="tenantId" id="tenantId"/>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_delete_product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="myModalLabel">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this product ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteProduct()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -151,6 +174,7 @@
             return {
                 products: [],
                 product: {
+                    systemId: '',
                     name: '',
                     description: '',
                     img: '',
@@ -168,7 +192,8 @@
                 searchString: '',
                 errorMessage: '',
                 selectedTags: [],
-                options: []
+                options: [],
+                showAlert: false
             }
         },
         created() {
@@ -234,6 +259,40 @@
                 const url = window.location.protocol + "//" + window.location.host  + '/api/tag/' + this.tenantid + '/generate-select-tag';
                 axios.get(url).then(response => {
                     this.options = response.data;
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+
+            getProduct: function(event) {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host  + '/api/product/' + $(event.currentTarget).data('id') + '/get-product';
+                axios.get(url).then(response => {
+                    vm.product.systemId = response.data.data.systemId;
+                    vm.product.name = response.data.data.name;
+                    vm.product.description = response.data.data.description;
+                    vm.product.tags = response.data.data.productTags;
+                    vm.product.img = response.data.data.img;
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+
+            deleteProduct: function(event) {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host  + '/api/product/delete-product';
+
+                axios.post(url, {
+                    productId: vm.product.systemId
+                }).then(response => {
+                    if(response.data.message === 'success') {
+                        $('#alert_success').css('display', '');
+                        $("#alert_success").fadeTo(2000, 500).slideUp(500, function(){
+                            $("#alert_success").slideUp(500);
+                            $('#alert_success').css('display', 'none');
+                        });
+                        vm.getProductList();
+                    }
                 }).catch(error => {
                     console.log(error);
                 });

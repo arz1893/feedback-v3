@@ -44,7 +44,6 @@ Route::post('/check-tenant', 'Auth\LoginController@checkTenant')->name('check_te
 /* Product Routes */
 Route::resource('product', 'MasterData\ProductController');
 Route::put('product/change-picture/{Product}', 'MasterData\ProductController@changePicture')->name('change_product_picture');
-Route::post('product/delete-product', 'MasterData\ProductController@deleteProduct')->name('delete_product');
 /* end of product routes */
 
 /* Product Category Routes */

@@ -3,8 +3,10 @@
 namespace Illuminate\Foundation\Auth;
 
 use App\Tenant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
 
 trait AuthenticatesUsers
@@ -45,6 +47,10 @@ trait AuthenticatesUsers
 
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
+        } else if($this->attemptLogin($request) == false) {
+            $message_bag = new MessageBag();
+            $message_bag->add('tenant', 'cannot login with current user credentials to the current tenant');
+            return redirect('login')->withErrors($message_bag);
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -77,9 +83,14 @@ trait AuthenticatesUsers
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
-        );
+        $user = User::where('email', $request['email'])->first();
+        if($user->tenantId != $request['tenantId']) {
+            return false;
+        } else {
+            return $this->guard()->attempt(
+                $this->credentials($request), $request->filled('remember')
+            );
+        }
     }
 
     /**

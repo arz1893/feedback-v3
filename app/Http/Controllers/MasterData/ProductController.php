@@ -59,7 +59,7 @@ class ProductController extends Controller
             array_push($tags, $request->product['tags'][$i]['systemId']);
         }
 
-        if($uploadedImage !== '') {
+        if($uploadedImage != '') {
             InterventionImage::make($uploadedImage)->save(public_path('uploaded_images/' . $tenant->email . '/' . $fileName));
             $newProduct = Product::create([
                 'systemId' => $id,
@@ -102,14 +102,14 @@ class ProductController extends Controller
     }
 
     public function deleteProduct(Request $request) {
-        $product = Product::findOrFail($request->product_id);
+        $product = Product::findOrFail($request->productId);
         if($product->img != null) {
             if(file_exists(public_path($product->img))) {
                 unlink(public_path($product->img));
             }
         }
         $product->delete();
-        return redirect('product')->with('status', 'Product has been deleted');
+        return ['message' => 'success'];
     }
 
     public function updateProduct(Request $request) {

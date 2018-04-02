@@ -25,6 +25,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/vue-assets/master_data/product/vue_add_product.js', 'public/js/vue-assets/master_data/product/')
     .js('resources/assets/js/vue-assets/master_data/product/vue_index_product.js', 'public/js/vue-assets/master_data/product')
     .js('resources/assets/js/vue-assets/master_data/product/vue_edit_product.js', 'public/js/vue-assets/master_data/product')
+    .js('resources/assets/js/vue-assets/master_data/service/vue_index_service.js', 'public/js/vue-assets/master_data/service')
+    .js('resources/assets/js/vue-assets/master_data/service/vue_add_service.js', 'public/js/vue-assets/master_data/service')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.js', 'public/js/vue-multiselect/')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.css', 'public/css/vue-multiselect');

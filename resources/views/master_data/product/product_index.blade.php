@@ -27,7 +27,7 @@
     {{ Form::hidden('tenantId', Auth::user()->tenantId, ['id' => 'tenantId']) }}
 
     <div id="master_product_index">
-        <product-index-component tenantId="{{ Auth::user()->tenantId }}" v-bind:selectOptions="{{ json_encode($selectOptions) }}"></product-index-component>
+        <product-index-component tenantId="{{ Auth::user()->tenantId }}"></product-index-component>
     </div>
 
 @endsection

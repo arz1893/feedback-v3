@@ -18,7 +18,7 @@
 
         <div class="form-group" v-bind:class="{'has-error': errors.has('image_cover')}">
             <label for="image_cover">Choose image</label>
-            <input type="file" accept="image/*" class="form-control-file" name="image_cover" id="image_cover" aria-describedby="fileHelp" v-on:change='previewImage($event)' v-validate="'required|image'">
+            <input type="file" accept="image/*" class="form-control-file" name="image_cover" id="image_cover" aria-describedby="fileHelp" v-on:change='previewImage($event)' v-validate="'image'">
             <small id="fileHelp" class="form-text text-muted">Choose your product's image</small>
         </div>
 
