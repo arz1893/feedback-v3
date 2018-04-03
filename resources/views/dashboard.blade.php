@@ -14,7 +14,7 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                     <span class="progress-description">
-                    Frequently asked question
+                    frequently asked question
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -23,42 +23,20 @@
         </div>
     </a>
 
-    <a href="{{ url('/complaint') }}">
+    <a href="{{ route('feedback.index') }}">
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="ion ion-settings"></i></span>
+                <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
 
                 <div class="info-box-content">
                     {{--<span class="info-box-text">FAQ</span>--}}
-                    <span class="info-box-number">Complaints</span>
+                    <span class="info-box-number">Feedback</span>
 
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                     <span class="progress-description">
-                    Product complaints
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-    </a>
-
-    <a href="{{ url('/suggestion') }}">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="info-box bg-yellow">
-                <span class="info-box-icon"><i class="ion ion-ribbon-a"></i></span>
-
-                <div class="info-box-content">
-                    {{--<span class="info-box-text">FAQ</span>--}}
-                    <span class="info-box-number">Suggestions</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                    <span class="progress-description">
-                    Product suggestions
+                    customer's feedback
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -180,10 +158,10 @@
             </div><!-- /.col-lg-4 -->
 
             <div class="col-lg-3">
-                <a href="{{ route('suggestion_report.index') }}">
+                <a role="button">
                     <img class="img-circle center-block" src="{{ asset('default-images/chart-icon2.png') }}" alt="Generic placeholder image" width="140" height="140">
                 </a>
-                <a href="{{ route('suggestion_report.index') }}">
+                <a role="button">
                     <h3 class="text-center">Suggestion Report</h3>
                 </a>
                 <p align="center">Contains all complaint service charts and statistic</p>

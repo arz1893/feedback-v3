@@ -169,7 +169,6 @@
     export default {
         name: "product-index-component",
         props: ['tenantid'],
-        template: '#demo-template',
         data() {
             return {
                 products: [],

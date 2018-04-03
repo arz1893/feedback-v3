@@ -22,8 +22,7 @@ class Product extends JsonResource
             'show_product_url' => route('product.show', $this->systemId),
             'show_edit_product_url' => route('product.edit', $this->systemId),
             'show_faq_url' => route('faq_product.show', $this->systemId),
-            'show_complaint_url' => route('show_complaint_product', [$this->systemId, 0]),
-            'show_suggestion_url' => route('show_suggestion_product', [$this->systemId, 0])
+            'show_feedback_url' => route('feedback_product.show', $this->systemId)
         ];
     }
 }

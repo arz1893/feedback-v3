@@ -62,27 +62,14 @@
                         </li>
                         <li class="treeview">
                             <a href="#!">
-                                <i class="ion ion-settings"></i> Complaints
+                                <i class="fa fa-comments-o"></i> Feedback
                                 <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="{{ route('complaint_product.index') }}"><i class="ion ion-android-bookmark"></i> Complaint Product</a></li>
-                                <li><a href="{{ route('complaint_service.index') }}"><i class="ion ion-android-bookmark"></i> Complaint Service</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="ion ion-ribbon-a"></i> Suggestions
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('suggestion_product.index') }}"><i class="ion ion-android-bookmark"></i> Suggestion Product</a></li>
-                                <li><a href="{{ route('suggestion_service.index') }}"><i class="ion ion-android-bookmark"></i> Suggestion Service</a></li>
+                                <li><a role="button"><i class="fa fa-commenting"></i> Feedback Product</a></li>
+                                <li><a role="button"><i class="fa fa-commenting"></i> Feedback Service</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ route('question.index') }}"><i class="ion ion-help-circled"></i> Questions </a></li>
@@ -118,11 +105,6 @@
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('suggestion_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> List of Product Suggestion</a></li>
-                                <li><a href="{{ route('suggestion_service_list.index') }}"><i class="ion ion-ios-list-outline"></i> List of Service Suggestion</a></li>
-                            </ul>
                         </li>
 
                         <li class="treeview">
