@@ -7,11 +7,12 @@ use App\Http\Resources\MasterData\TagCollection;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Webpatser\Uuid\Uuid;
 
 class TagController extends Controller
 {
     public function index() {
-        $tags = Tag::where('recOwner', Auth::user()->tenantId)->orderBy('name', 'asc')->get();
         return view('master_data.tag.tag_index', compact('tags'));
     }
 
@@ -46,6 +47,7 @@ class TagController extends Controller
         return redirect('tag')->with(['status' => 'Tag has been deleted']);
     }
 
+    /* API Section */
     public function getTagList($tenant_id) {
         $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
         return new TagCollection($tags);

@@ -17,10 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/* Tag List API */
-Route::get('tag/{tenant_id}/get-tag-list', 'MasterData\TagController@getTagList');
-Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@generateSelectTag');
-
 /* Master Product */
 Route::get('product/{tenantId}/get-all-product', 'MasterData\ProductController@getProductList');
 Route::get('product/{tenant_id}/filter-product-list/{tags}', 'MasterData\ProductController@filterProductList');
@@ -40,3 +36,7 @@ Route::post('service/add-service', 'MasterData\ServiceController@addService');
 Route::post('service/{service_id}/change-picture', 'MasterData\ServiceController@changePicture');
 Route::post('service/update-service', 'MasterData\ServiceController@updateService');
 Route::post('service/delete-service', 'MasterData\ServiceController@deleteService');
+
+/* Master Tag */
+Route::get('tag/{tenant_id}/get-tag-list', 'MasterData\TagController@getTagList');
+Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@generateSelectTag');

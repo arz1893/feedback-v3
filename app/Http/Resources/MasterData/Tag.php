@@ -17,7 +17,10 @@ class Tag extends JsonResource
         return [
             'systemId' => $this->systemId,
             'name' => $this->name,
-            'bgColor' => $this->bgColor
+            'bgColor' => $this->bgColor,
+            'defValue' => $this->defValue,
+            'recOwner' => $this->recOwner,
+            'edit_url' => route('tag.edit', $this->systemId)
         ];
     }
 }
