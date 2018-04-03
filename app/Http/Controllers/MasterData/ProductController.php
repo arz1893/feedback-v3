@@ -147,8 +147,6 @@ class ProductController extends Controller
         return new ProductCollection($products);
     }
 
-
-
     public function filterProductList(Request $request, $tenant_id, $tags) {
         $tagIds = explode(',', $tags);
 

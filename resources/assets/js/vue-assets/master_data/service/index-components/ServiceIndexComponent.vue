@@ -49,6 +49,25 @@
             </div>
         </div> <br>
 
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-link" @click="getServiceList()">
+                    Refresh List <i class="fa fa-refresh"></i>
+                </button>
+
+                <div v-if="searchStatus.length > 0" class="text-center"><i class="fa fa-spinner fa-spin"></i> {{ searchStatus }}</div>
+                <div v-show="errorMessage !== ''">
+                    <div class="well text-center">
+                        {{ errorMessage }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-success" role="alert" id="alert_success" style="display: none;">
+            <strong>Info!</strong> Service has been deleted
+        </div>
+
         <div class="table-responsive" v-show="errorMessage === ''">
             <table class="table table-bordered table-striped" cellspacing="0" width="100%" id="table_service">
                 <thead>
@@ -83,7 +102,7 @@
                         <a v-bind:href="service.show_edit_service_url" role="button" class="btn btn-warning">
                             <i class="fa fa-pencil-square"></i>
                         </a>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_service" :data-id="service.systemId" @click="getService($event)">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </td>
@@ -116,6 +135,26 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_delete_service" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="myModalLabel">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this service ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteService()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -155,13 +194,53 @@
                 default_image: window.location.protocol + "//" + window.location.host  + '/default-images/no-image.jpg'
             }
         },
+        watch: {
+            selectedTags: function (value) {
+                var vm = this;
+
+                if(value.length === 0) {
+                    vm.getServiceList();
+                } else {
+                    var tagIds = [];
+                    for(var i=0;i<value.length;i++) {
+                        tagIds.push(value[i].systemId);
+                    }
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenantid + '/filter-service-list/' + tagIds;
+                    vm.searchStatus = 'Searching...';
+                    vm.searchString = '';
+                    console.log(value);
+                    function filterServices() {
+
+                        axios.get(url)
+                            .then(function (response) {
+                                console.log(response.data.data);
+                                if (response.data.data.length === 0) {
+                                    vm.services = response.data.data;
+                                    vm.errorMessage = 'no data found';
+                                    vm.searchStatus = '';
+                                } else {
+                                    vm.services = response.data.data;
+                                    vm.makePagination(response.data);
+                                    vm.errorMessage = '';
+                                    vm.searchStatus = '';
+                                }
+                            })
+                            .catch(error => {
+                                console.log(Object.assign({}, error));
+                            });
+                    }
+
+                    var debounceFunction = _.debounce(filterServices, 1000);
+                    debounceFunction();
+                }
+            }
+        },
         methods: {
             getServiceList: function () {
                 this.errorMessage = '';
                 this.searchString = '';
                 const url = window.location.protocol + "//" + window.location.host  + '/api/service/' + this.tenantid + '/get-all-service';
                 axios.get(url).then(response => {
-                    console.log(response.data.data);
                     this.services = response.data.data;
                     this.makePagination(response.data);
                 }).catch(error => {
@@ -176,6 +255,34 @@
                     console.log(error);
                 });
             },
+            getService: function (event) {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + '/api/service/' + $(event.currentTarget).data('id') + '/get-service';
+                axios.get(url).then(response => {
+                    vm.service = response.data.data;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            deleteService: function(event) {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host  + '/api/service/delete-service';
+
+                axios.post(url, {
+                    serviceId: vm.service.systemId
+                }).then(response => {
+                    if(response.data.message === 'success') {
+                        $('#alert_success').css('display', '');
+                        $("#alert_success").fadeTo(2000, 500).slideUp(500, function(){
+                            $("#alert_success").slideUp(500);
+                            $('#alert_success').css('display', 'none');
+                        });
+                        vm.getServiceList();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
             makePagination: function (data) {
                 let vm = this;
                 vm.pagination.currentPage = data.meta.current_page;
@@ -184,6 +291,33 @@
                 vm.pagination.prevPage = (data.links.prev === null ? null:data.links.prev);
                 vm.pagination.nextPage = (data.links.next === null ? null:data.links.next);
             },
+            filterByName: function () {
+                var vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenantid + '/filter-by-name/' + vm.searchString;
+                vm.searchStatus = 'Searching...';
+                vm.errorMessage = '';
+                if (vm.searchString !== '') {
+                    function fireRequest() {
+                        axios.get(url).then(response => {
+                            if (response.data.data.length === 0) {
+                                vm.errorMessage = 'no data found';
+                                vm.searchStatus = '';
+                                vm.services = response.data.data;
+                                vm.pagination.currentPage = '';
+                            } else {
+                                vm.services = response.data.data;
+                                vm.makePagination(response.data);
+                                vm.searchStatus = '';
+                            }
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+
+                    var debounceFunction = _.debounce(fireRequest, 1000);
+                    debounceFunction();
+                }
+            }
         }
     }
 </script>

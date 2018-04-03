@@ -19,6 +19,7 @@ class Service extends JsonResource
             'name' => $this->name,
             'img' => ($this->img == null ? asset('default-images/no-image.jpg'):asset($this->img)),
             'serviceTags' => $this->tags,
+            'description' => $this->description,
             'show_service_url' => route('service.show', $this->systemId),
             'show_edit_service_url' => route('service.edit', $this->systemId),
             'show_faq_url' => route('faq_service.show', $this->systemId),

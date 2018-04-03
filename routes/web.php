@@ -43,7 +43,6 @@ Route::post('/check-tenant', 'Auth\LoginController@checkTenant')->name('check_te
 
 /* Product Routes */
 Route::resource('product', 'MasterData\ProductController');
-Route::put('product/change-picture/{Product}', 'MasterData\ProductController@changePicture')->name('change_product_picture');
 /* end of product routes */
 
 /* Product Category Routes */
@@ -62,8 +61,6 @@ Route::resource('product_category', 'MasterData\ProductCategoryController');
 
 /* Service Routes */
 Route::resource('service', 'MasterData\ServiceController');
-Route::put('service/change-picture/{Service}', 'MasterData\ServiceController@changePicture')->name('change_service_picture');
-Route::post('service/delete-service', 'MasterData\ServiceController@deleteService')->name('delete_service');
 /* end of service routes */
 
 /* Service Category Routes */

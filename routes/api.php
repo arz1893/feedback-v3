@@ -32,5 +32,11 @@ Route::post('product/update-product', 'MasterData\ProductController@updateProduc
 Route::post('product/delete-product', 'MasterData\ProductController@deleteProduct');
 
 /* Master Service */
-Route::get('service/{tenantId}/get-all-service', 'MasterData\ServiceController@getServiceList');
+Route::get('service/{tenant_id}/get-all-service', 'MasterData\ServiceController@getServiceList');
+Route::get('service/{tenant_id}/filter-service-list/{tags}', 'MasterData\ServiceController@filterServiceList');
+Route::get('service/{tenant_id}/filter-by-name/{searchString}', 'MasterData\ServiceController@filterByName');
+Route::get('service/{service_id}/get-service', 'MasterData\ServiceController@getService');
 Route::post('service/add-service', 'MasterData\ServiceController@addService');
+Route::post('service/{service_id}/change-picture', 'MasterData\ServiceController@changePicture');
+Route::post('service/update-service', 'MasterData\ServiceController@updateService');
+Route::post('service/delete-service', 'MasterData\ServiceController@deleteService');
