@@ -12,7 +12,8 @@ class FeedbackProductController extends Controller
         return view('feedback.product.feedback_product_index');
     }
 
-    public function show(Product $product) {
-
+    public function show($systemId) {
+        $product = Product::findOrFail($systemId);
+        return view('feedback.product.feedback_product_show', compact('product'));
     }
 }

@@ -40,3 +40,12 @@ Route::post('service/delete-service', 'MasterData\ServiceController@deleteServic
 /* Master Tag */
 Route::get('tag/{tenant_id}/get-tag-list', 'MasterData\TagController@getTagList');
 Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@generateSelectTag');
+
+/* Product Category */
+Route::get('product_category/{product_id}/get-root-nodes', 'MasterData\ProductCategoryController@getRootNodes');
+Route::get('product_category/{node_id}/get-parent-nodes', 'MasterData\ProductCategoryController@getParentNodes');
+Route::get('product_category/{parent_id}/get-child-nodes', 'MasterData\ProductCategoryController@getChildNodes');
+
+/* Customer */
+Route::get('customer/{tenant_id}/get-all-customer', 'Customer\CustomerController@getAllCustomer');
+Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerController@generateSelectCustomer');

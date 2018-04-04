@@ -22,6 +22,6 @@
 
 @section('main-content')
     <div id="product_selection">
-        <product-selection tenant_id="{{ Auth::user()->tenantId }}"></product-selection>
+        <product-selection tenant_id="{{ Auth::user()->tenantId }}" type="feedback"></product-selection>
     </div>
 @endsection

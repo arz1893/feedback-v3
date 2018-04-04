@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MasterData;
 
+use App\Http\Resources\MasterData\ProductCategoryCollection;
 use App\ProductCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -149,5 +150,27 @@ class ProductCategoryController extends Controller
             return response()->json(['status' => 'success'], 200);
         }
         return redirect()->back();
+    }
+
+    /* API Section */
+    public function getRootNodes(Request $request, $product_id) {
+        $productCategories = ProductCategory::where('productId', $product_id)->orderBy('name', 'asc')->get();
+        return new ProductCategoryCollection($productCategories);
+    }
+
+    public function getParentNodes(Request $request, $node_id) {
+        $currentNode = ProductCategory::findOrFail($node_id);
+        if($currentNode->parent_id == null) {
+            $parentNodes = ProductCategory::where('productId', $currentNode->productId)->orderBy('name', 'asc')->get();
+            return new ProductCategoryCollection($parentNodes);
+        } else {
+            $parentNodes = ProductCategory::where('parent_id', $currentNode->parent_id)->orderBy('name', 'asc')->get();
+            return new ProductCategoryCollection($parentNodes);
+        }
+    }
+
+    public function getChildNodes(Request $request, $parent_id) {
+        $childNodes = ProductCategory::where('parent_id', $parent_id)->orderBy('name', 'asc')->get();
+        return new ProductCategoryCollection($childNodes);
     }
 }

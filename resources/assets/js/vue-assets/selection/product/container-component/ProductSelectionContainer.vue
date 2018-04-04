@@ -30,6 +30,10 @@
                         </multiselect>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-link" @click="getProductList()">
+                    Refresh List <i class="fa fa-refresh"></i>
+                </button>
             </div>
         </div>
 
@@ -44,7 +48,7 @@
                     </div>
                     <div v-show="searchStatus === ''" class="col-lg-2 col-md-3 col-sm-4 col-xs-4" v-for="product in products">
                         <div class="imagebox">
-                            <a role="button">
+                            <a role="button" v-if="type === 'feedback'" :href="product.show_feedback_url">
                                 <img v-show="product.img !== ''" v-bind:src="product.img"  class="category-banner img-responsive">
                                 <img v-show="product.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
                                 <span class="imagebox-desc">
@@ -74,14 +78,29 @@
             </div>
         </transition>
 
-        <div class="col-lg-12">
-            <ul class="pager">
-                <li v-show="pagination.prevPage === null" v-bind:class="{'disabled' : pagination.prevPage === null}"><a href="#prev">&larr; Prev</a></li>
-                <li v-show="pagination.prevPage !== null"><a href="#prev" @click="nextPage(pagination.prevPage)">&larr; Prev</a></li>
-                <li v-show="pagination.nextPage === null" v-bind:class="{'disabled' : pagination.nextPage === null}"><a href="#next">Next &rarr;</a></li>
-                <li v-show="pagination.nextPage !== null"><a href="#next" @click="nextPage(pagination.nextPage)">Next &rarr;</a></li>
+        <div class="text-center">
+            <ul v-show="pagination.currentPage !== ''" class="pagination">
+                <li v-bind:class="{disabled:pagination.prevPage === null}">
+                    <a v-if="pagination.prevPage !== null" role="button" aria-label="Previous" @click="changePage(pagination.prevPage)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <a v-else role="button" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li v-for="n in pagination.endPage" v-bind:class="{ active:n===pagination.currentPage }">
+                    <a v-if="n !== pagination.currentPage" role="button" @click="changePage(pagination.path + '?page=' + n)">{{ n }}</a>
+                    <a v-else role="button">{{ n }}</a>
+                </li>
+                <li v-bind:class="{disabled:pagination.nextPage === null}">
+                    <a v-if="pagination.nextPage !== null" role="button" aria-label="Next" @click="changePage(pagination.nextPage)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <a v-else role="button">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
             </ul>
-            <div class="text-center">Page {{ pagination.currentPage }} of {{ pagination.endPage }}</div>
         </div>
     </div>
 </template>
@@ -93,7 +112,7 @@
 
     export default {
         name: "product-selection",
-        props: ['tenant_id'],
+        props: ['tenant_id', 'type'],
         data() {
             return {
                 products: [],

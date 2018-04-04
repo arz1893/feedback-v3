@@ -145,7 +145,7 @@ Route::post('question_list/{id}/update-answer', 'Question\QuestionListController
 Route::post('question/delete-answer', 'Question\QuestionListController@deleteAnswer')->name('delete_answer');
 /* end of question list routes */
 
-/* Customer Complaint Routes */
+/* Customer Routes */
 Route::resource('customer', 'Customer\CustomerController');
 /* end of customer routes */
 
