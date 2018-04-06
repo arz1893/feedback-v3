@@ -41,6 +41,6 @@
 
 @section('main-content')
     <div id="feedback_show">
-        <feedback-show product_id="{{ $product->systemId }}" tenant_id="{{ $product->tenantId }}"></feedback-show>
+        <feedback-show product_id="{{ $product->systemId }}" tenant_id="{{ $product->tenantId }}" syscreator="{{ Auth::user()->systemId }}"></feedback-show>
     </div>
 @endsection

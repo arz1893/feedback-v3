@@ -49,3 +49,6 @@ Route::get('product_category/{parent_id}/get-child-nodes', 'MasterData\ProductCa
 /* Customer */
 Route::get('customer/{tenant_id}/get-all-customer', 'Customer\CustomerController@getAllCustomer');
 Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerController@generateSelectCustomer');
+
+/* Feedback Product */
+Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');

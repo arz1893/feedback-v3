@@ -15,7 +15,7 @@ class FeedbackProduct extends Model
     protected $fillable = [
         'systemId',
         'customer_rating',
-        'customer_complaint',
+        'customer_feedback',
         'is_need_call',
         'is_urgent',
         'customerId',

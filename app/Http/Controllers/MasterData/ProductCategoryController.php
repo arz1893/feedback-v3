@@ -7,6 +7,7 @@ use App\ProductCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\MasterData\ProductCategory as ProductCategoryResource;
 
 class ProductCategoryController extends Controller
 {
@@ -161,11 +162,13 @@ class ProductCategoryController extends Controller
     public function getParentNodes(Request $request, $node_id) {
         $currentNode = ProductCategory::findOrFail($node_id);
         if($currentNode->parent_id == null) {
-            $parentNodes = ProductCategory::where('productId', $currentNode->productId)->orderBy('name', 'asc')->get();
-            return new ProductCategoryCollection($parentNodes);
+            $rootNodes = ProductCategory::where('productId', $currentNode->productId)->orderBy('name', 'asc')->get();
+            $previousNode = null;
+            return ['parentNodes' => new ProductCategoryCollection($rootNodes), 'previousNode' => $previousNode];
         } else {
             $parentNodes = ProductCategory::where('parent_id', $currentNode->parent_id)->orderBy('name', 'asc')->get();
-            return new ProductCategoryCollection($parentNodes);
+            $previousNode = ProductCategory::findOrFail($currentNode->parent_id);
+            return ['parentNodes' => new ProductCategoryCollection($parentNodes), 'previousNode' => new ProductCategoryResource($previousNode)];
         }
     }
 

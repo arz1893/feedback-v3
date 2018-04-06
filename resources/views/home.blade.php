@@ -68,7 +68,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a role="button"><i class="fa fa-commenting"></i> Feedback Product</a></li>
+                                <li><a role="button" href="{{ route('feedback_product.index') }}"><i class="fa fa-commenting"></i> Feedback Product</a></li>
                                 <li><a role="button"><i class="fa fa-commenting"></i> Feedback Service</a></li>
                             </ul>
                         </li>
