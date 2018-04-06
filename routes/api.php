@@ -18,10 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /* Master Product */
-Route::get('product/{tenantId}/get-all-product', 'MasterData\ProductController@getProductList');
+Route::get('product/{tenant_id}/get-all-product', 'MasterData\ProductController@getProductList');
 Route::get('product/{tenant_id}/filter-product-list/{tags}', 'MasterData\ProductController@filterProductList');
 Route::get('product/{tenant_id}/filter-by-name/{searchString}', 'MasterData\ProductController@filterByName');
 Route::get('product/{product_id}/get-product', 'MasterData\ProductController@getProduct');
+Route::get('product/{tenant_id}/generate-select-product', 'MasterData\ProductController@generateSelectProduct');
 Route::post('product/add-product', 'MasterData\ProductController@addProduct');
 Route::post('product/{product_id}/change-picture', 'MasterData\ProductController@changePicture');
 Route::post('product/update-product', 'MasterData\ProductController@updateProduct');
@@ -52,3 +53,5 @@ Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerCo
 
 /* Feedback Product */
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
+Route::get('feedback_product/{tenant_id}/get-feedback-product-list', 'Feedback\Product\FeedbackProductController@getFeedbackProductList');
+Route::get('feedback_product/{tenant_id}/filter-by-product/{products}', 'Feedback\Product\FeedbackProductController@filterByProduct');

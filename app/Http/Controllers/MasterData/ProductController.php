@@ -160,4 +160,13 @@ class ProductController extends Controller
         $filteredProducts = Product::where('tenantId', $tenant_id)->where('name', 'LIKE', "%$searchString%")->orderBy('name', 'asc')->paginate(24);
         return new ProductCollection($filteredProducts);
     }
+
+    public function generateSelectProduct(Request $request, $tenant_id) {
+        $selectOption = array();
+        $selectProducts = Product::where('tenantId', $tenant_id)->orderBy('name', 'asc')->get();
+        foreach ($selectProducts as $selectProduct) {
+            array_push($selectOption, ['systemId' => $selectProduct->systemId, 'name' => $selectProduct->name]);
+        }
+        return $selectOption;
+    }
 }

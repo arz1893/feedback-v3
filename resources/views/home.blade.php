@@ -86,15 +86,15 @@
                     <ul class="treeview-menu">
                         <li class="treeview">
                             <a href="#!">
-                                <i class="ion ion-settings"></i> Complaints
+                                <i class="ion ion-settings"></i> Feedback
                                 <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
 
                             <ul class="treeview-menu">
-                                <li><a href="{{ route('complaint_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> List of Product Complaint</a></li>
-                                <li><a href="{{ route('complaint_service_list.index') }}"><i class="ion ion-ios-list-outline"></i> List of Service Complaint</a></li>
+                                <li><a role="button" href="{{ route('feedback_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
+                                <li><a role="button"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
                             </ul>
                         </li>
 

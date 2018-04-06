@@ -99,17 +99,9 @@ Route::resource('feedback', 'Feedback\FeedbackController');
 Route::resource('feedback_product', 'Feedback\Product\FeedbackProductController');
 /* end of feedback product routes */
 
-/* Complaint Product Routes */
-Route::resource('complaint_product', 'Complaint\ComplaintProductController');
-Route::get('complaint_product/show-product/{Product}/{CurrentNodeId}', 'Complaint\ComplaintProductController@showProduct')->name('show_complaint_product');
-/* end of complaint product routes */
-
-/* Complaint Product List Routes */
-Route::resource('complaint_product_list', 'Complaint\ComplaintProductListController');
-Route::post('complaint_product_list/delete-complaint-product', 'Complaint\ComplaintProductListController@deleteComplaintProduct')->name('delete_complaint_product');
-Route::post('complaint_product_list/{id}/change-attachment', 'Complaint\ComplaintProductListController@changeAttachment')->name('change_complaint_product_attachment');
-Route::post('complaint_product_list/delete-attachment', 'Complaint\ComplaintProductListController@deleteAttachment')->name('delete_complaint_product_attachment');
-/* end of complaint product list routes */
+/* Feedback Product List Routes */
+Route::resource('feedback_product_list', 'Feedback\Product\FeedbackProductListController');
+/* end of feedback product list routes */
 
 /* Complaint Product Reply Routes */
 Route::resource('complaint_product_reply', 'Complaint\ComplaintProductReplyController');

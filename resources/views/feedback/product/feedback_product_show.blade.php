@@ -5,7 +5,7 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ mix('js/vue-assets/feedback/product/feedback_show.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/vue-assets/feedback/product/feedback_product_show.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/vue-multiselect/vue-multiselect.min.js') }}" type="text/javascript"></script>
 @endpush
 
@@ -40,7 +40,7 @@
 @endsection
 
 @section('main-content')
-    <div id="feedback_show">
+    <div id="feedback_product_show">
         <feedback-show product_id="{{ $product->systemId }}" tenant_id="{{ $product->tenantId }}" syscreator="{{ Auth::user()->systemId }}"></feedback-show>
     </div>
 @endsection

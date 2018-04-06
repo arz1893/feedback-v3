@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Feedback\Product;
 
 use App\FeedbackProduct;
+use App\Http\Resources\Feedback\FeedbackProductCollection;
 use App\Product;
 use App\Tenant;
 use Illuminate\Http\Request;
@@ -61,5 +62,17 @@ class FeedbackProductController extends Controller
         }
 
         return ['message' => 'success'];
+    }
+
+    public function getFeedbackProductList($tenant_id){
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(15);
+        return new FeedbackProductCollection($feedbackProducts);
+    }
+
+    public function filterByProduct(Request $request, $tenant_id, $products) {
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereHas('product', function ($q) use ($products) {
+            $q->whereIn('productId', $products);
+        })->orderBy('created_at', 'desc')->paginate(15);
+        return new FeedbackProductCollection($feedbackProducts);
     }
 }

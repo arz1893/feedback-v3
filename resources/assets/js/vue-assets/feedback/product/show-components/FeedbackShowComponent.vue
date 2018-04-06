@@ -299,7 +299,9 @@
                 let vm = this;
                 vm.showForm = false;
                 vm.showBack = false;
-                if(vm.previousNode.parentId !== null && vm.previousNode.length > 0) {
+                console.log(vm.previousNode);
+                console.log(vm.previousNode.length);
+                if(vm.previousNode.parentId !== null && vm.previousNode.length === undefined) {
                     vm.showNavigator = true;
                 }
                 vm.feedbackProduct.customer = '';
