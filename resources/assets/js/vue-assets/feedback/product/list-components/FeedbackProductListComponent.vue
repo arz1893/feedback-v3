@@ -25,8 +25,12 @@
                 </form>
             </div>
 
-            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6 pull-right">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 pull-right">
+                <div class="visible-xs">
+                    <br>
+                </div>
                 <form class="form-inline">
+                    <label for="select_tags">Select Product</label>
                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <multiselect id="select_tags"
                                      v-model="selectedProduct"
@@ -63,12 +67,12 @@
                 <tbody>
                     <tr v-for="feedbackProduct in feedbackProducts">
                         <td>
-                            <a role="button">
+                            <a role="button" data-toggle="modal" data-target="#modal_show_feedback" @click="showDetail(feedbackProduct)">
                                 {{ feedbackProduct.created_at }}
                             </a>
                         </td>
                         <td>
-                            <a role="button">
+                            <a role="button" data-toggle="modal" data-target="#modal_show_feedback" @click="showDetail(feedbackProduct)">
                                 <span v-if="feedbackProduct.customer !== null">
                                     {{ feedbackProduct.customer.name }}
                                 </span>
@@ -78,7 +82,7 @@
                             </a>
                         </td>
                         <td>
-                            {{ feedbackProduct.product }}
+                            {{ feedbackProduct.product.name }}
                         </td>
                         <td>
                             <span v-if="feedbackProduct.customer_rating === 1">
@@ -146,6 +150,189 @@
                 </li>
             </ul>
         </div>
+
+        <div class="modal fade" id="modal_show_feedback" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="clearState()"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-danger">Complaint Detail</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img v-if="feedbackProduct.product.img !== undefined" class="media-object" v-bind:src="feedbackProduct.product.img" width="125px">
+                                    <img v-else v-bind:src="default_image" class="media-object" width="125px"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading text-danger">
+                                    {{ feedbackProduct.product.name }} ( {{ feedbackProduct.productCategory }} )
+                                    <span class="mailbox-read-time pull-right visible-lg visible-md">{{ feedbackProduct.created_at }}</span>
+                                    <span class="mailbox-read-time visible-sm visible-xs">{{ feedbackProduct.created_at }}</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="text-muted">From:
+                            <span id="reply_to" class="text-info">
+                                <span v-if="feedbackProduct.customer !== null">{{ feedbackProduct.customer.name }}</span>
+                                <span v-else>Anonymous</span>
+                            </span>
+                        </div>
+                        <div class="text-muted">
+                            Created by :
+                            <span class="text-blue"> {{ feedbackProduct.creator.name }} </span>
+                        </div>
+                        <div>
+                            <span class="text-muted">
+                                Satisfaction :
+                            </span>
+                            <button class="btn btn-link" v-if="feedbackProduct.customer_rating === 1">
+                                <i class="text-center material-icons text-red" style="font-size: 2.5em;">
+                                    sentiment_very_dissatisfied
+                                </i>
+                            </button>
+                            <button class="btn btn-link" v-else-if="feedbackProduct.customer_rating === 2">
+                                <i class="text-center material-icons text-yellow" style="font-size: 2.5em;">
+                                    sentiment_neutral
+                                </i>
+                            </button>
+                            <button class="btn btn-link" v-else-if="feedbackProduct.customer_rating === 3">
+                                <i class="text-center material-icons text-green" style="font-size: 2.5em;">
+                                    sentiment_very_satisfied
+                                </i>
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <span class="text-muted">Feedback : </span> <br>
+                                <p align="justify">
+                                    {{ feedbackProduct.customer_feedback }}
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div v-show="feedbackProduct.attachment !== null">
+                                    <span class="text-muted">Attachment :</span>
+                                    <ul class="mailbox-attachments clearfix">
+                                        <li style="width: 155px;">
+                                            <a>
+                                                <span class="mailbox-attachment-icon has-img">
+                                                    <img v-bind:src="feedbackProduct.attachment" alt="Attachment">
+                                                </span>
+                                            </a>
+                                            <div class="mailbox-attachment-info">
+                                                <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> attachment</a>
+                                                <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 1%;">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <button v-if="feedbackProduct.customer !== null"
+                                            class="btn btn-primary"
+                                            type="button" @click="showReply = !showReply">
+                                        <i class="ion ion-chatbubble-working"></i> Reply
+                                    </button>
+                                    <button v-else
+                                            class="btn btn-primary disabled"
+                                            type="button"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title="Can't reply on anonymous">
+                                        <i class="ion ion-chatbubble-working"></i> Reply
+                                    </button>
+                                </div>
+                                <div class="form-group" v-bind:class="{'has-error': errors.has('reply_content')}">
+                                    <input type="hidden" name="complaintProductId" id="complaintProductId" v-bind:value="feedbackProduct.systemId">
+                                    <input v-if="feedbackProduct.customer !== null" type="hidden" name="customerId" id="customerId" v-bind:value="feedbackProduct.customer.systemId">
+                                    <input type="hidden" name="creatorId" id="creatorId" v-bind:value="feedbackProduct.creator.systemId">
+                                    <div v-show="showReply">
+                                        <textarea id="reply_content"
+                                                  name="reply_content"
+                                                  class="form-control"
+                                                  placeholder="Content. . ."
+                                                  rows="4"
+                                                  v-validate="'required'"
+                                                  v-model="feedbackProductReply.reply_content">
+                                        </textarea>
+                                        <span class="help-block text-red pull-left" v-show="errors.has('reply_content')">
+                                            {{ errors.first('reply_content') }}
+                                        </span>
+                                        <button type="button" class="btn btn-success pull-right" style="margin-top: 2%;" @click="addFeedbackProductReply()">
+                                            Submit <i class="ion ion-android-send"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <h5>
+                                    <a v-if="feedbackProduct.customer !== null"
+                                       role="button"
+                                       id="btnCollapseAllReplies" @click="showReplyList = !showReplyList">
+                                        <i class="ion ion-chatboxes"></i> View All Replies
+                                    </a>
+                                    <a v-else
+                                       role="button"
+                                       class="btn btn-link disabled">
+                                        <i class="ion ion-chatboxes"></i> View All Replies
+                                    </a>
+                                </h5>
+                            </div>
+
+                            <div v-show="showReplyList">
+                                <div class="well">
+                                    <span v-if="feedbackProductReplies.length === 0">
+                                        This complaint doesn't have any replies yet
+                                    </span>
+                                    <div v-else v-for="feedbackProductReply in feedbackProductReplies">
+                                        <div class="panel panel-danger">
+                                            <div class="panel-heading">
+                                                <strong>
+                                                    {{ feedbackProductReply.syscreator.name }} ({{ feedbackProductReply.syscreator.role }})
+                                                </strong>
+                                            </div>
+                                            <div class="panel-body">
+                                                <p>{{ feedbackProductReply.reply_content }}</p>
+                                                <button v-bind:data-id="feedbackProductReply.systemId" class="btn btn-sm btn-danger" onclick="$('div#'+$(this).data('id')).toggleClass('invisible')">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                                <div class="inline invisible" v-bind:id="feedbackProductReply.systemId">
+                                                    <span class="text-orange">Delete this Reply ?</span>
+                                                    <a role="button" v-bind:data-id="feedbackProductReply.systemId" onclick="$('div#'+$(this).data('id')).addClass('invisible')">
+                                                        <span class="label label-default">No</span>
+                                                    </a>
+                                                    <a role="button" v-bind:data-id="feedbackProductReply.systemId" @click="deleteFeedbackProductReply($event)">
+                                                        <span class="label label-danger">Yes</span>
+                                                    </a>
+                                                </div>
+                                            </div><!-- /panel-body -->
+                                            <div class="panel-footer">
+                                                <span class="text-muted">
+                                                    Replied at {{ feedbackProductReply.created_at }}
+                                                </span>
+                                            </div>
+                                        </div><!-- /panel panel-default -->
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -153,12 +340,24 @@
     import Datepicker from 'vuejs-datepicker';
     import MultiSelect from 'vue-multiselect';
 
+    Vue.use(VeeValidate, {
+        dictionary: {
+            en: {
+                custom: {
+                    reply_content: {
+                        required: "Please enter the reply content"
+                    }
+                }
+            }
+        }
+    });
+
     Vue.component('multiselect', MultiSelect);
 
     export default {
         name: "feedback-list",
-        props: ['tenant_id'],
-        components: {Datepicker},
+        props: ['tenant_id', 'user_id'],
+        components: { Datepicker },
         watch: {
             selectedProduct: function () {
                 let vm = this;
@@ -177,6 +376,12 @@
                         console.log(error);
                     });
                 }
+            },
+            showReplyList: function () {
+                let vm = this;
+                if(vm.showReplyList === true) {
+                    vm.getFeedbackProductReply();
+                }
             }
         },
         created() {
@@ -186,6 +391,24 @@
         data() {
             return {
                 feedbackProducts: [],
+                feedbackProduct: {
+                    systemId: '',
+                    customer: '',
+                    rating: '',
+                    customer_feedback: '',
+                    product: [],
+                    productCategory: [],
+                    fileName: '',
+                    image: '',
+                    need_call: 0,
+                    is_urgent: 0,
+                    creator: [],
+                    attachment: ''
+                },
+                feedbackProductReplies: [],
+                feedbackProductReply: {
+                    reply_content: ''
+                },
                 startDate: moment().format('D MMM, YYYY'),
                 endDate: moment().format('D MMM, YYYY'),
                 show: true,
@@ -199,7 +422,9 @@
                     path: ''
                 },
                 default_image: window.location.protocol + "//" + window.location.host  + '/default-images/no-image.jpg',
-                searchStatus: ''
+                searchStatus: '',
+                showReply: false,
+                showReplyList: false
             }
         },
         methods: {
@@ -209,6 +434,7 @@
                 axios.get(url).then(response => {
                     vm.feedbackProducts = response.data.data;
                     vm.makePagination(response.data);
+                    console.log(response.data.data);
                 }).catch(error => {
                     console.log(error);
                 });
@@ -246,6 +472,46 @@
 
                 var debounceFunction = _.debounce(fireRequest, 1000);
                 debounceFunction(vm);
+            },
+            showDetail: function(selectedFeedback) {
+                let vm = this;
+                vm.feedbackProduct = selectedFeedback;
+            },
+            clearState: function () {
+                let vm = this;
+                vm.showReply = false;
+                vm.showReplyList = false;
+                vm.reply_content = '';
+                vm.$validator.reset();
+            },
+            addFeedbackProductReply: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product_reply/add-feedback-product-reply';
+
+                axios.post(url, {
+                    reply_content: vm.feedbackProductReply.reply_content,
+                    customerId: vm.feedbackProduct.customer.systemId,
+                    feedbackProductId: vm.feedbackProduct.systemId,
+                    syscreator: vm.user_id
+                }).then(response => {
+                    console.log(response.data.message);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            getFeedbackProductReply: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product_reply/' + vm.feedbackProduct.systemId + 'get-feedback-product-replies';
+
+                axios.get(url).then(response => {
+                    console.log(response.data.data);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            deleteFeedbackProductReply: function (event) {
+                let vm = this;
+
             }
         }
     }

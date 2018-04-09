@@ -37,6 +37,10 @@ class Customer extends Model
         return $this->hasMany(FeedbackProduct::class);
     }
 
+    public function feedbackProductReply() {
+        return $this->hasMany(FeedbackProductReply::class);
+    }
+
     public function getFullInformationAttribute() {
         return "{$this->name} - {$this->phone}";
     }

@@ -18,6 +18,6 @@
 
 @section('main-content')
     <div id="feedback_product_list">
-        <feedback-list tenant_id="{{ Auth::user()->tenantId }}"></feedback-list>
+        <feedback-list tenant_id="{{ Auth::user()->tenantId }}" user_id="{{ Auth::user()->systemId }}"></feedback-list>
     </div>
 @endsection

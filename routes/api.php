@@ -55,3 +55,7 @@ Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerCo
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
 Route::get('feedback_product/{tenant_id}/get-feedback-product-list', 'Feedback\Product\FeedbackProductController@getFeedbackProductList');
 Route::get('feedback_product/{tenant_id}/filter-by-product/{products}', 'Feedback\Product\FeedbackProductController@filterByProduct');
+
+/* Feedback Product Reply */
+Route::post('feedback_product_reply/add-feedback-product-reply', 'Feedback\Product\FeedbackProductReplyController@addFeedbackProductReply');
+Route::get('feedback_product_reply/{feedback_product_id}/get-feedback-product-replies', 'Feedback\Product\FeedbackProductReplyController@getFeedbackProductReplies');

@@ -12,4 +12,6 @@ class FeedbackProductListController extends Controller
     public function index() {
         return view('feedback.product.list.feedback_product_list_index');
     }
+
+
 }

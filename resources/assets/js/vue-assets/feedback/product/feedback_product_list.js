@@ -10,6 +10,8 @@ require('../../../bootstrap');
 window.Vue = require('vue');
 window.MultiSelect = require('vue-multiselect');
 window.Datepicker = require('vuejs-datepicker');
+window.VeeValidate = require('vee-validate');
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

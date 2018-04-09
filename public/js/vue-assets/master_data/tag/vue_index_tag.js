@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 240);
+/******/ 	return __webpack_require__(__webpack_require__.s = 241);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -17177,7 +17177,8 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 133 */
+/* 133 */,
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -27548,7 +27549,6 @@ return jQuery;
 
 
 /***/ }),
-/* 134 */,
 /* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45195,7 +45195,7 @@ window.moment = __webpack_require__(0);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(133);
+  window.$ = window.jQuery = __webpack_require__(134);
 
   __webpack_require__(141);
 } catch (e) {}
@@ -62568,14 +62568,15 @@ module.exports = function listToStyles (parentId, list) {
 /* 237 */,
 /* 238 */,
 /* 239 */,
-/* 240 */
+/* 240 */,
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(241);
+module.exports = __webpack_require__(242);
 
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -62595,7 +62596,7 @@ window.Vue = __webpack_require__(173);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('tag-index-component', __webpack_require__(242));
+Vue.component('tag-index-component', __webpack_require__(243));
 
 var master_tag_index = new Vue({
   el: '#master_tag_index',
@@ -62605,19 +62606,19 @@ var master_tag_index = new Vue({
 });
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(243)
+  __webpack_require__(244)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(245)
+var __vue_script__ = __webpack_require__(246)
 /* template */
-var __vue_template__ = __webpack_require__(246)
+var __vue_template__ = __webpack_require__(247)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62656,13 +62657,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(244);
+var content = __webpack_require__(245);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62682,7 +62683,7 @@ if(false) {
 }
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -62696,7 +62697,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62807,7 +62808,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

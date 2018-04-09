@@ -20,11 +20,12 @@ class FeedbackProduct extends JsonResource
             'is_need_call' => $this->is_need_call,
             'is_urgent' => $this->is_urgent,
             'customer' => $this->customer,
-            'product' => $this->product->name,
+            'customer_feedback' => $this->customer_feedback,
+            'product' => $this->product,
             'productCategory' => $this->product_category->name,
             'tenantId' => $this->tenantId,
             'is_answered' => $this->is_answered,
-            'attachment' => $this->attachment,
+            'attachment' => ($this->attachment == null ? null:asset($this->attachment)),
             'creator' => $this->created_by,
             'created_at' => $this->created_at->format('d-M-Y')
         ];

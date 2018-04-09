@@ -49,4 +49,8 @@ class FeedbackProduct extends Model
     public function created_by() {
         return $this->belongsTo(User::class, 'syscreator', 'systemId');
     }
+
+    public function feedback_product_replies() {
+        return $this->hasMany(FeedbackProductReply::class);
+    }
 }
