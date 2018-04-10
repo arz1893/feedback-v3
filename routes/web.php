@@ -103,27 +103,9 @@ Route::resource('feedback_product', 'Feedback\Product\FeedbackProductController'
 Route::resource('feedback_product_list', 'Feedback\Product\FeedbackProductListController');
 /* end of feedback product list routes */
 
-/* Complaint Product Reply Routes */
-Route::resource('complaint_product_reply', 'Complaint\ComplaintProductReplyController');
-Route::post('complaint_product_reply/delete-reply', 'Complaint\ComplaintProductReplyController@deleteReply');
-/* end of complaint product reply routes */
-
-/* Complaint Service Routes */
-Route::resource('complaint_service', 'Complaint\ComplaintServiceController');
-Route::get('complaint_service/show-service/{Service}/{CurrentNodeId}', 'Complaint\ComplaintServiceController@showService')->name('show_complaint_service');
-/* end of complaint service routes */
-
-/* Complaint Service List Routes */
-Route::resource('complaint_service_list', 'Complaint\ComplaintServiceListController');
-Route::post('complaint_service_list/delete-complaint-service', 'Complaint\ComplaintServiceListController@deleteComplaintService')->name('delete_complaint_service');
-Route::post('complaint_service_list/{id}/change-attachment', 'Complaint\ComplaintServiceListController@changeAttachment')->name('change_complaint_service_attachment');
-Route::post('complaint_service_list/delete-attachment', 'Complaint\ComplaintServiceListController@deleteAttachment')->name('delete_complaint_service_attachment');
-/* end of complaint service list routes */
-
-/* Complaint Service Reply Routes */
-Route::resource('complaint_service_reply', 'Complaint\ComplaintServiceReplyController');
-Route::post('complaint_service_reply/delete-reply', 'Complaint\ComplaintServiceReplyController@deleteReply');
-/* end of complaint service reply routes */
+/* Feedback Service List Routes */
+Route::resource('feedback_service_list', 'Feedback\Service\FeedbackServiceListController');
+/* end of feedback service list routes */
 
 /* Question Routes */
 Route::resource('question', 'Question\QuestionController');

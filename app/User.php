@@ -57,16 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(Invite::class);
     }
 
-    public function complaint_products() {
-        return $this->hasMany(ComplaintProduct::class);
-    }
-
     public function feedback_products() {
         return $this->hasMany(FeedbackProduct::class);
     }
 
-    public function suggestion_services() {
-        return $this->hasMany(SuggestionService::class);
+    public function feedback_services() {
+        return $this->hasMany(FeedbackService::class);
     }
-
 }

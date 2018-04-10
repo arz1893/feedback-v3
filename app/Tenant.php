@@ -39,4 +39,20 @@ class Tenant extends Model
     public function tenant_category() {
         return $this->belongsTo(TenantCategory::class, 'tenant_categoryId', 'systemId');
     }
+
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
+
+    public function services() {
+        return $this->hasMany(Service::class);
+    }
+
+    public function feedback_product() {
+        return $this->hasMany(FeedbackProduct::class);
+    }
+
+    public function feedback_service() {
+        return $this->hasMany(FeedbackService::class);
+    }
 }
