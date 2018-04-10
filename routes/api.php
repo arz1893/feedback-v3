@@ -52,10 +52,13 @@ Route::get('customer/{tenant_id}/get-all-customer', 'Customer\CustomerController
 Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerController@generateSelectCustomer');
 
 /* Feedback Product */
-Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
 Route::get('feedback_product/{tenant_id}/get-feedback-product-list', 'Feedback\Product\FeedbackProductController@getFeedbackProductList');
-Route::get('feedback_product/{tenant_id}/filter-by-product/{products}', 'Feedback\Product\FeedbackProductController@filterByProduct');
+Route::get('feedback_product/{feedback_id}/get-feedback-product', 'Feedback\Product\FeedbackProductController@getFeedbackProduct');
+Route::get('feedback_product/{tenant_id}/filter-by-product/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
+Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
+Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
 
 /* Feedback Product Reply */
-Route::post('feedback_product_reply/add-feedback-product-reply', 'Feedback\Product\FeedbackProductReplyController@addFeedbackProductReply');
 Route::get('feedback_product_reply/{feedback_product_id}/get-feedback-product-replies', 'Feedback\Product\FeedbackProductReplyController@getFeedbackProductReplies');
+Route::post('feedback_product_reply/add-feedback-product-reply', 'Feedback\Product\FeedbackProductReplyController@addFeedbackProductReply');
+Route::post('feedback_product_reply/{reply_id}/delete-feedback-product-reply', 'Feedback\Product\FeedbackProductReplyController@deleteFeedbackProductReply');

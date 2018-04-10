@@ -16,11 +16,12 @@ class FeedbackProductReply extends JsonResource
     {
         return [
             'systemId' => $this->systemId,
-            'reply_content' => $this->systemId,
+            'reply_content' => $this->reply_content,
             'customerId' => $this->customerId,
             'feedbackProductId' => $this->feedbackProductId,
             'syscreator' => $this->created_by,
-            'created_at' => $this->created_at->format('d-M-Y')
+            'syscreator_role' => $this->created_by->user_group->name,
+            'created_at' => $this->created_at->format('d-M-Y H:i:s')
         ];
     }
 }

@@ -5,21 +5,21 @@
                 <form class="form-inline pull-left" id="form_search_list">
                     <!-- Date range -->
                     <div class="form-group">
-                        <label for="date_start">From :</label>
-                        <datepicker :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="startDate"></datepicker>
+                        <label for="start_date">From :</label>
+                        <datepicker id="start_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="startDate"></datepicker>
                         <!-- /.input group -->
                     </div>
                     <!-- Date range -->
                     <div class="form-group">
-                        <label for="date_end">To :</label>
-                        <datepicker :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="endDate"></datepicker>
+                        <label for="end_date">To :</label>
+                        <datepicker  id="end_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="endDate"></datepicker>
                         <!-- /.input group -->
                     </div>
                     <button class="btn btn-default"
                             type="button" id="btnSearchByDate"
                             data-toggle="tooltip"
                             data-placement="bottom"
-                            title="Search by date" style="margin-top: 4.5%">
+                            title="Search by date" style="margin-top: 4.5%" @click="filterByDate()">
                         Search <i class="fa fa-search"></i>
                     </button>
                 </form>
@@ -35,10 +35,6 @@
                         <multiselect id="select_tags"
                                      v-model="selectedProduct"
                                      :options="productOptions"
-                                     :multiple="true"
-                                     :close-on-select="false"
-                                     :clear-on-select="false"
-                                     :hide-selected="true"
                                      :preserve-search="true"
                                      placeholder="Choose Product"
                                      label="name"
@@ -50,7 +46,17 @@
 
         </div> <br>
 
-        <div class="table-responsive">
+        <div v-if="searchStatus !== ''">
+            <i class="fa fa-circle-o-notch fa-spin"></i> {{ searchStatus }}
+        </div>
+
+        <div class="panel panel-danger" v-show="feedbackProducts.length === 0">
+            <div class="panel-body text-center">
+                There is no data to display
+            </div>
+        </div>
+
+        <div class="table-responsive" v-show="feedbackProducts.length > 0">
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
@@ -151,6 +157,7 @@
             </ul>
         </div>
 
+        <!-- Modal Component -->
         <div class="modal fade" id="modal_show_feedback" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -285,10 +292,14 @@
                                         <i class="ion ion-chatboxes"></i> View All Replies
                                     </a>
                                 </h5>
+
+                                <span v-if="loadReply !== ''">
+                                    <i class="fa fa-circle-o-notch fa-spin"></i> {{ loadReply }}
+                                </span>
                             </div>
 
                             <div v-show="showReplyList">
-                                <div class="well">
+                                <div class="well" v-show="loadReply === ''">
                                     <span v-if="feedbackProductReplies.length === 0">
                                         This complaint doesn't have any replies yet
                                     </span>
@@ -296,7 +307,7 @@
                                         <div class="panel panel-danger">
                                             <div class="panel-heading">
                                                 <strong>
-                                                    {{ feedbackProductReply.syscreator.name }} ({{ feedbackProductReply.syscreator.role }})
+                                                    {{ feedbackProductReply.syscreator.name }} ({{ feedbackProductReply.syscreator_role }})
                                                 </strong>
                                             </div>
                                             <div class="panel-body">
@@ -322,13 +333,13 @@
                                         </div><!-- /panel panel-default -->
                                     </div>
                                 </div>
-                        </div>
+                            </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -361,20 +372,22 @@
         watch: {
             selectedProduct: function () {
                 let vm = this;
-                if(vm.selectedProduct.length === 0) {
-                    vm.getFeedbackProductList();
-                } else {
-                    let productIds = [];
-                    for(let i=0;i<vm.selectedProduct.length;i++) {
-                        productIds.push(vm.selectedProduct[i].systemId);
+                if(vm.selectedProduct !== null && vm.selectedProduct !== '') {
+                    vm.searchStatus = 'Searching...';
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-product/' + vm.selectedProduct.systemId;
+                    function sendRequest() {
+                        axios.get(url).then(response => {
+                            vm.feedbackProducts = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
                     }
-                    console.log(productIds);
-                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-product/' + productIds;
-                    axios.get(url).then(response => {
-                        console.log(response.data.data);
-                    }).catch(error => {
-                        console.log(error);
-                    });
+                    let debounceFunction = _.debounce(sendRequest, 1000);
+                    debounceFunction();
+                } else {
+                    vm.getFeedbackProductList();
                 }
             },
             showReplyList: function () {
@@ -405,14 +418,10 @@
                     creator: [],
                     attachment: ''
                 },
-                feedbackProductReplies: [],
-                feedbackProductReply: {
-                    reply_content: ''
-                },
-                startDate: moment().format('D MMM, YYYY'),
-                endDate: moment().format('D MMM, YYYY'),
+                startDate: new Date(),
+                endDate: new Date(),
                 show: true,
-                selectedProduct: [],
+                selectedProduct: '',
                 productOptions: [],
                 pagination: {
                     currentPage: '',
@@ -422,6 +431,11 @@
                     path: ''
                 },
                 default_image: window.location.protocol + "//" + window.location.host  + '/default-images/no-image.jpg',
+                feedbackProductReplies: [],
+                feedbackProductReply: {
+                    reply_content: ''
+                },
+                loadReply: '',
                 searchStatus: '',
                 showReply: false,
                 showReplyList: false
@@ -473,6 +487,27 @@
                 var debounceFunction = _.debounce(fireRequest, 1000);
                 debounceFunction(vm);
             },
+            filterByDate: function () {
+                let vm = this;
+                let start_date = moment(vm.startDate).format('YYYY-MM-DD');
+                let end_date = moment(vm.endDate).format('YYYY-MM-DD');
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-date/' + start_date + '/' + end_date;
+                vm.searchStatus = 'Searching...';
+
+                function sendRequest() {
+                    axios.get(url).then(response => {
+                        vm.feedbackProducts = response.data.data;
+                        vm.makePagination(response.data);
+                        vm.searchStatus = '';
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+                let debounceFunction = _.debounce(sendRequest, 1000);
+                debounceFunction();
+            },
+
+            /* Modal Section */
             showDetail: function(selectedFeedback) {
                 let vm = this;
                 vm.feedbackProduct = selectedFeedback;
@@ -482,6 +517,8 @@
                 vm.showReply = false;
                 vm.showReplyList = false;
                 vm.reply_content = '';
+                vm.feedbackProductReplies = [];
+                vm.feedbackProductReply.reply_content = '';
                 vm.$validator.reset();
             },
             addFeedbackProductReply: function () {
@@ -494,24 +531,46 @@
                     feedbackProductId: vm.feedbackProduct.systemId,
                     syscreator: vm.user_id
                 }).then(response => {
-                    console.log(response.data.message);
+                    if(response.data.message === 'success') {
+                        vm.getFeedbackProductReply();
+                        vm.showReplyList = true;
+                        vm.feedbackProductReply.reply_content = '';
+                        vm.showReply = false;
+                    }
                 }).catch(error => {
                     console.log(error);
                 })
             },
             getFeedbackProductReply: function () {
                 let vm = this;
-                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product_reply/' + vm.feedbackProduct.systemId + 'get-feedback-product-replies';
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product_reply/' + vm.feedbackProduct.systemId + '/get-feedback-product-replies';
+                vm.loadReply = 'Loading...';
 
-                axios.get(url).then(response => {
-                    console.log(response.data.data);
-                }).catch(error => {
-                    console.log(error);
-                })
+                function sendRequest() {
+                    axios.get(url).then(response => {
+                        console.log(response.data.data);
+                        vm.feedbackProductReplies = response.data.data;
+                        vm.loadReply = '';
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+                let debounceFunction = _.debounce(sendRequest, 1000);
+                debounceFunction();
             },
             deleteFeedbackProductReply: function (event) {
                 let vm = this;
+                let reply_id = $(event.currentTarget).data('id');
+                console.log(reply_id);
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product_reply/' + reply_id + '/delete-feedback-product-reply';
 
+                axios.post(url).then(response => {
+                    if(response.data.message === 'success') {
+                        vm.getFeedbackProductReply();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
             }
         }
     }

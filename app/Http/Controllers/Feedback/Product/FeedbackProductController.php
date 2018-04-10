@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Feedback\Product;
 
 use App\FeedbackProduct;
 use App\Http\Resources\Feedback\FeedbackProductCollection;
+use App\Http\Resources\Feedback\FeedbackProduct as FeedbackProductResource;
 use App\Product;
 use App\Tenant;
 use Illuminate\Http\Request;
@@ -65,14 +66,30 @@ class FeedbackProductController extends Controller
     }
 
     public function getFeedbackProductList($tenant_id){
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->orderBy('created_at', 'desc')->paginate(15);
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('created_at', date('Y-m-d'))->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($feedbackProducts);
     }
 
-    public function filterByProduct(Request $request, $tenant_id, $products) {
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereHas('product', function ($q) use ($products) {
-            $q->whereIn('productId', $products);
-        })->orderBy('created_at', 'desc')->paginate(15);
-        return new FeedbackProductCollection($feedbackProducts);
+    public function getFeedbackProduct($feedback_id) {
+        $feedbackProduct = FeedbackProduct::findOrFail($feedback_id);
+        return new FeedbackProductResource($feedbackProduct);
+    }
+
+    public function filterByProduct(Request $request, $tenant_id, $product_id) {
+        $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('productId', $product_id)->orderBy('created_at', 'desc')->paginate(15);
+        return new FeedbackProductCollection($filteredFeedbackProducts);
+    }
+
+    public function filterByDate($tenant_id, $start_date, $end_date) {
+        $from = date('Y-m-d H:i:s', strtotime($start_date . ' 00:00:00'));
+        $to = date('Y-m-d H:i:s', strtotime($end_date . ' 23:59:59'));
+
+        if($from > $to) {
+            $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereDate('created_at', [$to, $from])->orderBy('created_at', 'desc')->paginate(15);
+            return new FeedbackProductCollection($filteredFeedbackProducts);
+        }
+
+        $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
+        return new FeedbackProductCollection($filteredFeedbackProducts);
     }
 }
