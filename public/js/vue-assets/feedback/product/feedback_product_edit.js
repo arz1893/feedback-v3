@@ -69868,7 +69868,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "input-group" },
+            { staticClass: "input-group input-group-md" },
             [
               _c("multiselect", {
                 attrs: {
@@ -69904,7 +69904,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "input-group-btn" }, [
       _c("button", { staticClass: "btn btn-link", attrs: { type: "button" } }, [
-        _c("i", { staticClass: "fa fa-circle-plus" })
+        _c("i", { staticClass: "fa fa-plus-circle fa-2x" })
       ])
     ])
   }

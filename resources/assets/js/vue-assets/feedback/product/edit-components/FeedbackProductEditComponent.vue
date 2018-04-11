@@ -4,7 +4,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="select_customer">Select Customer</label>
-                    <div class="input-group">
+                    <div class="input-group input-group-md">
                         <multiselect id="customerId"
                                      name="customerId"
                                      v-model="selectedCustomer"
@@ -15,7 +15,7 @@
                         </multiselect>
                         <span class="input-group-btn">
                             <button class="btn btn-link" type="button">
-                                <i class="fa fa-circle-plus"></i>
+                                <i class="fa fa-plus-circle fa-2x"></i>
                             </button>
                         </span>
                     </div>
