@@ -34,6 +34,10 @@ class FeedbackService extends Model
         return $this->belongsTo(Service::class, 'serviceId', 'systemId');
     }
 
+    public function customer() {
+        return $this->belongsTo(Customer::class, 'customerId', 'systemId');
+    }
+
     public function service_category() {
         return $this->belongsTo(ServiceCategory::class, 'serviceCategoryId', 'id');
     }

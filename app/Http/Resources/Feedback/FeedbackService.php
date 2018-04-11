@@ -20,13 +20,13 @@ class FeedbackService extends JsonResource
             'customer_feedback' => $this->customer_feedback,
             'is_need_call' => $this->is_need_call,
             'is_urgent' => $this->is_urgent,
-            'customer' => $this->customer->name,
+            'customer' => $this->customer,
             'service' => $this->service,
             'serviceCategory' => $this->service_category->name,
             'tenantId' => $this->tenantId,
             'is_answered' => $this->is_answered,
             'attachment' => ($this->attachment == null ? null:asset($this->attachment)),
-            'syscreator' => $this->created_by,
+            'creator' => $this->created_by,
             'created_at' => $this->created_at->format('d-M-Y H:i:s')
         ];
     }

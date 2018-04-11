@@ -17,7 +17,7 @@
     </ol>
     <span class="text-danger" style="font-size: 2em; position: relative; top: 5px;">Feedback</span>
     <a role="button" class="btn btn-sm btn-flat bg-aqua">Product</a>
-    <a role="button" class="btn btn-sm btn-link">Service</a>
+    <a role="button" href="{{ route('feedback_service.index') }}" class="btn btn-sm btn-link">Service</a>
 @endsection
 
 @section('main-content')

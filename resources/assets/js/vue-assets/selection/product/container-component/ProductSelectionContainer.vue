@@ -132,13 +132,13 @@
         },
         watch: {
             selectedTags: function (value) {
-                var vm = this;
+                let vm = this;
 
                 if(value.length === 0) {
                     vm.getProductList();
                 } else {
-                    var tagIds = [];
-                    for(var i=0;i<value.length;i++) {
+                    let tagIds = [];
+                    for(let i=0;i<value.length;i++) {
                         tagIds.push(value[i].systemId);
                     }
                     const url = window.location.protocol + "//" + window.location.host + "/" + 'api/product/' + vm.tenant_id + '/filter-product-list/' + tagIds;
@@ -166,7 +166,7 @@
                             });
                     }
 
-                    var debounceFunction = _.debounce(filterProducts, 1000);
+                    let debounceFunction = _.debounce(filterProducts, 1000);
                     debounceFunction();
                 }
             }
@@ -206,6 +206,23 @@
                 vm.pagination.path = data.meta.path;
                 vm.pagination.prevPage = (data.links.prev === null ? null:data.links.prev);
                 vm.pagination.nextPage = (data.links.next === null ? null:data.links.next);
+            },
+            changePage: function (url) {
+                let vm = this;
+                vm.searchStatus = 'Loading...';
+                function fireRequest(vm) {
+                    axios.get(url).then(response => {
+                        vm.products = response.data.data;
+                        vm.makePagination(response.data);
+                        vm.searchStatus = '';
+                    }).catch(error => {
+                        console.log('something wrong within the process');
+                        console.log(Object.assign({}, error));
+                    });
+                }
+
+                let debounceFunction = _.debounce(fireRequest, 1000);
+                debounceFunction(vm);
             },
             filterByName: function () {
                 var vm = this;

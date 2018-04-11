@@ -62725,7 +62725,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62736,6 +62736,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
 //
 //
 //
@@ -62843,6 +62845,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
+Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "service-selection",
@@ -62861,12 +62867,118 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 prevPage: null,
                 nextPage: null,
                 path: ''
-            }
+            },
+            errorMessage: ''
         };
     },
+    created: function created() {
+        this.getTagList();
+        this.getServiceList();
+    },
 
+    watch: {
+        selectedTags: function selectedTags(value) {
+            var vm = this;
+
+            if (value.length === 0) {
+                vm.getServiceList();
+            } else {
+                var filterServices = function filterServices() {
+
+                    axios.get(url).then(function (response) {
+                        console.log(response.data.data);
+                        if (response.data.data.length === 0) {
+                            vm.services = response.data.data;
+                            vm.errorMessage = 'no data found';
+                            vm.searchStatus = '';
+                        } else {
+                            vm.services = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.errorMessage = '';
+                            vm.searchStatus = '';
+                        }
+                    }).catch(function (error) {
+                        console.log(Object.assign({}, error));
+                    });
+                };
+
+                var tagIds = [];
+                for (var i = 0; i < value.length; i++) {
+                    tagIds.push(value[i].systemId);
+                }
+                var url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenant_id + '/filter-service-list/' + tagIds;
+                vm.searchStatus = 'Searching...';
+                vm.searchString = '';
+                console.log(value);
+
+
+                var debounceFunction = _.debounce(filterServices, 1000);
+                debounceFunction();
+            }
+        }
+    },
     methods: {
-        getServiceList: function getServiceList() {}
+        getServiceList: function getServiceList() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenant_id + '/get-all-service';
+            vm.errorMessage = '';
+            vm.searchStatus = '';
+            vm.searchString = '';
+
+            axios.get(url).then(function (response) {
+                vm.services = response.data.data;
+                vm.makePagination(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getTagList: function getTagList() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + '/api/tag/' + vm.tenant_id + '/generate-select-tag';
+
+            axios.get(url).then(function (response) {
+                vm.options = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        makePagination: function makePagination(data) {
+            var vm = this;
+            vm.pagination.currentPage = data.meta.current_page;
+            vm.pagination.endPage = data.meta.last_page;
+            vm.pagination.path = data.meta.path;
+            vm.pagination.prevPage = data.links.prev === null ? null : data.links.prev;
+            vm.pagination.nextPage = data.links.next === null ? null : data.links.next;
+        },
+        filterByName: function filterByName() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenant_id + '/filter-by-name/' + vm.searchString;
+            vm.searchStatus = 'Searching...';
+            vm.errorMessage = '';
+            if (vm.searchString.length > 0) {
+                var fireRequest = function fireRequest() {
+                    axios.get(url).then(function (response) {
+                        if (response.data.data.length === 0) {
+                            vm.errorMessage = 'no data found';
+                            vm.searchStatus = '';
+                            vm.services = response.data.data;
+                            vm.pagination.currentPage = '';
+                        } else {
+                            vm.services = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                };
+
+                var debounceFunction = _.debounce(fireRequest, 1000);
+                debounceFunction();
+            } else {
+                vm.getProductList();
+            }
+        }
     }
 });
 
@@ -62965,7 +63077,7 @@ var render = function() {
               attrs: { type: "button" },
               on: {
                 click: function($event) {
-                  _vm.getProductList()
+                  _vm.getServiceList()
                 }
               }
             },
@@ -62980,7 +63092,7 @@ var render = function() {
       _c("transition", { attrs: { name: "fade", mode: "out-in" } }, [
         _c(
           "div",
-          { staticClass: "col-lg-12", attrs: { id: "product_panel" } },
+          { staticClass: "col-lg-12", attrs: { id: "service_panel" } },
           [
             _c(
               "div",
@@ -63016,7 +63128,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._l(_vm.products, function(product) {
+                _vm._l(_vm.services, function(service) {
                   return _c(
                     "div",
                     {
@@ -63038,7 +63150,7 @@ var render = function() {
                               {
                                 attrs: {
                                   role: "button",
-                                  href: product.show_feedback_url
+                                  href: service.show_feedback_url
                                 }
                               },
                               [
@@ -63047,12 +63159,12 @@ var render = function() {
                                     {
                                       name: "show",
                                       rawName: "v-show",
-                                      value: product.img !== "",
-                                      expression: "product.img !== ''"
+                                      value: service.img !== "",
+                                      expression: "service.img !== ''"
                                     }
                                   ],
                                   staticClass: "category-banner img-responsive",
-                                  attrs: { src: product.img }
+                                  attrs: { src: service.img }
                                 }),
                                 _vm._v(" "),
                                 _c("img", {
@@ -63060,8 +63172,8 @@ var render = function() {
                                     {
                                       name: "show",
                                       rawName: "v-show",
-                                      value: product.img === "",
-                                      expression: "product.img === ''"
+                                      value: service.img === "",
+                                      expression: "service.img === ''"
                                     }
                                   ],
                                   staticClass: "category-banner img-responsive",
@@ -63071,7 +63183,7 @@ var render = function() {
                                 _c("span", { staticClass: "imagebox-desc" }, [
                                   _vm._v(
                                     "\n                            " +
-                                      _vm._s(product.name) +
+                                      _vm._s(service.name) +
                                       "\n                        "
                                   )
                                 ])
@@ -63120,7 +63232,7 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "list-group" },
-                _vm._l(_vm.products, function(product) {
+                _vm._l(_vm.services, function(service) {
                   return _c(
                     "div",
                     {
@@ -63143,11 +63255,11 @@ var render = function() {
                         [
                           _c("img", {
                             staticStyle: { width: "40px", height: "30px" },
-                            attrs: { src: product.img }
+                            attrs: { src: service.img }
                           }),
                           _vm._v(
                             "\n                            " +
-                              _vm._s(product.name) +
+                              _vm._s(service.name) +
                               "\n                        "
                           )
                         ]

@@ -35,7 +35,7 @@
             </div>
             <!-- /.col -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <a role="button">
+                <a role="button" href="{{ route('feedback_service.index') }}">
                     <div class="info-box bg-red">
                         <span class="info-box-icon"><i class="ion ion-bowtie"></i></span>
 

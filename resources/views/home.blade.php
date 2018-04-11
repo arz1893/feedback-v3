@@ -69,7 +69,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a role="button" href="{{ route('feedback_product.index') }}"><i class="fa fa-commenting"></i> Feedback Product</a></li>
-                                <li><a role="button"><i class="fa fa-commenting"></i> Feedback Service</a></li>
+                                <li><a role="button" href="{{ route('feedback_service.index') }}"><i class="fa fa-commenting"></i> Feedback Service</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ route('question.index') }}"><i class="ion ion-help-circled"></i> Questions </a></li>
@@ -94,7 +94,7 @@
 
                             <ul class="treeview-menu">
                                 <li><a role="button" href="{{ route('feedback_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
-                                <li><a role="button"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
+                                <li><a role="button" href="{{ route('feedback_service_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Service List</a></li>
                             </ul>
                         </li>
 

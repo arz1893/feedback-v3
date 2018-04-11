@@ -23,8 +23,7 @@ class Service extends JsonResource
             'show_service_url' => route('service.show', $this->systemId),
             'show_edit_service_url' => route('service.edit', $this->systemId),
             'show_faq_url' => route('faq_service.show', $this->systemId),
-            'show_complaint_url' => route('show_complaint_service', [$this->systemId, 0]),
-            'show_suggestion_url' => route('show_suggestion_service', [$this->systemId, 0])
+            'show_feedback_url' => route('feedback_service.show', $this->systemId)
         ];
     }
 }

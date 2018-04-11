@@ -16,10 +16,12 @@
         <li class="active">Feedback Service</li>
     </ol>
     <span class="text-danger" style="font-size: 2em; position: relative; top: 5px;">Feedback</span>
-    <a role="button" class="btn btn-sm btn-link">Product</a>
+    <a role="button" href="{{ route('feedback_product.index') }}" class="btn btn-sm btn-link">Product</a>
     <a role="button" class="btn btn-sm btn-flat bg-aqua">Service</a>
 @endsection
 
 @section('main-content')
-
+    <div id="service_selection">
+        <service-selection tenant_id="{{ Auth::user()->tenantId }}" type="feedback"></service-selection>
+    </div>
 @endsection

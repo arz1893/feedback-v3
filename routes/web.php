@@ -99,6 +99,10 @@ Route::resource('feedback', 'Feedback\FeedbackController');
 Route::resource('feedback_product', 'Feedback\Product\FeedbackProductController');
 /* end of feedback product routes */
 
+/* Feedback Service Routes */
+Route::resource('feedback_service', 'Feedback\Service\FeedbackServiceController');
+/* end of feedback service routes */
+
 /* Feedback Product List Routes */
 Route::resource('feedback_product_list', 'Feedback\Product\FeedbackProductListController');
 /* end of feedback product list routes */

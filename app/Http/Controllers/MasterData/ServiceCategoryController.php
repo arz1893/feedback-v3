@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\MasterData;
 
+use App\Http\Resources\MasterData\ServiceCategoryCollection;
 use App\ServiceCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\MasterData\ServiceCategory as ServiceCategoryResource;
 
 class ServiceCategoryController extends Controller
 {
@@ -138,5 +140,29 @@ class ServiceCategoryController extends Controller
             return response()->json(['status' => 'success'], 200);
         }
         return redirect()->back();
+    }
+
+    /* API Section */
+    public function getRootNodes(Request $request, $service_id) {
+        $serviceCategories = ServiceCategory::where('serviceId', $service_id)->orderBy('name', 'asc')->get();
+        return new ServiceCategoryCollection($serviceCategories);
+    }
+
+    public function getParentNodes(Request $request, $node_id) {
+        $currentNode = ServiceCategory::findOrFail($node_id);
+        if($currentNode->parent_id == null) {
+            $rootNodes = ServiceCategory::where('serviceId', $currentNode->serviceId)->orderBy('name', 'asc')->get();
+            $previousNode = null;
+            return ['parentNodes' => new ServiceCategoryCollection($rootNodes), 'previousNode' => $previousNode];
+        } else {
+            $parentNodes = ServiceCategory::where('parent_id', $currentNode->parent_id)->orderBy('name', 'asc')->get();
+            $previousNode = ServiceCategory::findOrFail($currentNode->parent_id);
+            return ['parentNodes' => new ServiceCategoryCollection($parentNodes), 'previousNode' => new ServiceCategoryResource($previousNode)];
+        }
+    }
+
+    public function getChildNodes(Request $request, $parent_id) {
+        $childNodes = ServiceCategory::where('parent_id', $parent_id)->orderBy('name', 'asc')->get();
+        return new ServiceCategoryCollection($childNodes);
     }
 }
