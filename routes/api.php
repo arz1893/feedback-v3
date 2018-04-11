@@ -42,7 +42,9 @@ Route::get('feedback_product/{tenant_id}/get-feedback-product-list', 'Feedback\P
 Route::get('feedback_product/{feedback_id}/get-feedback-product', 'Feedback\Product\FeedbackProductController@getFeedbackProduct');
 Route::get('feedback_product/{tenant_id}/filter-by-product/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
 Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
+Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
+Route::post('feedback_product/delete-feedback-product', 'Feedback\Product\FeedbackProductController@deleteFeedbackProduct');
 
 /* Feedback Product Reply */
 Route::get('feedback_product_reply/{feedback_product_id}/get-feedback-product-replies', 'Feedback\Product\FeedbackProductReplyController@getFeedbackProductReplies');
@@ -71,6 +73,7 @@ Route::get('feedback_service/{feedback_id}/get-feedback-service', 'Feedback\Serv
 Route::get('feedback_service/{tenant_id}/filter-by-service/{service_id}', 'Feedback\Service\FeedbackServiceController@filterByService');
 Route::get('feedback_service/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Service\FeedbackServiceController@filterByDate');
 Route::post('feedback_service/{tenant_id}/add-feedback-service', 'Feedback\Service\FeedbackServiceController@addFeedbackService');
+Route::post('feedback_service/delete-feedback-service', 'Feedback\Service\FeedbackServiceController@deleteFeedbackService');
 
 /* Feedback Service Reply */
 Route::get('feedback_service_reply/{feedback_service_id}/get-feedback-service-replies', 'Feedback\Service\FeedbackServiceReplyController@getFeedbackServiceReplies');

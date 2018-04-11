@@ -7,6 +7,7 @@
     "/js/vue-assets/master_data/product/vue_add_product.js": "/js/vue-assets/master_data/product/vue_add_product.js",
     "/js/vue-assets/feedback/service/feedback_service_show.js": "/js/vue-assets/feedback/service/feedback_service_show.js",
     "/js/vue-assets/feedback/product/feedback_product_show.js": "/js/vue-assets/feedback/product/feedback_product_show.js",
+    "/js/vue-assets/feedback/product/feedback_product_edit.js": "/js/vue-assets/feedback/product/feedback_product_edit.js",
     "/js/vue-assets/selection/service/service_selection.js": "/js/vue-assets/selection/service/service_selection.js",
     "/js/vue-assets/selection/product/product_selection.js": "/js/vue-assets/selection/product/product_selection.js",
     "/js/vue-assets/master_data/service/vue_index_service.js": "/js/vue-assets/master_data/service/vue_index_service.js",

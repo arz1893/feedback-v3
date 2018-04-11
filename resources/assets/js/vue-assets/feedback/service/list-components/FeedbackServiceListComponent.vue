@@ -123,7 +123,7 @@
                         <a role="button" class="btn btn-warning">
                             <i class="ion ion-edit"></i>
                         </a>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_feedback_service" @click="showDetail(feedbackService)">
                             <i class="ion ion-ios-trash"></i>
                         </button>
                     </td>
@@ -344,6 +344,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Delete Feedback Service -->
+        <div class="modal fade" id="modal_delete_feedback_service" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="myModalLabel">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this feedback ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteFeedbackService()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -504,6 +524,26 @@
                 }
                 let debounceFunction = _.debounce(sendRequest, 1000);
                 debounceFunction();
+            },
+            deleteFeedbackService: function() {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/delete-feedback-service';
+                vm.searchStatus = 'Loading...';
+
+                axios.post(url, {
+                    feedback_id: vm.feedbackService.systemId
+                }).then(response => {
+                    if(response.data.message === 'success') {
+                        function sendRequest() {
+                            vm.getFeedbackServiceList();
+                            vm.searchStatus = '';
+                        }
+                        let debounceFunction = _.debounce(sendRequest, 1000);
+                        debounceFunction();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
             },
 
             /* Modal Section */

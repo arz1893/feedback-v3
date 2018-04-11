@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Feedback\Product;
 
 use App\ComplaintProduct;
+use App\Customer;
 use App\FeedbackProduct;
 use App\Http\Resources\Feedback\FeedbackProductCollection;
 use App\Http\Resources\Feedback\FeedbackProduct as FeedbackProductResource;
@@ -22,6 +23,10 @@ class FeedbackProductController extends Controller
     public function show($systemId) {
         $product = Product::findOrFail($systemId);
         return view('feedback.product.feedback_product_show', compact('product'));
+    }
+
+    public function edit($id) {
+
     }
 
     /* API Section */
@@ -78,6 +83,18 @@ class FeedbackProductController extends Controller
         return new FeedbackProductResource($feedbackProduct);
     }
 
+    public function generateSelectedCustomer($feedback_id) {
+        $selectOption = array();
+        $feedbackProduct = FeedbackProduct::findOrFail($feedback_id);
+        if($feedbackProduct->customer != null) {
+            $selectedCustomer = $feedbackProduct->customer;
+            array_push($selectOption, ['systemId' => $selectedCustomer->systemId, 'name' => $selectedCustomer->name]);
+            return $selectOption;
+        } else {
+            return null;
+        }
+    }
+
     public function filterByProduct(Request $request, $tenant_id, $product_id) {
         $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('productId', $product_id)->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($filteredFeedbackProducts);
@@ -94,5 +111,17 @@ class FeedbackProductController extends Controller
 
         $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($filteredFeedbackProducts);
+    }
+
+    public function deleteFeedbackProduct(Request $request) {
+        $feedbackProduct = FeedbackProduct::findOrFail($request->feedback_id);
+        if($feedbackProduct->attachment != null) {
+            if(file_exists(public_path($feedbackProduct->attachment))) {
+                unlink(public_path($feedbackProduct->attachment));
+            }
+        }
+        $feedbackProduct->delete();
+
+        return ['message' => 'success'];
     }
 }

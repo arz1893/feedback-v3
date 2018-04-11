@@ -95,4 +95,15 @@ class FeedbackServiceController extends Controller
         $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackServiceCollection($filteredFeedbackServices);
     }
+
+    public function deleteFeedbackService(Request $request) {
+        $feedbackService = FeedbackService::findOrFail($request->feedback_id);
+        if($feedbackService->attachment != null) {
+            if(file_exists(public_path($feedbackService->attachment))) {
+                unlink(public_path($feedbackService->attachment));
+            }
+        }
+        $feedbackService->delete();
+        return ['message' => 'success'];
+    }
 }

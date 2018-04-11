@@ -13,5 +13,8 @@ class FeedbackProductListController extends Controller
         return view('feedback.product.list.feedback_product_list_index');
     }
 
-
+    public function edit($feedback_id) {
+        $feedbackProduct = FeedbackProduct::findOrFail($feedback_id);
+        return view('feedback.product.list.feedback_product_list_edit', compact('feedbackProduct'));
+    }
 }

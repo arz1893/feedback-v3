@@ -120,10 +120,10 @@
                             <span v-else>No</span>
                         </td>
                         <td>
-                            <a role="button" class="btn btn-warning">
+                            <a role="button" class="btn btn-warning" v-bind:href="feedbackProduct.show_edit_url">
                                 <i class="ion ion-edit"></i>
                             </a>
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger" @click="showDetail(feedbackProduct)" data-toggle="modal" data-target="#modal_delete_feedback_product">
                                 <i class="ion ion-ios-trash"></i>
                             </button>
                         </td>
@@ -157,7 +157,7 @@
             </ul>
         </div>
 
-        <!-- Modal Component -->
+        <!-- Modal show Component -->
         <div class="modal fade" id="modal_show_feedback" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -344,6 +344,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_delete_feedback_product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="myModalLabel">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this feedback ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteFeedbackProduct()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -505,6 +525,26 @@
                 }
                 let debounceFunction = _.debounce(sendRequest, 1000);
                 debounceFunction();
+            },
+
+            deleteFeedbackProduct: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/delete-feedback-product';
+                vm.searchStatus = 'Loading...';
+                axios.post(url, {
+                    feedback_id: vm.feedbackProduct.systemId
+                }).then(response => {
+                    if(response.data.message === 'success') {
+                        function sendRequest() {
+                            vm.getFeedbackProductList();
+                            vm.searchStatus = '';
+                        }
+                        let debounceFunction = _.debounce(sendRequest, 1000);
+                        debounceFunction();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
             },
 
             /* Modal Section */
