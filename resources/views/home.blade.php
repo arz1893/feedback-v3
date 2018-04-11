@@ -100,15 +100,6 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="ion ion-ribbon-a"></i> Suggestions
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
                                 <i class="ion ion-help-circled"></i> Questions
                                 <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>

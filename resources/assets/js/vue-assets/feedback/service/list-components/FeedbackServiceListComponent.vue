@@ -169,7 +169,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img v-if="feedbackService.service.img !== undefined" class="media-object" v-bind:src="feedbackService.service.img" width="125px">
+                                    <img v-if="feedbackService.service.img !== null" class="media-object" v-bind:src="feedbackService.service.img" width="125px">
                                     <img v-else v-bind:src="default_image" class="media-object" width="125px"/>
                                 </a>
                             </div>

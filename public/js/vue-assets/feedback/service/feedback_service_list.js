@@ -70842,7 +70842,7 @@ var render = function() {
                 _c("div", { staticClass: "media" }, [
                   _c("div", { staticClass: "media-left" }, [
                     _c("a", { attrs: { href: "#" } }, [
-                      _vm.feedbackService.service.img !== undefined
+                      _vm.feedbackService.service.img !== null
                         ? _c("img", {
                             staticClass: "media-object",
                             attrs: {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feedback\Product;
 
+use App\ComplaintProduct;
 use App\FeedbackProduct;
 use App\Http\Resources\Feedback\FeedbackProductCollection;
 use App\Http\Resources\Feedback\FeedbackProduct as FeedbackProductResource;
@@ -66,7 +67,9 @@ class FeedbackProductController extends Controller
     }
 
     public function getFeedbackProductList($tenant_id){
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('created_at', date('Y-m-d'))->orderBy('created_at', 'desc')->paginate(15);
+        $from = date('Y-m-d 00:00:00');
+        $to = date('Y-m-d H:i:s');
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($feedbackProducts);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feedback\Service;
 
+use App\ComplaintService;
 use App\FeedbackService;
 use App\Http\Resources\Feedback\FeedbackServiceCollection;
 use App\Service;
@@ -66,7 +67,9 @@ class FeedbackServiceController extends Controller
     }
 
     public function getFeedbackServiceList($tenant_id){
-        $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('created_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->paginate(15);
+        $from = date('Y-m-d 00:00:00');
+        $to = date('Y-m-d H:i:s');
+        $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackServiceCollection($feedbackServices);
     }
 
