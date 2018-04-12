@@ -83,3 +83,4 @@ Route::post('feedback_service_reply/{reply_id}/delete-feedback-service-reply', '
 /* Customer */
 Route::get('customer/{tenant_id}/get-all-customer', 'Customer\CustomerController@getAllCustomer');
 Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerController@generateSelectCustomer');
+Route::post('customer/add-customer/', 'Customer\CustomerController@addCustomer');

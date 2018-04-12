@@ -69674,7 +69674,7 @@ window.VeeValidate = __webpack_require__(178);
 
 Vue.component('feedback-show', __webpack_require__(285));
 
-var feedback_product_show = new Vue({
+var feedback_service_show = new Vue({
   el: '#feedback_service_show',
   data: {
     message: 'component mounted!'
@@ -69767,7 +69767,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69780,6 +69780,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(178);
 //
 //
 //
@@ -69937,6 +69938,148 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -69947,10 +70090,22 @@ Vue.use(VeeValidate, {
         en: {
             custom: {
                 customer_rating: {
-                    required: "Customer rating is not set"
+                    required: "Customer's  rating has not been set"
                 },
                 feedback: {
                     required: "Please enter customer's feedback"
+                },
+                name: {
+                    required: "Please enter customer's name"
+                },
+                gender: {
+                    required: "Gender has not been set yet"
+                },
+                phone: {
+                    required: "Please enter customer's phone number"
+                },
+                birthdate: {
+                    required: "Customer's birth date has not been set"
                 }
             }
         }
@@ -69966,6 +70121,7 @@ Vue.use(VeeValidate, {
             serviceCategory: [],
             previousNode: [],
             selectCustomer: [],
+            selectedCustomer: [],
             showForm: false,
             showAttachment: false,
             showNavigator: false,
@@ -69981,14 +70137,65 @@ Vue.use(VeeValidate, {
                 image: '',
                 need_call: 0,
                 is_urgent: 0
-            }
+            },
+            customer: {
+                name: '',
+                gender: '',
+                email: '',
+                phone: '',
+                birthdate: '',
+                address: '',
+                nation: '',
+                city: '',
+                memo: ''
+            },
+            alertCustomer: false,
+            validator: ''
         };
     },
     created: function created() {
         this.getRootNodes();
         this.getCustomerList();
+
+        this.validator = new __WEBPACK_IMPORTED_MODULE_1_vee_validate__["Validator"]({
+            customer_rating: 'required',
+            feedback: 'required',
+            name: 'required',
+            gender: 'required',
+            phone: 'required|numeric|min:10',
+            birthdate: 'required',
+            email: 'email'
+        });
     },
 
+    watch: {
+        'feedbackService.customer': function feedbackServiceCustomer() {
+            if (this.feedbackService.customer === null || this.feedbackService.customer === '') {
+                this.feedbackService.need_call = 0;
+            }
+        },
+        'feedbackService.rating': function feedbackServiceRating() {
+            this.validator.validate('customer_rating', this.feedbackService.rating);
+        },
+        'feedbackService.feedback': function feedbackServiceFeedback() {
+            this.validator.validate('feedback', this.feedbackService.feedback);
+        },
+        'customer.name': function customerName() {
+            this.validator.validate('name', this.customer.name);
+        },
+        'customer.gender': function customerGender() {
+            this.validator.validate('gender', this.customer.gender);
+        },
+        'customer.birthdate': function customerBirthdate() {
+            this.validator.validate('birthdate', this.customer.birthdate);
+        },
+        'customer.phone': function customerPhone() {
+            this.validator.validate('phone', this.customer.phone);
+        },
+        'customer.email': function customerEmail() {
+            this.validator.validate('email', this.customer.email);
+        }
+    },
     methods: {
         getRootNodes: function getRootNodes() {
             var vm = this;
@@ -70007,11 +70214,11 @@ Vue.use(VeeValidate, {
             debounceFunction();
         },
         getCustomerList: function getCustomerList() {
-            var _this = this;
-
+            var vm = this;
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/' + this.tenant_id + '/generate-select-customer';
             axios.get(url).then(function (response) {
-                _this.selectCustomer = response.data;
+                console.log(response.data);
+                vm.selectCustomer = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70160,9 +70367,12 @@ Vue.use(VeeValidate, {
             };
             reader.readAsDataURL(file);
         },
-        validateBeforeSubmit: function validateBeforeSubmit() {
+        validateFeedbackSubmit: function validateFeedbackSubmit() {
             var vm = this;
-            this.$validator.validateAll().then(function (result) {
+            vm.validator.validateAll({
+                customer_rating: vm.feedbackService.rating,
+                feedback: vm.feedbackService.feedback
+            }).then(function (result) {
                 if (result) {
                     var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/add-feedback-service';
                     axios.post(url, {
@@ -70179,7 +70389,51 @@ Vue.use(VeeValidate, {
                         console.log(error);
                     });
                 }
+            }).catch(function (error) {
+                console.log(error);
             });
+        },
+        validateCustomer: function validateCustomer() {
+            var vm = this;
+
+            vm.validator.validateAll({
+                name: vm.customer.name,
+                gender: vm.customer.gender,
+                phone: vm.customer.phone,
+                birthdate: vm.customer.birthdate,
+                email: vm.customer.email
+            }).then(function (result) {
+                if (result) {
+                    var url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/add-customer/';
+                    axios.post(url, {
+                        customer: vm.customer,
+                        tenantId: vm.tenant_id
+                    }).then(function (response) {
+                        console.log(response.data);
+                        vm.getCustomerList();
+                        vm.feedbackService.customer = { systemId: response.data.systemId, name: response.data.name };
+                        vm.alertCustomer = true;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        clearModalCustomerState: function clearModalCustomerState() {
+            var vm = this;
+            vm.alertCustomer = false;
+            vm.customer.name = '';
+            vm.customer.gender = '';
+            vm.customer.phone = '';
+            vm.customer.birthdate = '';
+            vm.customer.email = '';
+            vm.customer.addres = '';
+            vm.customer.city = '';
+            vm.customer.nation = '';
+            vm.customer.memo = '';
+            vm.validator.errors.clear();
         }
     }
 });
@@ -70453,7 +70707,9 @@ var render = function() {
                       "label",
                       {
                         class: {
-                          "text-red": _vm.errors.has("customer_rating")
+                          "text-red": _vm.validator.errors.has(
+                            "customer_rating"
+                          )
                         },
                         attrs: { for: "customer_rating" }
                       },
@@ -70467,12 +70723,6 @@ var render = function() {
                           rawName: "v-model",
                           value: _vm.feedbackService.rating,
                           expression: "feedbackService.rating"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|in:1,2,3",
-                          expression: "'required|in:1,2,3'"
                         }
                       ],
                       staticClass: "invisible",
@@ -70620,13 +70870,18 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.errors.has("customer_rating"),
-                            expression: "errors.has('customer_rating')"
+                            value: _vm.validator.errors.has("customer_rating"),
+                            expression:
+                              "validator.errors.has('customer_rating')"
                           }
                         ],
                         staticClass: "help text-red"
                       },
-                      [_vm._v(_vm._s(_vm.errors.first("customer_rating")))]
+                      [
+                        _vm._v(
+                          _vm._s(_vm.validator.errors.first("customer_rating"))
+                        )
+                      ]
                     )
                   ]),
                   _vm._v(" "),
@@ -70634,7 +70889,9 @@ var render = function() {
                     "div",
                     {
                       staticClass: "form-group",
-                      class: { "has-error": _vm.errors.has("feedback") }
+                      class: {
+                        "has-error": _vm.validator.errors.has("feedback")
+                      }
                     },
                     [
                       _c("label", { attrs: { for: "feedback" } }, [
@@ -70648,12 +70905,6 @@ var render = function() {
                             rawName: "v-model",
                             value: _vm.feedbackService.feedback,
                             expression: "feedbackService.feedback"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
                           }
                         ],
                         staticClass: "form-control",
@@ -70685,13 +70936,13 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.errors.has("feedback"),
-                              expression: "errors.has('feedback')"
+                              value: _vm.validator.errors.has("feedback"),
+                              expression: "validator.errors.has('feedback')"
                             }
                           ],
                           staticClass: "help text-red"
                         },
-                        [_vm._v(_vm._s(_vm.errors.first("feedback")))]
+                        [_vm._v(_vm._s(_vm.validator.errors.first("feedback")))]
                       )
                     ]
                   ),
@@ -70926,7 +71177,7 @@ var render = function() {
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
-                              _vm.validateBeforeSubmit()
+                              _vm.validateFeedbackSubmit()
                             }
                           }
                         },
@@ -70945,7 +71196,628 @@ var render = function() {
         ],
         1
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modal_add_customer",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myModalLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.clearModalCustomerState()
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  {
+                    staticClass: "modal-title text-primary",
+                    attrs: { id: "myModalLabel" }
+                  },
+                  [_vm._v("Add Customer")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.alertCustomer,
+                        expression: "alertCustomer"
+                      }
+                    ],
+                    staticClass: "alert alert-success",
+                    attrs: { role: "alert" }
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(
+                      " A new customer has been added, now you can close the modal\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "margin-top": "-3px" } }, [
+                  _c("div", { staticClass: "row form-margin-bottom" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: " col-lg-7 col-md-7 col-sm-7 col-xs-8",
+                        class: { "has-error": _vm.validator.errors.has("name") }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.customer.name,
+                              expression: "customer.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "name",
+                            id: "name",
+                            placeholder: "Enter customer's name"
+                          },
+                          domProps: { value: _vm.customer.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.customer,
+                                "name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.validator.errors.has("name"),
+                                expression: "validator.errors.has('name')"
+                              }
+                            ],
+                            staticClass: "help-block text-red"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.validator.errors.first("name")) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row form-margin-bottom" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-7 col-md-7 col-sm-7 col-xs-8" },
+                      [
+                        _c("label", { staticClass: "radio-inline" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.customer.gender,
+                                expression: "customer.gender"
+                              }
+                            ],
+                            attrs: {
+                              type: "radio",
+                              name: "gender",
+                              id: "gender_male",
+                              value: "1"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.customer.gender, "1")
+                            },
+                            on: {
+                              change: function($event) {
+                                _vm.$set(_vm.customer, "gender", "1")
+                              }
+                            }
+                          }),
+                          _vm._v(" Male\n                                ")
+                        ]),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio-inline" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.customer.gender,
+                                expression: "customer.gender"
+                              }
+                            ],
+                            attrs: {
+                              type: "radio",
+                              name: "gender",
+                              id: "gender_female",
+                              value: "0"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.customer.gender, "0")
+                            },
+                            on: {
+                              change: function($event) {
+                                _vm.$set(_vm.customer, "gender", "0")
+                              }
+                            }
+                          }),
+                          _vm._v(" Female\n                                ")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.validator.errors.has("gender"),
+                                expression: "validator.errors.has('gender')"
+                              }
+                            ],
+                            staticClass: "help-block text-red"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.validator.errors.first("gender")) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row form-margin-bottom" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-8",
+                          class: {
+                            "has-error": _vm.validator.errors.has("phone")
+                          }
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.customer.phone,
+                                expression: "customer.phone"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "phone",
+                              id: "phone",
+                              type: "text",
+                              placeholder: "Enter your phone address"
+                            },
+                            domProps: { value: _vm.customer.phone },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.customer,
+                                  "phone",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.validator.errors.has("phone"),
+                                  expression: "validator.errors.has('phone')"
+                                }
+                              ],
+                              staticClass: "help-block text-red"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(_vm.validator.errors.first("phone")) +
+                                  "\n                                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row form-margin-bottom" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-5 col-md-5 col-sm-5 col-xs-8",
+                          class: {
+                            "has-error": _vm.validator.errors.has("birthdate")
+                          }
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.customer.birthdate,
+                                expression: "customer.birthdate"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "date",
+                              name: "birthdate",
+                              placeholder: "Click here"
+                            },
+                            domProps: { value: _vm.customer.birthdate },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.customer,
+                                  "birthdate",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.validator.errors.has("birthdate"),
+                                  expression:
+                                    "validator.errors.has('birthdate')"
+                                }
+                              ],
+                              staticClass: "help-block text-red"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(
+                                    _vm.validator.errors.first("birthdate")
+                                  ) +
+                                  "\n                                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row form-margin-bottom" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-7 col-md-7 col-sm-7 col-xs-8",
+                        class: {
+                          "has-error": _vm.validator.errors.has("email")
+                        }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.customer.email,
+                              expression: "customer.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "email",
+                            name: "email",
+                            id: "email",
+                            placeholder: "Enter customer's email"
+                          },
+                          domProps: { value: _vm.customer.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.customer,
+                                "email",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.validator.errors.has("email"),
+                                expression: "validator.errors.has('email')"
+                              }
+                            ],
+                            staticClass: "help-block text-red"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.validator.errors.first("email")) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group form-margin-bottom" }, [
+                    _c("label", { attrs: { for: "address" } }, [
+                      _vm._v("Address")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.customer.address,
+                          expression: "customer.address"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "address",
+                        name: "address",
+                        placeholder: "Enter customer's address",
+                        rows: "2"
+                      },
+                      domProps: { value: _vm.customer.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.customer, "address", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-6" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.customer.nation,
+                              expression: "customer.nation"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "nation",
+                            id: "nation",
+                            placeholder: "Nation"
+                          },
+                          domProps: { value: _vm.customer.nation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.customer,
+                                "nation",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-6" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.customer.city,
+                              expression: "customer.city"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "city",
+                            name: "city",
+                            placeholder: "City"
+                          },
+                          domProps: { value: _vm.customer.city },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.customer,
+                                "city",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group form-margin-bottom" }, [
+                    _c("label", { attrs: { for: "memo" } }, [_vm._v("Memo")]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.customer.memo,
+                          expression: "customer.memo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "memo",
+                        name: "memo",
+                        placeholder: "Add memo if needed",
+                        rows: "2"
+                      },
+                      domProps: { value: _vm.customer.memo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.customer, "memo", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.clearModalCustomerState()
+                      }
+                    }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.validateCustomer()
+                      }
+                    }
+                  },
+                  [_vm._v("Add Customer")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -70961,6 +71833,75 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _vm._v("Success "),
+      _c("i", { staticClass: "fa fa-check" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-4" }, [
+      _c("label", { staticClass: "control-label", attrs: { for: "name" } }, [
+        _vm._v("\n                                    Name "),
+        _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-4" }, [
+      _c("label", { staticClass: "control-label", attrs: { for: "gender" } }, [
+        _vm._v("\n                                    Gender "),
+        _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-4" }, [
+      _c("label", { staticClass: "control-label", attrs: { for: "phone" } }, [
+        _vm._v("\n                                        Phone "),
+        _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-4" }, [
+      _c(
+        "label",
+        { staticClass: "control-label", attrs: { for: "birthdate" } },
+        [
+          _vm._v("\n                                        Birthdate "),
+          _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-4" }, [
+      _c("label", { staticClass: "control-label", attrs: { for: "email" } }, [
+        _vm._v(
+          "\n                                    Email\n                                "
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true

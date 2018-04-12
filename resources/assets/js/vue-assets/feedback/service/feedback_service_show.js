@@ -19,7 +19,7 @@ window.VeeValidate = require('vee-validate');
 
 Vue.component('feedback-show', require('./show-components/FeedbackShowComponent.vue'));
 
-const feedback_product_show = new Vue({
+const feedback_service_show = new Vue({
     el: '#feedback_service_show',
     data: {
         message: 'component mounted!'

@@ -27,7 +27,7 @@ class FeedbackProduct extends JsonResource
             'is_answered' => $this->is_answered,
             'attachment' => ($this->attachment == null ? null:asset($this->attachment)),
             'creator' => $this->created_by,
-            'created_at' => $this->created_at->format('d-M-Y'),
+            'created_at' => $this->created_at->format('d M Y / H:i A'),
             'show_edit_url' => route('feedback_product_list.edit', $this->systemId)
         ];
     }

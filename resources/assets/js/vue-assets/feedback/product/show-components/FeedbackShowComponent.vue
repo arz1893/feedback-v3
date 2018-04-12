@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="error">
-                                <label for="customer_rating" :class="{ 'text-red': errors.has('customer_rating') }">Rating</label>
+                                <label for="customer_rating" :class="{ 'text-red': validator.errors.has('customer_rating') }">Rating</label>
 
                                 <input type="radio" name="customer_rating" id="radio_dissatisfied" class="invisible" value="1" v-model="feedbackProduct.rating" v-validate="'required|in:1,2,3'"/>
                                 <input type="radio" name="customer_rating" id="radio_neutral" class="invisible" value="2" v-model="feedbackProduct.rating"/>
@@ -96,13 +96,13 @@
                                     </i>
                                 </a>
                                 <br>
-                                <span class="help text-red" v-show="errors.has('customer_rating')">{{ errors.first('customer_rating') }}</span>
+                                <span class="help text-red" v-show="validator.errors.has('customer_rating')">{{ validator.errors.first('customer_rating') }}</span>
                             </div>
 
-                            <div class="form-group" :class="{'has-error': errors.has('feedback')}">
+                            <div class="form-group" :class="{'has-error': validator.errors.has('feedback')}">
                                 <label for="feedback">Complaint</label>
-                                <textarea class="form-control" name="feedback" id="feedback" placeholder="Please enter customer's feedback" rows="6" v-model="feedbackProduct.feedback" v-validate="'required'"></textarea>
-                                <span class="help text-red" v-show="errors.has('feedback')">{{ errors.first('feedback') }}</span>
+                                <textarea class="form-control" name="feedback" id="feedback" placeholder="Please enter customer's feedback" rows="6" v-model="feedbackProduct.feedback"></textarea>
+                                <span class="help text-red" v-show="validator.errors.has('feedback')">{{ validator.errors.first('feedback') }}</span>
                             </div>
 
                             <div class="form-group">
@@ -142,7 +142,7 @@
 
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button type="button" class="btn btn-danger" @click="validateBeforeSubmit()">
+                                    <button type="button" class="btn btn-danger" @click="validateFeedbackSubmit()">
                                         Add Feedback
                                     </button>
                                 </div>
@@ -152,11 +152,152 @@
                 </transition>
             </div>
         </div>
+
+        <!-- Modal Add Customer -->
+        <div class="modal fade" id="modal_add_customer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="clearModalCustomerState()"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-primary" id="myModalLabel">Add Customer</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-success" role="alert" v-show="alertCustomer">
+                            <strong>Success <i class="fa fa-check"></i> </strong> A new customer has been added, now you can close the modal
+                        </div>
+                        <div style="margin-top: -3px;">
+                            <div class="row form-margin-bottom">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="name" class="control-label">
+                                        Name <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+                                <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-8" v-bind:class="{'has-error': validator.errors.has('name')}">
+                                    <input type="text"
+                                           name="name"
+                                           id="name"
+                                           class="form-control"
+                                           placeholder="Enter customer's name"
+                                           v-validate="'required'"
+                                           v-model="customer.name">
+                                    <span class="help-block text-red" v-show="validator.errors.has('name')">
+                                        {{ validator.errors.first('name') }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row form-margin-bottom">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="gender" class="control-label">
+                                        Gender <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-8">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="gender" id="gender_male" value="1" v-model="customer.gender"> Male
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="gender" id="gender_female" value="0" v-model="customer.gender"> Female
+                                    </label>
+
+                                    <span class="help-block text-red" v-show="validator.errors.has('gender')">
+                                        {{ validator.errors.first('gender') }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row form-margin-bottom">
+                                <div class="form-group">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label for="phone" class="control-label">
+                                            Phone <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8" v-bind:class="{'has-error': validator.errors.has('phone')}">
+                                        <input name="phone"
+                                               id="phone"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Enter your phone address"
+                                               v-model="customer.phone">
+                                        <span class="help-block text-red" v-show="validator.errors.has('phone')">
+                                            {{ validator.errors.first('phone') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-margin-bottom">
+                                <div class="form-group">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label for="birthdate" class="control-label">
+                                            Birthdate <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-8" v-bind:class="{'has-error': validator.errors.has('birthdate')}">
+                                        <input type="date"
+                                               name="birthdate"
+                                               class="form-control"
+                                               placeholder="Click here"
+                                               v-model="customer.birthdate">
+                                        <span class="help-block text-red" v-show="validator.errors.has('birthdate')">
+                                            {{ validator.errors.first('birthdate') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-margin-bottom">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="email" class="control-label">
+                                        Email
+                                    </label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-8" v-bind:class="{'has-error': validator.errors.has('email')}">
+                                    <input type="email"
+                                           name="email"
+                                           id="email"
+                                           class="form-control"
+                                           placeholder="Enter customer's email"
+                                           v-model="customer.email">
+                                    <span class="help-block text-red" v-show="validator.errors.has('email')">
+                                        {{ validator.errors.first('email') }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-margin-bottom">
+                                <label for="address">Address</label>
+                                <textarea class="form-control" id="address" name="address" placeholder="Enter customer's address" rows="2" v-model="customer.address"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <input type="text" class="form-control" name="nation" id="nation" placeholder="Nation" v-model="customer.nation"/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City" v-model="customer.city"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-margin-bottom">
+                                <label for="memo">Memo</label>
+                                <textarea id="memo" name="memo" class="form-control" placeholder="Add memo if needed" rows="2" v-model="customer.memo"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearModalCustomerState()">Close</button>
+                        <button type="button" class="btn btn-primary" @click="validateCustomer()">Add Customer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import MultiSelect from 'vue-multiselect';
+    import { Validator } from 'vee-validate';
 
     Vue.component('multiselect', MultiSelect);
 
@@ -165,10 +306,22 @@
             en: {
                 custom: {
                     customer_rating: {
-                        required: "Customer rating is not set"
+                        required: "Customer's  rating has not been set"
                     },
                     feedback: {
                         required: "Please enter customer's feedback"
+                    },
+                    name: {
+                        required: "Please enter customer's name"
+                    },
+                    gender: {
+                        required: "Gender has not been set yet"
+                    },
+                    phone: {
+                        required: "Please enter customer's phone number"
+                    },
+                    birthdate: {
+                        required: "Customer's birth date has not been set"
                     }
                 }
             }
@@ -184,6 +337,7 @@
                 productCategory: [],
                 previousNode: [],
                 selectCustomer: [],
+                selectedCustomer: [],
                 showForm: false,
                 showAttachment: false,
                 showNavigator: false,
@@ -199,19 +353,63 @@
                     image: '',
                     need_call: 0,
                     is_urgent: 0
-                }
+                },
+                customer: {
+                    name: '',
+                    gender: '',
+                    email: '',
+                    phone: '',
+                    birthdate: '',
+                    address: '',
+                    nation: '',
+                    city: '',
+                    memo: ''
+                },
+                alertCustomer: false,
+                validator: ''
             }
         },
         created() {
             this.getRootNodes();
             this.getCustomerList();
+
+            this.validator = new Validator({
+                customer_rating: 'required',
+                feedback: 'required',
+                name: 'required',
+                gender: 'required',
+                phone: 'required|numeric|min:10',
+                birthdate: 'required',
+                email: 'email'
+            });
         },
         watch: {
             'feedbackProduct.customer': function () {
                 if(this.feedbackProduct.customer === null || this.feedbackProduct.customer === '') {
                     this.feedbackProduct.need_call = 0;
                 }
-            }
+            },
+            'feedbackProduct.rating': function () {
+                this.validator.validate('customer_rating', this.feedbackProduct.rating);
+            },
+            'feedbackProduct.feedback': function () {
+                this.validator.validate('feedback', this.feedbackProduct.feedback);
+            },
+            'customer.name': function () {
+                this.validator.validate('name', this.customer.name);
+            },
+            'customer.gender': function () {
+                this.validator.validate('gender', this.customer.gender);
+            },
+            'customer.birthdate': function () {
+                this.validator.validate('birthdate', this.customer.birthdate);
+            },
+            'customer.phone': function () {
+                this.validator.validate('phone', this.customer.phone);
+            },
+            'customer.email': function () {
+                this.validator.validate('email', this.customer.email);
+            },
         },
         methods: {
             getRootNodes: function () {
@@ -377,10 +575,13 @@
                 };
                 reader.readAsDataURL(file);
             },
-            validateBeforeSubmit: function () {
+            validateFeedbackSubmit: function () {
                 let vm = this;
-                this.$validator.validateAll().then((result) => {
-                    if (result) {
+                vm.validator.validateAll({
+                    customer_rating: vm.feedbackProduct.rating,
+                    feedback: vm.feedbackProduct.feedback
+                }).then(result => {
+                    if(result) {
                         const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/add-feedback-product';
                         axios.post(url, {
                             feedbackProduct: vm.feedbackProduct,
@@ -396,7 +597,51 @@
                             console.log(error);
                         });
                     }
+                }).catch(error => {
+
                 });
+            },
+            validateCustomer: function () {
+                let vm = this;
+
+                vm.validator.validateAll({
+                    name: vm.customer.name,
+                    gender: vm.customer.gender,
+                    phone: vm.customer.phone,
+                    birthdate: vm.customer.birthdate,
+                    email: vm.customer.email
+                }).then(result => {
+                    if(result) {
+                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/add-customer/';
+                        axios.post(url, {
+                            customer: vm.customer,
+                            tenantId: vm.tenant_id
+                        }).then(response => {
+                            console.log(response.data);
+                            vm.getCustomerList();
+                            vm.feedbackProduct.customer = {systemId: response.data.systemId, name: response.data.name};
+                            vm.alertCustomer = true;
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            clearModalCustomerState: function () {
+                let vm = this;
+                vm.alertCustomer = false;
+                vm.customer.name = '';
+                vm.customer.gender = '';
+                vm.customer.phone = '';
+                vm.customer.birthdate = '';
+                vm.customer.email = '';
+                vm.customer.addres = '';
+                vm.customer.city = '';
+                vm.customer.nation = '';
+                vm.customer.memo = '';
+                vm.validator.errors.clear();
             }
         }
     }
