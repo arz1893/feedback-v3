@@ -70870,7 +70870,7 @@ var render = function() {
                     },
                     [
                       _c("label", { attrs: { for: "feedback" } }, [
-                        _vm._v("Complaint")
+                        _vm._v("Feedback")
                       ]),
                       _vm._v(" "),
                       _c("textarea", {

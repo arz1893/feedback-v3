@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="form-group" :class="{'has-error': validator.errors.has('feedback')}">
-                                <label for="feedback">Complaint</label>
+                                <label for="feedback">Feedback</label>
                                 <textarea class="form-control" name="feedback" id="feedback" placeholder="Please enter customer's feedback" rows="6" v-model="feedbackProduct.feedback"></textarea>
                                 <span class="help text-red" v-show="validator.errors.has('feedback')">{{ validator.errors.first('feedback') }}</span>
                             </div>

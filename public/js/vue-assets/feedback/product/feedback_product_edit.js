@@ -69753,7 +69753,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69766,6 +69766,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(178);
 //
 //
 //
@@ -69793,17 +69794,118 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a);
+
+Vue.use(VeeValidate, {
+    dictionary: {
+        en: {
+            custom: {
+                customer_rating: {
+                    required: "Customer's  rating has not been set"
+                },
+                feedback: {
+                    required: "Please enter customer's feedback"
+                },
+                name: {
+                    required: "Please enter customer's name"
+                },
+                gender: {
+                    required: "Gender has not been set yet"
+                },
+                phone: {
+                    required: "Please enter customer's phone number"
+                },
+                birthdate: {
+                    required: "Customer's birth date has not been set"
+                }
+            }
+        }
+    }
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "feedback-product-edit",
     props: ['feedback_product_id', 'tenant_id', 'syscreator'],
     data: function data() {
         return {
-            feedbackProduct: [],
+            feedbackProduct: {
+                systemId: '',
+                customer: '',
+                rating: '',
+                feedback: '',
+                fileName: '',
+                image: '',
+                need_call: 0,
+                is_urgent: 0
+            },
             customerOptions: [],
             selectedCustomer: ''
         };
@@ -69812,6 +69914,16 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___defau
         this.getFeedbackProduct();
         this.getCustomerList();
         this.generateSelectedCustomer();
+
+        this.validator = new __WEBPACK_IMPORTED_MODULE_1_vee_validate__["Validator"]({
+            customer_rating: 'required',
+            feedback: 'required',
+            name: 'required',
+            gender: 'required',
+            phone: 'required|numeric|min:10',
+            birthdate: 'required',
+            email: 'email'
+        });
     },
 
     methods: {
@@ -69820,7 +69932,31 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___defau
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.feedback_product_id + '/get-feedback-product';
 
             axios.get(url).then(function (response) {
-                vm.feedbackProduct = response.data.data;
+                vm.feedbackProduct.systemId = response.data.data.systemId;
+                vm.feedbackProduct.customer = response.data.data.customer;
+                vm.feedbackProduct.rating = response.data.data.customer_rating;
+                vm.feedbackProduct.feedback = response.data.data.customer_feedback;
+                vm.feedbackProduct.image = response.data.data.attachment;
+                vm.feedbackProduct.need_call = response.data.data.need_call;
+                vm.feedbackProduct.is_urgent = response.data.data.is_urgent;
+
+                switch (response.data.data.customer_rating) {
+                    case 1:
+                        {
+                            $('#dissatisfied').addClass('is-selected');
+                            break;
+                        }
+                    case 2:
+                        {
+                            $('#neutral').addClass('is-selected');
+                            break;
+                        }
+                    case 3:
+                        {
+                            $('#satisfied').addClass('is-selected');
+                        }
+                }
+
                 console.log(vm.feedbackProduct);
             }).catch(function (error) {
                 console.log(error);
@@ -69846,6 +69982,38 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___defau
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        changeRating: function changeRating(event) {
+            var vm = this;
+            switch ($(event.currentTarget).data('value')) {
+                case 1:
+                    {
+                        $(event.currentTarget).addClass('is-selected');
+                        $('#neutral').removeClass('is-selected');
+                        $('#satisfied').removeClass('is-selected');
+                        vm.feedbackProduct.rating = 1;
+                        console.log(vm.feedbackProduct.rating);
+                        break;
+                    }
+                case 2:
+                    {
+                        $(event.currentTarget).addClass('is-selected');
+                        $('#dissatisfied').removeClass('is-selected');
+                        $('#satisfied').removeClass('is-selected');
+                        vm.feedbackProduct.rating = 2;
+                        console.log(vm.feedbackProduct.rating);
+                        break;
+                    }
+                case 3:
+                    {
+                        $(event.currentTarget).addClass('is-selected');
+                        $('#neutral').removeClass('is-selected');
+                        $('#dissatisfied').removeClass('is-selected');
+                        vm.feedbackProduct.rating = 3;
+                        console.log(vm.feedbackProduct.rating);
+                        break;
+                    }
+            }
         }
     }
 });
@@ -69892,8 +70060,293 @@ var render = function() {
             ],
             1
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "error" }, [
+          _c(
+            "label",
+            {
+              class: {
+                "text-red": _vm.validator.errors.has("customer_rating")
+              },
+              attrs: { for: "customer_rating" }
+            },
+            [_vm._v("Rating")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.feedbackProduct.rating,
+                expression: "feedbackProduct.rating"
+              }
+            ],
+            staticClass: "invisible",
+            attrs: {
+              type: "radio",
+              name: "customer_rating",
+              id: "radio_dissatisfied",
+              value: "1"
+            },
+            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "1") },
+            on: {
+              change: function($event) {
+                _vm.$set(_vm.feedbackProduct, "rating", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.feedbackProduct.rating,
+                expression: "feedbackProduct.rating"
+              }
+            ],
+            staticClass: "invisible",
+            attrs: {
+              type: "radio",
+              name: "customer_rating",
+              id: "radio_neutral",
+              value: "2"
+            },
+            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "2") },
+            on: {
+              change: function($event) {
+                _vm.$set(_vm.feedbackProduct, "rating", "2")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.feedbackProduct.rating,
+                expression: "feedbackProduct.rating"
+              }
+            ],
+            staticClass: "invisible",
+            attrs: {
+              type: "radio",
+              name: "customer_rating",
+              id: "radio_satisfied",
+              value: "3"
+            },
+            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "3") },
+            on: {
+              change: function($event) {
+                _vm.$set(_vm.feedbackProduct, "rating", "3")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("a", { attrs: { role: "button" } }, [
+            _c(
+              "i",
+              {
+                staticClass: "smiley_rating material-icons text-red",
+                staticStyle: { "font-size": "3.5em" },
+                attrs: { id: "dissatisfied", "data-value": "1" },
+                on: {
+                  click: function($event) {
+                    _vm.changeRating($event)
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                        sentiment_very_dissatisfied\n                    "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("a", { attrs: { role: "button" } }, [
+            _c(
+              "i",
+              {
+                staticClass: "smiley_rating material-icons text-yellow",
+                staticStyle: { "font-size": "3.5em" },
+                attrs: { id: "neutral", "data-value": "2" },
+                on: {
+                  click: function($event) {
+                    _vm.changeRating($event)
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                        sentiment_neutral\n                    "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("a", { attrs: { role: "button" } }, [
+            _c(
+              "i",
+              {
+                staticClass: "smiley_rating material-icons text-green",
+                staticStyle: { "font-size": "3.5em" },
+                attrs: { id: "satisfied", "data-value": "3" },
+                on: {
+                  click: function($event) {
+                    _vm.changeRating($event)
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                        sentiment_very_satisfied\n                    "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.validator.errors.has("customer_rating"),
+                  expression: "validator.errors.has('customer_rating')"
+                }
+              ],
+              staticClass: "help text-red"
+            },
+            [_vm._v(_vm._s(_vm.validator.errors.first("customer_rating")))]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "form-group",
+            class: { "has-error": _vm.validator.errors.has("feedback") }
+          },
+          [
+            _c("label", { attrs: { for: "feedback" } }, [_vm._v("Feedback")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.feedbackProduct.feedback,
+                  expression: "feedbackProduct.feedback"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "feedback",
+                id: "feedback",
+                placeholder: "Please enter customer's feedback",
+                rows: "6"
+              },
+              domProps: { value: _vm.feedbackProduct.feedback },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.feedbackProduct, "feedback", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.validator.errors.has("feedback"),
+                    expression: "validator.errors.has('feedback')"
+                  }
+                ],
+                staticClass: "help text-red"
+              },
+              [_vm._v(_vm._s(_vm.validator.errors.first("feedback")))]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "attachment" } }, [
+            _vm._v("Change / Add attachment")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control-file",
+            attrs: {
+              type: "file",
+              name: "attachment",
+              id: "attachment",
+              accept: "image/*"
+            },
+            on: {
+              change: function($event) {
+                _vm.previewImage($event)
+              }
+            }
+          })
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.feedbackProduct.image !== null
+        ? _c(
+            "div",
+            { staticClass: "form-group", staticStyle: { width: "180px" } },
+            [
+              _c("span", { staticClass: "mailbox-attachment-icon has-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: "",
+                    id: "preview",
+                    src: _vm.feedbackProduct.image
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mailbox-attachment-info" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-danger btn-xs pull-right",
+                    attrs: {
+                      "data-toggle": "tooltip",
+                      "data-placement": "bottom",
+                      title: "delete attachment"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.clearAttachment($event)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-close" })]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -69906,6 +70359,15 @@ var staticRenderFns = [
       _c("button", { staticClass: "btn btn-link", attrs: { type: "button" } }, [
         _c("i", { staticClass: "fa fa-plus-circle fa-2x" })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "mailbox-attachment-name" }, [
+      _c("i", { staticClass: "fa fa-camera" }),
+      _vm._v(" attachment")
     ])
   }
 ]
