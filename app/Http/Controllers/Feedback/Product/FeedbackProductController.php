@@ -25,10 +25,6 @@ class FeedbackProductController extends Controller
         return view('feedback.product.feedback_product_show', compact('product'));
     }
 
-    public function edit($id) {
-
-    }
-
     /* API Section */
     public function addFeedbackProduct(Request $request, $tenant_id) {
         $id = Uuid::generate(4);
@@ -88,7 +84,7 @@ class FeedbackProductController extends Controller
         $feedbackProduct = FeedbackProduct::findOrFail($feedback_id);
         if($feedbackProduct->customer != null) {
             $selectedCustomer = $feedbackProduct->customer;
-            array_push($selectOption, ['systemId' => $selectedCustomer->systemId, 'name' => $selectedCustomer->name]);
+            array_push($selectOption, ['systemId' => utf8_encode($selectedCustomer->systemId), 'name' => utf8_encode($selectedCustomer->name)]);
             return $selectOption;
         } else {
             return null;
@@ -111,6 +107,60 @@ class FeedbackProductController extends Controller
 
         $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($filteredFeedbackProducts);
+    }
+
+    public function updateFeedbackProduct(Request $request) {
+        $feedbackProduct = FeedbackProduct::findOrFail($request->feedbackProduct['systemId']);
+        $tenant = Tenant::findOrFail($feedbackProduct->tenantId);
+        if($request->feedbackProduct['fileName'] == '') {
+            if($request->feedbackProduct['image'] == '') {
+                if(file_exists(public_path($feedbackProduct->attachment))) {
+                    unlink(public_path($feedbackProduct->attachment));
+                }
+            }
+            $feedbackProduct->update([
+                'customer_rating' => $request->feedbackProduct['rating'],
+                'customer_feedback' => $request->feedbackProduct['feedback'],
+                'is_need_call' => $request->feedbackProduct['need_call'],
+                'is_urgent' => $request->feedbackProduct['is_urgent'],
+                'customerId' => $request->feedbackProduct['customer']['systemId'],
+                'sysupdater' => $request->updater,
+                'attachment' => ($request->feedbackProduct['image'] == '' ? null:$request->feedbackProduct['image'])
+            ]);
+
+        } else {
+            $file_name = $feedbackProduct->systemId . '_' . $request->feedbackProduct['fileName'];
+            if($feedbackProduct->attachment != null) {
+                if(file_exists(public_path($feedbackProduct->attachment))) {
+                    unlink(public_path($feedbackProduct->attachment));
+                }
+                InterventionImage::make($request->feedbackProduct['image'])->save(public_path('attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/' . $file_name));
+                $feedbackProduct->update([
+                    'customer_rating' => $request->feedbackProduct['rating'],
+                    'customer_feedback' => $request->feedbackProduct['feedback'],
+                    'is_need_call' => $request->feedbackProduct['need_call'],
+                    'is_urgent' => $request->feedbackProduct['is_urgent'],
+                    'customerId' => $request->feedbackProduct['customer']['systemId'],
+                    'sysupdater' => $request->updater,
+                    'attachment' => 'attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/' . $file_name,
+                ]);
+            } else {
+                if(!file_exists(public_path('attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/'))) {
+                    mkdir(public_path('attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/'), 0775, true);
+                }
+                InterventionImage::make($request->feedbackProduct['image'])->save(public_path('attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/' . $file_name));
+                $feedbackProduct->update([
+                    'customer_rating' => $request->feedbackProduct['rating'],
+                    'customer_feedback' => $request->feedbackProduct['feedback'],
+                    'is_need_call' => $request->feedbackProduct['need_call'],
+                    'is_urgent' => $request->feedbackProduct['is_urgent'],
+                    'customerId' => $request->feedbackProduct['customer']['systemId'],
+                    'sysupdater' => $request->updater,
+                    'attachment' => '/attachment/' . $tenant->email . '/feedback_product/' . $feedbackProduct->systemId . '/' . $file_name
+                ]);
+            }
+        }
+        return ['message' => 'success'];
     }
 
     public function deleteFeedbackProduct(Request $request) {

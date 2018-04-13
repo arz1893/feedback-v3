@@ -44,6 +44,7 @@ Route::get('feedback_product/{tenant_id}/filter-by-product/{product_id}', 'Feedb
 Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
 Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
+Route::post('feedback_product/update-feedback-product', 'Feedback\Product\FeedbackProductController@updateFeedbackProduct');
 Route::post('feedback_product/delete-feedback-product', 'Feedback\Product\FeedbackProductController@deleteFeedbackProduct');
 
 /* Feedback Product Reply */
