@@ -27,7 +27,8 @@ class FeedbackService extends JsonResource
             'is_answered' => $this->is_answered,
             'attachment' => ($this->attachment == null ? null:asset($this->attachment)),
             'creator' => $this->created_by,
-            'created_at' => $this->created_at->format('d-M-Y H:i:s')
+            'created_at' => $this->created_at->format('d-M-Y H:i:s'),
+            'show_edit_url' => route('feedback_service_list.edit', $this->systemId)
         ];
     }
 }

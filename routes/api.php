@@ -73,7 +73,9 @@ Route::get('feedback_service/{tenant_id}/get-feedback-service-list', 'Feedback\S
 Route::get('feedback_service/{feedback_id}/get-feedback-service', 'Feedback\Service\FeedbackServiceController@getFeedbackService');
 Route::get('feedback_service/{tenant_id}/filter-by-service/{service_id}', 'Feedback\Service\FeedbackServiceController@filterByService');
 Route::get('feedback_service/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Service\FeedbackServiceController@filterByDate');
+Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
 Route::post('feedback_service/{tenant_id}/add-feedback-service', 'Feedback\Service\FeedbackServiceController@addFeedbackService');
+Route::post('feedback_service/update-feedback-service', 'Feedback\Service\FeedbackServiceController@updateFeedbackService');
 Route::post('feedback_service/delete-feedback-service', 'Feedback\Service\FeedbackServiceController@deleteFeedbackService');
 
 /* Feedback Service Reply */

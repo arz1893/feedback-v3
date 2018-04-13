@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 290);
+/******/ 	return __webpack_require__(__webpack_require__.s = 297);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -69655,14 +69655,21 @@ module.exports=function(e){function t(i){if(n[i])return n[i].exports;var r=n[i]=
 /* 287 */,
 /* 288 */,
 /* 289 */,
-/* 290 */
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(291);
+module.exports = __webpack_require__(298);
 
 
 /***/ }),
-/* 291 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -69685,7 +69692,7 @@ window.VeeValidate = __webpack_require__(178);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('feedback-list', __webpack_require__(292));
+Vue.component('feedback-list', __webpack_require__(299));
 
 var feedback_service_list = new Vue({
   el: '#feedback_service_list',
@@ -69695,19 +69702,19 @@ var feedback_service_list = new Vue({
 });
 
 /***/ }),
-/* 292 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(293)
+  __webpack_require__(300)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(295)
+var __vue_script__ = __webpack_require__(302)
 /* template */
-var __vue_template__ = __webpack_require__(296)
+var __vue_template__ = __webpack_require__(303)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69746,13 +69753,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 293 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(294);
+var content = __webpack_require__(301);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69772,7 +69779,7 @@ if(false) {
 }
 
 /***/ }),
-/* 294 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -69786,7 +69793,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 295 */
+/* 302 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70416,7 +70423,7 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___defau
 });
 
 /***/ }),
-/* 296 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70743,7 +70750,17 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("td", [
-                  _vm._m(2, true),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning",
+                      attrs: {
+                        role: "button",
+                        href: feedbackService.show_edit_url
+                      }
+                    },
+                    [_c("i", { staticClass: "ion ion-edit" })]
+                  ),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -71099,7 +71116,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(3)
+                                _vm._m(2)
                               ])
                             ]
                           )
@@ -71606,7 +71623,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm._v(
@@ -71675,16 +71692,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Action")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-warning", attrs: { role: "button" } },
-      [_c("i", { staticClass: "ion ion-edit" })]
-    )
   },
   function() {
     var _vm = this

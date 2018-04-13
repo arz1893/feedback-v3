@@ -2,7 +2,7 @@
     <div>
         <div class="alert alert-success alert-dismissible" role="alert" v-show="alertSuccess">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="alertSuccess = false"><span aria-hidden="true">&times;</span></button>
-            <strong>Success <i class="fa fa-check"></i> </strong> Current feedback has been updated, you can go back to <a v-bind:href="index_url" class="alert-link">feedback product list</a>
+            <strong>Success <i class="fa fa-check"></i> </strong> Current feedback has been updated, you can go back to <a v-bind:href="index_url" class="alert-link">feedback service list</a>
         </div>
 
         <div class="row">
@@ -12,7 +12,7 @@
                     <div class="input-group input-group-md">
                         <multiselect id="customerId"
                                      name="customerId"
-                                     v-model="feedbackProduct.customer"
+                                     v-model="feedbackService.customer"
                                      :options="customerOptions"
                                      placeholder="Anonymous"
                                      label="name"
@@ -28,9 +28,9 @@
                 <div class="error">
                     <label for="customer_rating" :class="{ 'text-red': validator.errors.has('customer_rating') }">Rating</label>
 
-                    <input type="radio" name="customer_rating" id="radio_dissatisfied" class="invisible" value="1" v-model="feedbackProduct.rating"/>
-                    <input type="radio" name="customer_rating" id="radio_neutral" class="invisible" value="2" v-model="feedbackProduct.rating"/>
-                    <input type="radio" name="customer_rating" id="radio_satisfied" class="invisible" value="3" v-model="feedbackProduct.rating"/>
+                    <input type="radio" name="customer_rating" id="radio_dissatisfied" class="invisible" value="1" v-model="feedbackService.rating"/>
+                    <input type="radio" name="customer_rating" id="radio_neutral" class="invisible" value="2" v-model="feedbackService.rating"/>
+                    <input type="radio" name="customer_rating" id="radio_satisfied" class="invisible" value="3" v-model="feedbackService.rating"/>
                     <br>
 
                     <a role="button">
@@ -65,21 +65,21 @@
                 </div>
                 <div class="form-group" :class="{'has-error': validator.errors.has('feedback')}">
                     <label for="feedback">Feedback</label>
-                    <textarea class="form-control" name="feedback" id="feedback" placeholder="Please enter customer's feedback" rows="6" v-model="feedbackProduct.feedback"></textarea>
+                    <textarea class="form-control" name="feedback" id="feedback" placeholder="Please enter customer's feedback" rows="6" v-model="feedbackService.feedback"></textarea>
                     <span class="help text-red" v-show="validator.errors.has('feedback')">{{ validator.errors.first('feedback') }}</span>
                 </div>
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" name="is_need_call" id="is_need_call" value="1" v-model="feedbackProduct.need_call" v-bind:disabled="feedbackProduct.customer === '' || feedbackProduct.customer === null"/>
+                        <input type="checkbox" name="is_need_call" id="is_need_call" value="1" v-model="feedbackService.need_call" v-bind:disabled="feedbackService.customer === '' || feedbackService.customer === null"/>
                         Need Call ?
                     </label> &nbsp;
                     <label>
-                        <input type="checkbox" name="is_urgent" id="is_urgent" value="1" v-model="feedbackProduct.is_urgent"/>
+                        <input type="checkbox" name="is_urgent" id="is_urgent" value="1" v-model="feedbackService.is_urgent"/>
                         Is Urgent ?
                     </label>
                 </div>
                 <div class="form-group">
-                    <button role="button" class="btn btn-success" @click="validateFeedbackProduct()"><i class="fa fa-wrench"></i> Update Feedback</button>
+                    <button role="button" class="btn btn-success" @click="validateFeedbackService()"><i class="fa fa-wrench"></i> Update Feedback</button>
                 </div>
             </div>
 
@@ -87,13 +87,13 @@
                 <div class="form-group">
                     <label for="attachment">Change / Add attachment</label>
                     <input type="file" name="attachment" id="attachment" class="form-control-file" accept="image/*" v-on:change="previewImage($event)"/>
-                    <p class="help-block text-red" v-if="feedbackProduct.image === '' || feedbackProduct.image === null">You don't have any attachment on this feedback</p>
+                    <p class="help-block text-red" v-if="feedbackService.image === '' || feedbackService.image === null">You don't have any attachment on this feedback</p>
                     <p class="help-block text-red" v-else>Click file to change feedback attachment</p>
                 </div>
 
                 <div class="form-group" v-show="showAttachment" style="width: 180px;">
                     <span class="mailbox-attachment-icon has-img">
-                        <img src="" id="preview" v-bind:src="feedbackProduct.image">
+                        <img src="" id="preview" v-bind:src="feedbackService.image">
                     </span>
                     <div class="mailbox-attachment-info">
                         <a @click="clearAttachment()" class="btn btn-danger btn-xs pull-right" data-toggle="tooltip" data-placement="bottom" title="delete attachment">
@@ -281,11 +281,11 @@
     });
 
     export default {
-        name: "feedback-product-edit",
-        props: ['feedback_product_id', 'tenant_id', 'syscreator'],
+        name: "feedback-service-edit",
+        props: ['feedback_service_id', 'tenant_id', 'syscreator'],
         data() {
             return {
-                feedbackProduct: {
+                feedbackService: {
                     systemId: '',
                     customer: '',
                     rating: '',
@@ -312,11 +312,11 @@
                 alertSuccess: false,
                 alertCustomer: false,
                 validator: '',
-                index_url: window.location.protocol + "//" + window.location.host + "/" + 'feedback_product_list/'
+                index_url: window.location.protocol + "//" + window.location.host + "/" + 'feedback_service_list/'
             }
         },
         created() {
-            this.getFeedbackProduct();
+            this.getFeedbackService();
             this.getCustomerList();
             this.generateSelectedCustomer();
 
@@ -331,19 +331,19 @@
             });
         },
         watch: {
-            'feedbackProduct.customer': function () {
-                if(this.feedbackProduct.customer === null || this.feedbackProduct.customer === '') {
-                    this.feedbackProduct.need_call = 0;
+            'feedbackService.customer': function () {
+                if(this.feedbackService.customer === null || this.feedbackService.customer === '') {
+                    this.feedbackService.need_call = 0;
                 }
             },
-            'feedbackProduct.image': function () {
-                this.showAttachment = this.feedbackProduct.image !== '';
+            'feedbackService.image': function () {
+                this.showAttachment = this.feedbackService.image !== '';
             },
-            'feedbackProduct.rating': function () {
-                this.validator.validate('customer_rating', this.feedbackProduct.rating);
+            'feedbackService.rating': function () {
+                this.validator.validate('customer_rating', this.feedbackService.rating);
             },
-            'feedbackProduct.feedback': function () {
-                this.validator.validate('feedback', this.feedbackProduct.feedback);
+            'feedbackService.feedback': function () {
+                this.validator.validate('feedback', this.feedbackService.feedback);
             },
             'customer.name': function () {
                 this.validator.validate('name', this.customer.name);
@@ -362,18 +362,18 @@
             },
         },
         methods: {
-            getFeedbackProduct: function () {
+            getFeedbackService: function () {
                 let vm = this;
-                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.feedback_product_id + '/get-feedback-product';
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.feedback_service_id + '/get-feedback-service';
 
                 axios.get(url).then(response => {
-                    vm.feedbackProduct.systemId = response.data.data.systemId;
-                    vm.feedbackProduct.customer = response.data.data.customer;
-                    vm.feedbackProduct.rating = response.data.data.customer_rating;
-                    vm.feedbackProduct.feedback = response.data.data.customer_feedback;
-                    vm.feedbackProduct.image = (response.data.data.attachment === null) ? '':response.data.data.attachment;
-                    vm.feedbackProduct.need_call = response.data.data.is_need_call;
-                    vm.feedbackProduct.is_urgent = response.data.data.is_urgent;
+                    vm.feedbackService.systemId = response.data.data.systemId;
+                    vm.feedbackService.customer = response.data.data.customer;
+                    vm.feedbackService.rating = response.data.data.customer_rating;
+                    vm.feedbackService.feedback = response.data.data.customer_feedback;
+                    vm.feedbackService.image = (response.data.data.attachment === null) ? '':response.data.data.attachment;
+                    vm.feedbackService.need_call = response.data.data.is_need_call;
+                    vm.feedbackService.is_urgent = response.data.data.is_urgent;
 
                     switch (response.data.data.customer_rating) {
                         case 1 :{
@@ -389,7 +389,7 @@
                         }
                     }
 
-                    console.log(vm.feedbackProduct);
+                    console.log(vm.feedbackService);
                 }).catch(error => {
                     console.log(error);
                 });
@@ -404,11 +404,11 @@
             },
             generateSelectedCustomer: function () {
                 let vm = this;
-                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + this.feedback_product_id + '/generate-selected-customer';
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + this.feedback_service_id + '/generate-selected-customer';
                 axios.get(url).then(response => {
                     if(response.data !== null) {
                         console.log(response.data);
-                        vm.feedbackProduct.customer = {systemId: response.data[0].systemId, name: response.data[0].name};
+                        vm.feedbackService.customer = {systemId: response.data[0].systemId, name: response.data[0].name};
                     }
                 }).catch(error => {
                     console.log(error);
@@ -421,24 +421,24 @@
                         $(event.currentTarget).addClass('is-selected');
                         $('#neutral').removeClass('is-selected');
                         $('#satisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 1;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 1;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
                     case 2: {
                         $(event.currentTarget).addClass('is-selected');
                         $('#dissatisfied').removeClass('is-selected');
                         $('#satisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 2;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 2;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
                     case 3: {
                         $(event.currentTarget).addClass('is-selected');
                         $('#neutral').removeClass('is-selected');
                         $('#dissatisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 3;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 3;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
                 }
@@ -460,31 +460,31 @@
             createImage: function(file) {
                 let reader = new FileReader();
                 let vm = this;
-                vm.feedbackProduct.fileName = file.name;
+                vm.feedbackService.fileName = file.name;
                 reader.onload = (e) => {
-                    vm.feedbackProduct.image = e.target.result;
+                    vm.feedbackService.image = e.target.result;
                 };
                 reader.readAsDataURL(file);
             },
             clearAttachment: function() {
                 $('#preview').removeAttr('src');
                 $('#attachment').val("");
-                this.feedbackProduct.image = '';
-                this.feedbackProduct.fileName = '';
+                this.feedbackService.image = '';
+                this.feedbackService.fileName = '';
                 this.showAttachment = false;
 
-                console.log(this.feedbackProduct.image);
+                console.log(this.feedbackService.image);
             },
-            validateFeedbackProduct: function () {
+            validateFeedbackService: function () {
                 let vm = this;
                 vm.validator.validateAll({
-                    customer_rating: vm.feedbackProduct.rating,
-                    feedback: vm.feedbackProduct.feedback
+                    customer_rating: vm.feedbackService.rating,
+                    feedback: vm.feedbackService.feedback
                 }).then(result => {
                     if(result) {
-                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/update-feedback-product';
+                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/update-feedback-service';
                         axios.post(url, {
-                            feedbackProduct: vm.feedbackProduct,
+                            feedbackService: vm.feedbackService,
                             updater: vm.syscreator
                         }).then(response => {
                             if(response.data.message === 'success') {
@@ -516,7 +516,7 @@
                         }).then(response => {
                             console.log(response.data);
                             vm.getCustomerList();
-                            vm.feedbackProduct.customer = {systemId: response.data.systemId, name: response.data.name};
+                            vm.feedbackService.customer = {systemId: response.data.systemId, name: response.data.name};
                             vm.alertCustomer = true;
                         }).catch(error => {
                             console.log(error);

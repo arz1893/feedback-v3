@@ -78,6 +78,18 @@ class FeedbackServiceController extends Controller
         return new FeedbackServiceCollection($feedbackService);
     }
 
+    public function generateSelectedCustomer($feedback_id) {
+        $selectOption = array();
+        $feedbackService = FeedbackService::findOrFail($feedback_id);
+        if($feedbackService->customer != null) {
+            $selectedCustomer = $feedbackService->customer;
+            array_push($selectOption, ['systemId' => utf8_encode($selectedCustomer->systemId), 'name' => utf8_encode($selectedCustomer->name)]);
+            return $selectOption;
+        } else {
+            return null;
+        }
+    }
+
     public function filterByService(Request $request, $tenant_id, $service_id) {
         $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('serviceId', $service_id)->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackServiceCollection($filteredFeedbackServices);
@@ -94,6 +106,60 @@ class FeedbackServiceController extends Controller
 
         $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackServiceCollection($filteredFeedbackServices);
+    }
+
+    public function updateFeedbackService(Request $request) {
+        $feedbackService = FeedbackService::findOrFail($request->feedbackService['systemId']);
+        $tenant = Tenant::findOrFail($feedbackService->tenantId);
+        if($request->feedbackService['fileName'] == '') {
+            if($request->feedbackService['image'] == '') {
+                if(file_exists(public_path($feedbackService->attachment))) {
+                    unlink(public_path($feedbackService->attachment));
+                }
+            }
+            $feedbackService->update([
+                'customer_rating' => $request->feedbackService['rating'],
+                'customer_feedback' => $request->feedbackService['feedback'],
+                'is_need_call' => $request->feedbackService['need_call'],
+                'is_urgent' => $request->feedbackService['is_urgent'],
+                'customerId' => $request->feedbackService['customer']['systemId'],
+                'sysupdater' => $request->updater,
+                'attachment' => ($request->feedbackService['image'] == '' ? null:$request->feedbackService['image'])
+            ]);
+
+        } else {
+            $file_name = $feedbackService->systemId . '_' . $request->$feedbackService['fileName'];
+            if($feedbackService->attachment != null) {
+                if(file_exists(public_path($feedbackService->attachment))) {
+                    unlink(public_path($feedbackService->attachment));
+                }
+                InterventionImage::make($request->feedbackService['image'])->save(public_path('attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/' . $file_name));
+                $feedbackService->update([
+                    'customer_rating' => $request->feedbackService['rating'],
+                    'customer_feedback' => $request->feedbackService['feedback'],
+                    'is_need_call' => $request->feedbackService['need_call'],
+                    'is_urgent' => $request->feedbackService['is_urgent'],
+                    'customerId' => $request->feedbackService['customer']['systemId'],
+                    'sysupdater' => $request->updater,
+                    'attachment' => 'attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/' . $file_name,
+                ]);
+            } else {
+                if(!file_exists(public_path('attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/'))) {
+                    mkdir(public_path('attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/'), 0775, true);
+                }
+                InterventionImage::make($request->$feedbackService['image'])->save(public_path('attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/' . $file_name));
+                $feedbackService->update([
+                    'customer_rating' => $request->feedbackService['rating'],
+                    'customer_feedback' => $request->feedbackService['feedback'],
+                    'is_need_call' => $request->feedbackService['need_call'],
+                    'is_urgent' => $request->feedbackService['is_urgent'],
+                    'customerId' => $request->feedbackService['customer']['systemId'],
+                    'sysupdater' => $request->updater,
+                    'attachment' => '/attachment/' . $tenant->email . '/feedback_service/' . $feedbackService->systemId . '/' . $file_name
+                ]);
+            }
+        }
+        return ['message' => 'success'];
     }
 
     public function deleteFeedbackService(Request $request) {

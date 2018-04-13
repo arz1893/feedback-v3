@@ -120,7 +120,7 @@
                         <span v-else>No</span>
                     </td>
                     <td>
-                        <a role="button" class="btn btn-warning">
+                        <a role="button" class="btn btn-warning" v-bind:href="feedbackService.show_edit_url">
                             <i class="ion ion-edit"></i>
                         </a>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_feedback_service" @click="showDetail(feedbackService)">

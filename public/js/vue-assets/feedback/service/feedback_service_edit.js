@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 269);
+/******/ 	return __webpack_require__(__webpack_require__.s = 290);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -69629,14 +69629,35 @@ var index_esm = {
 /* 266 */,
 /* 267 */,
 /* 268 */,
-/* 269 */
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(270);
+module.exports = __webpack_require__(291);
 
 
 /***/ }),
-/* 270 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -69658,35 +69679,35 @@ window.VeeValidate = __webpack_require__(178);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('feedback-product-edit', __webpack_require__(271));
+Vue.component('feedback-service-edit', __webpack_require__(292));
 
-var feedback_product_edit = new Vue({
-  el: '#feedback_product_edit',
+var feedback_service_edit = new Vue({
+  el: '#feedback_service_edit',
   data: {
     message: 'component mounted!'
   }
 });
 
 /***/ }),
-/* 271 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(272)
+  __webpack_require__(293)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(274)
+var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(275)
+var __vue_template__ = __webpack_require__(296)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-1d9e2036"
+var __vue_scopeId__ = "data-v-3b03ce2a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -69697,7 +69718,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/vue-assets/feedback/product/edit-components/FeedbackProductEditComponent.vue"
+Component.options.__file = "resources/assets/js/vue-assets/feedback/service/edit-components/FeedbackServiceEditComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -69706,9 +69727,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1d9e2036", Component.options)
+    hotAPI.createRecord("data-v-3b03ce2a", Component.options)
   } else {
-    hotAPI.reload("data-v-1d9e2036", Component.options)
+    hotAPI.reload("data-v-3b03ce2a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -69719,23 +69740,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 272 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(273);
+var content = __webpack_require__(294);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(176)("07fd22dd", content, false, {});
+var update = __webpack_require__(176)("495730d8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d9e2036\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FeedbackProductEditComponent.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d9e2036\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FeedbackProductEditComponent.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b03ce2a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FeedbackServiceEditComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b03ce2a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FeedbackServiceEditComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -69745,7 +69766,7 @@ if(false) {
 }
 
 /***/ }),
-/* 273 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -69759,7 +69780,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 274 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70050,11 +70071,11 @@ Vue.use(VeeValidate, {
 });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "feedback-product-edit",
-    props: ['feedback_product_id', 'tenant_id', 'syscreator'],
+    name: "feedback-service-edit",
+    props: ['feedback_service_id', 'tenant_id', 'syscreator'],
     data: function data() {
         return {
-            feedbackProduct: {
+            feedbackService: {
                 systemId: '',
                 customer: '',
                 rating: '',
@@ -70081,11 +70102,11 @@ Vue.use(VeeValidate, {
             alertSuccess: false,
             alertCustomer: false,
             validator: '',
-            index_url: window.location.protocol + "//" + window.location.host + "/" + 'feedback_product_list/'
+            index_url: window.location.protocol + "//" + window.location.host + "/" + 'feedback_service_list/'
         };
     },
     created: function created() {
-        this.getFeedbackProduct();
+        this.getFeedbackService();
         this.getCustomerList();
         this.generateSelectedCustomer();
 
@@ -70101,19 +70122,19 @@ Vue.use(VeeValidate, {
     },
 
     watch: {
-        'feedbackProduct.customer': function feedbackProductCustomer() {
-            if (this.feedbackProduct.customer === null || this.feedbackProduct.customer === '') {
-                this.feedbackProduct.need_call = 0;
+        'feedbackService.customer': function feedbackServiceCustomer() {
+            if (this.feedbackService.customer === null || this.feedbackService.customer === '') {
+                this.feedbackService.need_call = 0;
             }
         },
-        'feedbackProduct.image': function feedbackProductImage() {
-            this.showAttachment = this.feedbackProduct.image !== '';
+        'feedbackService.image': function feedbackServiceImage() {
+            this.showAttachment = this.feedbackService.image !== '';
         },
-        'feedbackProduct.rating': function feedbackProductRating() {
-            this.validator.validate('customer_rating', this.feedbackProduct.rating);
+        'feedbackService.rating': function feedbackServiceRating() {
+            this.validator.validate('customer_rating', this.feedbackService.rating);
         },
-        'feedbackProduct.feedback': function feedbackProductFeedback() {
-            this.validator.validate('feedback', this.feedbackProduct.feedback);
+        'feedbackService.feedback': function feedbackServiceFeedback() {
+            this.validator.validate('feedback', this.feedbackService.feedback);
         },
         'customer.name': function customerName() {
             this.validator.validate('name', this.customer.name);
@@ -70132,18 +70153,18 @@ Vue.use(VeeValidate, {
         }
     },
     methods: {
-        getFeedbackProduct: function getFeedbackProduct() {
+        getFeedbackService: function getFeedbackService() {
             var vm = this;
-            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.feedback_product_id + '/get-feedback-product';
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.feedback_service_id + '/get-feedback-service';
 
             axios.get(url).then(function (response) {
-                vm.feedbackProduct.systemId = response.data.data.systemId;
-                vm.feedbackProduct.customer = response.data.data.customer;
-                vm.feedbackProduct.rating = response.data.data.customer_rating;
-                vm.feedbackProduct.feedback = response.data.data.customer_feedback;
-                vm.feedbackProduct.image = response.data.data.attachment === null ? '' : response.data.data.attachment;
-                vm.feedbackProduct.need_call = response.data.data.is_need_call;
-                vm.feedbackProduct.is_urgent = response.data.data.is_urgent;
+                vm.feedbackService.systemId = response.data.data.systemId;
+                vm.feedbackService.customer = response.data.data.customer;
+                vm.feedbackService.rating = response.data.data.customer_rating;
+                vm.feedbackService.feedback = response.data.data.customer_feedback;
+                vm.feedbackService.image = response.data.data.attachment === null ? '' : response.data.data.attachment;
+                vm.feedbackService.need_call = response.data.data.is_need_call;
+                vm.feedbackService.is_urgent = response.data.data.is_urgent;
 
                 switch (response.data.data.customer_rating) {
                     case 1:
@@ -70162,7 +70183,7 @@ Vue.use(VeeValidate, {
                         }
                 }
 
-                console.log(vm.feedbackProduct);
+                console.log(vm.feedbackService);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70179,11 +70200,11 @@ Vue.use(VeeValidate, {
         },
         generateSelectedCustomer: function generateSelectedCustomer() {
             var vm = this;
-            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + this.feedback_product_id + '/generate-selected-customer';
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + this.feedback_service_id + '/generate-selected-customer';
             axios.get(url).then(function (response) {
                 if (response.data !== null) {
                     console.log(response.data);
-                    vm.feedbackProduct.customer = { systemId: response.data[0].systemId, name: response.data[0].name };
+                    vm.feedbackService.customer = { systemId: response.data[0].systemId, name: response.data[0].name };
                 }
             }).catch(function (error) {
                 console.log(error);
@@ -70197,8 +70218,8 @@ Vue.use(VeeValidate, {
                         $(event.currentTarget).addClass('is-selected');
                         $('#neutral').removeClass('is-selected');
                         $('#satisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 1;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 1;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
                 case 2:
@@ -70206,8 +70227,8 @@ Vue.use(VeeValidate, {
                         $(event.currentTarget).addClass('is-selected');
                         $('#dissatisfied').removeClass('is-selected');
                         $('#satisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 2;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 2;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
                 case 3:
@@ -70215,8 +70236,8 @@ Vue.use(VeeValidate, {
                         $(event.currentTarget).addClass('is-selected');
                         $('#neutral').removeClass('is-selected');
                         $('#dissatisfied').removeClass('is-selected');
-                        vm.feedbackProduct.rating = 3;
-                        console.log(vm.feedbackProduct.rating);
+                        vm.feedbackService.rating = 3;
+                        console.log(vm.feedbackService.rating);
                         break;
                     }
             }
@@ -70238,31 +70259,31 @@ Vue.use(VeeValidate, {
         createImage: function createImage(file) {
             var reader = new FileReader();
             var vm = this;
-            vm.feedbackProduct.fileName = file.name;
+            vm.feedbackService.fileName = file.name;
             reader.onload = function (e) {
-                vm.feedbackProduct.image = e.target.result;
+                vm.feedbackService.image = e.target.result;
             };
             reader.readAsDataURL(file);
         },
         clearAttachment: function clearAttachment() {
             $('#preview').removeAttr('src');
             $('#attachment').val("");
-            this.feedbackProduct.image = '';
-            this.feedbackProduct.fileName = '';
+            this.feedbackService.image = '';
+            this.feedbackService.fileName = '';
             this.showAttachment = false;
 
-            console.log(this.feedbackProduct.image);
+            console.log(this.feedbackService.image);
         },
-        validateFeedbackProduct: function validateFeedbackProduct() {
+        validateFeedbackService: function validateFeedbackService() {
             var vm = this;
             vm.validator.validateAll({
-                customer_rating: vm.feedbackProduct.rating,
-                feedback: vm.feedbackProduct.feedback
+                customer_rating: vm.feedbackService.rating,
+                feedback: vm.feedbackService.feedback
             }).then(function (result) {
                 if (result) {
-                    var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/update-feedback-product';
+                    var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/update-feedback-service';
                     axios.post(url, {
-                        feedbackProduct: vm.feedbackProduct,
+                        feedbackService: vm.feedbackService,
                         updater: vm.syscreator
                     }).then(function (response) {
                         if (response.data.message === 'success') {
@@ -70294,7 +70315,7 @@ Vue.use(VeeValidate, {
                     }).then(function (response) {
                         console.log(response.data);
                         vm.getCustomerList();
-                        vm.feedbackProduct.customer = { systemId: response.data.systemId, name: response.data.name };
+                        vm.feedbackService.customer = { systemId: response.data.systemId, name: response.data.name };
                         vm.alertCustomer = true;
                     }).catch(function (error) {
                         console.log(error);
@@ -70322,7 +70343,7 @@ Vue.use(VeeValidate, {
 });
 
 /***/ }),
-/* 275 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70366,7 +70387,7 @@ var render = function() {
         _vm._m(0),
         _vm._v(" Current feedback has been updated, you can go back to "),
         _c("a", { staticClass: "alert-link", attrs: { href: _vm.index_url } }, [
-          _vm._v("feedback product list")
+          _vm._v("feedback service list")
         ])
       ]
     ),
@@ -70392,11 +70413,11 @@ var render = function() {
                   "track-by": "name"
                 },
                 model: {
-                  value: _vm.feedbackProduct.customer,
+                  value: _vm.feedbackService.customer,
                   callback: function($$v) {
-                    _vm.$set(_vm.feedbackProduct, "customer", $$v)
+                    _vm.$set(_vm.feedbackService, "customer", $$v)
                   },
-                  expression: "feedbackProduct.customer"
+                  expression: "feedbackService.customer"
                 }
               }),
               _vm._v(" "),
@@ -70423,8 +70444,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.feedbackProduct.rating,
-                expression: "feedbackProduct.rating"
+                value: _vm.feedbackService.rating,
+                expression: "feedbackService.rating"
               }
             ],
             staticClass: "invisible",
@@ -70434,10 +70455,10 @@ var render = function() {
               id: "radio_dissatisfied",
               value: "1"
             },
-            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "1") },
+            domProps: { checked: _vm._q(_vm.feedbackService.rating, "1") },
             on: {
               change: function($event) {
-                _vm.$set(_vm.feedbackProduct, "rating", "1")
+                _vm.$set(_vm.feedbackService, "rating", "1")
               }
             }
           }),
@@ -70447,8 +70468,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.feedbackProduct.rating,
-                expression: "feedbackProduct.rating"
+                value: _vm.feedbackService.rating,
+                expression: "feedbackService.rating"
               }
             ],
             staticClass: "invisible",
@@ -70458,10 +70479,10 @@ var render = function() {
               id: "radio_neutral",
               value: "2"
             },
-            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "2") },
+            domProps: { checked: _vm._q(_vm.feedbackService.rating, "2") },
             on: {
               change: function($event) {
-                _vm.$set(_vm.feedbackProduct, "rating", "2")
+                _vm.$set(_vm.feedbackService, "rating", "2")
               }
             }
           }),
@@ -70471,8 +70492,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.feedbackProduct.rating,
-                expression: "feedbackProduct.rating"
+                value: _vm.feedbackService.rating,
+                expression: "feedbackService.rating"
               }
             ],
             staticClass: "invisible",
@@ -70482,10 +70503,10 @@ var render = function() {
               id: "radio_satisfied",
               value: "3"
             },
-            domProps: { checked: _vm._q(_vm.feedbackProduct.rating, "3") },
+            domProps: { checked: _vm._q(_vm.feedbackService.rating, "3") },
             on: {
               change: function($event) {
-                _vm.$set(_vm.feedbackProduct, "rating", "3")
+                _vm.$set(_vm.feedbackService, "rating", "3")
               }
             }
           }),
@@ -70588,8 +70609,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.feedbackProduct.feedback,
-                  expression: "feedbackProduct.feedback"
+                  value: _vm.feedbackService.feedback,
+                  expression: "feedbackService.feedback"
                 }
               ],
               staticClass: "form-control",
@@ -70599,13 +70620,13 @@ var render = function() {
                 placeholder: "Please enter customer's feedback",
                 rows: "6"
               },
-              domProps: { value: _vm.feedbackProduct.feedback },
+              domProps: { value: _vm.feedbackService.feedback },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.feedbackProduct, "feedback", $event.target.value)
+                  _vm.$set(_vm.feedbackService, "feedback", $event.target.value)
                 }
               }
             }),
@@ -70635,8 +70656,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.feedbackProduct.need_call,
-                  expression: "feedbackProduct.need_call"
+                  value: _vm.feedbackService.need_call,
+                  expression: "feedbackService.need_call"
                 }
               ],
               attrs: {
@@ -70645,17 +70666,17 @@ var render = function() {
                 id: "is_need_call",
                 value: "1",
                 disabled:
-                  _vm.feedbackProduct.customer === "" ||
-                  _vm.feedbackProduct.customer === null
+                  _vm.feedbackService.customer === "" ||
+                  _vm.feedbackService.customer === null
               },
               domProps: {
-                checked: Array.isArray(_vm.feedbackProduct.need_call)
-                  ? _vm._i(_vm.feedbackProduct.need_call, "1") > -1
-                  : _vm.feedbackProduct.need_call
+                checked: Array.isArray(_vm.feedbackService.need_call)
+                  ? _vm._i(_vm.feedbackService.need_call, "1") > -1
+                  : _vm.feedbackService.need_call
               },
               on: {
                 change: function($event) {
-                  var $$a = _vm.feedbackProduct.need_call,
+                  var $$a = _vm.feedbackService.need_call,
                     $$el = $event.target,
                     $$c = $$el.checked ? true : false
                   if (Array.isArray($$a)) {
@@ -70664,20 +70685,20 @@ var render = function() {
                     if ($$el.checked) {
                       $$i < 0 &&
                         _vm.$set(
-                          _vm.feedbackProduct,
+                          _vm.feedbackService,
                           "need_call",
                           $$a.concat([$$v])
                         )
                     } else {
                       $$i > -1 &&
                         _vm.$set(
-                          _vm.feedbackProduct,
+                          _vm.feedbackService,
                           "need_call",
                           $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                         )
                     }
                   } else {
-                    _vm.$set(_vm.feedbackProduct, "need_call", $$c)
+                    _vm.$set(_vm.feedbackService, "need_call", $$c)
                   }
                 }
               }
@@ -70691,8 +70712,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.feedbackProduct.is_urgent,
-                  expression: "feedbackProduct.is_urgent"
+                  value: _vm.feedbackService.is_urgent,
+                  expression: "feedbackService.is_urgent"
                 }
               ],
               attrs: {
@@ -70702,13 +70723,13 @@ var render = function() {
                 value: "1"
               },
               domProps: {
-                checked: Array.isArray(_vm.feedbackProduct.is_urgent)
-                  ? _vm._i(_vm.feedbackProduct.is_urgent, "1") > -1
-                  : _vm.feedbackProduct.is_urgent
+                checked: Array.isArray(_vm.feedbackService.is_urgent)
+                  ? _vm._i(_vm.feedbackService.is_urgent, "1") > -1
+                  : _vm.feedbackService.is_urgent
               },
               on: {
                 change: function($event) {
-                  var $$a = _vm.feedbackProduct.is_urgent,
+                  var $$a = _vm.feedbackService.is_urgent,
                     $$el = $event.target,
                     $$c = $$el.checked ? true : false
                   if (Array.isArray($$a)) {
@@ -70717,20 +70738,20 @@ var render = function() {
                     if ($$el.checked) {
                       $$i < 0 &&
                         _vm.$set(
-                          _vm.feedbackProduct,
+                          _vm.feedbackService,
                           "is_urgent",
                           $$a.concat([$$v])
                         )
                     } else {
                       $$i > -1 &&
                         _vm.$set(
-                          _vm.feedbackProduct,
+                          _vm.feedbackService,
                           "is_urgent",
                           $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                         )
                     }
                   } else {
-                    _vm.$set(_vm.feedbackProduct, "is_urgent", $$c)
+                    _vm.$set(_vm.feedbackService, "is_urgent", $$c)
                   }
                 }
               }
@@ -70747,7 +70768,7 @@ var render = function() {
               attrs: { role: "button" },
               on: {
                 click: function($event) {
-                  _vm.validateFeedbackProduct()
+                  _vm.validateFeedbackService()
                 }
               }
             },
@@ -70780,7 +70801,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _vm.feedbackProduct.image === "" || _vm.feedbackProduct.image === null
+          _vm.feedbackService.image === "" || _vm.feedbackService.image === null
             ? _c("p", { staticClass: "help-block text-red" }, [
                 _vm._v("You don't have any attachment on this feedback")
               ])
@@ -70809,7 +70830,7 @@ var render = function() {
                 attrs: {
                   src: "",
                   id: "preview",
-                  src: _vm.feedbackProduct.image
+                  src: _vm.feedbackService.image
                 }
               })
             ]),
@@ -71575,7 +71596,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1d9e2036", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3b03ce2a", module.exports)
   }
 }
 
