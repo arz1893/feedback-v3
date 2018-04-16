@@ -62747,7 +62747,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62758,6 +62758,31 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -62842,6 +62867,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 defValue: '',
                 bgColor: '',
                 recOwner: ''
+            },
+            pagination: {
+                currentPage: '',
+                endPage: '',
+                prevPage: '',
+                nextPage: '',
+                path: ''
             }
         };
     },
@@ -62855,9 +62887,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var url = window.location.protocol + "//" + window.location.host + '/api/tag/' + this.tenant_id + '/get-tag-list';
             axios.get(url).then(function (response) {
                 vm.tags = response.data.data;
+                vm.makePagination(response.data);
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        makePagination: function makePagination(data) {
+            var vm = this;
+            vm.pagination.currentPage = data.meta.current_page;
+            vm.pagination.endPage = data.meta.last_page;
+            vm.pagination.path = data.meta.path;
+            vm.pagination.prevPage = data.links.prev === null ? null : data.links.prev;
+            vm.pagination.nextPage = data.links.next === null ? null : data.links.next;
         }
     }
 
@@ -62929,6 +62970,102 @@ var render = function() {
         )
       ]
     ),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c(
+        "ul",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.pagination.currentPage !== "",
+              expression: "pagination.currentPage !== ''"
+            }
+          ],
+          staticClass: "pagination"
+        },
+        [
+          _c("li", { class: { disabled: _vm.pagination.prevPage === null } }, [
+            _vm.pagination.prevPage !== null
+              ? _c(
+                  "a",
+                  {
+                    attrs: { role: "button", "aria-label": "Previous" },
+                    on: {
+                      click: function($event) {
+                        _vm.changePage(_vm.pagination.prevPage)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("«")
+                    ])
+                  ]
+                )
+              : _c(
+                  "a",
+                  { attrs: { role: "button", "aria-label": "Previous" } },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("«")
+                    ])
+                  ]
+                )
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.pagination.endPage, function(n) {
+            return _c(
+              "li",
+              { class: { active: n === _vm.pagination.currentPage } },
+              [
+                n !== _vm.pagination.currentPage
+                  ? _c(
+                      "a",
+                      {
+                        attrs: { role: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.changePage(_vm.pagination.path + "?page=" + n)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(n))]
+                    )
+                  : _c("a", { attrs: { role: "button" } }, [_vm._v(_vm._s(n))])
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("li", { class: { disabled: _vm.pagination.nextPage === null } }, [
+            _vm.pagination.nextPage !== null
+              ? _c(
+                  "a",
+                  {
+                    attrs: { role: "button", "aria-label": "Next" },
+                    on: {
+                      click: function($event) {
+                        _vm.changePage(_vm.pagination.nextPage)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("»")
+                    ])
+                  ]
+                )
+              : _c("a", { attrs: { role: "button" } }, [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("»")
+                  ])
+                ])
+          ])
+        ],
+        2
+      )
+    ]),
     _vm._v(" "),
     _vm._m(2)
   ])

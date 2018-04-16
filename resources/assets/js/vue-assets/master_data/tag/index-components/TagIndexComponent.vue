@@ -35,6 +35,31 @@
             </tbody>
         </table>
 
+        <div class="text-center">
+            <ul v-show="pagination.currentPage !== ''" class="pagination">
+                <li v-bind:class="{disabled:pagination.prevPage === null}">
+                    <a v-if="pagination.prevPage !== null" role="button" aria-label="Previous" @click="changePage(pagination.prevPage)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <a v-else role="button" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li v-for="n in pagination.endPage" v-bind:class="{ active:n===pagination.currentPage }">
+                    <a v-if="n !== pagination.currentPage" role="button" @click="changePage(pagination.path + '?page=' + n)">{{ n }}</a>
+                    <a v-else role="button">{{ n }}</a>
+                </li>
+                <li v-bind:class="{disabled:pagination.nextPage === null}">
+                    <a v-if="pagination.nextPage !== null" role="button" aria-label="Next" @click="changePage(pagination.nextPage)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <a v-else role="button">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <!-- Modal -->
         <div class="modal fade"
              id="modal_delete_tag"
@@ -82,6 +107,13 @@
                     defValue: '',
                     bgColor: '',
                     recOwner: ''
+                },
+                pagination: {
+                    currentPage: '',
+                    endPage: '',
+                    prevPage: '',
+                    nextPage: '',
+                    path: ''
                 }
             }
         },
@@ -94,10 +126,19 @@
                 const url = window.location.protocol + "//" + window.location.host  + '/api/tag/' + this.tenant_id + '/get-tag-list';
                 axios.get(url).then(response => {
                     vm.tags = response.data.data;
+                    vm.makePagination(response.data);
                 }).catch(error => {
                     console.log(error);
                 });
             },
+            makePagination: function (data) {
+                let vm = this;
+                vm.pagination.currentPage = data.meta.current_page;
+                vm.pagination.endPage = data.meta.last_page;
+                vm.pagination.path = data.meta.path;
+                vm.pagination.prevPage = (data.links.prev === null ? null:data.links.prev);
+                vm.pagination.nextPage = (data.links.next === null ? null:data.links.next);
+            }
         },
 
     }

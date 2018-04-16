@@ -61,7 +61,7 @@ class TagController extends Controller
     }
 
     public function getTagList($tenant_id) {
-        $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
+        $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->paginate(15);
         return new TagCollection($tags);
     }
 
