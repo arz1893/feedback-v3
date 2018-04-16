@@ -25,6 +25,40 @@ class FeedbackServiceController extends Controller
         return view('feedback.service.feedback_service_show', compact('service'));
     }
 
+    public function portDatabase() {
+        $complaintServices = ComplaintService::all();
+        foreach ($complaintServices as $complaintService) {
+            if($complaintService->customer_rating < 3) {
+                $complaintService->customer_rating = 1;
+                $complaintService->update();
+            } else if($complaintService->customer_rating == 3) {
+                $complaintService->customer_rating = 2;
+                $complaintService->update();
+            } else if($complaintService->customer_rating > 3) {
+                $complaintService->customer_rating = 3;
+                $complaintService->update();
+            }
+        }
+        foreach ($complaintServices as $complaintService) {
+            FeedbackService::create([
+                'systemId' => $complaintService->systemId,
+                'customer_rating' => $complaintService->customer_rating,
+                'customer_feedback' => $complaintService->customer_complaint,
+                'is_need_call' => $complaintService->is_need_call,
+                'is_urgent' => $complaintService->is_urgent,
+                'serviceId' => $complaintService->serviceId,
+                'serviceCategoryId' => $complaintService->serviceCategoryId,
+                'tenantId' => $complaintService->tenantId,
+                'is_answered' => $complaintService->is_answered,
+                'attachment' => $complaintService->attachment,
+                'syscreator' => $complaintService->syscreator,
+                'sysupdater' => $complaintService->sysupdater,
+                'created_at' => $complaintService->created_at,
+                'updated_at' => $complaintService->updated_at,
+            ]);
+        }
+    }
+
     /* API Section */
     public function addFeedbackService(Request $request, $tenant_id) {
         $id = Uuid::generate(4);

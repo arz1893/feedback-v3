@@ -25,6 +25,40 @@ class FeedbackProductController extends Controller
         return view('feedback.product.feedback_product_show', compact('product'));
     }
 
+    public function portDatabase() {
+        $complaintProducts = ComplaintProduct::all();
+        foreach ($complaintProducts as $complaintProduct) {
+            if($complaintProduct->customer_rating < 3) {
+                $complaintProduct->customer_rating = 1;
+                $complaintProduct->update();
+            } else if($complaintProduct->customer_rating == 3) {
+                $complaintProduct->customer_rating = 2;
+                $complaintProduct->update();
+            } else if($complaintProduct->customer_rating > 3) {
+                $complaintProduct->customer_rating = 3;
+                $complaintProduct->update();
+            }
+        }
+        foreach ($complaintProducts as $complaintProduct) {
+            FeedbackProduct::create([
+                'systemId' => $complaintProduct->systemId,
+                'customer_rating' => $complaintProduct->customer_rating,
+                'customer_feedback' => $complaintProduct->customer_complaint,
+                'is_need_call' => $complaintProduct->is_need_call,
+                'is_urgent' => $complaintProduct->is_urgent,
+                'productId' => $complaintProduct->productId,
+                'productCategoryId' => $complaintProduct->productCategoryId,
+                'tenantId' => $complaintProduct->tenantId,
+                'is_answered' => $complaintProduct->is_answered,
+                'attachment' => $complaintProduct->attachment,
+                'syscreator' => $complaintProduct->syscreator,
+                'sysupdater' => $complaintProduct->sysupdater,
+                'created_at' => $complaintProduct->created_at,
+                'updated_at' => $complaintProduct->updated_at,
+            ]);
+        }
+    }
+
     /* API Section */
     public function addFeedbackProduct(Request $request, $tenant_id) {
         $id = Uuid::generate(4);
