@@ -483,6 +483,7 @@
                 }).then(result => {
                     if(result) {
                         const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/update-feedback-service';
+                        console.log(vm.feedbackService);
                         axios.post(url, {
                             feedbackService: vm.feedbackService,
                             updater: vm.syscreator

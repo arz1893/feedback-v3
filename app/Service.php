@@ -36,6 +36,10 @@ class Service extends Model
         return $this->hasMany(FaqService::class);
     }
 
+    public function feedbackServices() {
+        return $this->hasMany(FeedbackService::class);
+    }
+
     public function tags() {
         return $this->belongsToMany(Tag::class, 'service_tag', 'serviceId', 'tagId')->withTimestamps();
     }

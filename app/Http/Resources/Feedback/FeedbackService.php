@@ -20,7 +20,7 @@ class FeedbackService extends JsonResource
             'customer_feedback' => $this->customer_feedback,
             'is_need_call' => $this->is_need_call,
             'is_urgent' => $this->is_urgent,
-            'customer' => $this->customer,
+            'customer' => ($this->customerId == null ? null:$this->customer),
             'service' => $this->service,
             'serviceCategory' => $this->service_category->name,
             'tenantId' => $this->tenantId,

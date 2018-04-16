@@ -408,7 +408,9 @@
                 axios.get(url).then(response => {
                     if(response.data !== null) {
                         console.log(response.data);
-                        vm.feedbackProduct.customer = {systemId: response.data[0].systemId, name: response.data[0].name};
+                        if(response.data !== '') {
+                            vm.feedbackProduct.customer = {systemId: response.data[0].systemId, name: response.data[0].name};
+                        }
                     }
                 }).catch(error => {
                     console.log(error);

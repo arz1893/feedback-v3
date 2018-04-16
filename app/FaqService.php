@@ -16,6 +16,7 @@ class FaqService extends Model
         'systemId',
         'question',
         'answer',
+        'customerId',
         'serviceId',
         'systemcreator',
         'syslastupdater',

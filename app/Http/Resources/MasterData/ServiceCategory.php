@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\MasterData;
 
+use App\FeedbackService;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ServiceCategory extends JsonResource

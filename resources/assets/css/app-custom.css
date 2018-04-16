@@ -401,10 +401,8 @@ span.fancytree-expander{
 }
 
 .is-selected-color {
-    border: 3px solid;
-    outline: none;
-    border-color: #9ecaed;
-    box-shadow: 0 0 20px #9ecaed;
+    border: 30px groove red;
+    box-shadow: 0 0 30px 10px red;
 }
 
 .selectize .select2-container .select2-search__field:not([placeholder='']) {

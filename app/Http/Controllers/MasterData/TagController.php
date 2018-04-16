@@ -13,11 +13,11 @@ use Webpatser\Uuid\Uuid;
 class TagController extends Controller
 {
     public function index() {
-        return view('master_data.tag.tag_index', compact('tags'));
+        return view('master_data.tag.tag_index');
     }
 
     public function create() {
-        return view('master_data.tag.tag_create');
+        return view('master_data.tag.tag_add');
     }
 
     public function store(TagRequest $request) {
@@ -48,6 +48,18 @@ class TagController extends Controller
     }
 
     /* API Section */
+    public function addTag(Request $request) {
+        Tag::create([
+            'systemId' => Uuid::generate(4),
+            'name' => $request->tag['name'],
+            'defValue' => $request->tag['defValue'],
+            'bgColor' => $request->tag['bgColor'],
+            'recOwner' => $request->tenantId,
+            'syscreator' => $request->syscreator
+        ]);
+        return ['message' => 'success'];
+    }
+
     public function getTagList($tenant_id) {
         $tags = Tag::where('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
         return new TagCollection($tags);

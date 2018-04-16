@@ -92,6 +92,10 @@ class ServiceCategory extends Node {
         return $this->belongsTo(Service::class, 'serviceId', 'systemId');
     }
 
+    public function feedback_services() {
+        return $this->hasMany(FeedbackService::class);
+    }
+
     //////////////////////////////////////////////////////////////////////////////
 
     //
