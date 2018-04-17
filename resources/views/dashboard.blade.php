@@ -135,6 +135,25 @@
                     <!-- /.info-box -->
                 </div>
             </a>
+
+            <a href="{{ route('customer.index') }}">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="info-box bg-gray-light">
+                        <span class="info-box-icon bg-navy"><i class="fa fa-group"></i></span>
+
+                        <div class="info-box-content">
+                            <b>Customer</b> <br>
+                            @if($totalTag == 0)
+                                <span class="info-box-text">You don't have any customer added yet</span>
+                            @else
+                                <span class="info-box-text">{{ 'You have :' . $totalCustomer . ' customer' }}</span>
+                            @endif
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            </a>
         </div>
     </div>
 </div>

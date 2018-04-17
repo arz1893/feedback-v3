@@ -22,9 +22,10 @@ class Customer extends JsonResource
             'email' => $this->email,
             'gender' => $this->gender,
             'phone' => $this->phone,
-            'birthdate' => $this->birthdate,
+            'birthdate' => date('d M Y', strtotime($this->birthdate)),
             'memo' => $this->memo,
             'tenantId' => $this->tenantId,
+            'show_edit_url' => route('customer.edit', $this->systemId)
         ];
     }
 }

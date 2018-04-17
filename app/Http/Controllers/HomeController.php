@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Product;
 use App\Service;
 use App\Tag;
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $totalProduct = count(Product::where('tenantId', Auth::user()->tenantId)->get());
         $totalService = count(Service::where('tenantId', Auth::user()->tenantId)->get());
         $totalTag = count(Tag::where('recOwner', Auth::user()->tenantId)->get());
-        return view('home', compact('totalProduct', 'totalService', 'totalTag'));
+        $totalCustomer = count(Customer::where('tenantId', Auth::user()->tenantId)->get());
+        return view('home', compact('totalProduct', 'totalService', 'totalTag', 'totalCustomer'));
     }
 }

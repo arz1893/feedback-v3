@@ -12,7 +12,16 @@ use Webpatser\Uuid\Uuid;
 class CustomerController extends Controller
 {
     public function index() {
+        return view('master_data.customer.customer_index');
+    }
 
+    public function create() {
+        return view('master_data.customer.customer_add');
+    }
+
+    public function edit($customer_id) {
+        $customer = Customer::findOrFail($customer_id);
+        return view('master_data.customer.customer_edit', compact('customer'));
     }
 
     /* API Section */
@@ -36,7 +45,7 @@ class CustomerController extends Controller
     }
 
     public function getAllCustomer($tenant_id) {
-        $customers = Customer::where('tenantId', $tenant_id)->orderBy('name')->get();
+        $customers = Customer::where('tenantId', $tenant_id)->orderBy('name')->paginate(15);
         return new CustomerCollection($customers);
     }
 
