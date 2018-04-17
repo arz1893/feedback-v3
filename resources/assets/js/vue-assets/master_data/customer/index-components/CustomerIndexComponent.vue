@@ -1,7 +1,12 @@
 <template>
     <div>
-        <div class="alert alert-success" role="alert" id="alert_customer_success" style="display: none;">
-            <strong>Success!</strong> Customer has been updated
+        <div v-show="alertSuccess" class="alert alert-dismissible alert-success" role="alert" id="alert_customer_success" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="alertSuccess = false"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> Customer has been successfully deleted
+        </div>
+
+        <div v-if="searchStatus !== ''">
+            <i class="fa fa-circle-o-notch fa-spin"></i> {{ searchStatus }}
         </div>
 
         <table class="table table-striped table-hover table-bordered" id="table_customer" style="width: 100%;">
@@ -55,7 +60,7 @@
                         <a role="button" class="btn btn-warning" v-bind:href="customer.show_edit_url">
                             <i class="fa fa-pencil-square"></i>
                         </a>
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_customer" @click="setCurrentCustomer(customer)">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </td>
@@ -88,6 +93,24 @@
             </ul>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="modal_delete_customer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="myModalLabel">Warning!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this customer ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteCustomer">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -101,6 +124,7 @@
         data() {
             return {
                 customers: [],
+                customer: [],
                 pagination: {
                     currentPage: '',
                     endPage: '',
@@ -108,6 +132,9 @@
                     nextPage: '',
                     path: ''
                 },
+                alertSuccess: false,
+                searchStatus: '',
+                index_url: window.location.protocol + "//" + window.location.host + "/" + 'customer'
             }
         },
         methods: {
@@ -145,6 +172,26 @@
 
                 let debounceFunction = _.debounce(fireRequest, 1000);
                 debounceFunction(vm);
+            },
+            setCurrentCustomer: function(selectedCustomer) {
+                this.customer = selectedCustomer;
+            },
+
+            deleteCustomer: function() {
+                let vm = this;
+                vm.searchStatus = 'Loading...';
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/delete-customer';
+                axios.post(url,{ customer_id: vm.customer.systemId }).then(response => {
+                    if(response.data.message === 'success') {
+                        vm.alertSuccess = true;
+                        function sendRequest() {
+                            vm.getCustomers();
+                            vm.searchStatus = '';
+                        }
+                        let debounceFunction = _.debounce(sendRequest, 1000);
+                        debounceFunction();
+                    }
+                })
             }
         }
     }

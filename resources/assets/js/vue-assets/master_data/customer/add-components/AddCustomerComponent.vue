@@ -179,8 +179,6 @@
         },
         created() {
             this.validator = new Validator({
-                customer_rating: 'required',
-                feedback: 'required',
                 name: 'required',
                 gender: 'required',
                 phone: 'required|numeric|min:10',

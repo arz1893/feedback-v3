@@ -44,9 +44,37 @@ class CustomerController extends Controller
         return ['systemId' => utf8_encode($customer->systemId), 'name' => utf8_decode($customer->name)];
     }
 
+    public function updateCustomer(Request $request) {
+        $customer = Customer::findOrFail($request->customer['systemId']);
+
+        $customer->update([
+            'name' => $request->customer['name'],
+            'address' => $request->customer['address'],
+            'city' => $request->customer['city'],
+            'email' => $request->customer['email'],
+            'gender' => $request->customer['gender'],
+            'phone' => $request->customer['phone'],
+            'birthdate' => date('Y-m-d', strtotime($request->customer['birthdate'])),
+            'memo' => $request->customer['memo']
+        ]);
+
+        return ['message' => 'success'];
+    }
+
+    public function deleteCustomer(Request $request) {
+        $customer = Customer::findOrFail($request->customer_id);
+        $customer->delete();
+        return ['message' => 'success'];
+    }
+
     public function getAllCustomer($tenant_id) {
         $customers = Customer::where('tenantId', $tenant_id)->orderBy('name')->paginate(15);
         return new CustomerCollection($customers);
+    }
+
+    public function getCustomer($customer_id) {
+        $customer = Customer::findOrFail($customer_id);
+        return new CustomerResource($customer);
     }
 
     public function generateSelectCustomer($tenant_id) {

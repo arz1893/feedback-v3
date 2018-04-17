@@ -62768,7 +62768,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62872,6 +62872,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "customer-index",
@@ -62882,13 +62905,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             customers: [],
+            customer: [],
             pagination: {
                 currentPage: '',
                 endPage: '',
                 prevPage: '',
                 nextPage: '',
                 path: ''
-            }
+            },
+            alertSuccess: false,
+            searchStatus: '',
+            index_url: window.location.protocol + "//" + window.location.host + "/" + 'customer'
         };
     },
 
@@ -62927,6 +62954,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var debounceFunction = _.debounce(fireRequest, 1000);
             debounceFunction(vm);
+        },
+        setCurrentCustomer: function setCurrentCustomer(selectedCustomer) {
+            this.customer = selectedCustomer;
+        },
+
+        deleteCustomer: function deleteCustomer() {
+            var vm = this;
+            vm.searchStatus = 'Loading...';
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/delete-customer';
+            axios.post(url, { customer_id: vm.customer.systemId }).then(function (response) {
+                if (response.data.message === 'success') {
+                    var sendRequest = function sendRequest() {
+                        vm.getCustomers();
+                        vm.searchStatus = '';
+                    };
+
+                    vm.alertSuccess = true;
+
+                    var debounceFunction = _.debounce(sendRequest, 1000);
+                    debounceFunction();
+                }
+            });
         }
     }
 });
@@ -62940,7 +62989,51 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.alertSuccess,
+            expression: "alertSuccess"
+          }
+        ],
+        staticClass: "alert alert-dismissible alert-success",
+        staticStyle: { display: "none" },
+        attrs: { role: "alert", id: "alert_customer_success" }
+      },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "Close"
+            },
+            on: {
+              click: function($event) {
+                _vm.alertSuccess = false
+              }
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Success!")]),
+        _vm._v(" Customer has been successfully deleted\n    ")
+      ]
+    ),
+    _vm._v(" "),
+    _vm.searchStatus !== ""
+      ? _c("div", [
+          _c("i", { staticClass: "fa fa-circle-o-notch fa-spin" }),
+          _vm._v(" " + _vm._s(_vm.searchStatus) + "\n    ")
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "table",
@@ -62950,7 +63043,7 @@ var render = function() {
         attrs: { id: "table_customer" }
       },
       [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
@@ -63032,7 +63125,23 @@ var render = function() {
                   [_c("i", { staticClass: "fa fa-pencil-square" })]
                 ),
                 _vm._v(" "),
-                _vm._m(2, true)
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#modal_delete_customer"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.setCurrentCustomer(customer)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-trash-o" })]
+                )
               ])
             ])
           })
@@ -63134,27 +63243,61 @@ var render = function() {
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modal_delete_customer",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myModalLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    Are you sure want to delete this customer ?\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: { click: _vm.deleteCustomer }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "alert alert-success",
-        staticStyle: { display: "none" },
-        attrs: { role: "alert", id: "alert_customer_success" }
-      },
-      [
-        _c("strong", [_vm._v("Success!")]),
-        _vm._v(" Customer has been updated\n    ")
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -63181,11 +63324,26 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-danger", attrs: { type: "button" } },
-      [_c("i", { staticClass: "fa fa-trash-o" })]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "h4",
+        { staticClass: "modal-title text-red", attrs: { id: "myModalLabel" } },
+        [_vm._v("Warning!")]
+      )
+    ])
   }
 ]
 render._withStripped = true

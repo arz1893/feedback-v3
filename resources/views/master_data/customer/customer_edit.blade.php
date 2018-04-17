@@ -2,6 +2,7 @@
 
 @push('scripts')
     <script src="{{ mix('js/vue-assets/master_data/customer/vue_edit_customer.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/moment/moment.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -15,7 +16,6 @@
 
 @section('main-content')
     <div id="edit_customer">
-        @{{ message }}
-        <edit-customer></edit-customer>
+        <edit-customer customer_id="{{ $customer->systemId }}" sysupdater="{{ Auth::user()->systemId }}"></edit-customer>
     </div>
 @endsection
