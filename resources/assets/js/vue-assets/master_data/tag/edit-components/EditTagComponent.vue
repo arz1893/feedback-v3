@@ -2,7 +2,7 @@
     <div>
         <div class="alert alert-success alert-dismissible" role="alert" v-show="alertSuccess">
             <button type="button" class="close" aria-label="Close" @click="alertSuccess = false"><span aria-hidden="true">&times;</span></button>
-            <strong>Success <i class="fa fa-check"></i> </strong> A new tag has been added, please go to <a v-bind:href="tag_index_url" class="alert-link">tag list</a> to see all tag that has been added
+            <strong>Success <i class="fa fa-check"></i> </strong> Tag has been updated, please go to <a v-bind:href="tag_index_url" class="alert-link">tag list</a> to see changes
         </div>
 
         <div class="col-lg-offset-3">
@@ -35,47 +35,47 @@
                     <div class="form-group" v-bind:class="{'has-error': validator.errors.has('bgColor')}">
                         <label for="bgColor">Select Color</label> <br>
                         <div class="btn-group" role="group">
-                            <a data-id="777777" class="btn btn-select-color" style="background: #777777;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="777777" class="invisible" type="radio" name="bgColor" value="#777777" v-model="tag.bgColor">
+                            <a id="777777" data-id="777777" class="btn btn-select-color" style="background: #777777;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="7E8C8D" class="btn btn-select-color" style="background: #7E8C8D;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="7E8C8D" class="invisible" type="radio" name="bgColor" value="#7E8C8D" v-model="tag.bgColor">
+                            <a id="7E8C8D" data-id="7E8C8D" class="btn btn-select-color" style="background: #7E8C8D;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="C6382E" class="btn btn-select-color" style="background: #C6382E;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="C6382E" class="invisible" type="radio" name="bgColor" value="#C6382E" v-model="tag.bgColor">
+                            <a id="C6382E" data-id="C6382E" class="btn btn-select-color" style="background: #C6382E;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="D55005" class="btn btn-select-color" style="background: #D55005;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="D55005" class="invisible" type="radio" name="bgColor" value="#D55005" v-model="tag.bgColor">
+                            <a id="D55005" data-id="D55005" class="btn btn-select-color" style="background: #D55005;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="EF9E0E" class="btn btn-select-color" style="background: #EF9E0E;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="EF9E0E" class="invisible" type="radio" name="bgColor" value="#EF9E0E" v-model="tag.bgColor">
+                            <a id="EF9E0E" data-id="EF9E0E" class="btn btn-select-color" style="background: #EF9E0E;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="25AF62" class="btn btn-select-color" style="background: #25AF62;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="25AF62" class="invisible" type="radio" name="bgColor" value="#25AF62" v-model="tag.bgColor">
+                            <a id="25AF62" data-id="25AF62" class="btn btn-select-color" style="background: #25AF62;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="13A388" class="btn btn-select-color" style="background: #13A388;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="13A388" class="invisible" type="radio" name="bgColor" value="#13A388" v-model="tag.bgColor">
+                            <a id="13A388" data-id="13A388" class="btn btn-select-color" style="background: #13A388;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="2482C0" class="btn btn-select-color" style="background: #2482C0;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="2482C0" class="invisible" type="radio" name="bgColor" value="#2482C0" v-model="tag.bgColor">
+                            <a id="2482C0" data-id="2482C0" class="btn btn-select-color" style="background: #2482C0;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="8D45AB" class="btn btn-select-color" style="background: #8D45AB;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="8D45AB" class="invisible" type="radio" name="bgColor" value="#8D45AB" v-model="tag.bgColor">
+                            <a id="8D45AB" data-id="8D45AB" class="btn btn-select-color" style="background: #8D45AB;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
-                            <a data-id="2E3E4E" class="btn btn-select-color" style="background: #2E3E4E;" @click="changeColor($event)"> &nbsp; &nbsp; &nbsp;
-                                <input id="2E3E4E" class="invisible" type="radio" name="bgColor" value="#2E3E4E" v-model="tag.bgColor">
+                            <a id="2E3E4E" data-id="2E3E4E" class="btn btn-select-color" style="background: #2E3E4E;" @click="changeColor($event)">
+                                <input type="radio" class="invisible"/>
                             </a>
                         </div>
                         <span class="help-block text-red" v-show="validator.errors.has('bgColor')">
-                                {{ validator.errors.first('bgColor') }}
-                            </span>
+                            {{ validator.errors.first('bgColor') }}
+                        </span>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <button class="btn btn-primary" type="button" @click="validateTagSubmit()">
-                    Add Tag
+                    Update Tag
                 </button>
             </div>
         </div>
@@ -101,11 +101,12 @@
     });
 
     export default {
-        name: "add-tag-component",
-        props: ['tenant_id', 'syscreator'],
+        name: "edit-tag",
+        props: ['tag_id', 'sysupdater'],
         data() {
             return {
                 tag: {
+                    systemId: '',
                     name: '',
                     defValue: 0,
                     bgColor: ''
@@ -116,6 +117,7 @@
             }
         },
         created() {
+            this.getTag();
             this.validator = new Validator({
                 name: 'required',
                 bgColor: 'required'
@@ -134,6 +136,21 @@
             }
         },
         methods: {
+            getTag: function() {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/tag/' + vm.tag_id + '/get-tag';
+
+                axios.get(url).then(response => {
+                    console.log(response.data.data);
+                    vm.tag.systemId = response.data.data.systemId;
+                    vm.tag.name = response.data.data.name;
+                    vm.tag.defValue = response.data.data.defValue;
+                    vm.tag.bgColor = response.data.data.bgColor;
+                    $(response.data.data.bgColor).addClass('is-selected-color');
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
             changeColor: function (event) {
                 let vm = this;
                 $('.btn-select-color').each(function () {
@@ -150,15 +167,13 @@
                     bgColor: vm.tag.bgColor
                 }).then(result => {
                     if(result) {
-                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/tag/add-tag/';
+                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/tag/update-tag/';
                         axios.post(url, {
                             tag: vm.tag,
-                            tenantId: vm.tenant_id,
-                            syscreator: vm.syscreator
+                            sysupdater: vm.sysupdater
                         }).then(response => {
                             if(response.data.message === 'success') {
                                 vm.alertSuccess = true;
-                                vm.clearState();
                             }
                         }).catch(error => {
                             console.log(error);
@@ -166,16 +181,6 @@
                     }
                 }).catch(error => {
                     console.log(error);
-                });
-            },
-            clearState: function () {
-                let vm = this;
-                vm.validator.errors.clear();
-                vm.tag.name = '';
-                vm.tag.defValue = 0;
-                vm.tag.bgColor = '';
-                $('.btn-select-color').each(function () {
-                    $(this).removeClass('is-selected-color');
                 });
             }
         }

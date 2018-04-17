@@ -38,6 +38,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/vue-assets/feedback/service/feedback_service_list.js', 'public/js/vue-assets/feedback/service')
     .js('resources/assets/js/vue-assets/master_data/tag/vue_index_tag.js', 'public/js/vue-assets/master_data/tag')
     .js('resources/assets/js/vue-assets/master_data/tag/vue_add_tag.js', 'public/js/vue-assets/master_data/tag')
+    .js('resources/assets/js/vue-assets/master_data/tag/vue_edit_tag.js', 'public/js/vue-assets/master_data/tag')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.js', 'public/js/vue-multiselect/')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.css', 'public/css/vue-multiselect');

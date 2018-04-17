@@ -11,6 +11,7 @@
     "/js/vue-assets/feedback/product/feedback_product_edit.js": "/js/vue-assets/feedback/product/feedback_product_edit.js",
     "/js/vue-assets/selection/service/service_selection.js": "/js/vue-assets/selection/service/service_selection.js",
     "/js/vue-assets/selection/product/product_selection.js": "/js/vue-assets/selection/product/product_selection.js",
+    "/js/vue-assets/master_data/tag/vue_edit_tag.js": "/js/vue-assets/master_data/tag/vue_edit_tag.js",
     "/js/vue-assets/master_data/tag/vue_add_tag.js": "/js/vue-assets/master_data/tag/vue_add_tag.js",
     "/js/vue-assets/master_data/service/vue_index_service.js": "/js/vue-assets/master_data/service/vue_index_service.js",
     "/js/vue-assets/master_data/product/vue_index_product.js": "/js/vue-assets/master_data/product/vue_index_product.js",

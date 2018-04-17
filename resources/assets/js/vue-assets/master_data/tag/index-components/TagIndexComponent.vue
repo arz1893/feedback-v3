@@ -1,5 +1,13 @@
 <template>
     <div>
+
+        <div class="alert alert-success alert-dismissible" role="alert" v-show="alertSuccess">
+            <button type="button" class="close" aria-label="Close" @click="alertSuccess = false"><span aria-hidden="true">&times;</span></button>
+            <strong>Success <i class="fa fa-check"></i> </strong> Tag has been successfully deleted
+        </div>
+
+        <div v-if="searchStatus.length > 0" class="text-center"><i class="fa fa-spinner fa-spin"></i> {{ searchStatus }}</div>
+
         <table class="table table-bordered table-striped table-responsive" id="table_tags" width="100%">
             <thead>
             <tr>
@@ -27,7 +35,7 @@
                     <a role="button" class="btn btn-warning" v-bind:href="tag.edit_url">
                         <i class="fa fa-pencil-square"></i>
                     </a>
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_tag" @click="setCurrentTag(tag)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
@@ -80,11 +88,11 @@
                         </h3>
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete this item ?
+                        Are you sure want to delete this tag ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteTag()">
                             Delete <i class="fa fa-trash-o"></i>
                         </button>
                     </div>
@@ -114,7 +122,9 @@
                     prevPage: '',
                     nextPage: '',
                     path: ''
-                }
+                },
+                alertSuccess: false,
+                searchStatus: ''
             }
         },
         created() {
@@ -127,6 +137,27 @@
                 axios.get(url).then(response => {
                     vm.tags = response.data.data;
                     vm.makePagination(response.data);
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            setCurrentTag: function(selectedTag) {
+                this.tag = selectedTag;
+            },
+            deleteTag: function() {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host  + '/api/tag/delete-tag';
+                axios.post(url, {
+                    tag_id: vm.tag.systemId
+                }).then(response => {
+                    if(response.data.message === 'success') {
+                        vm.alertSuccess = true;
+                        function sendRequest() {
+                            vm.getTagList();
+                        }
+                        let debounceFunction = _.debounce(sendRequest, 1000);
+                        debounceFunction();
+                    }
                 }).catch(error => {
                     console.log(error);
                 });

@@ -30,8 +30,11 @@ Route::post('product/delete-product', 'MasterData\ProductController@deleteProduc
 
 /* Master Tag */
 Route::get('tag/{tenant_id}/get-tag-list', 'MasterData\TagController@getTagList');
+Route::get('tag/{tag_id}/get-tag', 'MasterData\TagController@getTag');
 Route::get('tag/{tenant_id}/generate-select-tag', 'MasterData\TagController@generateSelectTag');
 Route::post('tag/add-tag', 'MasterData\TagController@addTag');
+Route::post('tag/update-tag', 'MasterData\TagController@updateTag');
+Route::post('tag/delete-tag', 'MasterData\TagController@deleteTag');
 
 /* Product Category */
 Route::get('product_category/{product_id}/get-root-nodes', 'MasterData\ProductCategoryController@getRootNodes');
