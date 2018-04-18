@@ -55,6 +55,13 @@
                                 {{ product.name }}
                             </span>
                             </a>
+                            <a role="button" v-else>
+                                <img v-show="product.img !== ''" v-bind:src="product.img"  class="category-banner img-responsive">
+                                <img v-show="product.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
+                                <span class="imagebox-desc">
+                                {{ product.name }}
+                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>
