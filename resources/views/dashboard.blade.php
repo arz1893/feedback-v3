@@ -167,23 +167,13 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-3">
-                <a href="{{ route('complaint_report.index') }}">
+                <a href="{{ url('/feedback_report_selection')  }}">
                     <img class="img-circle center-block" src="{{ asset('default-images/chart-icon.png') }}" alt="Generic placeholder image" width="140" height="140">
                 </a>
-                <a href="{{ route('complaint_report.index') }}">
-                    <h3 class="text-center">Complaint Report</h3>
+                <a href="{{ url('/feedback_report_selection')  }}">
+                    <h3 class="text-center">Feedback Report</h3>
                 </a>
-                <p align="center">Contains all complaint product charts and statistic</p>
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-lg-3">
-                <a role="button">
-                    <img class="img-circle center-block" src="{{ asset('default-images/chart-icon2.png') }}" alt="Generic placeholder image" width="140" height="140">
-                </a>
-                <a role="button">
-                    <h3 class="text-center">Suggestion Report</h3>
-                </a>
-                <p align="center">Contains all complaint service charts and statistic</p>
+                <p align="center">Contains all feedback charts and statistic</p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
     </div>

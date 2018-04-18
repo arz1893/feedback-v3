@@ -21,12 +21,8 @@ Route::get('/faq', function () {
     return view('faq.faq_selection');
 });
 
-Route::get('/complaint', function () {
-    return view('complaint.complaint_selection');
-});
-
-Route::get('/suggestion', function () {
-    return view('suggestion.suggestion_selection');
+Route::get('/feedback_report_selection', function () {
+    return view('report.feedback_report_selection');
 });
 
 /* Authentication Routes */
@@ -130,28 +126,5 @@ Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation'
 Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
 /* end of user management */
 
-/* Complaint Report Routes */
-Route::get('complaint_report/all-report', 'Report\Complaint\ComplaintReportController@showAllComplaintReport')->name('complaint_report_all');
-Route::resource('complaint_report', 'Report\Complaint\ComplaintReportController');
-/* end of complaint report routes */
-
-/* Complaint Product Report Controller */
-Route::get('complaint_product_report/all-report/yearly', 'Report\Complaint\Product\ComplaintProductReportController@showAllReportYearly')->name('complaint_product_report_all_yearly');
-Route::get('complaint_product_report/all-report/monthly', 'Report\Complaint\Product\ComplaintProductReportController@showAllReportMonthly')->name('complaint_product_report_all_monthly');
-Route::resource('complaint_product_report', 'Report\Complaint\Product\ComplaintProductReportController');
-/* end of complaint product report controller */
-
-/* Complaint Service Report Controller */
-Route::get('complaint_service_report/all-report/yearly', 'Report\Complaint\Service\ComplaintServiceReportController@showAllReportYearly')->name('complaint_service_report_all_yearly');
-Route::get('complaint_service_report/all-report/monthly', 'Report\Complaint\Service\ComplaintServiceReportController@showAllReportMonthly')->name('complaint_service_report_all_monthly');
-Route::resource('complaint_service_report', 'Report\Complaint\Service\ComplaintServiceReportController');
-/* end of complaint service report controller */
-
-/* Suggestion Report Routes */
-Route::resource('suggestion_report', 'Report\Suggestion\SuggestionReportController');
-/* end of suggestion report routes */
-
-/* Suggestion Product Report Controller */
-Route::get('suggestion_product_report/all-report/yearly', 'Report\Suggestion\Product\SuggestionProductReportController@showAllReportYearly')->name('suggestion_product_report_all_yearly');
-Route::resource('suggestion_product_report', 'Report\Suggestion\Product\SuggestionProductReportController');
-/* end of suggestion product controller */
+/* Feedback Product Report */
+Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProductReportController');

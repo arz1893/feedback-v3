@@ -129,29 +129,18 @@
                     </a>
 
                     <ul class="treeview-menu">
-
-                        <li>
-                            <a href="{{ route('complaint_report.index') }}">
-                                <i class="fa fa-bar-chart"></i>Complaint
+                        <li class="treeview">
+                            <a role="button">
+                                <i class="fa fa-bar-chart"></i>Feedback
+                                <span class="pull-right-container">
+                                  <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                             </a>
-                            {{--<ul class="treeview-menu">--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> All</a></li>--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> Product</a></li>--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> Service</a></li>--}}
-                            {{--</ul>--}}
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('feedback_product_report.index') }}"><i class="ion ion-paper-airplane"></i> Product</a></li>
+                                <li><a href="#!"><i class="ion ion-paper-airplane"></i> Service</a></li>
+                            </ul>
                         </li>
-
-                        <li>
-                            <a href="{{ route('suggestion_report.index') }}">
-                                <i class="fa fa-bar-chart"></i>Suggestion
-                            </a>
-                            {{--<ul class="treeview-menu">--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> All</a></li>--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> Product</a></li>--}}
-                            {{--<li><a href="#!"><i class="ion ion-paper-airplane"></i> Service</a></li>--}}
-                            {{--</ul>--}}
-                        </li>
-
                     </ul>
                 </li>
 
