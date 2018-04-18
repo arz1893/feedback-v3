@@ -1,4 +1,5 @@
 {
+    "/js/vue-assets/report/feedback_product/vue_feedback_product_report_all.js": "/js/vue-assets/report/feedback_product/vue_feedback_product_report_all.js",
     "/js/vue-assets/feedback/service/feedback_service_list.js": "/js/vue-assets/feedback/service/feedback_service_list.js",
     "/js/vue-assets/feedback/product/feedback_product_list.js": "/js/vue-assets/feedback/product/feedback_product_list.js",
     "/js/vue-assets/question/vue_question_index.js": "/js/vue-assets/question/vue_question_index.js",
@@ -18,11 +19,11 @@
     "/js/vue-assets/master_data/product/vue_index_product.js": "/js/vue-assets/master_data/product/vue_index_product.js",
     "/js/vue-assets/master_data/customer/vue_edit_customer.js": "/js/vue-assets/master_data/customer/vue_edit_customer.js",
     "/js/vue-assets/master_data/customer/vue_add_customer.js": "/js/vue-assets/master_data/customer/vue_add_customer.js",
+    "/js/vue-assets/question/vue_question_list.js": "/js/vue-assets/question/vue_question_list.js",
     "/js/vue-assets/master_data/tag/vue_index_tag.js": "/js/vue-assets/master_data/tag/vue_index_tag.js",
     "/js/vue-assets/master_data/customer/vue_index_customer.js": "/js/vue-assets/master_data/customer/vue_index_customer.js",
     "/js/app.js": "/js/app.js",
     "/css/admin-lte/template_all.css": "/css/admin-lte/template_all.css",
-    "/js/vue-assets/question/vue_question_list.js": "/js/vue-assets/question/vue_question_list.js",
     "/js/moment/moment.js": "/js/moment/moment.js",
     "/js/vue/vue.js": "/js/vue/vue.js",
     "/js/lodash/lodash.js": "/js/lodash/lodash.js",

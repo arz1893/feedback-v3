@@ -127,4 +127,5 @@ Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerVia
 /* end of user management */
 
 /* Feedback Product Report */
+Route::get('feedback_product_report/all', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReport')->name('feedback_product_report_all');
 Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProductReportController');

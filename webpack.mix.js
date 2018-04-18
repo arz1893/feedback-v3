@@ -44,6 +44,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/vue-assets/master_data/customer/vue_edit_customer.js', 'public/js/vue-assets/master_data/customer')
     .js('resources/assets/js/vue-assets/question/vue_question_index.js', 'public/js/vue-assets/question/')
     .js('resources/assets/js/vue-assets/question/vue_question_list.js', 'public/js/vue-assets/question')
+    .js('resources/assets/js/vue-assets/report/feedback_product/vue_feedback_product_report_all.js', 'public/js/vue-assets/report/feedback_product/')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.js', 'public/js/vue-multiselect/')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.css', 'public/css/vue-multiselect');

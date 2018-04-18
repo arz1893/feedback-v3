@@ -15,7 +15,7 @@
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
         <li class="active"> Feedback Product Report </li>
     </ol>
-    <a role="button" class="btn btn-primary">
+    <a role="button" href="{{ route('feedback_product_report_all') }}" class="btn btn-primary">
         View all report <i class="fa fa-bar-chart"></i>
     </a>
 @endsection

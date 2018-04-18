@@ -98,3 +98,6 @@ Route::post('customer/delete-customer', 'Customer\CustomerController@deleteCusto
 /* Question */
 Route::get('question/{tenant_id}/get-all-question', 'Question\QuestionController@getAllQuestion');
 Route::post('question/add-question', 'Question\QuestionController@addQuestion');
+
+/* Feedback Product Report */
+Route::get('feedback_product_report/{tenant_id}/get-all-report/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReport');
