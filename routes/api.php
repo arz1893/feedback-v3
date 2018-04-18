@@ -94,3 +94,7 @@ Route::get('customer/{tenant_id}/generate-select-customer', 'Customer\CustomerCo
 Route::post('customer/add-customer', 'Customer\CustomerController@addCustomer');
 Route::post('customer/update-customer', 'Customer\CustomerController@updateCustomer');
 Route::post('customer/delete-customer', 'Customer\CustomerController@deleteCustomer');
+
+/* Question */
+Route::get('question/{tenant_id}/get-all-question', 'Question\QuestionController@getAllQuestion');
+Route::post('question/add-question', 'Question\QuestionController@addQuestion');

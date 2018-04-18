@@ -64,4 +64,8 @@ class User extends Authenticatable
     public function feedback_services() {
         return $this->hasMany(FeedbackService::class);
     }
+
+    public function questions() {
+        return $this->hasMany(Question::class);
+    }
 }

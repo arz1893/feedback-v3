@@ -98,17 +98,10 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="{{ route('question_list.index') }}">
                                 <i class="ion ion-help-circled"></i> Questions
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
                             </a>
-
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('question_list.index') }}"><i class="ion ion-ios-list-outline"></i> List of Question</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </li>

@@ -396,19 +396,29 @@
                 this.validator.validate('feedback', this.feedbackProduct.feedback);
             },
             'customer.name': function () {
-                this.validator.validate('name', this.customer.name);
+                if(this.alertCustomer === false) {
+                    this.validator.validate('name', this.customer.name);
+                }
             },
             'customer.gender': function () {
-                this.validator.validate('gender', this.customer.gender);
+                if(this.alertCustomer === false) {
+                    this.validator.validate('gender', this.customer.gender);
+                }
             },
             'customer.birthdate': function () {
-                this.validator.validate('birthdate', this.customer.birthdate);
+                if(this.alertCustomer === false) {
+                    this.validator.validate('birthdate', this.customer.birthdate);
+                }
             },
             'customer.phone': function () {
-                this.validator.validate('phone', this.customer.phone);
+                if(this.alertCustomer === false) {
+                    this.validator.validate('phone', this.customer.phone);
+                }
             },
             'customer.email': function () {
-                this.validator.validate('email', this.customer.email);
+                if(this.alertCustomer === false) {
+                    this.validator.validate('email', this.customer.email);
+                }
             },
         },
         methods: {
