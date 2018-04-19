@@ -16,7 +16,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
             data: {
                 labels: response.data.labels,
                 datasets: [{
-                    label: 'Feedback',
+                    label: 'Satisfied',
                     data: response.data.data,
                     backgroundColor: 'rgba(109, 167, 247, 0.7)',
                     borderWidth: 1,
@@ -71,7 +71,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                     data: {
                         labels: response.data.labels,
                         datasets: [{
-                            label: 'Feedback',
+                            label: 'Satisfied',
                             data: response.data.data,
                             backgroundColor: 'rgba(109, 167, 247, 0.7)',
                             borderWidth: 1,

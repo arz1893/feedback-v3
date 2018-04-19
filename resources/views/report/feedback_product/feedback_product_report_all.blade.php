@@ -25,7 +25,34 @@
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
-    </div> <br> <br>
+    </div>
+
+    <div class="text-center">
+        Customer Rating <br>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" id="dissatisfied">
+                <i class="smiley_rating material-icons text-red"
+                   style="font-size: 2em;"
+                   data-value="1">
+                    sentiment_very_dissatisfied
+                </i>
+            </button>
+            <button type="button" class="btn btn-default" id="neutral">
+                <i class="smiley_rating material-icons text-yellow"
+                   style="font-size: 2em;"
+                   data-value="2">
+                    sentiment_neutral
+                </i>
+            </button>
+            <button type="button" class="btn btn-default active" id="satisfied">
+                <i class="smiley_rating material-icons text-green"
+                   style="font-size: 2em;"
+                   data-value="3">
+                    sentiment_very_satisfied
+                </i>
+            </button>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-2 pull-left">
@@ -55,5 +82,5 @@
         </div>
     </div>
 
-    <canvas id="feedback_product_chart_all_yearly" style="position: relative; right: 6%; height:55vh; width:80vw"></canvas>
+    <canvas id="feedback_product_chart_all_yearly" style="position: relative; right: 5%; height:55vh; width:80vw"></canvas>
 @endsection
