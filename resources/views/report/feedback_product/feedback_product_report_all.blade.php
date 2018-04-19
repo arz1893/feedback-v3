@@ -1,11 +1,13 @@
 @extends('home')
 
 @push('scripts')
-    <script src="{{ mix('js/vue-assets/report/feedback_product/vue_feedback_product_report_all.js') }}" type="text/javascript"></script>
+    <!-- Axios -->
+    <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/feedback_product/all/feedback_product_report_all_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
-    <h3> Feedback Product Report All </h3>
+    <h3 class="text-info">All Feedback in <span id="current_year"></span></h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
@@ -15,7 +17,43 @@
 @endsection
 
 @section('main-content')
-    <div id="feedback_product_report_all">
-        <feedback-product-report-all tenant_id="{{ Auth::user()->tenantId }}"></feedback-product-report-all>
+
+    {{ Form::hidden('tenantId', Auth::user()->tenantId, ['id' => 'tenantId']) }}
+
+    <div class="btn-group" role="group" aria-label="...">
+        <a role="button" class="btn btn-xs btn-default">Daily</a>
+        <a role="button" class="btn btn-xs btn-default">Weekly</a>
+        <a role="button" class="btn btn-xs btn-default">Monthly</a>
+        <a role="button" class="btn btn-xs btn-default active">Yearly</a>
+    </div> <br> <br>
+
+    <div class="row">
+        <div class="col-lg-2 pull-left">
+            <div class="form-inline">
+                <div class="form-group">
+                    {{ Form::label('show_data', 'Show') }}
+                    {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 pull-right">
+            <div class="pull-right">
+                <form class="form-inline">
+                    <div class="form-group">
+                        {{ Form::label('select_year', 'Select Year') }}
+                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <div id="not_found" class="well" style="margin-top: 3%; display: none;">
+        <div class="text-center">
+            There is no report found at current year
+        </div>
+    </div>
+
+    <canvas id="feedback_product_chart_all_yearly" style="position: relative; right: 6%; height:55vh; width:80vw"></canvas>
 @endsection

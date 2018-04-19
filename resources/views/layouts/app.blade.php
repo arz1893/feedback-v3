@@ -258,6 +258,7 @@
                     @yield('content')
                 </div>
             @endguest
+        </div>
 
 
         <!-- REQUIRED JS SCRIPTS -->
@@ -295,8 +296,8 @@
             {{--<script src="{{ asset('/js/fancytree/jquery.ui-contextmenu.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Light Gallery -->--}}
             {{--<script src="{{ asset('/js/lightgallery/lightgallery.js') }}" type="text/javascript"></script>--}}
-            {{--<!-- Chart JS -->--}}
-            {{--<script src="{{ asset('/js/chartjs/Chart.min.js') }}" type="text/javascript"></script>--}}
+            <!-- Chart JS -->
+            <script src="{{ asset('/js/chartjs/Chart.min.js') }}" type="text/javascript"></script>
             <!-- Moment -->
             <script src="{{ asset('/js/moment/moment.js') }}" type="text/javascript"></script>
             <!-- Bootstrap Date Picker -->
