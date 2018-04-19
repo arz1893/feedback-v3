@@ -3,29 +3,29 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/feedback_product/all/feedback_product_report_all_yearly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/feedback_product/all/feedback_product_report_all_monthly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
-    <h3 class="text-info">All Feedback in <span id="current_year"></span></h3>
+    <h3 class="text-info">All Feedback Product in <span id="current_month"></span> <span id="current_year"></span></h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
         <li><a href="{{ route('feedback_product_report.index') }}"><i class="fa fa-bar-chart"></i> Feedback Product Report</a></li>
-        <li class="active"> View All </li>
+        <li class="active"> View All (Monthly)</li>
     </ol>
 @endsection
 
 @section('main-content')
-
     {{ Form::hidden('tenantId', Auth::user()->tenantId, ['id' => 'tenantId']) }}
 
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
-        <a role="button" class="btn btn-xs btn-default">Monthly</a>
-        <a role="button" class="btn btn-xs btn-default active">Yearly</a>
+        <a role="button" class="btn btn-xs btn-default active">Monthly</a>
+        <a href="{{ route('feedback_product_report_all') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
     </div>
+
     {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
     {{ Form::radio('customer_rating', 2, false, ['id' => 'radio_neutral', 'class' => 'invisible']) }}
     {{ Form::radio('customer_rating', 3, false, ['id' => 'radio_satisfied', 'class' => 'invisible', 'checked' => true]) }}
@@ -59,24 +59,30 @@
         </a>
     </div>
 
-    <div class="row">
-        <div class="col-lg-2 pull-left">
-            <div class="form-inline">
-                <div class="form-group">
-                    {{ Form::label('show_data', 'Show') }}
-                    {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="form-inline">
+                    <div class="form-group">
+                        {{ Form::label('show_data', 'Show') }}
+                        {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-2 pull-right">
-            <div class="pull-right">
-                <form class="form-inline">
-                    <div class="form-group">
-                        {{ Form::label('select_year', 'Select Year') }}
-                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
-                    </div>
-                </form>
+            <div class="col-lg-4 pull-right">
+                <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            {{ Form::label('select_month', 'Month') }}
+                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control']) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('select_year', 'Year') }}
+                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -87,11 +93,9 @@
 
     <div id="not_found" class="well" style="margin-top: 3%; display: none;">
         <div class="text-center">
-            There is no report found at current year
+            There is no report found at current selected year and month
         </div>
     </div>
 
-    <div class="container-fluid">
-        <canvas id="feedback_product_chart_all_yearly" style="height:55vh; width:80vw"></canvas>
-    </div>
+    <canvas id="feedback_product_chart_all_monthly" style="position: relative; height:55vh; width:80vw"></canvas>
 @endsection
