@@ -52,8 +52,15 @@
                                 <img v-show="service.img !== ''" v-bind:src="service.img"  class="category-banner img-responsive">
                                 <img v-show="service.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
                                 <span class="imagebox-desc">
-                                {{ service.name }}
-                            </span>
+                                    {{ service.name }}
+                                </span>
+                            </a>
+                            <a role="button" v-else>
+                                <img v-show="service.img !== ''" v-bind:src="service.img"  class="category-banner img-responsive">
+                                <img v-show="service.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
+                                <span class="imagebox-desc">
+                                    {{ service.name }}
+                                </span>
                             </a>
                         </div>
                     </div>

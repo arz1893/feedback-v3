@@ -1,41 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Report\FeedbackProduct;
+namespace App\Http\Controllers\Report\FeedbackService;
 
-use App\FeedbackProduct;
+use App\FeedbackService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class FeedbackProductReportController extends Controller
+class FeedbackServiceReportController extends Controller
 {
     public function index() {
-        return view('report.feedback_product.feedback_product_report_index');
+        return view('report.feedback_service.feedback_service_report_index');
     }
 
     public function showAllReportYearly() {
-        return view('report.feedback_product.feedback_product_report_all_yearly');
+        return view('report.feedback_service.feedback_service_report_all_yearly');
     }
 
     public function showAllReportMonthly() {
-        return view('report.feedback_product.feedback_product_report_all_monthly');
+        return view('report.feedback_service.feedback_service_report_all_monthly');
     }
 
     /* API Section */
     public function getAllReportYearly($tenant_id, $customer_rating, $year, $count) {
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
+        $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
         $tempLabels = [];
         $tempDatas = array();
 
-        if(count($feedbackProducts) > 0) {
-            foreach ($feedbackProducts as $feedbackProduct) {
-                if(!in_array($feedbackProduct->product->name, $tempLabels)) {
-                    array_push($tempLabels, $feedbackProduct->product->name);
+        if(count($feedbackServices) > 0) {
+            foreach ($feedbackServices as $feedbackService) {
+                if(!in_array($feedbackService->service->name, $tempLabels)) {
+                    array_push($tempLabels, $feedbackService->service->name);
                     array_push($tempDatas, 0);
                 }
             }
 
-            foreach ($feedbackProducts as $feedbackProduct) {
-                $index = array_search($feedbackProduct->product->name, $tempLabels);
+            foreach ($feedbackServices as $feedbackService) {
+                $index = array_search($feedbackService->service->name, $tempLabels);
                 $tempDatas[$index] += 1;
             }
 
@@ -61,21 +61,21 @@ class FeedbackProductReportController extends Controller
     }
 
     public function getAllReportMonthly($tenant_id, $customer_rating, $year, $month, $count) {
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->whereMonth('created_at', $month)->orderBy('created_at', 'asc')->get();
+        $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->whereMonth('created_at', $month)->orderBy('created_at', 'asc')->get();
 
         $tempLabels = [];
         $tempDatas = array();
 
-        if(count($feedbackProducts) > 0) {
-            foreach ($feedbackProducts as $feedbackProduct) {
-                if(!in_array($feedbackProduct->product->name, $tempLabels)) {
-                    array_push($tempLabels, $feedbackProduct->product->name);
+        if(count($feedbackServices) > 0) {
+            foreach ($feedbackServices as $feedbackService) {
+                if(!in_array($feedbackService->service->name, $tempLabels)) {
+                    array_push($tempLabels, $feedbackService->service->name);
                     array_push($tempDatas, 0);
                 }
             }
 
-            foreach ($feedbackProducts as $feedbackProduct) {
-                $index = array_search($feedbackProduct->product->name, $tempLabels);
+            foreach ($feedbackServices as $feedbackService) {
+                $index = array_search($feedbackService->service->name, $tempLabels);
                 $tempDatas[$index] += 1;
             }
 

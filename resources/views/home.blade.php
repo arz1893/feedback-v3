@@ -138,7 +138,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('feedback_product_report.index') }}"><i class="ion ion-paper-airplane"></i> Product</a></li>
-                                <li><a href="#!"><i class="ion ion-paper-airplane"></i> Service</a></li>
+                                <li><a href="{{ route('feedback_service_report.index') }}"><i class="ion ion-paper-airplane"></i> Service</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -127,6 +127,11 @@ Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerVia
 /* end of user management */
 
 /* Feedback Product Report */
-Route::get('feedback_product_report/all', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReport')->name('feedback_product_report_all');
+Route::get('feedback_product_report/all/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReportYearly')->name('feedback_product_report_all_yearly');
 Route::get('feedback_product_report/all/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReportMonthly')->name('feedback_product_report_all_monthly');
 Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProductReportController');
+
+/* Feedback Service Report */
+Route::get('feedback_service_report/all/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showAllReportYearly')->name('feedback_service_report_all_yearly');
+Route::get('feedback_service_report/all/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showAllReportMonthly')->name('feedback_service_report_all_monthly');
+Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');

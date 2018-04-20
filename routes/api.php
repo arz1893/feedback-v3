@@ -102,3 +102,7 @@ Route::post('question/add-question', 'Question\QuestionController@addQuestion');
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
 Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');
+
+/* Feedback Service Report */
+Route::get('feedback_service_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackService\FeedbackServiceReportController@getAllReportYearly');
+Route::get('feedback_service_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackService\FeedbackServiceReportController@getAllReportMonthly');

@@ -31,14 +31,14 @@
             <div class="col-md-6">
                 <h2 class="text-info">Feedback Product Report <i class="fa fa-line-chart"></i></h2>
                 <p>View all feedback product report</p>
-                <a class="btn btn-danger" href="{{ route('feedback_product_report.index') }}">
+                <a href="{{ route('feedback_product_report.index') }}" class="btn btn-danger">
                     Show <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
             <div class="col-md-6">
                 <h2 class="text-info">Feedback Service Report <i class="fa fa-line-chart"></i></h2>
                 <p>View all feedback service report</p>
-                <a class="btn btn-warning" role="button">
+                <a href="{{ route('feedback_service_report.index') }}" class="btn btn-warning" role="button">
                     Show <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
