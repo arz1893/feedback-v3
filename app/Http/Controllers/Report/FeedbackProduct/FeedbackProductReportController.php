@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Report\FeedbackProduct;
 
 use App\FeedbackProduct;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,6 +19,11 @@ class FeedbackProductReportController extends Controller
 
     public function showAllReportMonthly() {
         return view('report.feedback_product.feedback_product_report_all_monthly');
+    }
+
+    public function showFeedbackProductReportYearly($product_id) {
+        $product = Product::findOrFail($product_id);
+        return view('report.feedback_product.detail.feedback_product_report_detail_yearly', compact('product'));
     }
 
     /* API Section */
@@ -97,6 +103,29 @@ class FeedbackProductReportController extends Controller
             return ['labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
         } else {
             return ['error' => 'not found'];
+        }
+    }
+
+    public function getReportDetailYearly($product_id, $year) {
+        $rating = ['not satisfied', 'neutral', 'satisfied'];
+        $ratingValue = [0,0,0];
+
+        $feedbackProducts = FeedbackProduct::where('productId', $product_id)->whereYear('created_at', $year)->get();
+
+        if(count($feedbackProducts) > 0) {
+            foreach ($feedbackProducts as $feedbackProduct) {
+                if($feedbackProduct->customer_rating === 1) {
+                    $ratingValue[0] += 1;
+                } else if($feedbackProduct->customer_rating === 2 ) {
+                    $ratingValue[1] += 1;
+                } else if($feedbackProduct->customer_rating === 3) {
+                    $ratingValue[2] += 1;
+                }
+            }
+
+            return ['rating' => $rating, 'rating_value' => [$ratingValue]];
+        } else {
+            return ['error' => 'data not found'];
         }
     }
 }

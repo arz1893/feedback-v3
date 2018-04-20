@@ -63176,41 +63176,54 @@ var render = function() {
                                 ])
                               ]
                             )
-                          : _c("a", { attrs: { role: "button" } }, [
-                              _c("img", {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: product.img !== "",
-                                    expression: "product.img !== ''"
+                          : _vm.type === "report"
+                            ? _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    role: "button",
+                                    href: product.show_report_url
                                   }
-                                ],
-                                staticClass: "category-banner img-responsive",
-                                attrs: { src: product.img }
-                              }),
-                              _vm._v(" "),
-                              _c("img", {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: product.img === "",
-                                    expression: "product.img === ''"
-                                  }
-                                ],
-                                staticClass: "category-banner img-responsive",
-                                attrs: { src: _vm.default_image }
-                              }),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "imagebox-desc" }, [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(product.name) +
-                                    "\n                        "
-                                )
-                              ])
-                            ])
+                                },
+                                [
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: product.img !== "",
+                                        expression: "product.img !== ''"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "category-banner img-responsive",
+                                    attrs: { src: product.img }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: product.img === "",
+                                        expression: "product.img === ''"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "category-banner img-responsive",
+                                    attrs: { src: _vm.default_image }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "imagebox-desc" }, [
+                                    _vm._v(
+                                      "\n                            " +
+                                        _vm._s(product.name) +
+                                        "\n                        "
+                                    )
+                                  ])
+                                ]
+                              )
+                            : _vm._e()
                       ])
                     ]
                   )

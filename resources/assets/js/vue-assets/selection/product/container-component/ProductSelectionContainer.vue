@@ -55,7 +55,7 @@
                                 {{ product.name }}
                             </span>
                             </a>
-                            <a role="button" v-else>
+                            <a role="button" v-else-if="type === 'report'" :href="product.show_report_url">
                                 <img v-show="product.img !== ''" v-bind:src="product.img"  class="category-banner img-responsive">
                                 <img v-show="product.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
                                 <span class="imagebox-desc">
