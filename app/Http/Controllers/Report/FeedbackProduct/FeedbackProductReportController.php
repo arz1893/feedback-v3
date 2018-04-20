@@ -26,6 +26,11 @@ class FeedbackProductReportController extends Controller
         return view('report.feedback_product.detail.feedback_product_report_detail_yearly', compact('product'));
     }
 
+    public function showFeedbackProductReportMonthly($product_id) {
+        $product = Product::findOrFail($product_id);
+        return view('report.feedback_product.detail.feedback_product_report_detail_monthly', compact('product'));
+    }
+
     /* API Section */
     public function getAllReportYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
@@ -111,6 +116,29 @@ class FeedbackProductReportController extends Controller
         $ratingValue = [0,0,0];
 
         $feedbackProducts = FeedbackProduct::where('productId', $product_id)->whereYear('created_at', $year)->get();
+
+        if(count($feedbackProducts) > 0) {
+            foreach ($feedbackProducts as $feedbackProduct) {
+                if($feedbackProduct->customer_rating === 1) {
+                    $ratingValue[0] += 1;
+                } else if($feedbackProduct->customer_rating === 2 ) {
+                    $ratingValue[1] += 1;
+                } else if($feedbackProduct->customer_rating === 3) {
+                    $ratingValue[2] += 1;
+                }
+            }
+
+            return ['rating' => $rating, 'rating_value' => [$ratingValue]];
+        } else {
+            return ['error' => 'data not found'];
+        }
+    }
+
+    public function getReportDetailMonthly($product_id, $year, $month) {
+        $rating = ['not satisfied', 'neutral', 'satisfied'];
+        $ratingValue = [0,0,0];
+
+        $feedbackProducts = FeedbackProduct::where('productId', $product_id)->whereYear('created_at', $year)->whereMonth('created_at', $month)->get();
 
         if(count($feedbackProducts) > 0) {
             foreach ($feedbackProducts as $feedbackProduct) {
