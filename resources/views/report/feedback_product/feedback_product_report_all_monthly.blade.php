@@ -23,7 +23,7 @@
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" class="btn btn-xs btn-default active">Monthly</a>
-        <a href="{{ route('feedback_product_report_all_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
+        <a href="{{ route('feedback_product_report_all') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
     </div>
 
     {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
