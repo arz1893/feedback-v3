@@ -150,6 +150,7 @@
             },
             makePagination: function (data) {
                 let vm = this;
+                console.log(data);
                 vm.pagination.currentPage = data.meta.current_page;
                 vm.pagination.endPage = data.meta.last_page;
                 vm.pagination.path = data.meta.path;
@@ -158,10 +159,11 @@
             },
             changePage: function (url) {
                 let vm = this;
+                console.log(url);
                 vm.searchStatus = 'Loading...';
                 function fireRequest() {
                     axios.get(url).then(response => {
-                        vm.feedbackProducts = response.data.data;
+                        vm.customers = response.data.data;
                         vm.makePagination(response.data);
                         vm.searchStatus = '';
                     }).catch(error => {

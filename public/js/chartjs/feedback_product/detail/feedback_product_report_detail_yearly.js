@@ -9,45 +9,52 @@ if($('#feedback_product_chart_detail_yearly').length > 0) {
 
     axios.get(url).then(response => {
         console.log(response.data.rating_value);
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: response.data.rating,
-                datasets: [{
-                    label: 'Feedback',
-                    data: response.data.rating_value[0],
-                    backgroundColor: [
-                        'rgba(255, 77, 77, 0.7)',
-                        'rgba(230, 184, 0, 0.7)',
-                        'rgba(109, 167, 247, 0.7)'
-                    ],
-                    borderWidth: 1,
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true,
-                            fontSize: 10
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            maxRotation: 90,
-                            fontSize: 10
-                        }
+        if(response.data.error === undefined) {
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: response.data.rating,
+                    datasets: [{
+                        label: 'Feedback',
+                        data: response.data.rating_value[0],
+                        backgroundColor: [
+                            'rgba(255, 77, 77, 0.7)',
+                            'rgba(230, 184, 0, 0.7)',
+                            'rgba(109, 167, 247, 0.7)'
+                        ],
+                        borderWidth: 1,
                     }]
-                }
-            }
-        });
-        window.myChart = myChart;
+                },
+                // options: {
+                //     scales: {
+                //         yAxes: [{
+                //             ticks: {
+                //                 beginAtZero:true,
+                //                 fontSize: 10
+                //             }
+                //         }],
+                //         xAxes: [{
+                //             ticks: {
+                //                 maxRotation: 90,
+                //                 fontSize: 10
+                //             }
+                //         }]
+                //     }
+                // }
+            });
+            window.myChart = myChart;
+        } else {
+            $('#not_found').css('display', '');
+            $('#feedback_product_chart_detail_yearly').addClass('invisible');
+        }
     }).catch(error => {
         console.log(error);
     });
 
     $('#select_year').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         onChangeParameter();
     });
     
@@ -68,7 +75,7 @@ if($('#feedback_product_chart_detail_yearly').length > 0) {
                 $('#feedback_product_chart_detail_yearly').css('display', '');
                 if(response.data.error === undefined) {
                     var myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'pie',
                         data: {
                             labels: response.data.rating,
                             datasets: [{
@@ -82,22 +89,22 @@ if($('#feedback_product_chart_detail_yearly').length > 0) {
                                 borderWidth: 1,
                             }]
                         },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true,
-                                        fontSize: 10
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        maxRotation: 90,
-                                        fontSize: 10
-                                    }
-                                }]
-                            }
-                        }
+                        // options: {
+                        //     scales: {
+                        //         yAxes: [{
+                        //             ticks: {
+                        //                 beginAtZero: true,
+                        //                 fontSize: 10
+                        //             }
+                        //         }],
+                        //         xAxes: [{
+                        //             ticks: {
+                        //                 maxRotation: 90,
+                        //                 fontSize: 10
+                        //             }
+                        //         }]
+                        //     }
+                        // }
                     });
                     window.myChart = myChart;
                 } else {

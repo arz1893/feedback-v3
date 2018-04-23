@@ -2,16 +2,18 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
     $('#current_year').text($('#select_year').val());
     $('#current_month').text($('#select_month option:selected').text());
 
+    var ctx = document.getElementById("feedback_product_chart_detail_monthly");
     var product_id = $('#productId').val();
     var year = $('#select_year').val();
     var month = $('#select_month').val();
 
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + product_id + '/get-report-detail-monthly/' + year + '/' + month;
+    window.myChart = '';
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'pie',
                 data: {
                     labels: response.data.rating,
                     datasets: [{
@@ -25,22 +27,22 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
                         borderWidth: 1,
                     }]
                 },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontSize: 10
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                maxRotation: 90,
-                                fontSize: 10
-                            }
-                        }]
-                    }
-                }
+                // options: {
+                //     scales: {
+                //         yAxes: [{
+                //             ticks: {
+                //                 beginAtZero: true,
+                //                 fontSize: 10
+                //             }
+                //         }],
+                //         xAxes: [{
+                //             ticks: {
+                //                 maxRotation: 90,
+                //                 fontSize: 10
+                //             }
+                //         }]
+                //     }
+                // }
             });
             window.myChart = myChart;
         } else {
@@ -52,21 +54,21 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
     });
 
     $('#select_month').change(function () {
-        if(window.myChart !== undefined) {
+        if(myChart instanceof Chart) {
             myChart.destroy();
         }
         onChangeParameter();
     });
 
     $('#select_year').change(function () {
-        if(window.myChart !== undefined) {
+        if(myChart instanceof Chart) {
             myChart.destroy();
         }
         onChangeParameter();
     });
 
     function onChangeParameter() {
-        let ctx = document.getElementById("feedback_product_chart_detail_yearly");
+        let ctx = document.getElementById("feedback_product_chart_detail_monthly");
         let product_id = $('#productId').val();
         let year = $('#select_year').val();
         let month = $('#select_month').val();
@@ -80,10 +82,10 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
             axios.get(url).then(response => {
                 console.log(response.data);
                 $('#loading_state').addClass('invisible');
-                $('#feedback_product_chart_detail_yearly').css('display', '');
+                $('#feedback_product_chart_detail_monthly').css('display', '');
                 if(response.data.error === undefined) {
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
+                    let myChart = new Chart(ctx, {
+                        type: 'pie',
                         data: {
                             labels: response.data.rating,
                             datasets: [{
@@ -97,22 +99,22 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
                                 borderWidth: 1,
                             }]
                         },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true,
-                                        fontSize: 10
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        maxRotation: 90,
-                                        fontSize: 10
-                                    }
-                                }]
-                            }
-                        }
+                        // options: {
+                        //     scales: {
+                        //         yAxes: [{
+                        //             ticks: {
+                        //                 beginAtZero: true,
+                        //                 fontSize: 10
+                        //             }
+                        //         }],
+                        //         xAxes: [{
+                        //             ticks: {
+                        //                 maxRotation: 90,
+                        //                 fontSize: 10
+                        //             }
+                        //         }]
+                        //     }
+                        // }
                     });
                     window.myChart = myChart;
                 } else {
