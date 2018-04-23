@@ -55,7 +55,7 @@
                                     {{ service.name }}
                                 </span>
                             </a>
-                            <a role="button" v-else>
+                            <a role="button" v-else-if="type === 'report'" :href="service.show_report_url">
                                 <img v-show="service.img !== ''" v-bind:src="service.img"  class="category-banner img-responsive">
                                 <img v-show="service.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
                                 <span class="imagebox-desc">

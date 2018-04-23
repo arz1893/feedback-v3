@@ -136,4 +136,6 @@ Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProdu
 /* Feedback Service Report */
 Route::get('feedback_service_report/all/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showAllReportYearly')->name('feedback_service_report_all_yearly');
 Route::get('feedback_service_report/all/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showAllReportMonthly')->name('feedback_service_report_all_monthly');
+Route::get('feedback_service_report/{service_id}/show_detail/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportYearly')->name('feedback_service_report_detail_yearly');
+Route::get('feedback_service_report/{service_id}/show_detail/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportMonthly')->name('feedback_service_report_detail_monthly');
 Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');

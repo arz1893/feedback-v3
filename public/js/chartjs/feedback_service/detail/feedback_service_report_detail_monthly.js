@@ -1,14 +1,16 @@
-if($('#feedback_product_chart_detail_yearly').length > 0) {
+if($('#feedback_service_chart_detail_monthly').length > 0) {
     $('#current_year').text($('#select_year').val());
+    $('#current_month').text($('#select_month option:selected').text());
 
-    var ctx = document.getElementById("feedback_product_chart_detail_yearly");
-    var product_id = $('#productId').val();
+    var ctx = document.getElementById("feedback_service_chart_detail_monthly");
+    var service_id = $('#serviceId').val();
     var year = $('#select_year').val();
+    var month = $('#select_month').val();
 
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + product_id + '/get-report-detail-yearly/' + year;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + service_id + '/get-report-detail-monthly/' + year + '/' + month;
+    window.myChart = '';
 
     axios.get(url).then(response => {
-        console.log(response.data.rating_value);
         if(response.data.error === undefined) {
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -29,7 +31,7 @@ if($('#feedback_product_chart_detail_yearly').length > 0) {
                 //     scales: {
                 //         yAxes: [{
                 //             ticks: {
-                //                 beginAtZero:true,
+                //                 beginAtZero: true,
                 //                 fontSize: 10
                 //             }
                 //         }],
@@ -45,37 +47,48 @@ if($('#feedback_product_chart_detail_yearly').length > 0) {
             window.myChart = myChart;
         } else {
             $('#not_found').css('display', '');
-            $('#feedback_product_chart_detail_yearly').addClass('invisible');
+            $('#feedback_service_chart_detail_monthly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
+    });
+
+    $('#select_month').change(function () {
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        $('#current_month').text($('#select_month option:selected').text());
+        $('#current_year').text($('#select_year').val());
+        onChangeParameter();
     });
 
     $('#select_year').change(function () {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
+        $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
-    
+
     function onChangeParameter() {
-        let ctx = document.getElementById("feedback_product_chart_detail_yearly");
-        let product_id = $('#productId').val();
+        let ctx = document.getElementById("feedback_service_chart_detail_monthly");
+        let service_id = $('#serviceId').val();
         let year = $('#select_year').val();
+        let month = $('#select_month').val();
         $('#loading_state').removeClass('invisible');
-        $('#feedback_product_chart_detail_yearly').css('display', 'none');
+        $('#feedback_service_chart_detail_yearly').css('display', 'none');
         $('#not_found').css('display', 'none');
 
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + product_id + '/get-report-detail-yearly/' + year;
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + service_id + '/get-report-detail-monthly/' + year + '/' + month;
 
         function sendRequest() {
             axios.get(url).then(response => {
                 console.log(response.data);
                 $('#loading_state').addClass('invisible');
-                $('#feedback_product_chart_detail_yearly').css('display', '');
+                $('#feedback_service_chart_detail_monthly').css('display', '');
                 if(response.data.error === undefined) {
-                    var myChart = new Chart(ctx, {
+                    let myChart = new Chart(ctx, {
                         type: 'pie',
                         data: {
                             labels: response.data.rating,

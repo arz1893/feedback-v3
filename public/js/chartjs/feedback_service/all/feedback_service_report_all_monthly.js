@@ -11,9 +11,10 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+    window.myChart = '';
 
     axios.get(url).then(response => {
-        if(response.data.error !== undefined) {
+        if(response.data.error === undefined) {
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -42,32 +43,37 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
                     }
                 }
             });
+            window.myChart = myChart;
         } else {
             $('#not_found').css('display', '');
             $('#feedback_service_chart_all_yearly').css('display', 'none');
         }
-
-        window.myChart = myChart;
     }).catch(error => {
         console.log(error);
     });
 
     $('#select_year').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
     });
 
     $('#select_month').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
     });
 
     $('#show_data').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
@@ -81,7 +87,9 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
         let currentRating = $(selected).data('value');
         console.log(currentRating);
         window.rating = currentRating;
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         switch (currentRating) {
             case 1 : {
                 $('input[name=customer_rating]').attr('checked',false);
@@ -153,7 +161,7 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
                         }
                     });
                     window.myChart = myChart;
-                    $('#feedback_service_chart_all_yearly').css({'display': ''});
+                    $('#feedback_service_chart_all_yearly').css('display', '');
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');

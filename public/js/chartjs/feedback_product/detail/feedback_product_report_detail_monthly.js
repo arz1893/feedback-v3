@@ -57,6 +57,8 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
+        $('#current_month').text($('#select_month option:selected').text());
+        $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
 
@@ -64,6 +66,8 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
+        $('#current_month').text($('#select_month option:selected').text());
+        $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
 

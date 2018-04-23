@@ -10,49 +10,60 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-yearly/' + rating + '/' + year + '/' + count;
+    window.myChart = '';
 
     axios.get(url).then(response => {
-        console.log(response.data);
-        let myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: response.data.labels,
-                datasets: [{
-                    label: 'Satisfied',
-                    data: response.data.data,
-                    backgroundColor: 'rgba(109, 167, 247, 0.7)',
-                    borderWidth: 1,
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true,
-                            fontSize: 10
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            maxRotation: 90,
-                            fontSize: 10
-                        }
+        if(response.data.error === undefined) {
+            let myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: response.data.labels,
+                    datasets: [{
+                        label: 'Satisfied',
+                        data: response.data.data,
+                        backgroundColor: 'rgba(109, 167, 247, 0.7)',
+                        borderWidth: 1,
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                maxRotation: 90,
+                                fontSize: 10
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-        window.myChart = myChart;
+            });
+            window.myChart = myChart;
+        } else {
+            $('#not_found').css('display', '');
+            $('#feedback_product_chart_all_yearly').css('display', 'none');
+        }
     }).catch(error => {
         console.log(error);
     });
 
     $('#select_year').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
 
     $('#show_data').change(function () {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
 
@@ -63,7 +74,9 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
         $(selected).addClass('is-selected');
         let rating = $(selected).data('value');
         window.rating = rating;
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         switch (rating) {
             case 1 : {
                 $('input[name=customer_rating]').attr('checked',false);
