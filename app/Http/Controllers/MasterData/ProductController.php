@@ -60,7 +60,7 @@ class ProductController extends Controller
         }
 
         if($uploadedImage != '') {
-            InterventionImage::make($uploadedImage)->save(public_path('uploaded_images/' . $tenant->email . '/' . $fileName));
+            InterventionImage::make($uploadedImage)->save(public_path('uploaded_images/' . $tenant->email . '/' . $fileName), 50);
             $newProduct = Product::create([
                 'systemId' => $id,
                 'name' => $request->product['name'],
