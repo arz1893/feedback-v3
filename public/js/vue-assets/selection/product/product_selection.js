@@ -62685,7 +62685,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62698,6 +62698,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+//
+//
+//
+//
 //
 //
 //
@@ -63280,24 +63284,54 @@ var render = function() {
                       ]
                     },
                     [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "list-group-item",
-                          attrs: { role: "button" }
-                        },
-                        [
-                          _c("img", {
-                            staticStyle: { width: "40px", height: "30px" },
-                            attrs: { src: product.img }
-                          }),
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(product.name) +
-                              "\n                        "
+                      _vm.type === "feedback"
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "list-group-item",
+                              attrs: {
+                                role: "button",
+                                href: product.show_feedback_url
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticStyle: { width: "40px", height: "30px" },
+                                attrs: { src: product.img }
+                              }),
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(product.name) +
+                                  "\n                        "
+                              )
+                            ]
                           )
-                        ]
-                      )
+                        : _vm.type === "report"
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "list-group-item",
+                                attrs: {
+                                  role: "button",
+                                  href: product.show_report_url
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  staticStyle: {
+                                    width: "40px",
+                                    height: "30px"
+                                  },
+                                  attrs: { src: product.img }
+                                }),
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(product.name) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          : _vm._e()
                     ]
                   )
                 })

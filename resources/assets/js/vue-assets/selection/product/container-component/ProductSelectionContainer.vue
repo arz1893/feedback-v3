@@ -75,7 +75,11 @@
                     </div>
                     <div class="list-group">
                         <div v-show="searchStatus === ''" v-for="product in products">
-                            <a role="button" class="list-group-item">
+                            <a role="button" v-if="type === 'feedback'" :href="product.show_feedback_url" class="list-group-item">
+                                <img v-bind:src="product.img" style="width: 40px; height: 30px;">
+                                {{ product.name }}
+                            </a>
+                            <a role="button" v-else-if="type === 'report'" :href="product.show_report_url" class="list-group-item">
                                 <img v-bind:src="product.img" style="width: 40px; height: 30px;">
                                 {{ product.name }}
                             </a>
