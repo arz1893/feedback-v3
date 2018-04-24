@@ -69768,7 +69768,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69783,10 +69783,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
-//
-//
-//
-//
 //
 //
 //
@@ -70220,28 +70216,6 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___defau
     },
 
     watch: {
-        selectedService: function selectedService() {
-            var vm = this;
-            if (vm.selectedService !== null && vm.selectedService !== '') {
-                var sendRequest = function sendRequest() {
-                    axios.get(url).then(function (response) {
-                        vm.feedbackServices = response.data.data;
-                        vm.makePagination(response.data);
-                        vm.searchStatus = '';
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                };
-
-                vm.searchStatus = 'Searching...';
-                var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-service/' + vm.selectedService.systemId;
-
-                var debounceFunction = _.debounce(sendRequest, 1000);
-                debounceFunction();
-            } else {
-                vm.getFeedbackServiceList();
-            }
-        },
         showReplyList: function showReplyList() {
             var vm = this;
             if (vm.showReplyList === true) {
@@ -70312,6 +70286,28 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___defau
             }
             var debounceFunction = _.debounce(sendRequest, 1000);
             debounceFunction();
+        },
+        filterByService: function filterByService() {
+            var vm = this;
+            if (vm.selectedService !== null && vm.selectedService !== '') {
+                var sendRequest = function sendRequest() {
+                    axios.get(url).then(function (response) {
+                        vm.feedbackServices = response.data.data;
+                        vm.makePagination(response.data);
+                        vm.searchStatus = '';
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                };
+
+                vm.searchStatus = 'Searching...';
+                var url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-service/' + vm.selectedService;
+
+                var debounceFunction = _.debounce(sendRequest, 1000);
+                debounceFunction();
+            } else {
+                vm.getFeedbackServiceList();
+            }
         },
         deleteFeedbackService: function deleteFeedbackService() {
             var vm = this;
@@ -70478,7 +70474,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-default",
+                staticClass: "btn btn-success",
                 staticStyle: { "margin-top": "4.5%" },
                 attrs: {
                   type: "button",
@@ -70502,47 +70498,78 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-lg-4 col-md-5 col-sm-5 col-xs-12 pull-right" },
-        [
-          _vm._m(0),
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "select_service" } }, [
+            _vm._v("Select Service")
+          ]),
           _vm._v(" "),
-          _c("form", { staticClass: "form-inline" }, [
-            _c("label", { attrs: { for: "select_tags" } }, [
-              _vm._v("Select Service")
-            ]),
-            _vm._v(" "),
+          _c("div", { staticClass: "input-group" }, [
             _c(
-              "div",
+              "select",
               {
-                staticClass:
-                  "input-group col-lg-12 col-md-12 col-sm-12 col-xs-12"
-              },
-              [
-                _c("multiselect", {
-                  attrs: {
-                    id: "select_tags",
-                    options: _vm.serviceOptions,
-                    "preserve-search": true,
-                    placeholder: "Choose Service",
-                    label: "name",
-                    "track-by": "name"
-                  },
-                  model: {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
                     value: _vm.selectedService,
-                    callback: function($$v) {
-                      _vm.selectedService = $$v
-                    },
                     expression: "selectedService"
                   }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "select_service", name: "select_service" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedService = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c(
+                  "option",
+                  { attrs: { value: "", selected: "", disabled: "" } },
+                  [_vm._v("Choose...")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.serviceOptions, function(serviceOption) {
+                  return _c(
+                    "option",
+                    { domProps: { value: serviceOption.systemId } },
+                    [_vm._v(_vm._s(serviceOption.name))]
+                  )
                 })
               ],
-              1
-            )
+              2
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "input-group-btn" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.filterByService()
+                    }
+                  }
+                },
+                [_vm._v("Search "), _c("i", { staticClass: "fa fa-search" })]
+              )
+            ])
           ])
-        ]
-      )
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("br"),
@@ -70589,7 +70616,7 @@ var render = function() {
       },
       [
         _c("table", { staticClass: "table table-hover table-bordered" }, [
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
@@ -71097,7 +71124,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(2)
+                                _vm._m(1)
                               ])
                             ]
                           )
@@ -71604,7 +71631,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm._v(
@@ -71644,12 +71671,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "visible-xs" }, [_c("br")])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

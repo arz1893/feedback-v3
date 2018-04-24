@@ -15,7 +15,7 @@
                         <datepicker  id="end_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="endDate"></datepicker>
                         <!-- /.input group -->
                     </div>
-                    <button class="btn btn-default"
+                    <button class="btn btn-success"
                             type="button" id="btnSearchByDate"
                             data-toggle="tooltip"
                             data-placement="bottom"
@@ -25,23 +25,19 @@
                 </form>
             </div>
 
-            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 pull-right">
-                <div class="visible-xs">
-                    <br>
-                </div>
-                <form class="form-inline">
-                    <label for="select_tags">Select Service</label>
-                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <multiselect id="select_tags"
-                                     v-model="selectedService"
-                                     :options="serviceOptions"
-                                     :preserve-search="true"
-                                     placeholder="Choose Service"
-                                     label="name"
-                                     track-by="name">
-                        </multiselect>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="select_service">Select Service</label>
+                    <div class="input-group">
+                        <select id="select_service" name="select_service" class="form-control" v-model="selectedService">
+                            <option value="" selected disabled>Choose...</option>
+                            <option v-for="serviceOption in serviceOptions" v-bind:value="serviceOption.systemId">{{ serviceOption.name }}</option>
+                        </select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" @click="filterByService()">Search <i class="fa fa-search"></i></button>
+                        </span>
                     </div>
-                </form>
+                </div>
             </div>
 
         </div> <br>
@@ -434,26 +430,6 @@
             this.generateSelectService();
         },
         watch: {
-            selectedService: function () {
-                let vm = this;
-                if(vm.selectedService !== null && vm.selectedService !== '') {
-                    vm.searchStatus = 'Searching...';
-                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-service/' + vm.selectedService.systemId;
-                    function sendRequest() {
-                        axios.get(url).then(response => {
-                            vm.feedbackServices = response.data.data;
-                            vm.makePagination(response.data);
-                            vm.searchStatus = '';
-                        }).catch(error => {
-                            console.log(error);
-                        });
-                    }
-                    let debounceFunction = _.debounce(sendRequest, 1000);
-                    debounceFunction();
-                } else {
-                    vm.getFeedbackServiceList();
-                }
-            },
             showReplyList: function () {
                 let vm = this;
                 if(vm.showReplyList === true) {
@@ -524,6 +500,26 @@
                 }
                 let debounceFunction = _.debounce(sendRequest, 1000);
                 debounceFunction();
+            },
+            filterByService: function () {
+                let vm = this;
+                if(vm.selectedService !== null && vm.selectedService !== '') {
+                    vm.searchStatus = 'Searching...';
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-service/' + vm.selectedService;
+                    function sendRequest() {
+                        axios.get(url).then(response => {
+                            vm.feedbackServices = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                    let debounceFunction = _.debounce(sendRequest, 1000);
+                    debounceFunction();
+                } else {
+                    vm.getFeedbackServiceList();
+                }
             },
             deleteFeedbackService: function() {
                 let vm = this;
