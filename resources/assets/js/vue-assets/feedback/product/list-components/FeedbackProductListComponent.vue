@@ -165,7 +165,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img v-if="feedbackProduct.product.img !== undefined" class="media-object" v-bind:src="feedbackProduct.product.img" width="125px">
+                                    <img v-if="feedbackProduct.product.img !== null" class="media-object" v-bind:src="feedbackProduct.product.img" width="125px">
                                     <img v-else v-bind:src="default_image" class="media-object" width="125px"/>
                                 </a>
                             </div>
@@ -547,6 +547,7 @@
             showDetail: function(selectedFeedback) {
                 let vm = this;
                 vm.feedbackProduct = selectedFeedback;
+                console.log(vm.feedbackProduct);
             },
             clearState: function () {
                 let vm = this;
