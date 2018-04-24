@@ -53,23 +53,23 @@ if($('#feedback_service_chart_detail_monthly').length > 0) {
         console.log(error);
     });
 
-    $('#select_month').change(function () {
+    function changeMonth() {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
         $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
         onChangeParameter();
-    });
+    }
 
-    $('#select_year').change(function () {
+    function changeYear() {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
         $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
         onChangeParameter();
-    });
+    }
 
     function onChangeParameter() {
         let ctx = document.getElementById("feedback_service_chart_detail_monthly");

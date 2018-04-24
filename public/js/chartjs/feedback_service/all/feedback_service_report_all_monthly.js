@@ -52,32 +52,14 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
         console.log(error);
     });
 
-    $('#select_year').change(function () {
+    function changeParameter() {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
-    });
-
-    $('#select_month').change(function () {
-        if(myChart instanceof Chart) {
-            myChart.destroy();
-        }
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
-        onChangeParameter();
-    });
-
-    $('#show_data').change(function () {
-        if(myChart instanceof Chart) {
-            myChart.destroy();
-        }
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
-        onChangeParameter();
-    });
+    }
 
     function customerRating(selected) {
         $('i.smiley_rating').each(function (index, element) {

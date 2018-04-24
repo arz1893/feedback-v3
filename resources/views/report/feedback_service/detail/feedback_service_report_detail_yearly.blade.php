@@ -7,7 +7,7 @@
 @endpush
 
 @section('content-header')
-    <h3 class="text-info">Report Detail (Yearly)</h3>
+    <h3 style="margin-top: -0.5%;" class="text-info">Report Detail (Yearly)</h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>

@@ -47,26 +47,12 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
         console.log(error);
     });
 
-    $('#select_year').change(function () {
+    function changeParameter() {
         myChart.destroy();
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
-    });
-
-    $('#select_month').change(function () {
-        myChart.destroy();
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
-        onChangeParameter();
-    });
-
-    $('#show_data').change(function () {
-        myChart.destroy();
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
-        onChangeParameter();
-    });
+    }
 
     function customerRating(selected) {
         $('i.smiley_rating').each(function (index, element) {

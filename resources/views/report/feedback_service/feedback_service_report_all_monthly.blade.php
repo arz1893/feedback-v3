@@ -7,7 +7,7 @@
 @endpush
 
 @section('content-header')
-    <h3 class="text-info">All Feedback Service in <span id="current_month"></span> <span id="current_year"></span></h3>
+    <h3 style="margin-top: -0.5%;" class="text-info">All Feedback Service in <span id="current_month"></span> <span id="current_year"></span></h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
@@ -65,21 +65,44 @@
                 <div class="form-inline">
                     <div class="form-group">
                         {{ Form::label('show_data', 'Show') }}
-                        {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
+                        {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 pull-right">
+            <!-- Mobile View -->
+            <div class="col-lg-5 visible-sm visible-xs pull-left">
+                <div class="pull-left">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            {{ Form::label('select_month', 'Month') }}
+                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5 visible-sm visible-xs pull-right">
+                <div class="pull-right">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            {{ Form::label('select_year', 'Select Year') }}
+                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Desktop View -->
+            <div class="col-lg-5 pull-right visible-lg visible-md">
                 <div class="pull-right">
                     <form class="form-inline">
                         <div class="form-group">
                             {{ Form::label('select_month', 'Month') }}
-                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control']) }}
+                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
                         </div>
                         <div class="form-group">
-                            {{ Form::label('select_year', 'Year') }}
-                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
+                            {{ Form::label('select_year', 'Select Year') }}
+                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
                         </div>
                     </form>
                 </div>
