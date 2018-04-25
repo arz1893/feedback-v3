@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 328);
+/******/ 	return __webpack_require__(__webpack_require__.s = 327);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -62427,8 +62427,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 176 */,
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -62447,7 +62446,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(178)
+var listToStyles = __webpack_require__(177)
 
 /*
 type StyleObject = {
@@ -62656,7 +62655,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports) {
 
 /**
@@ -62689,6 +62688,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
+/* 178 */,
 /* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -69864,15 +69864,14 @@ var index_esm = {
 /* 324 */,
 /* 325 */,
 /* 326 */,
-/* 327 */,
-/* 328 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(329);
+module.exports = __webpack_require__(328);
 
 
 /***/ }),
-/* 329 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -69893,7 +69892,7 @@ window.moment = __webpack_require__(0);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('edit-customer', __webpack_require__(330));
+Vue.component('edit-customer', __webpack_require__(329));
 
 var edit_customer = new Vue({
   el: '#edit_customer',
@@ -69903,19 +69902,19 @@ var edit_customer = new Vue({
 });
 
 /***/ }),
-/* 330 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(331)
+  __webpack_require__(330)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(333)
+var __vue_script__ = __webpack_require__(332)
 /* template */
-var __vue_template__ = __webpack_require__(334)
+var __vue_template__ = __webpack_require__(333)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69954,17 +69953,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 331 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(332);
+var content = __webpack_require__(331);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(177)("e3be00f6", content, false, {});
+var update = __webpack_require__(176)("e3be00f6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -69980,7 +69979,7 @@ if(false) {
 }
 
 /***/ }),
-/* 332 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -69994,7 +69993,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 333 */
+/* 332 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70275,7 +70274,7 @@ Vue.use(VeeValidate, {
 });
 
 /***/ }),
-/* 334 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

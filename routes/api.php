@@ -99,6 +99,10 @@ Route::post('customer/delete-customer', 'Customer\CustomerController@deleteCusto
 Route::get('question/{tenant_id}/get-all-question', 'Question\QuestionController@getAllQuestion');
 Route::post('question/add-question', 'Question\QuestionController@addQuestion');
 
+/* FAQ Product */
+Route::get('faq_product/{product_id}/get-faq-products', 'FAQ\FAQProductController@getFaqProducts');
+Route::post('faq_product/add-faq-product', 'FAQ\FAQProductController@addFaq');
+
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
 Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');
