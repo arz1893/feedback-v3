@@ -125,8 +125,16 @@ class FeedbackServiceController extends Controller
         }
     }
 
-    public function filterByService(Request $request, $tenant_id, $service_id) {
-        $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('serviceId', $service_id)->orderBy('created_at', 'desc')->paginate(15);
+    public function filterByService($tenant_id, $start_date, $end_date, $service_id) {
+        $from = date('Y-m-d H:i:s', strtotime($start_date . ' 00:00:00'));
+        $to = date('Y-m-d H:i:s', strtotime($end_date . ' 23:59:59'));
+
+        if($from > $to) {
+            $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('serviceId', $service_id)->whereBetween('created_at', [$to, $from])->orderBy('created_at', 'desc')->paginate(15);
+            return new FeedbackServiceCollection($filteredFeedbackServices);
+        }
+
+        $filteredFeedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('serviceId', $service_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackServiceCollection($filteredFeedbackServices);
     }
 

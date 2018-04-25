@@ -1,45 +1,33 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-lg-8 col-md-4 col-sm-5">
-                <form class="form-inline pull-left" id="form_search_list">
+            <div class="col-lg-12">
+                <form class="form-inline" id="form_search_list">
                     <!-- Date range -->
                     <div class="form-group">
                         <label for="start_date">From :</label>
-                        <datepicker id="start_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="startDate"></datepicker>
+                        <date-picker v-model="startDate" :config="config"></date-picker>
                         <!-- /.input group -->
                     </div>
                     <!-- Date range -->
                     <div class="form-group">
                         <label for="end_date">To :</label>
-                        <datepicker  id="end_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="endDate"></datepicker>
+                        <date-picker v-model="endDate" :config="config"></date-picker>
                         <!-- /.input group -->
                     </div>
-                    <button class="btn btn-success"
-                            type="button" id="btnSearchByDate"
-                            data-toggle="tooltip"
-                            data-placement="bottom"
-                            title="Search by date" style="margin-top: 4.5%" @click="filterByDate()">
-                        Search <i class="fa fa-search"></i>
-                    </button>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select id="select_service" name="select_service" class="form-control" v-model="selectedService">
+                                <option value="" selected>Select Service...</option>
+                                <option v-for="serviceOption in serviceOptions" v-bind:value="serviceOption.systemId">{{ serviceOption.name }}</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" @click="filterFeedbackServiceList()">Search <i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
                 </form>
             </div>
-
-            <div class="col-lg-4">
-                <div class="form-group">
-                    <label for="select_service">Select Service</label>
-                    <div class="input-group">
-                        <select id="select_service" name="select_service" class="form-control" v-model="selectedService">
-                            <option value="" selected disabled>Choose...</option>
-                            <option v-for="serviceOption in serviceOptions" v-bind:value="serviceOption.systemId">{{ serviceOption.name }}</option>
-                        </select>
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" @click="filterByService()">Search <i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
         </div> <br>
 
         <div v-if="searchStatus !== ''">
@@ -53,6 +41,11 @@
         </div>
 
         <div class="table-responsive" v-show="feedbackServices.length > 0">
+
+            <a role="button" class="btn btn-link" @click="getFeedbackServiceList()">
+                <i class="fa fa-refresh"></i> Refresh List
+            </a>
+
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
@@ -364,8 +357,8 @@
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker';
-    import MultiSelect from 'vue-multiselect';
+    import datePicker from 'vue-bootstrap-datetimepicker';
+    import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
 
     Vue.use(VeeValidate, {
         dictionary: {
@@ -379,12 +372,10 @@
         }
     });
 
-    Vue.component('multiselect', MultiSelect);
-
     export default {
         name: "feedback-list",
         props: ['tenant_id', 'user_id'],
-        components: { Datepicker },
+        components: { datePicker },
         data() {
             return {
                 feedbackServices: [],
@@ -402,8 +393,12 @@
                     creator: [],
                     attachment: ''
                 },
-                startDate: new Date(),
-                endDate: new Date(),
+                startDate: moment(new Date()).format('DD MMMM YYYY'),
+                endDate: moment(new Date()).format('DD MMMM YYYY'),
+                config: {
+                    format: 'DD MMMM YYYY',
+                    useCurrent: true,
+                },
                 show: true,
                 selectedService: '',
                 serviceOptions: [],
@@ -441,12 +436,18 @@
             getFeedbackServiceList: function () {
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/get-feedback-service-list';
-                axios.get(url).then(response => {
-                    vm.feedbackServices = response.data.data;
-                    vm.makePagination(response.data);
-                }).catch(error => {
-                    console.log(error);
-                });
+                vm.searchStatus = 'Loading...';
+                function getList() {
+                    axios.get(url).then(response => {
+                        vm.feedbackServices = response.data.data;
+                        vm.makePagination(response.data);
+                        vm.searchStatus = '';
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+                let debounceFunction = _.debounce(getList, 1000);
+                debounceFunction();
             },
             generateSelectService: function () {
                 let vm = this;
@@ -521,6 +522,44 @@
                     vm.getFeedbackServiceList();
                 }
             },
+
+            filterFeedbackServiceList: function() {
+                let vm = this;
+                let start_date = moment(new Date(vm.startDate)).format('YYYY-MM-DD');
+                let end_date = moment(new Date(vm.endDate)).format('YYYY-MM-DD');
+                let service_id = vm.selectedService;
+                vm.searchStatus = 'Searching...';
+
+                if(service_id !== '') {
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-service/' + start_date + '/' + end_date + '/' + service_id;
+                    function filterByService() {
+                        axios.get(url).then(response => {
+                            console.log(response.data);
+                            vm.feedbackServices = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                    let debounceFunction = _.debounce(filterByService, 1000);
+                    debounceFunction();
+                } else {
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/' + vm.tenant_id + '/filter-by-date/' + start_date + '/' + end_date;
+                    function filterByDate() {
+                        axios.get(url).then(response => {
+                            vm.feedbackServices = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                    let debounceFunction = _.debounce(filterByDate, 1000);
+                    debounceFunction();
+                }
+            },
+
             deleteFeedbackService: function() {
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_service/delete-feedback-service';

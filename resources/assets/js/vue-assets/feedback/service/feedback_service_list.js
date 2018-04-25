@@ -8,9 +8,8 @@
 require('../../../bootstrap');
 
 window.Vue = require('vue');
-window.MultiSelect = require('vue-multiselect');
-window.Datepicker = require('vuejs-datepicker');
 window.VeeValidate = require('vee-validate');
+window.datePicker = require('vue-bootstrap-datetimepicker');
 
 
 /**

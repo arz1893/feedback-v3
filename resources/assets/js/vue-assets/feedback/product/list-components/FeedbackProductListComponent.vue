@@ -41,9 +41,11 @@
         </div>
 
         <div class="table-responsive" v-show="feedbackProducts.length > 0">
-            <a role="button" class="btn btn-link">
+
+            <a role="button" class="btn btn-link" @click="getFeedbackProductList()">
                 <i class="fa fa-refresh"></i> Refresh List
             </a>
+
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
@@ -437,13 +439,18 @@
             getFeedbackProductList: function () {
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/get-feedback-product-list';
-                axios.get(url).then(response => {
-                    vm.feedbackProducts = response.data.data;
-                    vm.makePagination(response.data);
-                    console.log(response.data.data);
-                }).catch(error => {
-                    console.log(error);
-                });
+                vm.searchStatus = 'Loading...';
+                function getList() {
+                    axios.get(url).then(response => {
+                        vm.feedbackProducts = response.data.data;
+                        vm.makePagination(response.data);
+                        vm.searchStatus = '';
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+                let debounceFunction = _.debounce(getList, 1000);
+                debounceFunction();
             },
             generateSelectProduct: function () {
                 let vm = this;
@@ -476,47 +483,8 @@
                     });
                 }
 
-                var debounceFunction = _.debounce(fireRequest, 1000);
+                let debounceFunction = _.debounce(fireRequest, 1000);
                 debounceFunction(vm);
-            },
-            filterByDate: function () {
-                let vm = this;
-                let start_date = moment(vm.startDate).format('YYYY-MM-DD');
-                let end_date = moment(vm.endDate).format('YYYY-MM-DD');
-                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-date/' + start_date + '/' + end_date;
-                vm.searchStatus = 'Searching...';
-
-                function sendRequest() {
-                    axios.get(url).then(response => {
-                        vm.feedbackProducts = response.data.data;
-                        vm.makePagination(response.data);
-                        vm.searchStatus = '';
-                    }).catch(error => {
-                        console.log(error);
-                    });
-                }
-                let debounceFunction = _.debounce(sendRequest, 1000);
-                debounceFunction();
-            },
-            filterByProduct: function () {
-                let vm = this;
-                if(vm.selectedProduct !== null && vm.selectedProduct !== '') {
-                    vm.searchStatus = 'Searching...';
-                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-product/' + vm.selectedProduct;
-                    function sendRequest() {
-                        axios.get(url).then(response => {
-                            vm.feedbackProducts = response.data.data;
-                            vm.makePagination(response.data);
-                            vm.searchStatus = '';
-                        }).catch(error => {
-                            console.log(error);
-                        });
-                    }
-                    let debounceFunction = _.debounce(sendRequest, 1000);
-                    debounceFunction();
-                } else {
-                    vm.getFeedbackProductList();
-                }
             },
 
             filterFeedbackProductList: function() {
