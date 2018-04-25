@@ -1,12 +1,10 @@
 @extends('home')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/vue-multiselect/vue-multiselect.min.css') }}">
 @endpush
 
 @push('scripts')
     <script src="{{ mix('js/vue-assets/selection/product/product_selection.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/vue-multiselect/vue-multiselect.min.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')

@@ -62,6 +62,13 @@
                                     {{ service.name }}
                                 </span>
                             </a>
+                            <a role="button" v-else-if="type === 'faq'" :href="service.show_faq_url">
+                                <img v-show="service.img !== ''" v-bind:src="service.img"  class="category-banner img-responsive">
+                                <img v-show="service.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
+                                <span class="imagebox-desc">
+                                    {{ service.name }}
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -80,6 +87,10 @@
                                 {{ service.name }}
                             </a>
                             <a role="button" v-else-if="type === 'report'" :href="service.show_report_url" class="list-group-item">
+                                <img v-bind:src="service.img" style="width: 40px; height: 30px;">
+                                {{ service.name }}
+                            </a>
+                            <a role="button" v-else-if="type === 'faq'" :href="service.show_faq_url" class="list-group-item">
                                 <img v-bind:src="service.img" style="width: 40px; height: 30px;">
                                 {{ service.name }}
                             </a>

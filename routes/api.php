@@ -44,7 +44,7 @@ Route::get('product_category/{parent_id}/get-child-nodes', 'MasterData\ProductCa
 /* Feedback Product */
 Route::get('feedback_product/{tenant_id}/get-feedback-product-list', 'Feedback\Product\FeedbackProductController@getFeedbackProductList');
 Route::get('feedback_product/{feedback_id}/get-feedback-product', 'Feedback\Product\FeedbackProductController@getFeedbackProduct');
-Route::get('feedback_product/{tenant_id}/filter-by-product/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
+Route::get('feedback_product/{tenant_id}/filter-by-product/{date_start}/{date_end}/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
 Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
 Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');

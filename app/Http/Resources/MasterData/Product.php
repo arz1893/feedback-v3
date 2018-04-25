@@ -21,9 +21,9 @@ class Product extends JsonResource
             'productTags' => $this->tags,
             'show_product_url' => route('product.show', $this->systemId),
             'show_edit_product_url' => route('product.edit', $this->systemId),
-            'show_faq_url' => route('faq_product.show', $this->systemId),
             'show_feedback_url' => route('feedback_product.show', $this->systemId),
-            'show_report_url' => route('feedback_product_report_detail_yearly', $this->systemId)
+            'show_report_url' => route('feedback_product_report_detail_yearly', $this->systemId),
+            'show_faq_url' => route('faq_product.show', $this->systemId)
         ];
     }
 }

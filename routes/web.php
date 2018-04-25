@@ -78,13 +78,11 @@ Route::post('tag/delete-tag', 'MasterData\TagController@deleteTag');
 /* end of tag routes */
 
 /* Faq Product Routes */
-Route::resource('faq_product', 'Faq\FaqProductController');
-Route::post('faq_product/delete-faq-product', 'Faq\FaqProductController@deleteFaqProduct')->name('delete_faq_product');
+Route::resource('faq_product', 'FAQ\FAQProductController');
 /* end of faq product routes */
 
 /* Faq Service Routes */
-Route::resource('faq_service', 'Faq\FaqServiceController');
-Route::post('faq_service/delete-faq-service', 'Faq\FaqServiceController@deleteFaqService')->name('delete_faq_service');
+Route::resource('faq_service', 'FAQ\FAQServiceController');
 /* end of faq service routes */
 
 /* Feedback Routes */

@@ -125,9 +125,18 @@ class FeedbackProductController extends Controller
         }
     }
 
-    public function filterByProduct(Request $request, $tenant_id, $product_id) {
-        $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('productId', $product_id)->orderBy('created_at', 'desc')->paginate(15);
+    public function filterByProduct($tenant_id, $start_date, $end_date, $product_id) {
+        $from = date('Y-m-d H:i:s', strtotime($start_date . ' 00:00:00'));
+        $to = date('Y-m-d H:i:s', strtotime($end_date . ' 23:59:59'));
+
+        if($from > $to) {
+            $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('productId', $product_id)->whereBetween('created_at', [$to, $from])->orderBy('created_at', 'desc')->paginate(15);
+            return new FeedbackProductCollection($filteredFeedbackProducts);
+        }
+
+        $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('productId', $product_id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->paginate(15);
         return new FeedbackProductCollection($filteredFeedbackProducts);
+//        return ['start_date' => $from, 'end_date' => $to, 'tenant_id' => $tenant_id, 'product_id' => $product_id];
     }
 
     public function filterByDate($tenant_id, $start_date, $end_date) {
@@ -135,7 +144,7 @@ class FeedbackProductController extends Controller
         $to = date('Y-m-d H:i:s', strtotime($end_date . ' 23:59:59'));
 
         if($from > $to) {
-            $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereDate('created_at', [$to, $from])->orderBy('created_at', 'desc')->paginate(15);
+            $filteredFeedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereBetween('created_at', [$to, $from])->orderBy('created_at', 'desc')->paginate(15);
             return new FeedbackProductCollection($filteredFeedbackProducts);
         }
 

@@ -1,45 +1,33 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-lg-8 col-md-4 col-sm-5">
-                <form class="form-inline pull-left" id="form_search_list">
+            <div class="col-lg-12">
+                <form class="form-inline" id="form_search_list">
                     <!-- Date range -->
                     <div class="form-group">
                         <label for="start_date">From :</label>
-                        <datepicker id="start_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="startDate"></datepicker>
+                        <date-picker v-model="startDate" :config="config"></date-picker>
                         <!-- /.input group -->
                     </div>
                     <!-- Date range -->
                     <div class="form-group">
                         <label for="end_date">To :</label>
-                        <datepicker  id="end_date" :calendar-button="true" :calendar-button-icon="'fa fa-calendar'" :bootstrap-styling="true" :input-class="'form-control'" v-model="endDate"></datepicker>
+                        <date-picker v-model="endDate" :config="config"></date-picker>
                         <!-- /.input group -->
                     </div>
-                    <button class="btn btn-success"
-                            type="button" id="btnSearchByDate"
-                            data-toggle="tooltip"
-                            data-placement="bottom"
-                            title="Search by date" style="margin-top: 4.5%" @click="filterByDate()">
-                        Search <i class="fa fa-search"></i>
-                    </button>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select id="select_product" name="select-product" class="form-control" v-model="selectedProduct">
+                                <option value="" selected>Select Product...</option>
+                                <option v-for="productOption in productOptions" v-bind:value="productOption.systemId">{{ productOption.name }}</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" @click="filterFeedbackProductList()">Search <i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
                 </form>
             </div>
-
-            <div class="col-lg-4">
-                <div class="form-group">
-                    <label for="select_product">Select Product</label>
-                    <div class="input-group">
-                        <select id="select_product" name="select-product" class="form-control" v-model="selectedProduct">
-                            <option value="" selected disabled>Choose...</option>
-                            <option v-for="productOption in productOptions" v-bind:value="productOption.systemId">{{ productOption.name }}</option>
-                        </select>
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" @click="filterByProduct()">Search <i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
         </div> <br>
 
         <div v-if="searchStatus !== ''">
@@ -53,6 +41,9 @@
         </div>
 
         <div class="table-responsive" v-show="feedbackProducts.length > 0">
+            <a role="button" class="btn btn-link">
+                <i class="fa fa-refresh"></i> Refresh List
+            </a>
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
@@ -364,8 +355,9 @@
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker';
-    import MultiSelect from 'vue-multiselect';
+
+    import datePicker from 'vue-bootstrap-datetimepicker';
+    import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
 
     Vue.use(VeeValidate, {
         dictionary: {
@@ -384,7 +376,7 @@
     export default {
         name: "feedback-list",
         props: ['tenant_id', 'user_id'],
-        components: { Datepicker },
+        components: { datePicker },
         watch: {
             showReplyList: function () {
                 let vm = this;
@@ -414,8 +406,12 @@
                     creator: [],
                     attachment: ''
                 },
-                startDate: new Date(),
-                endDate: new Date(),
+                startDate: moment(new Date()).format('DD MMMM YYYY'),
+                endDate: moment(new Date()).format('DD MMMM YYYY'),
+                config: {
+                    format: 'DD MMMM YYYY',
+                    useCurrent: true,
+                },
                 show: true,
                 selectedProduct: '',
                 productOptions: [],
@@ -520,6 +516,43 @@
                     debounceFunction();
                 } else {
                     vm.getFeedbackProductList();
+                }
+            },
+
+            filterFeedbackProductList: function() {
+                let vm = this;
+                let start_date = moment(new Date(vm.startDate)).format('YYYY-MM-DD');
+                let end_date = moment(new Date(vm.endDate)).format('YYYY-MM-DD');
+                let product_id = vm.selectedProduct;
+                vm.searchStatus = 'Searching...';
+
+                if(product_id !== '') {
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-product/' + start_date + '/' + end_date + '/' + product_id;
+                    function filterByProduct() {
+                        axios.get(url).then(response => {
+                            console.log(response.data);
+                            vm.feedbackProducts = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                    let debounceFunction = _.debounce(filterByProduct, 1000);
+                    debounceFunction();
+                } else {
+                    const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-date/' + start_date + '/' + end_date;
+                    function filterByDate() {
+                        axios.get(url).then(response => {
+                            vm.feedbackProducts = response.data.data;
+                            vm.makePagination(response.data);
+                            vm.searchStatus = '';
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                    }
+                    let debounceFunction = _.debounce(filterByDate, 1000);
+                    debounceFunction();
                 }
             },
 

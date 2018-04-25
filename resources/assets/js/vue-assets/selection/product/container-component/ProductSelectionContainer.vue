@@ -62,6 +62,13 @@
                                 {{ product.name }}
                             </span>
                             </a>
+                            <a role="button" v-else-if="type === 'faq'" :href="product.show_faq_url">
+                                <img v-show="product.img !== ''" v-bind:src="product.img"  class="category-banner img-responsive">
+                                <img v-show="product.img === ''" v-bind:src="default_image"  class="category-banner img-responsive">
+                                <span class="imagebox-desc">
+                                {{ product.name }}
+                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -193,7 +200,6 @@
                 this.searchStatus = '';
                 const url = window.location.protocol + "//" + window.location.host  + '/api/product/' + this.tenant_id + '/get-all-product';
                 axios.get(url).then(response => {
-                    console.log(response.data.data);
                     this.products = response.data.data;
                     this.makePagination(response.data);
                 }).catch(error => {
