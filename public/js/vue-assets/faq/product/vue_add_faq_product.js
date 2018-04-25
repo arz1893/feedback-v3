@@ -70009,7 +70009,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70021,15 +70021,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(179);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -70249,51 +70240,13 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              staticStyle: { "margin-top": "0.8%" },
-              attrs: {
-                "data-toggle": "modal",
-                "data-target": "#modal_add_faq_product"
-              }
-            },
-            [_vm._v("\n                Add FAQ\n            ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-default",
-              staticStyle: { "margin-top": "0.8%" },
-              attrs: {
-                "data-toggle": "collapse",
-                "data-target": "#collapse_description",
-                "aria-expanded": "false",
-                "aria-controls": "collapse_description"
-              }
-            },
-            [_vm._v("\n                Show Description\n            ")]
-          )
+          _vm._m(0)
         ],
         2
       )
     ]),
     _vm._v(" "),
     _c("br"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "collapse", attrs: { id: "collapse_description" } },
-      [
-        _c("div", { staticClass: "well" }, [
-          _vm._v(
-            "\n            " + _vm._s(_vm.product.description) + "\n        "
-          )
-        ])
-      ]
-    ),
     _vm._v(" "),
     _c(
       "div",
@@ -70306,7 +70259,7 @@ var render = function() {
         }
       },
       _vm._l(_vm.faqProducts, function(faq, index) {
-        return _c("div", { staticClass: "panel panel-default" }, [
+        return _c("div", { staticClass: "panel panel-primary" }, [
           _c(
             "div",
             {
@@ -70380,7 +70333,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -70526,6 +70479,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        staticStyle: { "margin-top": "0.8%" },
+        attrs: {
+          "data-toggle": "modal",
+          "data-target": "#modal_add_faq_product"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Add FAQ\n            ")]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

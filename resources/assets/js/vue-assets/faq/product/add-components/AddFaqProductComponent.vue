@@ -16,23 +16,14 @@
                 </span> <br>
 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#modal_add_faq_product" style="margin-top: 0.8%;">
-                    Add FAQ
-                </button>
-
-                <button class="btn btn-default" data-toggle="collapse" data-target="#collapse_description" aria-expanded="false" aria-controls="collapse_description" style="margin-top: 0.8%;">
-                    Show Description
+                    <i class="fa fa-plus"></i> Add FAQ
                 </button>
             </div>
         </div>
         <br>
-        <div class="collapse" id="collapse_description">
-            <div class="well">
-                {{ product.description }}
-            </div>
-        </div>
 
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default" v-for="(faq, index) in faqProducts">
+            <div class="panel panel-primary" v-for="(faq, index) in faqProducts">
                 <div class="panel-heading" role="tab" v-bind:id="'heading'+index">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" v-bind:href="'#collapse'+index" aria-expanded="true" v-bind:aria-controls="'#collapse'+index">
