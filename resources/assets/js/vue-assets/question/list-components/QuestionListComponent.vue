@@ -1,6 +1,12 @@
 <template>
     <div>
-        <table class="table table-bordered">
+        <div v-show="questions.length === 0">
+            <div class="well text-center">
+                There is no question added yet
+            </div>
+        </div>
+
+        <table class="table table-bordered" v-if="questions.length > 0">
             <thead>
                 <tr>
                     <th>Created</th>
@@ -19,7 +25,7 @@
                     </td>
                     <td>
                         <a role="button">
-                            {{ question.customer }}
+                            {{ question.customer.name }}
                         </a>
                     </td>
                     <td>
@@ -34,7 +40,7 @@
                         </span>
                     </td>
                     <td>
-                        <a role="button" class="btn btn-warning">
+                        <a role="button" class="btn btn-warning" v-bind:href="question.show_edit_url">
                             <i class="fa fa-pencil-square"></i>
                         </a>
                         <button class="btn btn-danger">
@@ -54,11 +60,19 @@
         data() {
             return {
                 questions: [],
-                question: []
+                question: {
+                    systemId: '',
+                    customerId: '',
+                    question: '',
+                    answer: '',
+                    is_need_call: ''
+                },
+                selectCustomer: []
             }
         },
         created() {
             this.getAllQuestion();
+            this.generateSelectCustomer();
         },
         methods: {
             getAllQuestion: function () {
@@ -66,12 +80,22 @@
                 const url = window.location.protocol + "//" + window.location.host + "/api/question/" + this.tenant_id + '/get-all-question';
 
                 axios.get(url).then(response => {
+                    console.log(response.data);
                     vm.questions = response.data.data;
                     console.log(vm.questions);
                 }).catch(error => {
                     console.log(error);
                 });
-            }
+            },
+            generateSelectCustomer: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/' + this.tenant_id + '/generate-select-customer';
+                axios.get(url).then(response => {
+                    vm.selectCustomer = response.data;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
         }
     }
 </script>

@@ -21,6 +21,11 @@ class QuestionController extends Controller
         return new QuestionCollection($questions);
     }
 
+    public function getQuestion($question_id) {
+        $question = Question::findOrFail($question_id);
+        return new QuestionResource($question);
+    }
+
     public function addQuestion(Request $request) {
         Question::create([
             'systemId' => Uuid::generate(4),
@@ -29,6 +34,17 @@ class QuestionController extends Controller
             'is_need_call' => $request->question['is_need_call'],
             'tenantId' => $request->tenantId,
             'syscreator' => $request->syscreator
+        ]);
+        return ['message' => 'success'];
+    }
+
+    public function updateQuestion(Request $request) {
+        $question = Question::findOrFail($request->question['systemId']);
+        $question->update([
+            'question' => $request->question['question'],
+            'customerId' => $request->question['customerId'],
+            'sysupdater' => $request->user,
+            'is_need_call' => $request->question['is_need_call']
         ]);
         return ['message' => 'success'];
     }

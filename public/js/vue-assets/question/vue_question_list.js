@@ -62973,7 +62973,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63033,6 +63033,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "question-list",
@@ -63040,11 +63046,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             questions: [],
-            question: []
+            question: {
+                systemId: '',
+                customerId: '',
+                question: '',
+                answer: '',
+                is_need_call: ''
+            },
+            selectCustomer: []
         };
     },
     created: function created() {
         this.getAllQuestion();
+        this.generateSelectCustomer();
     },
 
     methods: {
@@ -63053,8 +63067,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var url = window.location.protocol + "//" + window.location.host + "/api/question/" + this.tenant_id + '/get-all-question';
 
             axios.get(url).then(function (response) {
+                console.log(response.data);
                 vm.questions = response.data.data;
                 console.log(vm.questions);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        generateSelectCustomer: function generateSelectCustomer() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/' + this.tenant_id + '/generate-select-customer';
+            axios.get(url).then(function (response) {
+                vm.selectCustomer = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -63071,58 +63095,92 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("table", { staticClass: "table table-bordered" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.questions, function(question) {
-          return _c("tr", [
-            _c("td", [
-              _c("a", { attrs: { role: "button" } }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(question.created_at) +
-                    "\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("a", { attrs: { role: "button" } }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(question.customer) +
-                    "\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(question.question) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              question.is_answered === 1
-                ? _c("span", { staticClass: "text-green" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.questions.length === 0,
+            expression: "questions.length === 0"
+          }
+        ]
+      },
+      [
+        _c("div", { staticClass: "well text-center" }, [
+          _vm._v("\n            There is no question added yet\n        ")
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm.questions.length > 0
+      ? _c("table", { staticClass: "table table-bordered" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.questions, function(question) {
+              return _c("tr", [
+                _c("td", [
+                  _c("a", { attrs: { role: "button" } }, [
                     _vm._v(
-                      "\n                        Yes\n                    "
+                      "\n                        " +
+                        _vm._s(question.created_at) +
+                        "\n                    "
                     )
                   ])
-                : _c("span", { staticClass: "text-red" }, [
-                    _vm._v("\n                        No\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { role: "button" } }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(question.customer.name) +
+                        "\n                    "
+                    )
                   ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1, true)
-          ])
-        })
-      )
-    ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(question.question) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  question.is_answered === 1
+                    ? _c("span", { staticClass: "text-green" }, [
+                        _vm._v(
+                          "\n                        Yes\n                    "
+                        )
+                      ])
+                    : _c("span", { staticClass: "text-red" }, [
+                        _vm._v(
+                          "\n                        No\n                    "
+                        )
+                      ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning",
+                      attrs: { role: "button", href: question.show_edit_url }
+                    },
+                    [_c("i", { staticClass: "fa fa-pencil-square" })]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1, true)
+                ])
+              ])
+            })
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -63148,14 +63206,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { staticClass: "btn btn-warning", attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa fa-pencil-square" })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _c("i", { staticClass: "fa fa-trash-o" })
-      ])
+    return _c("button", { staticClass: "btn btn-danger" }, [
+      _c("i", { staticClass: "fa fa-trash-o" })
     ])
   }
 ]

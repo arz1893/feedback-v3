@@ -11,10 +11,13 @@
                 <div class="form-group"  v-bind:class="{'has-error': validator.errors.has('customer')}">
                     <label for="customerId">Customer</label>
                     <div class="input-group">
-                        <multiselect id="customerId" name="customerId" v-model="question.customer" :options="selectCustomer" placeholder="Anonymous" label="name" track-by="name"></multiselect>
+                        <select class="form-control" name="customerId" id="customerId" v-model="question.customerId">
+                            <option value="" selected>Choose...</option>
+                            <option v-for="customer in selectCustomer" v-bind:value="customer.systemId">{{ customer.name }}</option>
+                        </select>
                         <span class="input-group-btn">
-                          <button type="button" class="btn btn-link" id="btn_add_customer" data-toggle="modal" data-target="#modal_add_customer">
-                              <i class="fa fa-plus-circle fa-2x"></i>
+                          <button type="button" class="btn btn-primary" id="btn_add_customer" data-toggle="modal" data-target="#modal_add_customer">
+                              <i class="fa fa-plus-circle"></i>
                           </button>
                         </span>
                     </div>
@@ -24,7 +27,7 @@
                 </div>
                 <div class="form-group" v-bind:class="{'has-error': validator.errors.has('question')}">
                     <label for="question">Question</label>
-                    <textarea id="question" name="question" class="form-control" v-model="question.content" rows="5" placeholder="Enter Question"></textarea>
+                    <textarea id="question" name="question" class="form-control" v-model="question.question" rows="5" placeholder="Enter Question"></textarea>
                     <span class="help-block text-red" v-show="validator.errors.has('question')">
                     {{ validator.errors.first('question') }}
                 </span>
@@ -37,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary" @click="validateQuestion()">
-                        Add Question
+                        Update Question
                     </button>
                 </div>
             </div>
@@ -182,14 +185,12 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
 <script>
-    import MultiSelect from 'vue-multiselect';
     import { Validator } from 'vee-validate';
-
-    Vue.component('multiselect', MultiSelect);
 
     Vue.use(VeeValidate, {
         dictionary: {
@@ -219,22 +220,17 @@
     });
 
     export default {
-        name: "question-index",
-        props: ['tenant_id', 'syscreator'],
+        name: "edit-question",
+        props: ['question_id', 'user', 'tenant_id'],
         data() {
             return {
-                questions: [],
                 question: {
                     systemId: '',
-                    customer: '',
-                    content: '',
-                    answer: '',
-                    is_need_call: '',
-                    tenantId: '',
-                    is_answered: '',
-                    syscreator: '',
-                    created_at: ''
+                    question: '',
+                    customerId: '',
+                    is_need_call: ''
                 },
+                validator: '',
                 selectCustomer: [],
                 customer: {
                     name: '',
@@ -249,12 +245,11 @@
                 },
                 alertCustomer: false,
                 alertSuccess: false,
-                validator: ''
             }
         },
         created() {
             this.generateSelectCustomer();
-
+            this.getQuestion();
             this.validator = new Validator({
                 customer: 'required',
                 question: 'required',
@@ -265,44 +260,20 @@
                 email: 'email'
             });
         },
-        watch: {
-            'question.customer': function () {
-                if(this.alertSuccess === false) {
-                    this.validator.validate('customer', this.question.customer);
-                }
-            },
-            'question.content': function () {
-                if(this.alertSuccess === false) {
-                    this.validator.validate('question', this.question.content);
-                }
-            },
-            'customer.name': function () {
-                if(this.alertCustomer === false) {
-                    this.validator.validate('name', this.customer.name);
-                }
-            },
-            'customer.gender': function () {
-                if(this.alertCustomer === false) {
-                    this.validator.validate('gender', this.customer.gender);
-                }
-            },
-            'customer.birthdate': function () {
-                if(this.alertCustomer === false) {
-                    this.validator.validate('birthdate', this.customer.birthdate);
-                }
-            },
-            'customer.phone': function () {
-                if(this.alertCustomer === false) {
-                    this.validator.validate('phone', this.customer.phone);
-                }
-            },
-            'customer.email': function () {
-                if(this.alertCustomer === false) {
-                    this.validator.validate('email', this.customer.email);
-                }
-            },
-        },
         methods: {
+            getQuestion: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/question/' + this.question_id + '/get-question';
+                axios.get(url).then(response => {
+                    console.log(response.data);
+                    vm.question.systemId = response.data.data.systemId;
+                    vm.question.question = response.data.data.question;
+                    vm.question.customerId = response.data.data.customer.systemId;
+                    vm.question.is_need_call = response.data.data.is_need_call;
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
             generateSelectCustomer: function () {
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/' + this.tenant_id + '/generate-select-customer';
@@ -315,15 +286,14 @@
             validateQuestion: function() {
                 let vm = this;
                 vm.validator.validateAll({
-                    customer: vm.question.customer,
-                    question: vm.question.content
+                    customer: vm.question.customerId,
+                    question: vm.question.question
                 }).then(result => {
                     if(result) {
-                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/question/add-question';
+                        const url = window.location.protocol + "//" + window.location.host + "/" + 'api/question/update-question';
                         axios.post(url, {
                             question: vm.question,
-                            tenantId: vm.tenant_id,
-                            syscreator: vm.syscreator
+                            user: vm.user
                         }).then(response => {
                             if(response.data.message === 'success') {
                                 vm.alertSuccess = true;
@@ -355,7 +325,7 @@
                         }).then(response => {
                             console.log(response.data);
                             vm.generateSelectCustomer();
-                            vm.question.customer = {systemId: response.data.systemId, name: response.data.name};
+                            vm.question.customerId = response.data.systemId;
                             vm.alertCustomer = true;
                         }).catch(error => {
                             console.log(error);

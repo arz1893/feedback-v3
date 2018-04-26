@@ -97,7 +97,9 @@ Route::post('customer/delete-customer', 'Customer\CustomerController@deleteCusto
 
 /* Question */
 Route::get('question/{tenant_id}/get-all-question', 'Question\QuestionController@getAllQuestion');
+Route::get('question/{question_id}/get-question', 'Question\QuestionController@getQuestion');
 Route::post('question/add-question', 'Question\QuestionController@addQuestion');
+Route::post('question/update-question', 'Question\QuestionController@updateQuestion');
 
 /* FAQ Product */
 Route::get('faq_product/{product_id}/get-faq-products', 'FAQ\FAQProductController@getFaqProducts');
