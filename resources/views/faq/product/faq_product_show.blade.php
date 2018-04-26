@@ -15,6 +15,6 @@
 
 @section('main-content')
     <div id="add_faq_product">
-        <add-faq-product product_id="{{ $product->systemId }}" syscreator="{{ Auth::user()->systemId }}"></add-faq-product>
+        <add-faq-product product_id="{{ $product->systemId }}" user="{{ Auth::user()->systemId }}"></add-faq-product>
     </div>
 @endsection

@@ -17,7 +17,7 @@ window.jQuery = require('jquery');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('add-faq-product', require('./add-components/AddFaqProductComponent.vue'));
+Vue.component('add-faq-product', require('./main-components/FaqProductComponent.vue'));
 
 const add_faq_product = new Vue({
     el: '#add_faq_product',

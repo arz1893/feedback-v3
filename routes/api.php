@@ -101,7 +101,10 @@ Route::post('question/add-question', 'Question\QuestionController@addQuestion');
 
 /* FAQ Product */
 Route::get('faq_product/{product_id}/get-faq-products', 'FAQ\FAQProductController@getFaqProducts');
-Route::post('faq_product/add-faq-product', 'FAQ\FAQProductController@addFaq');
+Route::get('faq_product/{faq_id}/get-faq-product', 'FAQ\FAQProductController@getFaqProduct');
+Route::post('faq_product/add-faq-product', 'FAQ\FAQProductController@addFaqProduct');
+Route::post('faq_product/update-faq-product', 'FAQ\FAQProductController@updateFaqProduct');
+Route::post('faq_product/delete-faq-product', 'FAQ\FAQProductController@deleteFaqProduct');
 
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');

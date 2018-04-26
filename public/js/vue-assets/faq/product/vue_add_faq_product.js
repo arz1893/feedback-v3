@@ -69914,7 +69914,7 @@ window.jQuery = __webpack_require__(134);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('add-faq-product', __webpack_require__(350));
+Vue.component('add-faq-product', __webpack_require__(367));
 
 var add_faq_product = new Vue({
   el: '#add_faq_product',
@@ -69924,25 +69924,42 @@ var add_faq_product = new Vue({
 });
 
 /***/ }),
-/* 350 */
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(351)
+  __webpack_require__(368)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(353)
+var __vue_script__ = __webpack_require__(370)
 /* template */
-var __vue_template__ = __webpack_require__(354)
+var __vue_template__ = __webpack_require__(371)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-184fd564"
+var __vue_scopeId__ = "data-v-16450433"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -69953,7 +69970,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/vue-assets/faq/product/add-components/AddFaqProductComponent.vue"
+Component.options.__file = "resources/assets/js/vue-assets/faq/product/main-components/FaqProductComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -69962,9 +69979,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-184fd564", Component.options)
+    hotAPI.createRecord("data-v-16450433", Component.options)
   } else {
-    hotAPI.reload("data-v-184fd564", Component.options)
+    hotAPI.reload("data-v-16450433", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -69975,23 +69992,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 351 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(352);
+var content = __webpack_require__(369);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(176)("3399c549", content, false, {});
+var update = __webpack_require__(176)("4cd9c911", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-184fd564\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddFaqProductComponent.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-184fd564\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddFaqProductComponent.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16450433\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FaqProductComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16450433\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FaqProductComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -70001,7 +70018,7 @@ if(false) {
 }
 
 /***/ }),
-/* 352 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -70009,18 +70026,69 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 353 */
+/* 370 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(179);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70112,17 +70180,24 @@ Vue.use(VeeValidate, {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "add-faq-product",
-    props: ['product_id', 'syscreator'],
+    props: ['product_id', 'user'],
     data: function data() {
         return {
             faqProducts: [],
             product: [],
             faqProduct: {
+                systemId: '',
                 question: '',
                 answer: ''
             },
+            type: '',
             searchStatus: '',
-            validator: ''
+            validator: '',
+            showAlert: false,
+            alertText: '',
+            showLoadingState: false,
+            title: '',
+            loadStatus: ''
         };
     },
     created: function created() {
@@ -70134,18 +70209,76 @@ Vue.use(VeeValidate, {
         });
     },
 
+    watch: {
+        'faqProduct.question': function faqProductQuestion() {
+            if (this.showAlert === false) {
+                this.validator.validate('question', this.faqProduct.question);
+            }
+        },
+        'faqProduct.answer': function faqProductAnswer() {
+            if (this.showAlert === false) {
+                this.validator.validate('answer', this.faqProduct.answer);
+            }
+        }
+    },
     methods: {
         getFaqProducts: function getFaqProducts() {
             var vm = this;
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/faq_product/' + vm.product_id + '/get-faq-products';
+            vm.loadStatus = 'Loading...';
 
-            axios.get(url).then(function (response) {
-                console.log(response);
-                vm.faqProducts = response.data.data;
+            function getFaqs() {
+                axios.get(url).then(function (response) {
+                    console.log(response);
+                    vm.faqProducts = response.data.data;
+                    vm.loadStatus = '';
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            var debounceFunction = _.debounce(getFaqs, 1000);
+            debounceFunction();
+        },
+
+        editFaqProduct: function editFaqProduct(currentFaqProduct) {
+            this.type = 'update';
+            this.title = 'Update FAQ';
+            this.faqProduct.systemId = currentFaqProduct.systemId;
+            this.faqProduct.question = currentFaqProduct.question;
+            this.faqProduct.answer = currentFaqProduct.answer;
+        },
+
+        setDeleteTarget: function setDeleteTarget(currentFaqProduct) {
+            this.faqProduct.systemId = currentFaqProduct.systemId;
+            this.faqProduct.question = currentFaqProduct.question;
+            this.faqProduct.answer = currentFaqProduct.answer;
+        },
+
+        deleteFaqProduct: function deleteFaqProduct() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/faq_product/delete-faq-product';
+            axios.post(url, {
+                faqId: vm.faqProduct.systemId
+            }).then(function (response) {
+                if (response.data.message === 'success') {
+                    var showAlert = function showAlert() {
+                        vm.showAlert = false;
+                        vm.alertText = '';
+                    };
+
+                    vm.clearState();
+                    vm.getFaqProducts();
+                    vm.showAlert = true;
+                    vm.alertText = 'FAQ has been successfully deleted';
+
+                    var debounceFunction = _.debounce(showAlert, 3000);
+                    debounceFunction();
+                }
             }).catch(function (error) {
                 console.log(error);
             });
         },
+
         getProduct: function getProduct() {
             var vm = this;
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/product/' + vm.product_id + '/get-product';
@@ -70165,31 +70298,77 @@ Vue.use(VeeValidate, {
                 answer: vm.faqProduct.answer
             }).then(function (result) {
                 if (result) {
-                    var saveFaq = function saveFaq() {
-                        axios.post(url, {
-                            faqProduct: vm.faqProduct,
-                            syscreator: vm.syscreator
-                        }).then(function (response) {
-                            if (response.data.message === 'success') {}
-                        }).catch(function (error) {
-                            console.log(error);
-                        });
-                    };
+                    if (vm.type === 'add') {
+                        var saveFaq = function saveFaq() {
+                            axios.post(url, {
+                                faqProduct: vm.faqProduct,
+                                productId: vm.product_id,
+                                syscreator: vm.user
+                            }).then(function (response) {
+                                if (response.data.message === 'success') {
+                                    vm.clearState();
+                                    vm.alertText = 'FAQ has been added, now you can close this dialog';
+                                    vm.showAlert = true;
+                                    vm.showLoadingState = false;
+                                    vm.getFaqProducts();
+                                }
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+                        };
 
-                    var url = window.location.protocol + "//" + window.location.host + "/" + 'api/faq_product/add-faq-product';
+                        vm.showLoadingState = true;
+                        var url = window.location.protocol + "//" + window.location.host + "/" + 'api/faq_product/add-faq-product';
 
-                    var debounceFunction = _.debounce(saveFaq, 1000);
-                    debounceFunction();
+                        var debounceFunction = _.debounce(saveFaq, 1000);
+                        debounceFunction();
+                    } else if (vm.type === 'update') {
+                        var updateFaq = function updateFaq() {
+                            axios.post(_url, {
+                                faqProduct: vm.faqProduct,
+                                syscreator: vm.user
+                            }).then(function (response) {
+                                if (response.data.message === 'success') {
+                                    vm.clearState();
+                                    vm.alertText = 'FAQ has been updated, now you can close this dialog';
+                                    vm.showAlert = true;
+                                    vm.showLoadingState = false;
+                                    vm.getFaqProducts();
+                                }
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+                        };
+
+                        vm.showLoadingState = true;
+                        var _url = window.location.protocol + "//" + window.location.host + "/" + 'api/faq_product/update-faq-product';
+
+                        var _debounceFunction = _.debounce(updateFaq, 1000);
+                        _debounceFunction();
+                    }
                 }
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+
+        addTypeSubmit: function addTypeSubmit(type, title) {
+            this.type = type;
+            this.title = title;
+        },
+
+        clearState: function clearState() {
+            this.faqProduct.systemId = '';
+            this.faqProduct.question = '';
+            this.faqProduct.answer = '';
+            this.showAlert = false;
+            this.validator.errors.clear();
         }
     }
 });
 
 /***/ }),
-/* 354 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70240,7 +70419,26 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(0)
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              staticStyle: { "margin-top": "0.8%" },
+              attrs: {
+                "data-toggle": "modal",
+                "data-target": "#modal_faq_product"
+              },
+              on: {
+                click: function($event) {
+                  _vm.addTypeSubmit("add", "Add FAQ")
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "fa fa-plus" }),
+              _vm._v(" Add FAQ\n            ")
+            ]
+          )
         ],
         2
       )
@@ -70251,80 +70449,135 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "panel-group",
-        attrs: {
-          id: "accordion",
-          role: "tablist",
-          "aria-multiselectable": "true"
-        }
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.loadStatus !== "",
+            expression: "loadStatus !== ''"
+          }
+        ],
+        staticClass: "text-center"
       },
-      _vm._l(_vm.faqProducts, function(faq, index) {
-        return _c("div", { staticClass: "panel panel-primary" }, [
-          _c(
-            "div",
+      [
+        _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+        _vm._v("\n        " + _vm._s(_vm.loadStatus) + "\n    ")
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showAlert,
+            expression: "showAlert"
+          }
+        ],
+        staticClass: "alert alert-success",
+        attrs: { role: "alert" }
+      },
+      [
+        _c("strong", [_vm._v("Info!")]),
+        _vm._v(" " + _vm._s(_vm.alertText) + "\n    ")
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          directives: [
             {
-              staticClass: "panel-heading",
-              attrs: { role: "tab", id: "heading" + index }
-            },
-            [
-              _c("h4", { staticClass: "panel-title" }, [
+              name: "show",
+              rawName: "v-show",
+              value: _vm.faqProducts.length === 0,
+              expression: "faqProducts.length === 0"
+            }
+          ],
+          staticClass: "col-lg-12"
+        },
+        [
+          _c("div", { staticClass: "well" }, [
+            _vm._v(
+              "\n                This product dont have any FAQ yet\n            "
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6" },
+        _vm._l(_vm.faqProducts, function(faq) {
+          return _c("div", { staticClass: "box box-primary box-solid" }, [
+            _c("div", { staticClass: "box-header with-border" }, [
+              _c("h3", { staticClass: "box-title" }, [
+                _vm._v(_vm._s(faq.question))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-tools pull-right" }, [
                 _c(
-                  "a",
+                  "button",
                   {
+                    staticClass: "btn btn-box-tool",
                     attrs: {
-                      role: "button",
-                      "data-toggle": "collapse",
-                      "data-parent": "#accordion",
-                      href: "#collapse" + index,
-                      "aria-expanded": "true",
-                      "aria-controls": "#collapse" + index
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#modal_faq_product"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.editFaqProduct(faq)
+                      }
                     }
                   },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(faq.question) +
-                        "\n                    "
-                    )
-                  ]
+                  [_c("i", { staticClass: "fa fa-pencil-square" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-box-tool",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#modal_delete_faq_product"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.setDeleteTarget(faq)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-trash-o" })]
                 )
               ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "panel-collapse collapse in",
-              attrs: {
-                id: "collapse" + index,
-                role: "tabpanel",
-                "aria-labelledby": "heading" + index
-              }
-            },
-            [
-              _c("div", { staticClass: "panel-body" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(faq.answer) +
-                    "\n                "
-                )
-              ])
-            ]
-          )
-        ])
-      })
-    ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-body" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(faq.answer) +
+                  "\n                "
+              )
+            ])
+          ])
+        })
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
       {
         staticClass: "modal fade",
         attrs: {
-          id: "modal_add_faq_product",
+          id: "modal_faq_product",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "myModalLabel"
+          "aria-labelledby": "faqProductLabel"
         }
       },
       [
@@ -70333,9 +70586,81 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _c("div", { staticClass: "modal-header" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  {
+                    staticClass: "modal-title text-primary",
+                    attrs: { id: "faqProductLabel" }
+                  },
+                  [_vm._v(_vm._s(_vm.title))]
+                )
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showAlert,
+                        expression: "showAlert"
+                      }
+                    ],
+                    staticClass: "alert alert-success",
+                    attrs: { role: "alert", id: "alert_success" }
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.showAlert = false
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { attrs: { "aria-hidden": "true" } }, [
+                          _vm._v("×")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("strong", [_vm._v("Info!")]),
+                    _vm._v(
+                      " " + _vm._s(_vm.alertText) + "\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showLoadingState,
+                        expression: "showLoadingState"
+                      }
+                    ],
+                    staticClass: "text-center"
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+                    _vm._v(
+                      "\n                        Saving data, please wait...\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
@@ -70452,7 +70777,12 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.clearState()
+                      }
+                    }
                   },
                   [_vm._v("Close")]
                 ),
@@ -70468,7 +70798,62 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Add FAQ")]
+                  [_vm._v("Save Changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modal_delete_faq_product",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "deleteFaqLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    Are you sure want to delete this faq ?\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteFaqProduct()
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
                 )
               ])
             ])
@@ -70486,14 +70871,14 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "btn btn-primary",
-        staticStyle: { "margin-top": "0.8%" },
+        staticClass: "close",
         attrs: {
-          "data-toggle": "modal",
-          "data-target": "#modal_add_faq_product"
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
         }
       },
-      [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Add FAQ\n            ")]
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   },
   function() {
@@ -70517,10 +70902,10 @@ var staticRenderFns = [
       _c(
         "h4",
         {
-          staticClass: "modal-title text-primary",
-          attrs: { id: "myModalLabel" }
+          staticClass: "modal-title text-red",
+          attrs: { id: "deleteFaqLabel" }
         },
-        [_vm._v("Add FAQ")]
+        [_vm._v("Warning!")]
       )
     ])
   }
@@ -70530,7 +70915,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-184fd564", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-16450433", module.exports)
   }
 }
 
