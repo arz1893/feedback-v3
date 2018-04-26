@@ -373,8 +373,6 @@
         }
     });
 
-    Vue.component('multiselect', MultiSelect);
-
     export default {
         name: "feedback-list",
         props: ['tenant_id', 'user_id'],
