@@ -11,10 +11,13 @@
                 <div class="form-group"  v-bind:class="{'has-error': validator.errors.has('customer')}">
                     <label for="customerId">Customer</label>
                     <div class="input-group">
-                        <multiselect id="customerId" name="customerId" v-model="question.customer" :options="selectCustomer" placeholder="Anonymous" label="name" track-by="name"></multiselect>
+                        <select id="customerId" name="customerId" class="form-control" v-model="question.customer">
+                            <option value="" selected>Choose...</option>
+                            <option v-for="customer in selectCustomer" v-bind:value="customer.systemId">{{ customer.name }}</option>
+                        </select>
                         <span class="input-group-btn">
-                          <button type="button" class="btn btn-link" id="btn_add_customer" data-toggle="modal" data-target="#modal_add_customer">
-                              <i class="fa fa-plus-circle fa-2x"></i>
+                          <button type="button" class="btn btn-primary" id="btn_add_customer" data-toggle="modal" data-target="#modal_add_customer">
+                              <i class="fa fa-plus-circle"></i>
                           </button>
                         </span>
                     </div>
@@ -355,7 +358,7 @@
                         }).then(response => {
                             console.log(response.data);
                             vm.generateSelectCustomer();
-                            vm.question.customer = {systemId: response.data.systemId, name: response.data.name};
+                            vm.question.customer = response.data.systemId;
                             vm.alertCustomer = true;
                         }).catch(error => {
                             console.log(error);

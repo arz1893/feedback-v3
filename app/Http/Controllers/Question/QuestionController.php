@@ -30,11 +30,23 @@ class QuestionController extends Controller
         Question::create([
             'systemId' => Uuid::generate(4),
             'question' => $request->question['content'],
-            'customerId' => $request->question['customer']['systemId'],
+            'customerId' => $request->question['customer'],
             'is_need_call' => $request->question['is_need_call'],
             'tenantId' => $request->tenantId,
             'syscreator' => $request->syscreator
         ]);
+        return ['message' => 'success'];
+    }
+
+    public function answerQuestion(Request $request) {
+        $question = Question::findOrFail($request->question_id);
+        $question->answer = $request->answer;
+        if($request->answer == '') {
+            $question->is_answered = 0;
+        } else {
+            $question->is_answered = 1;
+        }
+        $question->update();
         return ['message' => 'success'];
     }
 
@@ -46,6 +58,12 @@ class QuestionController extends Controller
             'sysupdater' => $request->user,
             'is_need_call' => $request->question['is_need_call']
         ]);
+        return ['message' => 'success'];
+    }
+
+    public function deleteQuestion(Request $request) {
+        $question = Question::findOrFail($request->question_id);
+        $question->delete();
         return ['message' => 'success'];
     }
 }

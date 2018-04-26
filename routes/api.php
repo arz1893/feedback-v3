@@ -100,6 +100,8 @@ Route::get('question/{tenant_id}/get-all-question', 'Question\QuestionController
 Route::get('question/{question_id}/get-question', 'Question\QuestionController@getQuestion');
 Route::post('question/add-question', 'Question\QuestionController@addQuestion');
 Route::post('question/update-question', 'Question\QuestionController@updateQuestion');
+Route::post('question/answer-question', 'Question\QuestionController@answerQuestion');
+Route::post('question/delete-question', 'Question\QuestionController@deleteQuestion');
 
 /* FAQ Product */
 Route::get('faq_product/{product_id}/get-faq-products', 'FAQ\FAQProductController@getFaqProducts');
