@@ -106,6 +106,13 @@ Route::post('faq_product/add-faq-product', 'FAQ\FAQProductController@addFaqProdu
 Route::post('faq_product/update-faq-product', 'FAQ\FAQProductController@updateFaqProduct');
 Route::post('faq_product/delete-faq-product', 'FAQ\FAQProductController@deleteFaqProduct');
 
+/* FAQ Service */
+Route::get('faq_service/{service_id}/get-faq-services', 'FAQ\FAQServiceController@getFaqServices');
+Route::get('faq_service/{faq_id}/get-faq-service', 'FAQ\FAQServiceController@getFaqService');
+Route::post('faq_service/add-faq-service', 'FAQ\FAQServiceController@addFaqService');
+Route::post('faq_service/update-faq-service', 'FAQ\FAQServiceController@updateFaqService');
+Route::post('faq_service/delete-faq-service', 'FAQ\FAQServiceController@deleteFaqService');
+
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
 Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');

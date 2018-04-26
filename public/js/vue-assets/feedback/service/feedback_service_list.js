@@ -62688,8 +62688,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 178 */,
-/* 179 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69717,6 +69716,7 @@ var index_esm = {
 
 
 /***/ }),
+/* 179 */,
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -73378,7 +73378,7 @@ module.exports = __webpack_require__(286);
 __webpack_require__(136);
 
 window.Vue = __webpack_require__(171);
-window.VeeValidate = __webpack_require__(179);
+window.VeeValidate = __webpack_require__(178);
 window.datePicker = __webpack_require__(180);
 
 /**

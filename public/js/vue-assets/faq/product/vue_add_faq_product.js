@@ -62688,8 +62688,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 178 */,
-/* 179 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69717,6 +69716,7 @@ var index_esm = {
 
 
 /***/ }),
+/* 179 */,
 /* 180 */,
 /* 181 */,
 /* 182 */,
@@ -69905,7 +69905,7 @@ module.exports = __webpack_require__(349);
 __webpack_require__(136);
 
 window.Vue = __webpack_require__(171);
-window.VeeValidate = __webpack_require__(179);
+window.VeeValidate = __webpack_require__(178);
 window.jQuery = __webpack_require__(134);
 
 /**
@@ -69914,7 +69914,7 @@ window.jQuery = __webpack_require__(134);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('add-faq-product', __webpack_require__(367));
+Vue.component('add-faq-product', __webpack_require__(350));
 
 var add_faq_product = new Vue({
   el: '#add_faq_product',
@@ -69924,36 +69924,19 @@ var add_faq_product = new Vue({
 });
 
 /***/ }),
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(368)
+  __webpack_require__(351)
 }
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(370)
+var __vue_script__ = __webpack_require__(353)
 /* template */
-var __vue_template__ = __webpack_require__(371)
+var __vue_template__ = __webpack_require__(354)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69992,13 +69975,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 368 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(369);
+var content = __webpack_require__(352);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70018,7 +70001,7 @@ if(false) {
 }
 
 /***/ }),
-/* 369 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(175)(false);
@@ -70032,12 +70015,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 370 */
+/* 353 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
 //
 //
 //
@@ -70368,7 +70351,7 @@ Vue.use(VeeValidate, {
 });
 
 /***/ }),
-/* 371 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
