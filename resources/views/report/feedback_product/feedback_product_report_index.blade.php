@@ -9,15 +9,15 @@
 @endpush
 
 @section('content-header')
-    <h3> Feedback Product Report </h3>
+    <h3 style="margin-top: -0.5%;"> Feedback Product Report </h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
         <li class="active"> Feedback Product Report </li>
     </ol>
-    <a role="button" href="{{ route('feedback_product_report_all_yearly') }}" class="btn btn-primary">
-        View all report <i class="fa fa-bar-chart"></i>
-    </a>
+    {{--<a role="button" href="{{ route('feedback_product_report_all_yearly') }}" class="btn btn-primary">--}}
+        {{--View all report <i class="fa fa-bar-chart"></i>--}}
+    {{--</a>--}}
 @endsection
 
 @section('main-content')

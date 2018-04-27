@@ -119,29 +119,11 @@
                         <li><a href="{{ route('customer.index') }}"> <i class="ion ion-ios-people"></i> Customer List </a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#">
+                <li>
+                    <a href="{{ url('/feedback_report_selection') }}">
                         <i class="fa fa-pie-chart"></i>
                         <span>Report</span>
-                        <span class="pull-right-container">
-                          <i class="fa fa-angle-left pull-right"></i>
-                        </span>
                     </a>
-
-                    <ul class="treeview-menu">
-                        <li class="treeview">
-                            <a role="button">
-                                <i class="fa fa-bar-chart"></i>Feedback
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('feedback_product_report.index') }}"><i class="ion ion-paper-airplane"></i> Product</a></li>
-                                <li><a href="{{ route('feedback_service_report.index') }}"><i class="ion ion-paper-airplane"></i> Service</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
 
                 @if(Auth::user()->user_group->name == 'Administrator')

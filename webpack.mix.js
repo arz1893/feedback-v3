@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .copy('node_modules/bootstrap/dist/js/bootstrap.js', 'public/js/bootstrap/')
     .copy('resources/assets/js/bootstrap/tooltip.js', 'public/js/bootstrap/')
+    .copy('node_modules/bootstrap/js/collapse.js', 'public/js/bootstrap')
     .js('node_modules/jquery/dist/jquery.js', 'public/js/jquery/')
     .copy('node_modules/axios/dist/axios.js', 'public/js/axios/')
     .copy('node_modules/lodash/lodash.js', 'public/js/lodash/')
