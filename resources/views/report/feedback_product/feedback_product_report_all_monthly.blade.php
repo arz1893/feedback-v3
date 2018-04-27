@@ -61,50 +61,20 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-12">
                 <div class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group pull-left">
+                        {{ Form::label('select_month', 'Month') }}
+                        {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
+                    </div>
+                    <div class="form-group pull-left">
+                        {{ Form::label('select_year', 'Select Year') }}
+                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
+                    </div>
+                    <div class="form-group pull-right">
                         {{ Form::label('show_data', 'Show') }}
                         {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
                     </div>
-                </div>
-            </div>
-
-            <!-- Mobile View -->
-            <div class="col-lg-5 visible-sm visible-xs pull-left">
-                <div class="pull-left">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_month', 'Month') }}
-                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-5 visible-sm visible-xs pull-right">
-                <div class="pull-right">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_year', 'Select Year') }}
-                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Desktop View -->
-            <div class="col-lg-5 pull-right visible-lg visible-md">
-                <div class="pull-right">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_month', 'Month') }}
-                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                        </div>
-                        <div class="form-group">
-                            {{ Form::label('select_year', 'Select Year') }}
-                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

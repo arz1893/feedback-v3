@@ -72,7 +72,7 @@ class FeedbackProductReportController extends Controller
     }
 
     public function getAllReportMonthly($tenant_id, $customer_rating, $year, $month, $count) {
-        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->whereMonth('created_at', $month)->orderBy('created_at', 'asc')->get();
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->orderBy('created_at', 'asc')->get();
 
         $tempLabels = [];
         $tempDatas = array();
@@ -138,7 +138,7 @@ class FeedbackProductReportController extends Controller
         $rating = ['not satisfied', 'neutral', 'satisfied'];
         $ratingValue = [0,0,0];
 
-        $feedbackProducts = FeedbackProduct::where('productId', $product_id)->whereYear('created_at', $year)->whereMonth('created_at', $month)->get();
+        $feedbackProducts = FeedbackProduct::where('productId', $product_id)->whereMonth('created_at', '=' ,$month)->whereYear('created_at', '=' ,$year)->get();
 
         if(count($feedbackProducts) > 0) {
             foreach ($feedbackProducts as $feedbackProduct) {

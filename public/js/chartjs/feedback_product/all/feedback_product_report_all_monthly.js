@@ -2,53 +2,64 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
     $('#current_year').text($('#select_year').val());
     $('#current_month').text($('#select_month option:selected').text());
 
-    var ctx = document.getElementById("feedback_product_chart_all_monthly");
-    var tenantId = $('#tenantId').val();
-    var year = $('#select_year').val();
-    var month = $('#select_month').val();
-    var count = $('#show_data').val();
+    let ctx = document.getElementById("feedback_product_chart_all_monthly");
+    let tenantId = $('#tenantId').val();
+    let year = $('#select_year').val();
+    let month = $('#select_month').val();
+    let count = $('#show_data').val();
+
+    console.log({year: year, month: month, count: count});
+
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
+    window.myChart = '';
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
 
     axios.get(url).then(response => {
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: response.data.labels,
-                datasets: [{
-                    label: 'Satisfied',
-                    data: response.data.data,
-                    backgroundColor: 'rgba(109, 167, 247, 0.7)',
-                    borderWidth: 1,
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true,
-                            fontSize: 10
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            maxRotation: 90,
-                            fontSize: 10
-                        }
+        if(response.data.error === undefined) {
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: response.data.labels,
+                    datasets: [{
+                        label: 'Satisfied',
+                        data: response.data.data,
+                        backgroundColor: 'rgba(109, 167, 247, 0.7)',
+                        borderWidth: 1,
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                maxRotation: 90,
+                                fontSize: 10
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-
-        window.myChart = myChart;
+            });
+            window.myChart = myChart;
+        } else {
+            $('#not_found').css('display', '');
+            $('#loading_state').addClass('invisible');
+            $('#feedback_product_chart_all_yearly').css('display', 'none');
+        }
     }).catch(error => {
         console.log(error);
     });
 
     function changeParameter() {
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
@@ -62,7 +73,9 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
         let currentRating = $(selected).data('value');
         console.log(currentRating);
         window.rating = currentRating;
-        myChart.destroy();
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         switch (currentRating) {
             case 1 : {
                 $('input[name=customer_rating]').attr('checked',false);
@@ -92,11 +105,12 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
     }
 
     function onChangeParameter() {
-        var ctx = document.getElementById("feedback_product_chart_all_monthly");
-        var tenantId = $('#tenantId').val();
-        var year = $('#select_year').val();
-        var month = $('#select_month').val();
-        var count = $('#show_data').val();
+        let ctx = document.getElementById("feedback_product_chart_all_monthly");
+        let tenantId = $('#tenantId').val();
+        let year = $('#select_year').val();
+        let month = $('#select_month').val();
+        let count = $('#show_data').val();
+        console.log({tenantId: tenantId, year: year, month: month, count: count});
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
         $('#loading_state').removeClass('invisible');
 
