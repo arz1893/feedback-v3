@@ -109,10 +109,10 @@
                 <div class="collapse" id="collapse_all_service">
                     <div class="well">
                         <div class="text-center">
-                            <a class="btn btn-app">
+                            <a href="{{ route('feedback_service_report_all_yearly') }}" class="btn btn-app">
                                 <i class="fa fa-object-group"></i> All
                             </a>
-                            <a class="btn btn-app">
+                            <a href="{{ route('feedback_service_report.index') }}" class="btn btn-app">
                                 <i class="fa fa-object-ungroup"></i> Specific
                             </a>
                         </div>

@@ -49,31 +49,9 @@
 
     <div class="container">
         <div class="row">
-            <!-- Mobile View -->
-            <div class="col-lg-5 visible-sm visible-xs pull-left">
-                <div class="pull-left">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_month', 'Month') }}
-                            {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeMonth()']) }}
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-5 visible-sm visible-xs pull-right">
-                <div class="pull-right">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_year', 'Select Year') }}
-                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeYear()']) }}
-                        </div>
-                    </form>
-                </div>
-            </div>
-
             <!-- Desktop View -->
-            <div class="col-lg-5 pull-right visible-lg visible-md">
-                <div class="pull-right">
+            <div class="col-lg-12">
+                <div class="pull-left">
                     <form class="form-inline">
                         <div class="form-group">
                             {{ Form::label('select_month', 'Month') }}

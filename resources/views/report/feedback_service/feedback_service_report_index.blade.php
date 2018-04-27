@@ -15,9 +15,9 @@
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
         <li class="active"> Feedback Service Report </li>
     </ol>
-    <a href="{{ route('feedback_service_report_all_yearly') }}" role="button" class="btn btn-primary">
-        View all report <i class="fa fa-bar-chart"></i>
-    </a>
+    {{--<a href="{{ route('feedback_service_report_all_yearly') }}" role="button" class="btn btn-primary">--}}
+        {{--View all report <i class="fa fa-bar-chart"></i>--}}
+    {{--</a>--}}
 @endsection
 
 @section('main-content')
