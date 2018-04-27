@@ -8,7 +8,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
     var count = $('#show_data').val();
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
-    window.bgColor = "rgba(109, 167, 247, 0.7)";
+    window.bgColor = "rgba(rgba(46, 184, 46, 0.7))";
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-yearly/' + rating + '/' + year + '/' + count;
     window.myChart = '';
 
@@ -21,7 +21,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                     datasets: [{
                         label: 'Satisfied',
                         data: response.data.data,
-                        backgroundColor: 'rgba(109, 167, 247, 0.7)',
+                        backgroundColor: 'rgba(46, 184, 46, 0.7)',
                         borderWidth: 1,
                     }]
                 },
@@ -36,10 +36,12 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                         xAxes: [{
                             ticks: {
                                 maxRotation: 90,
-                                fontSize: 10
+                                fontSize: 10,
+                                autoSkip: false
                             }
                         }]
-                    }
+                    },
+                    responsive: true,
                 }
             });
             window.myChart = myChart;
@@ -82,7 +84,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                 $('input[name=customer_rating]').attr('checked',false);
                 $('#radio_dissatisfied').attr('checked', 'checked');
                 window.feedbackLabel = "Dissatisfied";
-                window.bgColor = "rgba(255, 77, 77, 0.7)";
+                window.bgColor = "rgba(255, 0, 0, 0.7)";
                 onChangeParameter();
                 break;
             }
@@ -90,7 +92,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                 $('input[name=customer_rating]').attr('checked',false);
                 $('#radio_neutral').attr('checked', 'checked');
                 window.feedbackLabel = "Neutral";
-                window.bgColor = "rgba(230, 184, 0, 0.7)";
+                window.bgColor = "rgba(255, 219, 77, 0.7)";
                 onChangeParameter();
                 break;
             }
@@ -98,7 +100,7 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                 $('input[name=customer_rating]').attr('checked',false);
                 $('#radio_satisfied').attr('checked', 'checked');
                 window.feedbackLabel = "Satisfied";
-                window.bgColor = "rgba(109, 167, 247, 0.7)";
+                window.bgColor = "rgba(46, 184, 46, 0.7)";
                 onChangeParameter();
                 break;
             }
@@ -141,7 +143,8 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                                 xAxes: [{
                                     ticks: {
                                         maxRotation: 90,
-                                        fontSize: 10
+                                        fontSize: 10,
+                                        autoSkip: false
                                     }
                                 }]
                             }

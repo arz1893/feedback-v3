@@ -1,5 +1,9 @@
 @extends('home')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/charts/chart-stylesheet.css') }}">
+@endpush
+
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
@@ -92,7 +96,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <canvas id="feedback_product_chart_all_yearly" style="height:55vh; width:80vw"></canvas>
+    <div id="chart-container">
+        <canvas id="feedback_product_chart_all_yearly"></canvas>
     </div>
 @endsection

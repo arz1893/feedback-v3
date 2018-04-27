@@ -66,7 +66,7 @@
                     <div class="form-group pull-left">
                         {{ Form::label('select_month', 'Month') }}
                         {{ Form::selectMonth('select_month', intval(date('m')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                    </div>
+                    </div> &nbsp; &nbsp; &nbsp; &nbsp;
                     <div class="form-group pull-left">
                         {{ Form::label('select_year', 'Select Year') }}
                         {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
