@@ -7,6 +7,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/modernizr/modernizr-custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/feedback_product/all/feedback_report_top_product_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
@@ -83,6 +84,10 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="visible-xs">
+        <p class="text-muted">Note *: for best experience please view it on desktop</p>
     </div>
 
     <div id="loading_state" class="text-center invisible">

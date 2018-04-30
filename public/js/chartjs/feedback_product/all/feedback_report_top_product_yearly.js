@@ -8,9 +8,24 @@ if($('#feedback_report_all_product_yearly').length > 0) {
     var count = $('#show_data').val();
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
-    window.bgColor = "rgba(rgba(46, 184, 46, 0.7))";
+    window.bgColor = "rgba(46, 184, 46, 0.7)";
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-yearly/' + rating + '/' + year + '/' + count;
     window.myChart = '';
+    window.showXLabel = true;
+
+    var deviceAgent = navigator.userAgent.toLowerCase();
+    var isTouchDevice = Modernizr.touch ||
+        (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+            deviceAgent.match(/(android)/)  ||
+            deviceAgent.match(/(iemobile)/) ||
+            deviceAgent.match(/iphone/i) ||
+            deviceAgent.match(/ipad/i) ||
+            deviceAgent.match(/ipod/i) ||
+            deviceAgent.match(/blackberry/i) ||
+            deviceAgent.match(/bada/i));
+    if(isTouchDevice) {
+        window.showXLabel = false;
+    }
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
@@ -19,9 +34,9 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                 data: {
                     labels: response.data.labels,
                     datasets: [{
-                        label: 'Satisfied',
+                        label: feedbackLabel,
                         data: response.data.data,
-                        backgroundColor: 'rgba(46, 184, 46, 0.7)',
+                        backgroundColor: bgColor,
                         borderWidth: 1,
                     }]
                 },
@@ -30,6 +45,10 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'total feedback'
+                            },
                             ticks: {
                                 beginAtZero:true,
                                 fontSize: 10
@@ -37,6 +56,7 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                         }],
                         xAxes: [{
                             ticks: {
+                                display: showXLabel,
                                 maxRotation: 90,
                                 fontSize: 10,
                                 autoSkip: false
@@ -138,6 +158,10 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
                                     ticks: {
                                         beginAtZero:true,
                                         fontSize: 10
@@ -145,6 +169,7 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                                 }],
                                 xAxes: [{
                                     ticks: {
+                                        display: showXLabel,
                                         maxRotation: 90,
                                         fontSize: 10,
                                         autoSkip: false

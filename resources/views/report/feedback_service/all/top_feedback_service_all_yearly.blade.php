@@ -3,6 +3,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/modernizr/modernizr-custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/feedback_service/all/feedback_report_top_service_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
@@ -80,6 +81,12 @@
         </div>
     </div>
 
+    <div class="visible-xs">
+        <p class="text-muted">
+            Note *: for best experience please view it on desktop
+        </p>
+    </div>
+
     <div id="loading_state" class="text-center invisible">
         <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
     </div>
@@ -90,7 +97,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <canvas id="feedback_report_all_service_yearly" style="height:55vh; width:80vw"></canvas>
+    <div style="height: 300px; !important;">
+        <canvas id="feedback_report_all_service_yearly" height="300" width="800"></canvas>
     </div>
 @endsection

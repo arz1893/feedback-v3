@@ -8,13 +8,27 @@ if($('#feedback_product_all_product_monthly').length > 0) {
     let month = $('#select_month').val();
     let count = $('#show_data').val();
 
-    console.log({year: year, month: month, count: count});
-
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
-    window.bgColor = "rgba(109, 167, 247, 0.7)";
+    window.bgColor = "rgba(46, 184, 46, 0.7)";
     window.myChart = '';
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+
+    window.showXLabel = true;
+
+    var deviceAgent = navigator.userAgent.toLowerCase();
+    var isTouchDevice = Modernizr.touch ||
+        (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+            deviceAgent.match(/(android)/)  ||
+            deviceAgent.match(/(iemobile)/) ||
+            deviceAgent.match(/iphone/i) ||
+            deviceAgent.match(/ipad/i) ||
+            deviceAgent.match(/ipod/i) ||
+            deviceAgent.match(/blackberry/i) ||
+            deviceAgent.match(/bada/i));
+    if(isTouchDevice) {
+        window.showXLabel = false;
+    }
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
@@ -23,9 +37,9 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                 data: {
                     labels: response.data.labels,
                     datasets: [{
-                        label: 'Satisfied',
+                        label: feedbackLabel,
                         data: response.data.data,
-                        backgroundColor: 'rgba(46, 184, 46, 0.7)',
+                        backgroundColor: bgColor,
                         borderWidth: 1,
                     }]
                 },
@@ -34,6 +48,10 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'total feedback'
+                            },
                             ticks: {
                                 beginAtZero:true,
                                 fontSize: 10
@@ -41,6 +59,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                         }],
                         xAxes: [{
                             ticks: {
+                                display: showXLabel,
                                 maxRotation: 90,
                                 fontSize: 10,
                                 autoSkip: false
@@ -65,6 +84,28 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         }
         $('#current_year').text($('#select_year').val());
         $('#current_month').text($('#select_month option:selected').text());
+
+        let currentRating = $("input[name='customer_rating']:checked").val();
+        switch (currentRating) {
+            case 1 : {
+                window.feedbackLabel = "Dissatisfied";
+                window.bgColor = "rgba(255, 0, 0, 0.7)";
+                break;
+            }
+            case 2: {
+                window.feedbackLabel = "Neutral";
+                window.bgColor = "rgba(255, 219, 77, 0.7)";
+                break;
+            }
+            case 3: {
+                window.feedbackLabel = "Satisfied";
+                window.bgColor = "rgba(46, 184, 46, 0.7)";
+                break;
+            }
+        }
+
+        console.log({"current rating": currentRating, "current sentiment": feedbackLabel, "current color" : bgColor});
+
         onChangeParameter();
     }
 
@@ -138,6 +179,10 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
                                     ticks: {
                                         beginAtZero:true,
                                         fontSize: 10
@@ -145,6 +190,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                                 }],
                                 xAxes: [{
                                     ticks: {
+                                        display: showXLabel,
                                         maxRotation: 90,
                                         fontSize: 10,
                                         autoSkip: false
