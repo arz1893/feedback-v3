@@ -5,11 +5,7 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
     var ctx = document.getElementById("feedback_service_chart_all_yearly");
     var tenantId = $('#tenantId').val();
     var year = $('#select_year').val();
-    var count = $('#show_data').val();
-    window.rating = 3;
-    window.feedbackLabel = "Satisfied";
-    window.bgColor = "rgba(109, 167, 247, 0.7)";
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-yearly/' + rating + '/' + year + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-yearly/'+ year;
     window.myChart = '';
 
     axios.get(url).then(response => {
@@ -19,21 +15,29 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
                 data: {
                     labels: response.data.labels,
                     datasets: [{
-                        label: 'Satisfied',
+                        label: 'Feedback',
                         data: response.data.data,
-                        backgroundColor: 'rgba(109, 167, 247, 0.7)',
+                        backgroundColor: 'rgba(102, 179, 255, 0.7)',
                         borderWidth: 1,
                     }]
                 },
                 options: {
                     scales: {
                         yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'total feedback'
+                            },
                             ticks: {
                                 beginAtZero:true,
                                 fontSize: 10
                             }
                         }],
                         xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'months'
+                            },
                             ticks: {
                                 maxRotation: 90,
                                 fontSize: 10
@@ -55,61 +59,15 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
+        $('#current_year').text($('#select_year').val());
         onChangeParameter();
     });
-
-    $('#show_data').change(function () {
-        if(myChart instanceof Chart) {
-            myChart.destroy();
-        }
-        onChangeParameter();
-    });
-
-    function customerRating(selected) {
-        $('i.smiley_rating').each(function (index, element) {
-            $(element).removeClass('is-selected');
-        });
-        $(selected).addClass('is-selected');
-        let rating = $(selected).data('value');
-        window.rating = rating;
-        if(myChart instanceof Chart) {
-            myChart.destroy();
-        }
-        switch (rating) {
-            case 1 : {
-                $('input[name=customer_rating]').attr('checked',false);
-                $('#radio_dissatisfied').attr('checked', 'checked');
-                window.feedbackLabel = "Dissatisfied";
-                window.bgColor = "rgba(255, 77, 77, 0.7)";
-                onChangeParameter();
-                break;
-            }
-            case 2: {
-                $('input[name=customer_rating]').attr('checked',false);
-                $('#radio_neutral').attr('checked', 'checked');
-                window.feedbackLabel = "Neutral";
-                window.bgColor = "rgba(230, 184, 0, 0.7)";
-                onChangeParameter();
-                break;
-            }
-            case 3: {
-                $('input[name=customer_rating]').attr('checked',false);
-                $('#radio_satisfied').attr('checked', 'checked');
-                window.feedbackLabel = "Satisfied";
-                window.bgColor = "rgba(109, 167, 247, 0.7)";
-                onChangeParameter();
-                break;
-            }
-        }
-    }
 
     function onChangeParameter() {
         var ctx = document.getElementById("feedback_service_chart_all_yearly");
         var tenantId = $('#tenantId').val();
         var year = $('#select_year').val();
-        var count = $('#show_data').val();
-        $('#current_year').text($('#select_year').val());
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-yearly/' + rating + '/' + year + '/' + count;
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-yearly/' + year;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
@@ -122,21 +80,29 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
                         data: {
                             labels: response.data.labels,
                             datasets: [{
-                                label: feedbackLabel,
+                                label: 'Feedback',
                                 data: response.data.data,
-                                backgroundColor: bgColor,
+                                backgroundColor: 'rgba(102, 179, 255, 0.7)',
                                 borderWidth: 1,
                             }]
                         },
                         options: {
                             scales: {
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
                                     ticks: {
                                         beginAtZero:true,
                                         fontSize: 10
                                     }
                                 }],
                                 xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'months'
+                                    },
                                     ticks: {
                                         maxRotation: 90,
                                         fontSize: 10

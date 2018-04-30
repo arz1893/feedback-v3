@@ -11,7 +11,6 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
-        <li><a href="{{ route('feedback_service_report.index') }}"><i class="fa fa-bar-chart"></i> Feedback Service Report</a></li>
         <li class="active"> View All (Monthly)</li>
     </ol>
 @endsection
@@ -24,40 +23,7 @@
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" class="btn btn-xs btn-default active">Monthly</a>
         <a href="{{ route('feedback_service_report_all_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
-    </div>
-
-    {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
-    {{ Form::radio('customer_rating', 2, false, ['id' => 'radio_neutral', 'class' => 'invisible']) }}
-    {{ Form::radio('customer_rating', 3, false, ['id' => 'radio_satisfied', 'class' => 'invisible', 'checked' => true]) }}
-
-    <div class="text-center">
-        Customer Rating
-        <br>
-        <a>
-            <i id="very_bad"
-               class="smiley_rating material-icons text-maroon"
-               style="font-size: 3.5em;"
-               data-value="1" onclick="customerRating(this)">
-                sentiment_very_dissatisfied
-            </i>
-        </a>
-        <a>
-            <i id="normal"
-               class="smiley_rating material-icons text-yellow"
-               style="font-size: 3.5em;"
-               data-value="2" onclick="customerRating(this)">
-                sentiment_neutral
-            </i>
-        </a>
-        <a>
-            <i id="very_satisfied"
-               class="smiley_rating material-icons text-green is-selected"
-               style="font-size: 3.5em;"
-               data-value="3" onclick="customerRating(this)">
-                sentiment_very_satisfied
-            </i>
-        </a>
-    </div>
+    </div> <br> <br>
 
     <div class="container-fluid">
         <div class="row">
@@ -70,10 +36,6 @@
                     <div class="form-group pull-left">
                         {{ Form::label('select_year', 'Select Year') }}
                         {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
-                    </div>
-                    <div class="form-group pull-right">
-                        {{ Form::label('show_data', 'Show') }}
-                        {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control', 'onchange' => 'changeParameter()']) }}
                     </div>
                 </div>
             </div>
@@ -90,5 +52,7 @@
         </div>
     </div>
 
-    <canvas id="feedback_service_chart_all_monthly" style="position: relative; height:55vh; width:80vw"></canvas>
+    <div style="height: 400px; !important;">
+        <canvas id="feedback_service_chart_all_monthly" width="800" height="325"></canvas>
+    </div>
 @endsection

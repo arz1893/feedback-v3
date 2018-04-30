@@ -52,5 +52,7 @@
         </div>
     </div>
 
-    <canvas id="feedback_product_chart_all_monthly" style="position: relative; height:55vh; width:80vw"></canvas>
+    <div style="height: 400px; !important;">
+        <canvas id="feedback_product_chart_all_monthly" height="325" width="800"></canvas>
+    </div>
 @endsection
