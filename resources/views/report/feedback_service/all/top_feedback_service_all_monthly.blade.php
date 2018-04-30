@@ -3,7 +3,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/all_report/service/feedback_report_top_service_monthly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/feedback_service/all/feedback_report_top_service_monthly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -22,7 +22,7 @@
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" class="btn btn-xs btn-default active">Monthly</a>
-        <a href="{{ route('show_top_feedback_service_report_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
+        <a href="{{ route('feedback_service_report_top_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
     </div>
 
     {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
@@ -89,5 +89,7 @@
         </div>
     </div>
 
-    <canvas id="feedback_report_all_service_monthly" style="position: relative; height:55vh; width:80vw"></canvas>
+    <div style="height: 350px; !important;">
+        <canvas id="feedback_report_all_service_monthly" width="800" height="325"></canvas>
+    </div>
 @endsection

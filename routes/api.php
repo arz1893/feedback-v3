@@ -130,6 +130,8 @@ Route::get('feedback_product_report/{product_id}/get-report-detail-yearly/{year}
 Route::get('feedback_product_report/{product_id}/get-report-detail-monthly/{year}/{month}', 'Report\FeedbackProduct\FeedbackProductReportController@getReportDetailMonthly');
 
 /* Feedback Service Report */
+Route::get('feedback_service_report/{tenant_id}/get-top-service-report-yearly/{customer_rating}/{yearly}/{count}', 'Report\FeedbackService\FeedbackServiceReportController@getTopServiceReportYearly');
+Route::get('feedback_service_report/{tenant_id}/get-top-service-report-monthly/{customer_rating}/{yearly}/{month}/{count}', 'Report\FeedbackService\FeedbackServiceReportController@getTopServiceReportMonthly');
 Route::get('feedback_service_report/{tenant_id}/get-all-report-yearly/{year}', 'Report\FeedbackService\FeedbackServiceReportController@getAllReportYearly');
 Route::get('feedback_service_report/{tenant_id}/get-all-report-monthly/{year}/{month}', 'Report\FeedbackService\FeedbackServiceReportController@getAllReportMonthly');
 Route::get('feedback_service_report/{service_id}/get-report-detail-yearly/{year}', 'Report\FeedbackService\FeedbackServiceReportController@getReportDetailYearly');

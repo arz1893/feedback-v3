@@ -1,21 +1,20 @@
-if($('#feedback_report_all_service_monthly').length > 0) {
-    $('#current_year').text($('#select_year').val());
-    $('#current_month').text($('#select_month option:selected').text());
+if($('#feedback_report_all_service_yearly').length > 0) {
 
-    var ctx = document.getElementById("feedback_report_all_service_monthly");
+    $('#current_year').text($('#select_year').val());
+
+    var ctx = document.getElementById("feedback_report_all_service_yearly");
     var tenantId = $('#tenantId').val();
     var year = $('#select_year').val();
-    var month = $('#select_month').val();
     var count = $('#show_data').val();
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/service/' + tenantId + '/get-all-service-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-top-service-report-yearly/' + rating + '/' + year + '/' + count;
     window.myChart = '';
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
-            var myChart = new Chart(ctx, {
+            let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: response.data.labels,
@@ -27,8 +26,6 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                     }]
                 },
                 options: {
-                    maintainAspectRatio:true,
-                    responsive: true,
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -48,33 +45,37 @@ if($('#feedback_report_all_service_monthly').length > 0) {
             window.myChart = myChart;
         } else {
             $('#not_found').css('display', '');
-            $('#feedback_report_all_service_monthly').css('display', 'none');
+            $('#feedback_report_all_service_yearly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
     });
 
-    function changeParameter() {
+    $('#select_year').change(function () {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
         onChangeParameter();
-    }
+    });
+
+    $('#show_data').change(function () {
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        onChangeParameter();
+    });
 
     function customerRating(selected) {
         $('i.smiley_rating').each(function (index, element) {
             $(element).removeClass('is-selected');
         });
         $(selected).addClass('is-selected');
-        let currentRating = $(selected).data('value');
-        console.log(currentRating);
-        window.rating = currentRating;
+        let rating = $(selected).data('value');
+        window.rating = rating;
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
-        switch (currentRating) {
+        switch (rating) {
             case 1 : {
                 $('input[name=customer_rating]').attr('checked',false);
                 $('#radio_dissatisfied').attr('checked', 'checked');
@@ -103,12 +104,12 @@ if($('#feedback_report_all_service_monthly').length > 0) {
     }
 
     function onChangeParameter() {
-        var ctx = document.getElementById("feedback_report_all_service_monthly");
+        var ctx = document.getElementById("feedback_report_all_service_yearly");
         var tenantId = $('#tenantId').val();
         var year = $('#select_year').val();
-        var month = $('#select_month').val();
         var count = $('#show_data').val();
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/service/' + tenantId + '/get-all-service-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+        $('#current_year').text($('#select_year').val());
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-top-service-report-yearly/' + rating + '/' + year + '/' + count;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
@@ -128,8 +129,6 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                             }]
                         },
                         options: {
-                            maintainAspectRatio:true,
-                            responsive: true,
                             scales: {
                                 yAxes: [{
                                     ticks: {
@@ -147,11 +146,11 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                         }
                     });
                     window.myChart = myChart;
-                    $('#feedback_report_all_service_monthly').css('display', '');
+                    $('#feedback_report_all_service_yearly').css({'display': ''});
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
-                    $('#feedback_report_all_service_monthly').css('display', 'none');
+                    $('#feedback_report_all_service_yearly').css('display', 'none');
                 }
             }).catch(error => {
                 console.log(error);
