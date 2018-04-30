@@ -31,49 +31,7 @@
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div>
 
-    {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
-    {{ Form::radio('customer_rating', 2, false, ['id' => 'radio_neutral', 'class' => 'invisible']) }}
-    {{ Form::radio('customer_rating', 3, false, ['id' => 'radio_satisfied', 'class' => 'invisible', 'checked' => true]) }}
-
-    <div class="text-center">
-        Customer Rating
-        <br>
-        <a>
-            <i id="very_bad"
-               class="smiley_rating material-icons text-maroon"
-               style="font-size: 3.5em;"
-               data-value="1" onclick="customerRating(this)">
-                sentiment_very_dissatisfied
-            </i>
-        </a>
-        <a>
-            <i id="normal"
-               class="smiley_rating material-icons text-yellow"
-               style="font-size: 3.5em;"
-               data-value="2" onclick="customerRating(this)">
-                sentiment_neutral
-            </i>
-        </a>
-        <a>
-            <i id="very_satisfied"
-               class="smiley_rating material-icons text-green is-selected"
-               style="font-size: 3.5em;"
-               data-value="3" onclick="customerRating(this)">
-                sentiment_very_satisfied
-            </i>
-        </a>
-    </div>
-
     <div class="row">
-        <div class="col-lg-2 pull-left">
-            <div class="form-inline">
-                <div class="form-group">
-                    {{ Form::label('show_data', 'Show') }}
-                    {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
-                </div>
-            </div>
-        </div>
-
         <div class="col-lg-2 pull-right">
             <div class="pull-right">
                 <form class="form-inline">

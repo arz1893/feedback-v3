@@ -124,8 +124,8 @@ Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-yearl
 Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllServiceReportMonthly');
 
 /* Feedback Product Report */
-Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
-Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');
+Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{year}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
+Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{year}/{month}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');
 Route::get('feedback_product_report/{product_id}/get-report-detail-yearly/{year}', 'Report\FeedbackProduct\FeedbackProductReportController@getReportDetailYearly');
 Route::get('feedback_product_report/{product_id}/get-report-detail-monthly/{year}/{month}', 'Report\FeedbackProduct\FeedbackProductReportController@getReportDetailMonthly');
 
