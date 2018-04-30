@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <select id="select_product" name="select-product" class="form-control" v-model="selectedProduct">
-                                <option value="" selected>Select Product...</option>
+                                <option value="" selected>All Product</option>
                                 <option v-for="productOption in productOptions" v-bind:value="productOption.systemId">{{ productOption.name }}</option>
                             </select>
                             <span class="input-group-btn">

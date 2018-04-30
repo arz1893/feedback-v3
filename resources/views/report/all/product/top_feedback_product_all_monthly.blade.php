@@ -89,5 +89,7 @@
         </div>
     </div>
 
-    <canvas id="feedback_product_all_product_monthly"></canvas>
+    <div style="height: 300px; !important;">
+        <canvas id="feedback_product_all_product_monthly" width="800" height="300"></canvas>
+    </div>
 @endsection

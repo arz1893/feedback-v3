@@ -74246,7 +74246,7 @@ var render = function() {
                   },
                   [
                     _c("option", { attrs: { value: "", selected: "" } }, [
-                      _vm._v("Select Service...")
+                      _vm._v("All Service")
                     ]),
                     _vm._v(" "),
                     _vm._l(_vm.serviceOptions, function(serviceOption) {

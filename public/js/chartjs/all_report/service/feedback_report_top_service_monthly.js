@@ -27,6 +27,8 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                     }]
                 },
                 options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -126,6 +128,8 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                             }]
                         },
                         options: {
+                            maintainAspectRatio:true,
+                            responsive: true,
                             scales: {
                                 yAxes: [{
                                     ticks: {

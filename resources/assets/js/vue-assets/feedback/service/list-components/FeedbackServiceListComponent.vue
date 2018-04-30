@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <select id="select_service" name="select_service" class="form-control" v-model="selectedService">
-                                <option value="" selected>Select Service...</option>
+                                <option value="" selected>All Service</option>
                                 <option v-for="serviceOption in serviceOptions" v-bind:value="serviceOption.systemId">{{ serviceOption.name }}</option>
                             </select>
                             <span class="input-group-btn">

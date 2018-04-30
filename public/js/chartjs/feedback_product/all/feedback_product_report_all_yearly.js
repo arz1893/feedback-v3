@@ -23,6 +23,8 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                     }]
                 },
                 options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
                     scales: {
                         yAxes: [{
                             scaleLabel: {
@@ -46,7 +48,6 @@ if($('#feedback_product_chart_all_yearly').length > 0) {
                             }
                         }]
                     },
-                    responsive: true,
                 }
             });
             window.myChart = myChart;

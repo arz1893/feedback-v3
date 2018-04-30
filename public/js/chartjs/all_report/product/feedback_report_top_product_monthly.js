@@ -30,6 +30,8 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                     }]
                 },
                 options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -132,6 +134,8 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                             }]
                         },
                         options: {
+                            maintainAspectRatio:true,
+                            responsive: true,
                             scales: {
                                 yAxes: [{
                                     ticks: {

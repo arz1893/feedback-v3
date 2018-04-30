@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('content-header')
-    <h3> Report Selection </h3>
+    <h3 style="margin-top: -0.5%;"> Report Selection </h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"> Report Selection </li>
@@ -14,8 +14,8 @@
         <!-- Heading Row -->
         <div class="row">
 
-            <div class="col-lg-6 col-md-4 col-sm-4">
-                <img class="img-responsive img-rounded" src="{{ asset('default-images/37.svg') }}">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <img class="img-responsive" src="{{ asset('default-images/37.svg') }}">
             </div>
 
             <div class="col-lg-6 col-md-5 col-sm-4">

@@ -26,6 +26,8 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
                     }]
                 },
                 options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
                     scales: {
                         yAxes: [{
                             scaleLabel: {
