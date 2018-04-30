@@ -14,7 +14,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
     window.myChart = '';
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/product/' + tenantId + '/get-all-product-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
@@ -112,7 +112,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         let month = $('#select_month').val();
         let count = $('#show_data').val();
         console.log({tenantId: tenantId, year: year, month: month, count: count});
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/product/' + tenantId + '/get-all-product-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {

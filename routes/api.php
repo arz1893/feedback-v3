@@ -117,6 +117,12 @@ Route::post('faq_service/add-faq-service', 'FAQ\FAQServiceController@addFaqServi
 Route::post('faq_service/update-faq-service', 'FAQ\FAQServiceController@updateFaqService');
 Route::post('faq_service/delete-faq-service', 'FAQ\FAQServiceController@deleteFaqService');
 
+/* Feedback Report All */
+Route::get('feedback_report_all/product/{tenant_id}/get-all-product-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackReportAllController@getAllProductReportYearly');
+Route::get('feedback_report_all/product/{tenant_id}/get-all-product-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllProductReportMonthly');
+Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackReportAllController@getAllServiceReportYearly');
+Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllServiceReportMonthly');
+
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-all-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportYearly');
 Route::get('feedback_product_report/{tenant_id}/get-all-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getAllReportMonthly');

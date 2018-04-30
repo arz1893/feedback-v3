@@ -10,7 +10,7 @@ if($('#feedback_report_all_service_monthly').length > 0) {
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(109, 167, 247, 0.7)";
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/service/' + tenantId + '/get-all-service-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
     window.myChart = '';
 
     axios.get(url).then(response => {
@@ -106,7 +106,7 @@ if($('#feedback_report_all_service_monthly').length > 0) {
         var year = $('#select_year').val();
         var month = $('#select_month').val();
         var count = $('#show_data').val();
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-all-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/service/' + tenantId + '/get-all-service-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {

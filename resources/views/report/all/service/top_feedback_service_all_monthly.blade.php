@@ -11,7 +11,6 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
-        <li><a href="{{ route('feedback_service_report.index') }}"><i class="fa fa-bar-chart"></i> Feedback Service Report</a></li>
         <li class="active"> Top Service (Monthly)</li>
     </ol>
 @endsection

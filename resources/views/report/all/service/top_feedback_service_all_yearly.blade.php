@@ -21,7 +21,7 @@
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
-        <a role="button" href="{{ route('show_top_feedback_service_report_yearly') }}" class="btn btn-xs btn-default">Monthly</a>
+        <a role="button" href="{{ route('show_top_feedback_service_report_monthly') }}" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div>
 
