@@ -42,12 +42,6 @@
                         <a class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> All
                         </a>
-                        <a href="{{ route('show_top_feedback_product_report_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Top Product
-                        </a>
-                        <a href="{{ route('show_top_feedback_service_report_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Top Service
-                        </a>
                     </div>
                 </div>
             </div>
@@ -90,7 +84,10 @@
             <div class="collapse" id="collapse_all_product">
                 <div class="well">
                     <div class="text-center">
-                        <a href="{{ route('feedback_product_report_all_yearly') }}" class="btn btn-app">
+                        <a href="{{ route('feedback_product_report_top_yearly') }}" class="btn btn-app">
+                            <i class="fa fa-bar-chart"></i> Top Product
+                        </a>
+                        <a href="{{ route('feedback_product_report_all_monthly') }}" class="btn btn-app">
                             <i class="fa fa-object-group"></i> All
                         </a>
                         <a href="{{ route('feedback_product_report.index') }}" class="btn btn-app">
@@ -111,6 +108,9 @@
             <div class="collapse" id="collapse_all_service">
                 <div class="well">
                     <div class="text-center">
+                        <a href="{{ route('show_top_feedback_service_report_yearly') }}" class="btn btn-app">
+                            <i class="fa fa-bar-chart"></i> Top Service
+                        </a>
                         <a href="{{ route('feedback_service_report_all_yearly') }}" class="btn btn-app">
                             <i class="fa fa-object-group"></i> All
                         </a>

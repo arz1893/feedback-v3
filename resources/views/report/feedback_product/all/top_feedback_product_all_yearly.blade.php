@@ -7,7 +7,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/all_report/product/feedback_report_top_product_yearly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/feedback_product/all/feedback_report_top_product_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -26,7 +26,7 @@
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
-        <a role="button" href="{{ route('show_top_feedback_product_report_monthly') }}" class="btn btn-xs btn-default">Monthly</a>
+        <a role="button" href="{{ route('feedback_product_report_top_monthly') }}" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div>
 

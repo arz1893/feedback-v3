@@ -3,7 +3,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/all_report/product/feedback_report_top_product_monthly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/feedback_product/all/feedback_report_top_product_monthly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -22,7 +22,7 @@
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" class="btn btn-xs btn-default active">Monthly</a>
-        <a href="{{ route('show_top_feedback_product_report_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
+        <a href="{{ route('feedback_product_report_top_yearly') }}" role="button" class="btn btn-xs btn-default">Yearly</a>
     </div>
 
     {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
