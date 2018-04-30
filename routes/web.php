@@ -118,11 +118,19 @@ Route::resource('customer', 'Customer\CustomerController');
 /* end of customer routes */
 
 /* User Management Routes */
-Route::resource('user', 'User\UserController');
 Route::post('user/invite', 'User\UserController@sendInvitation');
 Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation');
 Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
+Route::resource('user', 'User\UserController');
 /* end of user management */
+
+/* Feedback Report All */
+Route::get('feedback_report_all/top-feedback-product/yearly', 'Report\FeedbackReportAllController@showTopFeedbackProductReportYearly')->name('show_top_feedback_product_report_yearly');
+Route::get('feedback_report_all/top-feedback-product/monthly', 'Report\FeedbackReportAllController@showTopFeedbackProductReportMonthly')->name('show_top_feedback_product_report_monthly');
+Route::get('feedback_report_all/top-feedback-service/yearly', 'Report\FeedbackReportAllController@showTopFeedbackServiceReportYearly')->name('show_top_feedback_service_report_yearly');
+Route::get('feedback_report_all/top-feedback-service/monthly', 'Report\FeedbackReportAllController@showTopFeedbackServiceReportMonthly')->name('show_top_feedback_service_report_monthly');
+Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');
+/* end of feedback report all */
 
 /* Feedback Product Report */
 Route::get('feedback_product_report/all/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReportYearly')->name('feedback_product_report_all_yearly');
