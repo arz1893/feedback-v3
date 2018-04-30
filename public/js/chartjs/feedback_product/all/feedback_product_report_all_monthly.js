@@ -28,12 +28,20 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
                 options: {
                     scales: {
                         yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'total feedback'
+                            },
                             ticks: {
                                 beginAtZero:true,
                                 fontSize: 10
                             }
                         }],
                         xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'days'
+                            },
                             ticks: {
                                 maxRotation: 90,
                                 fontSize: 10,
@@ -91,12 +99,20 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
                         options: {
                             scales: {
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
                                     ticks: {
                                         beginAtZero:true,
                                         fontSize: 10
                                     }
                                 }],
                                 xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'days'
+                                    },
                                     ticks: {
                                         maxRotation: 90,
                                         fontSize: 10,
