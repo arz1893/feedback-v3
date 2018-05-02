@@ -28,13 +28,13 @@
         <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" href="{{ route('feedback_product_report_all_monthly') }}" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
-    </div>
+    </div> <br> <br>
 
-    <div class="row">
-        <div class="col-lg-2 pull-right">
-            <div class="pull-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
                 <form class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group pull-left">
                         {{ Form::label('select_year', 'Select Year') }}
                         {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
                     </div>

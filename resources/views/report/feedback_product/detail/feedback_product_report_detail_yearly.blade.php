@@ -49,8 +49,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 pull-right">
-                <div class="pull-right">
+            <div class="col-lg-2">
+                <div class="pull-left">
                     <form class="form-inline">
                         <div class="form-group">
                             {{ Form::label('select_year', 'Select Year') }}

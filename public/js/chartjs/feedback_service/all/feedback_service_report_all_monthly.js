@@ -13,14 +13,16 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: response.data.labels,
                     datasets: [{
                         label: 'Feedback',
                         data: response.data.data,
-                        backgroundColor: 'rgba(102, 179, 255, 0.7)',
-                        borderWidth: 1,
+                        borderColor: "rgba(102, 179, 255, 0.7)",
+                        backgroundColor: "rgba(102, 179, 255, 0.3)",
+                        lineTension: 0,
+                        borderWidth: 3,
                     }]
                 },
                 options: {
@@ -83,14 +85,16 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                     let myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                             labels: response.data.labels,
                             datasets: [{
                                 label: 'Feedback',
                                 data: response.data.data,
-                                backgroundColor: 'rgba(102, 179, 255, 0.7)',
-                                borderWidth: 1,
+                                borderColor: "rgba(102, 179, 255, 0.7)",
+                                backgroundColor: "rgba(102, 179, 255, 0.3)",
+                                lineTension: 0,
+                                borderWidth: 3,
                             }]
                         },
                         options: {

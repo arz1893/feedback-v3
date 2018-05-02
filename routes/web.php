@@ -133,8 +133,8 @@ Route::get('feedback_product__report/top-product/yearly', 'Report\FeedbackProduc
 Route::get('feedback_product_report/top-product/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showTopProductReportMonthly')->name('feedback_product_report_top_monthly');
 Route::get('feedback_product_report/all/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReportYearly')->name('feedback_product_report_all_yearly');
 Route::get('feedback_product_report/all/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showAllReportMonthly')->name('feedback_product_report_all_monthly');
-Route::get('feedback_product_report/{product_id}/show_detail/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showTopProductReportYearly')->name('feedback_product_report_detail_yearly');
-Route::get('feedback_product_report/{product_id}/show_detail/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showTopProductReportMonthly')->name('feedback_product_report_detail_monthly');
+Route::get('feedback_product_report/{product_id}/show_detail/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showFeedbackProductReportYearly')->name('feedback_product_report_detail_yearly');
+Route::get('feedback_product_report/{product_id}/show_detail/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showFeedbackProductReportMonthly')->name('feedback_product_report_detail_monthly');
 Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProductReportController');
 
 /* Feedback Service Report */

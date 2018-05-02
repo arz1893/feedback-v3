@@ -29,13 +29,10 @@
     <!-- /.row -->
     <div class="col-lg-12">
         <div class="col-lg-3">
-            <a role="button" data-toggle="collapse" href="#collapse_all_report" aria-expanded="false" aria-controls="collapse_all_report">
-                <div class="panel panel-default">
-                    <div class="panel-body bg-primary text-center">
-                        All
-                    </div>
-                </div>
+            <a class="btn btn-lg btn-block btn-social btn-default bg-blue" role="button" data-toggle="collapse" href="#collapse_all_report" aria-expanded="false" aria-controls="collapse_all_report">
+                <i class="fa fa-bar-chart"></i> <span class="pull-left">All Report</span>
             </a>
+
             <div class="collapse" id="collapse_all_report">
                 <div class="well">
                     <div class="text-center">
@@ -47,12 +44,8 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <a role="button" data-toggle="collapse" href="#collapse_all_tag" aria-expanded="false" aria-controls="collapse_all_tag">
-                <div class="panel panel-default">
-                    <div class="panel-body bg-green text-center">
-                        Tag
-                    </div>
-                </div>
+            <a class="btn btn-lg btn-block btn-social btn-default bg-green" role="button" data-toggle="collapse" href="#collapse_all_tag" aria-expanded="false" aria-controls="collapse_all_tag">
+                <i class="fa fa-tags"></i> <span class="pull-left">Tag</span>
             </a>
             <div class="collapse" id="collapse_all_tag">
                 <div class="well">
@@ -74,18 +67,14 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <a role="button" data-toggle="collapse" href="#collapse_all_product" aria-expanded="false" aria-controls="collapse_all_product">
-                <div class="panel panel-default">
-                    <div class="panel-body bg-red text-center">
-                        Product
-                    </div>
-                </div>
+            <a class="btn btn-lg btn-block btn-social btn-default bg-red" role="button" data-toggle="collapse" href="#collapse_all_product" aria-expanded="false" aria-controls="collapse_all_product">
+                <i class="ion ion-filing"></i> <span class="pull-left">Product</span>
             </a>
             <div class="collapse" id="collapse_all_product">
                 <div class="well">
                     <div class="text-center">
                         <a href="{{ route('feedback_product_report_top_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Top Product
+                            <i class="fa fa-bar-chart"></i> Satisfaction
                         </a>
                         <a href="{{ route('feedback_product_report_all_monthly') }}" class="btn btn-app">
                             <i class="fa fa-object-group"></i> All
@@ -98,18 +87,14 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <a role="button" data-toggle="collapse" href="#collapse_all_service" aria-expanded="false" aria-controls="collapse_all_service">
-                <div class="panel panel-default">
-                    <div class="panel-body bg-yellow text-center">
-                        Service
-                    </div>
-                </div>
+            <a class="btn btn-lg btn-block btn-social btn-default bg-yellow" role="button" data-toggle="collapse" href="#collapse_all_service" aria-expanded="false" aria-controls="collapse_all_service">
+                <i class="ion ion-bowtie"></i> <span class="pull-left">Service</span>
             </a>
             <div class="collapse" id="collapse_all_service">
                 <div class="well">
                     <div class="text-center">
                         <a href="{{ route('feedback_service_report_top_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Top Service
+                            <i class="fa fa-bar-chart"></i> Satisfaction
                         </a>
                         <a href="{{ route('feedback_service_report_all_monthly') }}" class="btn btn-app">
                             <i class="fa fa-object-group"></i> All

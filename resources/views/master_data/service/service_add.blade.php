@@ -14,7 +14,7 @@
     <h4> Add Product </h4>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('service.index') }}"><i class="ion ion-filing"></i> Master Product</a></li>
+        <li><a href="{{ route('service.index') }}"><i class="ion ion-bowtie"></i> Master Service</a></li>
         <li class="active">Add Product</li>
     </ol>
 @endsection
