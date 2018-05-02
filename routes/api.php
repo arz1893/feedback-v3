@@ -47,6 +47,8 @@ Route::get('feedback_product/{feedback_id}/get-feedback-product', 'Feedback\Prod
 Route::get('feedback_product/{tenant_id}/filter-by-product/{date_start}/{date_end}/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
 Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
 Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
+Route::get('feedback_product/{product_id}/get-customer-feedback/yearly/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackYearly');
+Route::get('feedback_product/{product_id}/get-customer-feedback/monthly/{month}/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackMonthly');
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
 Route::post('feedback_product/update-feedback-product', 'Feedback\Product\FeedbackProductController@updateFeedbackProduct');
 Route::post('feedback_product/delete-feedback-product', 'Feedback\Product\FeedbackProductController@deleteFeedbackProduct');

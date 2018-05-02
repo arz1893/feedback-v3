@@ -8,7 +8,7 @@
 @endpush
 
 @section('content-header')
-    <h3 style="margin-top: -0.5%;" class="text-info">All Feedback Product in <span id="current_month"></span> <span id="current_year"></span></h3>
+    <h3 style="margin-top: -0.5%;" class="text-info">All Feedback Product in <span class="current-month"></span> <span class="current-year"></span></h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
@@ -95,5 +95,24 @@
 
     <div style="height: 300px; !important;">
         <canvas id="feedback_product_all_product_monthly" width="800" height="275"></canvas>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_customer_feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Customer's Feedback</h4>
+                </div>
+                <div class="modal-body" style="max-height: calc(100vh - 212px); overflow-y: auto;">
+                    <div id="feedback_content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

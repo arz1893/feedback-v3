@@ -40,6 +40,10 @@ class Product extends Model
         return $this->hasMany(ProductCategory::class, 'productId', 'systemId');
     }
 
+    public function feedback_products() {
+        return $this->hasMany(FeedbackProduct::class,'productId', 'systemId');
+    }
+
     public function faq_products() {
         return $this->hasMany(FaqProduct::class);
     }

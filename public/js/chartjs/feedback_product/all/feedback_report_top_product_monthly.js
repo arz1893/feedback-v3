@@ -1,6 +1,6 @@
 if($('#feedback_product_all_product_monthly').length > 0) {
-    $('#current_year').text($('#select_year').val());
-    $('#current_month').text($('#select_month option:selected').text());
+    $('.current-year').text($('#select_year').val());
+    $('.current-month').text($('#select_month option:selected').text());
 
     let ctx = document.getElementById("feedback_product_all_product_monthly");
     let tenantId = $('#tenantId').val();
@@ -12,6 +12,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(46, 184, 46, 0.7)";
     window.myChart = '';
+    window.dataIds = [];
     const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
 
     window.showXLabel = true;
@@ -32,6 +33,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
+            window.dataIds = response.data.id;
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -65,11 +67,13 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                                 autoSkip: false
                             }
                         }]
-                    }
+                    },
+                    onClick: handleClick
                 }
             });
             window.myChart = myChart;
         } else {
+            window.dataIds = [];
             $('#not_found').css('display', '');
             $('#loading_state').addClass('invisible');
             $('#feedback_product_all_product_monthly').css('display', 'none');
@@ -82,8 +86,8 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
-        $('#current_year').text($('#select_year').val());
-        $('#current_month').text($('#select_month option:selected').text());
+        $('.current-year').text($('#select_year').val());
+        $('.current-month').text($('#select_month option:selected').text());
 
         let currentRating = $("input[name='customer_rating']:checked").val();
         switch (currentRating) {
@@ -161,6 +165,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         function sendRequest() {
             axios.get(url).then(response => {
                 if(response.data.error === undefined) {
+                    window.dataIds = response.data.id;
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                     let myChart = new Chart(ctx, {
@@ -196,12 +201,14 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                                         autoSkip: false
                                     }
                                 }]
-                            }
+                            },
+                            onClick: handleClick
                         }
                     });
                     window.myChart = myChart;
                     $('#feedback_product_all_product_monthly').css({'display': ''});
                 } else {
+                    window.dataIds = [];
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
                     $('#feedback_product_all_product_monthly').css('display', 'none');
@@ -213,5 +220,36 @@ if($('#feedback_product_all_product_monthly').length > 0) {
 
         let debounceFunction = _.debounce(sendRequest, 1000);
         debounceFunction();
+    }
+
+    function handleClick(evt) {
+        let firstPoint = myChart.getElementAtEvent(evt)[0];
+        if (firstPoint) {
+            let year = $('#select_year').val();
+            let month = $('#select_month').val();
+            const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/monthly/' + month + '/' + year;
+
+            axios.get(url).then(response => {
+                console.log(response.data);
+                for(let i=0;i<response.data.length;i++) {
+                    let template = "     <div class=\"direct-chat-msg\">\n" +
+                        "                  <div class=\"direct-chat-info clearfix\">\n" +
+                        "                    <span class=\"direct-chat-name pull-left\">"+ response.data[i].customer_name + "</span>\n" +
+                        "                    <span class=\"direct-chat-timestamp pull-right\">" + response.data[i].created_at + "</span>\n" +
+                        "                  </div>\n" +
+                        "                  <img class=\"direct-chat-img\" src="+ window.location.protocol + "//" + window.location.host  + '/default-images/default-user.png' +"> \n" +
+                        "                  <div class=\"direct-chat-text\">\n" +
+                        "                    "+ response.data[i].customer_feedback + "\n" +
+                        "                  </div>\n" +
+                        "                </div>";
+                    console.log(template);
+                    $('#feedback_content').append("<p>Hello World!</p>");
+                }
+            }).catch(error => {
+                console.log(error);
+            });
+
+            $('#modal_customer_feedback').modal('show');
+        }
     }
 }

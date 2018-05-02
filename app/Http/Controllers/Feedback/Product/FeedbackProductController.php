@@ -113,6 +113,36 @@ class FeedbackProductController extends Controller
         return new FeedbackProductResource($feedbackProduct);
     }
 
+    public function getProductCustomerFeedbackYearly($product_id, $year) {
+        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+        $allFeedback = [];
+        foreach ($feedbackProducts as $feedbackProduct) {
+            $feedback = [
+                'systemId' => $feedbackProduct->systemId,
+                'customer_name' => ($feedbackProduct->customer == null ? 'Anonymous':$feedbackProduct->customer->name),
+                'customer_feedback' => $feedbackProduct->customer_feedback,
+                'created_at' => $feedbackProduct->created_at
+            ];
+            array_push($allFeedback, $feedback);
+        }
+        return ['allFeedback' => $allFeedback];
+    }
+
+    public function getProductCustomerFeedbackMonthly($product_id, $month, $year) {
+        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+        $allFeedback = [];
+        foreach ($feedbackProducts as $feedbackProduct) {
+            $feedback = [
+                'systemId' => $feedbackProduct->systemId,
+                'customer_name' => ($feedbackProduct->customer == null ? 'Anonymous':$feedbackProduct->customer->name),
+                'customer_feedback' => $feedbackProduct->customer_feedback,
+                'created_at' => $feedbackProduct->created_at
+            ];
+            array_push($allFeedback, $feedback);
+        }
+        return ['allFeedback' => $allFeedback];
+    }
+
     public function generateSelectedCustomer($feedback_id) {
         $selectOption = array();
         $feedbackProduct = FeedbackProduct::findOrFail($feedback_id);
