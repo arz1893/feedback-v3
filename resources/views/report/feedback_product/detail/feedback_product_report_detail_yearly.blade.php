@@ -42,7 +42,6 @@
 
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
-        <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a href="{{ route('feedback_product_report_detail_monthly', $product->systemId) }}" role="button" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div> <br> <br>

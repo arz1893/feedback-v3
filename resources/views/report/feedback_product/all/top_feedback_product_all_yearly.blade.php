@@ -26,7 +26,6 @@
 
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
-        <a role="button" class="btn btn-xs btn-default">Weekly</a>
         <a role="button" href="{{ route('feedback_product_report_top_monthly') }}" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div>
@@ -101,6 +100,6 @@
     </div>
 
     <div style="height: 300px; !important;">
-        <canvas id="feedback_report_all_product_yearly" height="300" width="800"></canvas>
+        <canvas id="feedback_report_all_product_yearly" height="275" width="800"></canvas>
     </div>
 @endsection
