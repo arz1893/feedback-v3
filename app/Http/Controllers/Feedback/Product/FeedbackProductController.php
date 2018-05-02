@@ -121,7 +121,7 @@ class FeedbackProductController extends Controller
                 'systemId' => $feedbackProduct->systemId,
                 'customer_name' => ($feedbackProduct->customer == null ? 'Anonymous':$feedbackProduct->customer->name),
                 'customer_feedback' => $feedbackProduct->customer_feedback,
-                'created_at' => $feedbackProduct->created_at
+                'created_at' => $feedbackProduct->created_at->format('d M Y H:iA')
             ];
             array_push($allFeedback, $feedback);
         }
@@ -136,7 +136,7 @@ class FeedbackProductController extends Controller
                 'systemId' => $feedbackProduct->systemId,
                 'customer_name' => ($feedbackProduct->customer == null ? 'Anonymous':$feedbackProduct->customer->name),
                 'customer_feedback' => $feedbackProduct->customer_feedback,
-                'created_at' => $feedbackProduct->created_at
+                'created_at' => $feedbackProduct->created_at->format('d M Y H:iA')
             ];
             array_push($allFeedback, $feedback);
         }

@@ -228,22 +228,23 @@ if($('#feedback_product_all_product_monthly').length > 0) {
             let year = $('#select_year').val();
             let month = $('#select_month').val();
             const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/monthly/' + month + '/' + year;
+            $('#feedback_content').empty();
+            $('#product_name').text(myChart.data.labels[firstPoint._index]);
 
             axios.get(url).then(response => {
                 console.log(response.data);
-                for(let i=0;i<response.data.length;i++) {
+                for(let i=0;i<response.data.allFeedback.length;i++) {
                     let template = "     <div class=\"direct-chat-msg\">\n" +
                         "                  <div class=\"direct-chat-info clearfix\">\n" +
-                        "                    <span class=\"direct-chat-name pull-left\">"+ response.data[i].customer_name + "</span>\n" +
-                        "                    <span class=\"direct-chat-timestamp pull-right\">" + response.data[i].created_at + "</span>\n" +
+                        "                    <span class=\"direct-chat-name pull-left\">"+ response.data.allFeedback[i].customer_name + "</span>\n" +
+                        "                    <span class=\"direct-chat-timestamp pull-right\">" + response.data.allFeedback[i].created_at + "</span>\n" +
                         "                  </div>\n" +
                         "                  <img class=\"direct-chat-img\" src="+ window.location.protocol + "//" + window.location.host  + '/default-images/default-user.png' +"> \n" +
                         "                  <div class=\"direct-chat-text\">\n" +
-                        "                    "+ response.data[i].customer_feedback + "\n" +
+                        "                    "+ response.data.allFeedback[i].customer_feedback + "\n" +
                         "                  </div>\n" +
                         "                </div>";
-                    console.log(template);
-                    $('#feedback_content').append("<p>Hello World!</p>");
+                    $('#feedback_content').append(template);
                 }
             }).catch(error => {
                 console.log(error);
