@@ -107,9 +107,6 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                 break;
             }
         }
-
-        console.log({"current rating": currentRating, "current sentiment": feedbackLabel, "current color" : bgColor});
-
         onChangeParameter();
     }
 
@@ -119,7 +116,6 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         });
         $(selected).addClass('is-selected');
         let currentRating = $(selected).data('value');
-        console.log(currentRating);
         window.rating = currentRating;
         if(myChart instanceof Chart) {
             myChart.destroy();
@@ -158,7 +154,6 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         let year = $('#select_year').val();
         let month = $('#select_month').val();
         let count = $('#show_data').val();
-        console.log({tenantId: tenantId, year: year, month: month, count: count});
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-monthly/' + rating + '/' + year + '/' + month + '/' + count;
         $('#loading_state').removeClass('invisible');
 
@@ -227,12 +222,12 @@ if($('#feedback_product_all_product_monthly').length > 0) {
         if (firstPoint) {
             let year = $('#select_year').val();
             let month = $('#select_month').val();
-            const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/monthly/' + month + '/' + year;
+            let customer_rating = $("input[name='customer_rating']:checked").val();
+            const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/monthly/'+ customer_rating + '/' + month + '/' + year;
             $('#feedback_content').empty();
             $('#product_name').text(myChart.data.labels[firstPoint._index]);
 
             axios.get(url).then(response => {
-                console.log(response.data);
                 for(let i=0;i<response.data.allFeedback.length;i++) {
                     let template = "     <div class=\"direct-chat-msg\">\n" +
                         "                  <div class=\"direct-chat-info clearfix\">\n" +

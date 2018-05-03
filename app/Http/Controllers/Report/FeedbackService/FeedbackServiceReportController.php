@@ -43,11 +43,13 @@ class FeedbackServiceReportController extends Controller
     public function getTopServiceReportYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
         $tempLabels = [];
-        $tempDatas = array();
+        $tempDatas = [];
+        $tempIds = [];
 
         if(count($feedbackServices) > 0) {
             foreach ($feedbackServices as $feedbackService) {
                 if(!in_array($feedbackService->service->name, $tempLabels)) {
+                    array_push($tempIds, $feedbackService->service->systemId);
                     array_push($tempLabels, $feedbackService->service->name);
                     array_push($tempDatas, 0);
                 }
@@ -69,11 +71,15 @@ class FeedbackServiceReportController extends Controller
                         $label = $tempLabels[$j];
                         $tempLabels[$j] = $tempLabels[$i];
                         $tempLabels[$i] = $label;
+
+                        $id = $tempIds[$j];
+                        $tempIds[$j] = $tempIds[$i];
+                        $tempIds[$i] = $id;
                     }
                 }
             }
 
-            return ['labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
+            return ['id' => array_slice($tempIds, 0, $count),'labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
         } else {
             return ['error' => 'not found'];
         }
@@ -83,11 +89,13 @@ class FeedbackServiceReportController extends Controller
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->whereMonth('created_at', $month)->orderBy('created_at', 'asc')->get();
 
         $tempLabels = [];
-        $tempDatas = array();
+        $tempDatas = [];
+        $tempIds = [];
 
         if(count($feedbackServices) > 0) {
             foreach ($feedbackServices as $feedbackService) {
                 if(!in_array($feedbackService->service->name, $tempLabels)) {
+                    array_push($tempIds, $feedbackService->service->systemId);
                     array_push($tempLabels, $feedbackService->service->name);
                     array_push($tempDatas, 0);
                 }
@@ -109,11 +117,15 @@ class FeedbackServiceReportController extends Controller
                         $label = $tempLabels[$j];
                         $tempLabels[$j] = $tempLabels[$i];
                         $tempLabels[$i] = $label;
+
+                        $id = $tempIds[$j];
+                        $tempIds[$j] = $tempIds[$i];
+                        $tempIds[$i] = $id;
                     }
                 }
             }
 
-            return ['labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
+            return ['id' => array_slice($tempIds, 0, $count),'labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
         } else {
             return ['error' => 'not found'];
         }

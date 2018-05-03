@@ -37,7 +37,7 @@ class Service extends Model
     }
 
     public function feedbackServices() {
-        return $this->hasMany(FeedbackService::class);
+        return $this->hasMany(FeedbackService::class, 'serviceId', 'systemId');
     }
 
     public function tags() {

@@ -125,6 +125,36 @@ class FeedbackServiceController extends Controller
         }
     }
 
+    public function getServiceCustomerFeedbackYearly($service_id, $customer_rating, $year) {
+        $feedbackServices = FeedbackService::where('serviceId', '=', $service_id)->where('customer_rating', '=', $customer_rating)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+        $allFeedback = [];
+        foreach ($feedbackServices as $feedbackService) {
+            $feedback = [
+                'systemId' => $feedbackService->systemId,
+                'customer_name' => ($feedbackService->customer == null ? 'Anonymous':$feedbackService->customer->name),
+                'customer_feedback' => $feedbackService->customer_feedback,
+                'created_at' => $feedbackService->created_at->format('d M Y H:iA'),
+            ];
+            array_push($allFeedback, $feedback);
+        }
+        return ['allFeedback' => $allFeedback];
+    }
+
+    public function getServiceCustomerFeedbackMonthly($service_id, $customer_rating, $month, $year) {
+        $feedbackServices = FeedbackService::where('serviceId', '=', $service_id)->where('customer_rating', '=', $customer_rating)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+        $allFeedback = [];
+        foreach ($feedbackServices as $feedbackService) {
+            $feedback = [
+                'systemId' => $feedbackService->systemId,
+                'customer_name' => ($feedbackService->customer == null ? 'Anonymous':$feedbackService->customer->name),
+                'customer_feedback' => $feedbackService->customer_feedback,
+                'created_at' => $feedbackService->created_at->format('d M Y H:iA'),
+            ];
+            array_push($allFeedback, $feedback);
+        }
+        return ['allFeedback' => $allFeedback];
+    }
+
     public function filterByService($tenant_id, $start_date, $end_date, $service_id) {
         $from = date('Y-m-d H:i:s', strtotime($start_date . ' 00:00:00'));
         $to = date('Y-m-d H:i:s', strtotime($end_date . ' 23:59:59'));

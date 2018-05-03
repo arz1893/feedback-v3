@@ -113,8 +113,8 @@ class FeedbackProductController extends Controller
         return new FeedbackProductResource($feedbackProduct);
     }
 
-    public function getProductCustomerFeedbackYearly($product_id, $year) {
-        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+    public function getProductCustomerFeedbackYearly($product_id, $customer_rating, $year) {
+        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->where('customer_rating', '=', $customer_rating)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
         $allFeedback = [];
         foreach ($feedbackProducts as $feedbackProduct) {
             $feedback = [
@@ -128,8 +128,8 @@ class FeedbackProductController extends Controller
         return ['allFeedback' => $allFeedback];
     }
 
-    public function getProductCustomerFeedbackMonthly($product_id, $month, $year) {
-        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
+    public function getProductCustomerFeedbackMonthly($product_id, $customer_rating, $month, $year) {
+        $feedbackProducts = FeedbackProduct::where('productId', '=' ,$product_id)->where('customer_rating', '=', $customer_rating)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('created_at', 'asc')->get();
         $allFeedback = [];
         foreach ($feedbackProducts as $feedbackProduct) {
             $feedback = [

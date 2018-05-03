@@ -47,8 +47,8 @@ Route::get('feedback_product/{feedback_id}/get-feedback-product', 'Feedback\Prod
 Route::get('feedback_product/{tenant_id}/filter-by-product/{date_start}/{date_end}/{product_id}', 'Feedback\Product\FeedbackProductController@filterByProduct');
 Route::get('feedback_product/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Product\FeedbackProductController@filterByDate');
 Route::get('feedback_product/{feedback_id}/generate-selected-customer', 'Feedback\Product\FeedbackProductController@generateSelectedCustomer');
-Route::get('feedback_product/{product_id}/get-customer-feedback/yearly/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackYearly');
-Route::get('feedback_product/{product_id}/get-customer-feedback/monthly/{month}/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackMonthly');
+Route::get('feedback_product/{product_id}/get-customer-feedback/yearly/{customer_rating}/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackYearly');
+Route::get('feedback_product/{product_id}/get-customer-feedback/monthly/{customer_rating}/{month}/{year}', 'Feedback\Product\FeedbackProductController@getProductCustomerFeedbackMonthly');
 Route::post('feedback_product/{tenant_id}/add-feedback-product', 'Feedback\Product\FeedbackProductController@addFeedbackProduct');
 Route::post('feedback_product/update-feedback-product', 'Feedback\Product\FeedbackProductController@updateFeedbackProduct');
 Route::post('feedback_product/delete-feedback-product', 'Feedback\Product\FeedbackProductController@deleteFeedbackProduct');
@@ -80,6 +80,8 @@ Route::get('feedback_service/{feedback_id}/get-feedback-service', 'Feedback\Serv
 Route::get('feedback_service/{tenant_id}/filter-by-service/{date_start}/{date_end}/{service_id}', 'Feedback\Service\FeedbackServiceController@filterByService');
 Route::get('feedback_service/{tenant_id}/filter-by-date/{date_start}/{date_end}', 'Feedback\Service\FeedbackServiceController@filterByDate');
 Route::get('feedback_service/{feedback_id}/generate-selected-customer', 'Feedback\Service\FeedbackServiceController@generateSelectedCustomer');
+Route::get('feedback_service/{service_id}/get-customer-feedback/yearly/{customer_rating}/{year}', 'Feedback\Service\FeedbackServiceController@getServiceCustomerFeedbackYearly');
+Route::get('feedback_service/{service_id}/get-customer-feedback/monthly/{customer_rating}/{month}/{year}', 'Feedback\Service\FeedbackServiceController@getServiceCustomerFeedbackMonthly');
 Route::post('feedback_service/{tenant_id}/add-feedback-service', 'Feedback\Service\FeedbackServiceController@addFeedbackService');
 Route::post('feedback_service/update-feedback-service', 'Feedback\Service\FeedbackServiceController@updateFeedbackService');
 Route::post('feedback_service/delete-feedback-service', 'Feedback\Service\FeedbackServiceController@deleteFeedbackService');

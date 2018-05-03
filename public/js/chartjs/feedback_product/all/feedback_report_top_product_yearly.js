@@ -30,7 +30,6 @@ if($('#feedback_report_all_product_yearly').length > 0) {
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
-            console.log(response.data);
             window.dataIds = response.data.id;
             let myChart = new Chart(ctx, {
                 type: 'bar',
@@ -204,7 +203,8 @@ if($('#feedback_report_all_product_yearly').length > 0) {
         let firstPoint = myChart.getElementAtEvent(evt)[0];
         if (firstPoint) {
             let year = $('#select_year').val();
-            const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/yearly/' + year;
+            let customer_rating = $("input[name='customer_rating']:checked").val();
+            const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/yearly/'+ customer_rating + '/' + year;
             $('#feedback_content').empty();
             $('#product_name').text(myChart.data.labels[firstPoint._index]);
 
