@@ -43,11 +43,13 @@ class FeedbackProductReportController extends Controller
     public function getTopProductReportYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
         $tempLabels = [];
-        $tempDatas = array();
+        $tempDatas = [];
+        $tempIds = [];
 
         if(count($feedbackProducts) > 0) {
             foreach ($feedbackProducts as $feedbackProduct) {
                 if(!in_array($feedbackProduct->product->name, $tempLabels)) {
+                    array_push($tempIds, $feedbackProduct->product->systemId);
                     array_push($tempLabels, $feedbackProduct->product->name);
                     array_push($tempDatas, 0);
                 }
@@ -69,11 +71,15 @@ class FeedbackProductReportController extends Controller
                         $label = $tempLabels[$j];
                         $tempLabels[$j] = $tempLabels[$i];
                         $tempLabels[$i] = $label;
+
+                        $id = $tempIds[$j];
+                        $tempIds[$j] = $tempIds[$i];
+                        $tempIds[$i] = $id;
                     }
                 }
             }
 
-            return ['labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
+            return ['id' => array_slice($tempIds, 0, $count),'labels' => array_slice($tempLabels, 0, $count), 'data' => array_slice($tempDatas, 0, $count)];
         } else {
             return ['error' => 'not found'];
         }
