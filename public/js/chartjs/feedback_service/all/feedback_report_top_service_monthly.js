@@ -198,7 +198,6 @@ if($('#feedback_report_all_service_monthly').length > 0) {
             let year = $('#select_year').val();
             let month = $('#select_month').val();
             let customer_rating = $("input[name='customer_rating']:checked").val();
-            console.log({"Service ID": dataIds[firstPoint._index], "Customer Rating": customer_rating, "Month": month, "Year": year});
             const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service/' + dataIds[firstPoint._index] + '/get-customer-feedback/monthly/'+ customer_rating + '/' + month + '/' + year;
             $('#feedback_content').empty();
             $('#service_name').text(myChart.data.labels[firstPoint._index]);
