@@ -1,9 +1,5 @@
 @extends('home')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/charts/chart-stylesheet.css') }}">
-@endpush
-
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>

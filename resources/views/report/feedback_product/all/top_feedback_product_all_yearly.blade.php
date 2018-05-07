@@ -99,8 +99,8 @@
         </div>
     </div>
 
-    <div style="height: 300px; !important;">
-        <canvas id="feedback_report_all_product_yearly" height="275" width="800"></canvas>
+    <div class="chart-container">
+        <canvas id="feedback_report_all_product_yearly"></canvas>
     </div>
 
     <!-- Modal -->

@@ -74,10 +74,10 @@
                 <div class="well">
                     <div class="text-center">
                         <a href="{{ route('feedback_product_report_top_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Satisfaction
+                            <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a href="{{ route('feedback_product_report_all_monthly') }}" class="btn btn-app">
-                            <i class="fa fa-object-group"></i> All
+                            <i class="fa fa-line-chart"></i> Global Feedback
                         </a>
                         <a href="{{ route('feedback_product_report.index') }}" class="btn btn-app">
                             <i class="fa fa-object-ungroup"></i> Specific
@@ -94,10 +94,10 @@
                 <div class="well">
                     <div class="text-center">
                         <a href="{{ route('feedback_service_report_top_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Satisfaction
+                            <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a href="{{ route('feedback_service_report_all_monthly') }}" class="btn btn-app">
-                            <i class="fa fa-object-group"></i> All
+                            <i class="fa fa-line-chart"></i> Global Feedback
                         </a>
                         <a href="{{ route('feedback_service_report.index') }}" class="btn btn-app">
                             <i class="fa fa-object-ungroup"></i> Specific

@@ -27,16 +27,12 @@
     <!-- Select 2 -->
     <link href="{{ asset('/css/select2/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/select2/select2-bootstrap.min.css') }}" rel="stylesheet">
-    {{--<!-- Selectize -->--}}
-    {{--<link href="{{ asset('/css/selectize/selectize.css') }}" rel="stylesheet">--}}
     <!-- Fancy Tree -->
     <link href="{{ asset('/css/fancytree/skin-material/ui.fancytree.css') }}" rel="stylesheet" class="skinswitcher">
     <!-- Context Menu Dependency -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.css" />
-    {{--<!-- Light Gallery -->--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/lightgallery/css/lightgallery.css') }}">--}}
-    {{--<!-- Bootsrap date picker -->--}}
-    {{--<link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap-datepicker.css') }}">--}}
+    <!-- Custom chart js -->
+    <link rel="stylesheet" href="{{ asset('css/charts/chart-stylesheet.css') }}">
 
     @stack('styles')
 </head>

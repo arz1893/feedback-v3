@@ -1,9 +1,5 @@
 @extends('home')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/charts/chart-stylesheet.css') }}">
-@endpush
-
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
@@ -51,7 +47,7 @@
         </div>
     </div>
 
-    <div style="height: 400px; !important;">
-        <canvas id="all_feedback_rating_yearly" width="800" height="330"></canvas>
+    <div class="chart-container">
+        <canvas id="all_feedback_rating_yearly"></canvas>
     </div>
 @endsection

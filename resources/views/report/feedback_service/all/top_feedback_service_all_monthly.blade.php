@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <div style="height: 350px; !important;">
+    <div class="chart-container">
         <canvas id="feedback_report_all_service_monthly" width="800" height="275"></canvas>
     </div>
 
