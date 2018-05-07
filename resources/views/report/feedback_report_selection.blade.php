@@ -36,8 +36,8 @@
             <div class="collapse" id="collapse_all_report">
                 <div class="well">
                     <div class="text-center">
-                        <a class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> All
+                        <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
+                            <i class="fa fa-bar-chart"></i> Rating
                         </a>
                     </div>
                 </div>

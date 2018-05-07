@@ -125,6 +125,7 @@ Route::resource('user', 'User\UserController');
 /* end of user management */
 
 /* Feedback Report All */
+Route::get('feedback_report_all/all-rating-report/yearly', 'Report\FeedbackReportAllController@showAllRatingYearly')->name('all_feedback_rating_yearly');
 Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');
 /* end of feedback report all */
 
@@ -136,6 +137,7 @@ Route::get('feedback_product_report/all/monthly', 'Report\FeedbackProduct\Feedba
 Route::get('feedback_product_report/{product_id}/show_detail/yearly', 'Report\FeedbackProduct\FeedbackProductReportController@showFeedbackProductReportYearly')->name('feedback_product_report_detail_yearly');
 Route::get('feedback_product_report/{product_id}/show_detail/monthly', 'Report\FeedbackProduct\FeedbackProductReportController@showFeedbackProductReportMonthly')->name('feedback_product_report_detail_monthly');
 Route::resource('feedback_product_report', 'Report\FeedbackProduct\FeedbackProductReportController');
+/* end of feedback product report */
 
 /* Feedback Service Report */
 Route::get('feedback_service_report/top-service/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showTopServiceReportYearly')->name('feedback_service_report_top_yearly');
@@ -145,3 +147,4 @@ Route::get('feedback_service_report/all/monthly', 'Report\FeedbackService\Feedba
 Route::get('feedback_service_report/{service_id}/show_detail/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportYearly')->name('feedback_service_report_detail_yearly');
 Route::get('feedback_service_report/{service_id}/show_detail/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportMonthly')->name('feedback_service_report_detail_monthly');
 Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');
+/* end of feedback service report */

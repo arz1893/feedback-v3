@@ -122,8 +122,7 @@ Route::post('faq_service/update-faq-service', 'FAQ\FAQServiceController@updateFa
 Route::post('faq_service/delete-faq-service', 'FAQ\FAQServiceController@deleteFaqService');
 
 /* Feedback Report All */
-Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackReportAllController@getAllServiceReportYearly');
-Route::get('feedback_report_all/service/{tenant_id}/get-all-service-report-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllServiceReportMonthly');
+Route::get('feedback_report_all/{tenantId}/get-all-rating-yearly/{year}', 'Report\FeedbackReportAllController@getAllFeedbackRatingYearly');
 
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-top-product-report-yearly/{customer_rating}/{yearly}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getTopProductReportYearly');
