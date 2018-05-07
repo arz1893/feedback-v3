@@ -126,6 +126,7 @@ Route::resource('user', 'User\UserController');
 
 /* Feedback Report All */
 Route::get('feedback_report_all/all-rating-report/yearly', 'Report\FeedbackReportAllController@showAllRatingYearly')->name('all_feedback_rating_yearly');
+Route::get('feedback_report_all/all-rating-report/monthly', 'Report\FeedbackReportAllController@showAllRatingMonthly')->name('all_feedback_rating_monthly');
 Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');
 /* end of feedback report all */
 
