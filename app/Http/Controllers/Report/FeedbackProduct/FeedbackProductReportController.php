@@ -39,6 +39,14 @@ class FeedbackProductReportController extends Controller
         return view('report.feedback_product.detail.feedback_product_report_detail_monthly', compact('product'));
     }
 
+    public function showFeedbackProductCompareYearly() {
+        return view('report.feedback_product.all.feedback_product_compare_yearly');
+    }
+
+    public function showFeedbackProductCompareMonthly() {
+        return view('report.feedback_product.all.feedback_product_compare_monthly');
+    }
+
     /* API Section */
     public function getTopProductReportYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', $year)->orderBy('created_at', 'asc')->get();
@@ -217,6 +225,90 @@ class FeedbackProductReportController extends Controller
             return ['rating' => $rating, 'rating_value' => [$ratingValue]];
         } else {
             return ['error' => 'data not found'];
+        }
+    }
+
+    public function getFeedbackProductCompareYearly($tenant_id, $year) {
+        $i = 1;
+        $nullCounter = 0;
+        $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        $dissatisfied = array_fill(0, 12, 0);
+        $neutral = array_fill(0, 12, 0);
+        $satisfied = array_fill(0, 12, 0);
+
+        while($i <= 12) {
+            $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $i)->get();
+
+            if(count($feedbackProducts) == 0) {
+                $nullCounter++;
+            } else {
+                foreach ($feedbackProducts as $feedbackProduct) {
+                    switch ($feedbackProduct->customer_rating) {
+                        case 1: {
+                            $dissatisfied[$i-1] += 1;
+                        }
+                        case 2: {
+                            $neutral[$i-1] += 1;
+                        }
+                        case 3: {
+                            $satisfied[$i-1] += 1;
+                        }
+                    }
+                }
+            }
+            $i++;
+        }
+
+        if($nullCounter < 12) {
+            return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
+        } else {
+            return ['message' => 'There is no data in the current year'];
+        }
+    }
+
+    public function getFeedbackProductCompareMonthly($tenant_id, $year, $month) {
+        $i = 1;
+        $nullCounter = 0;
+        $totalDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $labels = [];
+        $dissatisfied = array_fill(0, $totalDays, 0);
+        $neutral = array_fill(0, $totalDays, 0);
+        $satisfied = array_fill(0, $totalDays, 0);
+
+
+
+        while($i <= $totalDays) {
+            $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
+            $labels[$i-1] = $i;
+
+            if(count($feedbackProducts) == 0) {
+                $nullCounter++;
+            } else {
+                foreach ($feedbackProducts as $feedbackProduct) {
+                    switch ($feedbackProduct->customer_rating) {
+                        case 1: {
+                            $dissatisfied[$i-1] += 1;
+                            break;
+                        }
+                        case 2: {
+                            $neutral[$i-1] += 1;
+                            break;
+                        }
+                        case 3: {
+                            $satisfied[$i-1] += 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            $i++;
+        }
+
+        if($nullCounter < $totalDays) {
+            return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
+        } else {
+            return ['message' => 'There is no data at the current month and year'];
         }
     }
 }
