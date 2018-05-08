@@ -39,6 +39,9 @@
                         <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> Rating
                         </a>
+                        <a href="{{ route('all_feedback_compare_yearly') }}" role="button" class="btn btn-app">
+                            <i class="fa fa-line-chart"></i> Feedback Compare
+                        </a>
                     </div>
                 </div>
             </div>
@@ -77,10 +80,13 @@
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a href="{{ route('feedback_product_report_all_monthly') }}" class="btn btn-app">
-                            <i class="fa fa-line-chart"></i> Global Feedback
+                            <i class="fa fa-line-chart"></i> Product Feedback
+                        </a>
+                        <a role="button" class="btn btn-app">
+                            <i class="fa fa-line-chart"></i> Feedback Compare
                         </a>
                         <a href="{{ route('feedback_product_report.index') }}" class="btn btn-app">
-                            <i class="fa fa-object-ungroup"></i> Specific
+                            <i class="fa fa-object-ungroup"></i> Specific Product
                         </a>
                     </div>
                 </div>
@@ -97,7 +103,7 @@
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a href="{{ route('feedback_service_report_all_monthly') }}" class="btn btn-app">
-                            <i class="fa fa-line-chart"></i> Global Feedback
+                            <i class="fa fa-line-chart"></i> Service Feedback
                         </a>
                         <a href="{{ route('feedback_service_report.index') }}" class="btn btn-app">
                             <i class="fa fa-object-ungroup"></i> Specific

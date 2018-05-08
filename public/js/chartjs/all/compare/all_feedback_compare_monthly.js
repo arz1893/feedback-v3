@@ -1,16 +1,18 @@
-if($('#all_feedback_rating_yearly').length > 0) {
+if($('#all_feedback_comparison_monthly').length > 0) {
+    $('#current_month').text($('#select_month option:selected').text());
     $('#current_year').text($('#select_year').val());
 
-    var ctx = document.getElementById('all_feedback_rating_yearly');
-    var tenantId = $('#tenantId').val();
+    var ctx = document.getElementById('all_feedback_comparison_monthly');
     var year = $('#select_year').val();
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-all-rating-yearly/' + year;
+    var month = $('#select_month').val();
+    var tenantId = $('#tenantId').val();
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-all-rating-monthly/' + year + '/' + month;
     window.myChart = '';
 
     axios.get(url).then(response => {
         if(response.data.message === undefined) {
-            let barChart = new Chart(ctx, {
-                type: 'bar',
+            let lineChart = new Chart(ctx, {
+                type: 'line',
                 data: {
                     labels: response.data.labels,
                     datasets: [
@@ -18,73 +20,86 @@ if($('#all_feedback_rating_yearly').length > 0) {
                             label: 'not satisfied',
                             data: response.data.dissatisfied,
                             backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                            lineTension: 0,
                             borderWidth: 1,
                         },
                         {
                             label: 'neutral',
                             data: response.data.neutral,
                             backgroundColor: 'rgba(255, 219, 77, 0.7)',
+                            lineTension: 0,
                             borderWidth: 1,
                         },
                         {
                             label: 'satisfied',
                             data: response.data.satisfied,
                             backgroundColor: 'rgba(46, 184, 46, 0.7)',
+                            lineTension: 0,
                             borderWidth: 1,
                         },
                     ],
                     options: {
                         maintainAspectRatio:true,
                         responsive: true,
+                        tooltips: {
+                            mode: 'label'
+                        },
                         scales: {
                             yAxes: [{
                                 scaleLabel: {
-                                    display: true,
                                     labelString: 'total feedback'
                                 },
                                 ticks: {
                                     beginAtZero:true,
                                     fontSize: 10
-                                }
+                                },
+                                stacked: true
                             }],
                             xAxes: [{
                                 ticks: {
-                                    display: true,
                                     maxRotation: 90,
                                     fontSize: 10,
                                     autoSkip: false
-                                }
+                                },
+                                stacked: true
                             }]
                         },
                     }
                 }
             });
-            window.myChart = barChart;
-            $('#all_feedback_rating_yearly').css('display', '');
+            window.myChart = lineChart;
+            $('#all_feedback_comparison_monthly').css('display', '');
             $('#not_found').css('display', 'none');
+            $('#loading_state').addClass('invisible');
         } else {
             $('#not_found').css('display', '');
             $('#loading_state').addClass('invisible');
-            $('#all_feedback_rating_yearly').css('display', 'none');
+            $('#all_feedback_comparison_monthly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
     });
 
     function onChangeParameter() {
+        $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
-        let selectedYear = $('#select_year').val();
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-all-rating-yearly/' + selectedYear;
+
+        let year = $('#select_year').val();
+        let month = $('#select_month').val();
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-all-rating-monthly/' + year + '/' + month;
+
+        $('#loading_state').removeClass('invisible');
+
         if(myChart instanceof Chart) {
             myChart.destroy();
         }
-        $('#loading_state').removeClass('invisible');
 
         function changeData() {
             axios.get(url).then(response => {
+                console.log(response.data);
                 if(response.data.message === undefined) {
                     let barChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                             labels: response.data.labels,
                             datasets: [
@@ -92,19 +107,22 @@ if($('#all_feedback_rating_yearly').length > 0) {
                                     label: 'not satisfied',
                                     data: response.data.dissatisfied,
                                     backgroundColor: 'rgba(255, 0, 0, 0.7)',
-                                    borderWidth: 1,
+                                    lineTension: 0,
+                                    borderWidth: 2,
                                 },
                                 {
                                     label: 'neutral',
                                     data: response.data.neutral,
                                     backgroundColor: 'rgba(255, 219, 77, 0.7)',
-                                    borderWidth: 1,
+                                    lineTension: 0,
+                                    borderWidth: 2,
                                 },
                                 {
                                     label: 'satisfied',
                                     data: response.data.satisfied,
                                     backgroundColor: 'rgba(46, 184, 46, 0.7)',
-                                    borderWidth: 1,
+                                    lineTension: 0,
+                                    borderWidth: 3,
                                 },
                             ],
                             options: {
@@ -112,6 +130,7 @@ if($('#all_feedback_rating_yearly').length > 0) {
                                 responsive: true,
                                 scales: {
                                     yAxes: [{
+                                        stacked: true,
                                         scaleLabel: {
                                             display: true,
                                             labelString: 'total feedback'
@@ -122,25 +141,26 @@ if($('#all_feedback_rating_yearly').length > 0) {
                                         }
                                     }],
                                     xAxes: [{
+                                        stacked: true,
                                         ticks: {
                                             display: true,
                                             maxRotation: 90,
                                             fontSize: 10,
                                             autoSkip: false
-                                        }
+                                        },
                                     }]
                                 },
                             }
                         }
                     });
                     window.myChart = barChart;
+                    $('#all_feedback_comparison_monthly').css('display', '');
                     $('#not_found').css('display', 'none');
-                    $('#all_feedback_rating_yearly').css('display', '');
                     $('#loading_state').addClass('invisible');
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
-                    $('#all_feedback_rating_yearly').css('display', 'none');
+                    $('#all_feedback_comparison_monthly').css('display', 'none');
                 }
             }).catch(error => {
                 console.log(error);

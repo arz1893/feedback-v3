@@ -389,6 +389,7 @@ class ComposerStaticInit9060546d4ad1d617ba93be0c21f41f55
         'App\\Http\\Controllers\\Question\\QuestionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Question/QuestionController.php',
         'App\\Http\\Controllers\\Question\\QuestionListController' => __DIR__ . '/../..' . '/app/Http/Controllers/Question/QuestionListController.php',
         'App\\Http\\Controllers\\Report\\FeedbackProduct\\FeedbackProductReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Report/FeedbackProduct/FeedbackProductReportController.php',
+        'App\\Http\\Controllers\\Report\\FeedbackReportAllController' => __DIR__ . '/../..' . '/app/Http/Controllers/Report/FeedbackReportAllController.php',
         'App\\Http\\Controllers\\Report\\FeedbackService\\FeedbackServiceReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Report/FeedbackService/FeedbackServiceReportController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

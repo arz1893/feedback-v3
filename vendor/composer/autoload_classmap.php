@@ -42,6 +42,7 @@ return array(
     'App\\Http\\Controllers\\Question\\QuestionController' => $baseDir . '/app/Http/Controllers/Question/QuestionController.php',
     'App\\Http\\Controllers\\Question\\QuestionListController' => $baseDir . '/app/Http/Controllers/Question/QuestionListController.php',
     'App\\Http\\Controllers\\Report\\FeedbackProduct\\FeedbackProductReportController' => $baseDir . '/app/Http/Controllers/Report/FeedbackProduct/FeedbackProductReportController.php',
+    'App\\Http\\Controllers\\Report\\FeedbackReportAllController' => $baseDir . '/app/Http/Controllers/Report/FeedbackReportAllController.php',
     'App\\Http\\Controllers\\Report\\FeedbackService\\FeedbackServiceReportController' => $baseDir . '/app/Http/Controllers/Report/FeedbackService/FeedbackServiceReportController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
