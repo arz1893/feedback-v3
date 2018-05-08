@@ -170,12 +170,15 @@ class FeedbackReportAllController extends Controller
                     switch ($feedbackProduct->customer_rating) {
                         case 1: {
                             $dissatisfied[$i-1] += 1;
+                            break;
                         }
                         case 2: {
                             $neutral[$i-1] += 1;
+                            break;
                         }
                         case 3: {
                             $satisfied[$i-1] += 1;
+                            break;
                         }
                     }
                 }
@@ -184,12 +187,15 @@ class FeedbackReportAllController extends Controller
                     switch($feedbackService->customer_rating) {
                         case 1: {
                             $dissatisfied[$i-1] += 1;
+                            break;
                         }
                         case 2: {
                             $neutral[$i-1] += 1;
+                            break;
                         }
                         case 3: {
                             $satisfied[$i-1] += 1;
+                            break;
                         }
                     }
                 }

@@ -1,14 +1,15 @@
-if($('#feedback_product_comparison_yearly').length > 0) {
+if($('#feedback_service_comparison_yearly').length > 0) {
     $('#current_year').text($('#select_year').val());
-    var ctx = document.getElementById("feedback_product_comparison_yearly");
+    var ctx = document.getElementById("feedback_service_comparison_yearly");
     var tenantId = $('#tenantId').val();
     var year = $('#select_year').val();
     var count = $('#show_data').val();
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-feedback-product-compare-yearly/' + year;
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-feedback-service-compare-yearly/' + year;
     window.myChart = '';
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
+            console.log(response.data);
             let myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -65,7 +66,7 @@ if($('#feedback_product_comparison_yearly').length > 0) {
             window.myChart = myChart;
         } else {
             $('#not_found').css('display', '');
-            $('#feedback_product_comparison_yearly').css('display', 'none');
+            $('#feedback_service_comparison_yearly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
@@ -80,11 +81,11 @@ if($('#feedback_product_comparison_yearly').length > 0) {
     });
 
     function onChangeParameter() {
-        var ctx = document.getElementById("feedback_product_comparison_yearly");
+        var ctx = document.getElementById("feedback_service_comparison_yearly");
         var tenantId = $('#tenantId').val();
         var year = $('#select_year').val();
         $('#current_year').text($('#select_year').val());
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-feedback-product-compare-yearly/' + year;
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-feedback-service-compare-yearly/' + year;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
@@ -146,11 +147,11 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                         }
                     });
                     window.myChart = myChart;
-                    $('#feedback_product_comparison_yearly').css({'display': ''});
+                    $('#feedback_service_comparison_yearly').css({'display': ''});
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
-                    $('#feedback_product_comparison_yearly').css('display', 'none');
+                    $('#feedback_service_comparison_yearly').css('display', 'none');
                 }
             }).catch(error => {
                 console.log(error);

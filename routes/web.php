@@ -151,5 +151,7 @@ Route::get('feedback_service_report/all/yearly', 'Report\FeedbackService\Feedbac
 Route::get('feedback_service_report/all/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showAllReportMonthly')->name('feedback_service_report_all_monthly');
 Route::get('feedback_service_report/{service_id}/show_detail/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportYearly')->name('feedback_service_report_detail_yearly');
 Route::get('feedback_service_report/{service_id}/show_detail/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceReportMonthly')->name('feedback_service_report_detail_monthly');
+Route::get('feedback_service_report/compare-satisfaction/yearly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceCompareYearly')->name('feedback_service_compare_yearly');
+Route::get('feedback_service_report/compare-satisfaction/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceCompareMonthly')->name('feedback_service_compare_monthly');
 Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');
 /* end of feedback service report */

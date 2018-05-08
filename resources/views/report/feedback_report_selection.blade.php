@@ -105,6 +105,9 @@
                         <a href="{{ route('feedback_service_report_all_monthly') }}" class="btn btn-app">
                             <i class="fa fa-line-chart"></i> Service Feedback
                         </a>
+                        <a href="{{ route('feedback_service_compare_yearly') }}" role="button" class="btn btn-app">
+                            <i class="fa fa-line-chart"></i> Feedback Compare
+                        </a>
                         <a href="{{ route('feedback_service_report.index') }}" class="btn btn-app">
                             <i class="fa fa-object-ungroup"></i> Specific
                         </a>
