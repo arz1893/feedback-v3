@@ -282,7 +282,7 @@ class FeedbackProductReportController extends Controller
 
         while($i <= $totalDays) {
             $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
-            $labels[$i-1] = $i;
+            $labels[$i-1] = 'Day ' . $i;
 
             if(count($feedbackProducts) == 0) {
                 $nullCounter++;

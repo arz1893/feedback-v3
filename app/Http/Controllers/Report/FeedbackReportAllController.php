@@ -25,6 +25,10 @@ class FeedbackReportAllController extends Controller
         return view('report.all.compare.all_feedback_compare_monthly');
     }
 
+    public function showAllTopSatisfactionYearly() {
+        return view('report.all.satisfaction.all_top_satisfaction_yearly');
+    }
+
     /* API Section Rating */
     public function getAllFeedbackRatingYearly($tenant_id, $year) {
         $i = 1;
@@ -272,5 +276,9 @@ class FeedbackReportAllController extends Controller
         } else {
             return ['message' => 'There is no data at the current month and year'];
         }
+    }
+
+    public function getAllTopSatisfactionYearly($tenant_id, $year) {
+
     }
 }

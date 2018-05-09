@@ -20,11 +20,12 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
                     labels: response.data.labels,
                     datasets: [{
                         label: 'Feedback',
+                        fill: false,
                         data: response.data.data,
                         borderColor: "rgba(102, 179, 255, 0.7)",
                         backgroundColor: "rgba(102, 179, 255, 0.3)",
                         lineTension: 0,
-                        borderWidth: 3,
+                        borderWidth: 4,
                     }]
                 },
                 options: {
@@ -95,11 +96,12 @@ if($('#feedback_product_chart_all_monthly').length > 0) {
                             labels: response.data.labels,
                             datasets: [{
                                 label: 'Feedback',
+                                fill: false,
                                 data: response.data.data,
                                 borderColor: "rgba(102, 179, 255, 0.7)",
                                 backgroundColor: "rgba(102, 179, 255, 0.3)",
                                 lineTension: 0,
-                                borderWidth: 3,
+                                borderWidth: 4,
                             }]
                         },
                         options: {

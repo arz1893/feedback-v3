@@ -129,6 +129,7 @@ Route::get('feedback_report_all/all-rating-report/yearly', 'Report\FeedbackRepor
 Route::get('feedback_report_all/all-rating-report/monthly', 'Report\FeedbackReportAllController@showAllRatingMonthly')->name('all_feedback_rating_monthly');
 Route::get('feedback_report_all/all-compare-report/yearly', 'Report\FeedbackReportAllController@showAllCompareYearly')->name('all_feedback_compare_yearly');
 Route::get('feedback_report_all/all-compare-report/monthly', 'Report\FeedbackReportAllController@showAllCompareMonthly')->name('all_feedback_compare_monthly');
+Route::get('feedback_report_all/all-top-satisfaction/yearly', 'Report\FeedbackReportAllController@showAllTopSatisfactionYearly')->name('all_top_satisfaction_yearly');
 Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');
 /* end of feedback report all */
 

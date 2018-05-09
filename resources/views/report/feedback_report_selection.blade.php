@@ -36,7 +36,7 @@
             <div class="collapse" id="collapse_all_report">
                 <div class="well">
                     <div class="text-center">
-                        <a role="button" class="btn btn-app">
+                        <a href="{{ route('all_top_satisfaction_yearly') }}" role="button" class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
