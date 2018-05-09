@@ -30,16 +30,19 @@
     <div class="col-lg-12">
         <div class="col-lg-3">
             <a class="btn btn-lg btn-block btn-social btn-default bg-blue" role="button" data-toggle="collapse" href="#collapse_all_report" aria-expanded="false" aria-controls="collapse_all_report">
-                <i class="fa fa-bar-chart"></i> <span class="pull-left">All Report</span>
+                <i class="fa fa-bar-chart"></i> <span class="pull-left">All Product & Service</span>
             </a>
 
             <div class="collapse" id="collapse_all_report">
                 <div class="well">
                     <div class="text-center">
-                        <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
-                            <i class="fa fa-bar-chart"></i> Rating
+                        <a role="button" class="btn btn-app">
+                            <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
-                        <a href="{{ route('all_feedback_compare_yearly') }}" role="button" class="btn btn-app">
+                        <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
+                            <i class="fa fa-line-chart"></i> All Feedback
+                        </a>
+                        <a href="{{ route('all_feedback_rating_yearly') }}" role="button" class="btn btn-app">
                             <i class="fa fa-line-chart"></i> All Comparison
                         </a>
                     </div>
@@ -109,7 +112,7 @@
                             <i class="fa fa-line-chart"></i> Feedback Compare
                         </a>
                         <a href="{{ route('feedback_service_report.index') }}" class="btn btn-app">
-                            <i class="fa fa-object-ungroup"></i> Specific
+                            <i class="fa fa-object-ungroup"></i> Specific Service
                         </a>
                     </div>
                 </div>

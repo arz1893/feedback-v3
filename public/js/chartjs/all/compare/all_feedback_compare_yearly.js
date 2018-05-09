@@ -14,25 +14,31 @@ if($('#all_feedback_comparison_yearly').length > 0) {
                     labels: response.data.labels,
                     datasets: [
                         {
+                            fill: false,
                             label: 'not satisfied',
                             data: response.data.dissatisfied,
+                            borderColor: 'rgba(255, 0, 0, 0.5)',
                             backgroundColor: 'rgba(255, 0, 0, 0.5)',
                             lineTension: 0,
-                            borderWidth: 2,
+                            borderWidth: 4,
                         },
                         {
+                            fill: false,
                             label: 'neutral',
                             data: response.data.neutral,
+                            borderColor: 'rgba(255, 219, 77, 0.5)',
                             backgroundColor: 'rgba(255, 219, 77, 0.5)',
                             lineTension: 0,
-                            borderWidth: 2,
+                            borderWidth: 4,
                         },
                         {
+                            fill: false,
                             label: 'satisfied',
                             data: response.data.satisfied,
+                            borderColor: 'rgba(46, 184, 46, 0.5)',
                             backgroundColor: 'rgba(46, 184, 46, 0.5)',
                             lineTension: 0,
-                            borderWidth: 2,
+                            borderWidth: 4,
                         },
                     ]
                 },
@@ -62,7 +68,6 @@ if($('#all_feedback_comparison_yearly').length > 0) {
                 }
             });
             window.myChart = lineChart;
-            window.myChart = barChart;
             $('#all_feedback_comparison_yearly').css('display', '');
         } else {
             $('#not_found').css('display', '');
@@ -91,13 +96,15 @@ if($('#all_feedback_comparison_yearly').length > 0) {
                             labels: response.data.labels,
                             datasets: [
                                 {
+                                    fill: false,
                                     label: 'not satisfied',
                                     data: response.data.dissatisfied,
                                     backgroundColor: 'rgba(255, 0, 0, 0.5)',
                                     lineTension: 0,
-                                    borderWidth: 2,
+                                    borderWidth: 2
                                 },
                                 {
+                                    fill: false,
                                     label: 'neutral',
                                     data: response.data.neutral,
                                     backgroundColor: 'rgba(255, 219, 77, 0.5)',
@@ -105,11 +112,12 @@ if($('#all_feedback_comparison_yearly').length > 0) {
                                     borderWidth: 2,
                                 },
                                 {
+                                    fill: false,
                                     label: 'satisfied',
                                     data: response.data.satisfied,
                                     backgroundColor: 'rgba(46, 184, 46, 0.5)',
                                     lineTension: 0,
-                                    borderWidth: 2,
+                                    borderWidth: 2
                                 },
                             ]
                         },

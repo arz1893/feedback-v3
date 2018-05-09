@@ -100,7 +100,7 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="feedback_report_all_product_yearly"></canvas>
+        <canvas id="feedback_report_all_product_yearly" height="125"></canvas>
     </div>
 
     <!-- Modal -->
