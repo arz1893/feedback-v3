@@ -3,6 +3,7 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/modernizr/modernizr-custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/all/satisfaction/all_top_satisfaction_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
@@ -22,19 +23,65 @@
         <a role="button" class="btn btn-xs btn-default">Daily</a>
         <a role="button" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
-    </div> <br> <br>
+    </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
+    {{ Form::radio('customer_rating', 1, false, ['id' => 'radio_dissatisfied', 'class' => 'invisible']) }}
+    {{ Form::radio('customer_rating', 2, false, ['id' => 'radio_neutral', 'class' => 'invisible']) }}
+    {{ Form::radio('customer_rating', 3, false, ['id' => 'radio_satisfied', 'class' => 'invisible', 'checked' => true]) }}
+
+    <div class="text-center">
+        Customer Rating
+        <br>
+        <a>
+            <i id="very_bad"
+               class="smiley_rating material-icons text-maroon"
+               style="font-size: 3.5em;"
+               data-value="1" onclick="customerRating(this)">
+                sentiment_very_dissatisfied
+            </i>
+        </a>
+        <a>
+            <i id="normal"
+               class="smiley_rating material-icons text-yellow"
+               style="font-size: 3.5em;"
+               data-value="2" onclick="customerRating(this)">
+                sentiment_neutral
+            </i>
+        </a>
+        <a>
+            <i id="very_satisfied"
+               class="smiley_rating material-icons text-green is-selected"
+               style="font-size: 3.5em;"
+               data-value="3" onclick="customerRating(this)">
+                sentiment_very_satisfied
+            </i>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 pull-left">
+            <div class="form-inline">
+                <div class="form-group">
+                    {{ Form::label('show_data', 'Show') }}
+                    {{ Form::select('show_data', ['10' => '10', '50' => '50', '100' => '100'], 10, ['class' => 'form-control']) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 pull-right">
+            <div class="pull-right">
                 <form class="form-inline">
-                    <div class="form-group pull-left">
+                    <div class="form-group">
                         {{ Form::label('select_year', 'Select Year') }}
-                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control', 'onchange' => 'onChangeParameter()']) }}
+                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="visible-xs">
+        <p class="text-muted">Note *: for best experience please view it on desktop</p>
     </div>
 
     <div id="loading_state" class="text-center invisible">
@@ -48,6 +95,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="all_top_satisfaction_yearly"></canvas>
+        <canvas id="all_top_satisfaction_yearly" height="125"></canvas>
     </div>
 @endsection

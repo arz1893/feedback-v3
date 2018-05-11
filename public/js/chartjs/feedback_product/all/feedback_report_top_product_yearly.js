@@ -136,7 +136,6 @@ if($('#feedback_report_all_product_yearly').length > 0) {
         var tenantId = $('#tenantId').val();
         var year = $('#select_year').val();
         var count = $('#show_data').val();
-        $('#current_year').text($('#select_year').val());
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-yearly/' + rating + '/' + year + '/' + count;
         $('#loading_state').removeClass('invisible');
 
