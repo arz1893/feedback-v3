@@ -1,8 +1,10 @@
-if($('#all_top_satisfaction_yearly').length > 0) {
+if($('#all_top_satisfaction_monthly').length > 0) {
     $('#current_year').text($('#select_year').val());
+    $('#current_month').text($("input[name=select_monthy] option:selected").text());
 
-    var ctx = document.getElementById("all_top_satisfaction_yearly");
+    var ctx = document.getElementById("all_top_satisfaction_monthly");
     var year = $('#select_year').val();
+    var month = $('#select_month').val();
     var count = $('#show_data').val();
     var tenantId = $('#tenantId').val();
     window.rating = 3;
@@ -12,7 +14,7 @@ if($('#all_top_satisfaction_yearly').length > 0) {
     window.dataIds = [];
     window.dataMarkers = [];
     window.showXLabel = true;
-    const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-yearly/" + rating + '/' + year + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-monthly/" + rating + '/' + year + '/' + month + '/' + count;
 
     var deviceAgent = navigator.userAgent.toLowerCase();
     var isTouchDevice = Modernizr.touch ||
@@ -29,7 +31,6 @@ if($('#all_top_satisfaction_yearly').length > 0) {
     }
 
     axios.get(url).then(response => {
-        console.log(response.data);
         if(response.data.error === undefined) {
             window.dataIds = response.data.allIds;
             window.allMarkers = response.data.allMarkers;
@@ -73,7 +74,7 @@ if($('#all_top_satisfaction_yearly').length > 0) {
             window.myChart = barChart;
         } else {
             $('#not_found').css('display', '');
-            $('#all_top_satisfaction_yearly').css('display', 'none');
+            $('#all_top_satisfaction_monthly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
@@ -84,6 +85,14 @@ if($('#all_top_satisfaction_yearly').length > 0) {
             myChart.destroy();
         }
         $('#current_year').text($('#select_year').val());
+        onChangeParameter();
+    });
+
+    $('#select_month').change(function () {
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        $('#current_month').text($("input[name='select_month'] option:selected").text());
         onChangeParameter();
     });
 
@@ -134,11 +143,12 @@ if($('#all_top_satisfaction_yearly').length > 0) {
     }
 
     function onChangeParameter() {
-        var ctx = document.getElementById("all_top_satisfaction_yearly");
-        var year = $('#select_year').val();
+        var ctx = document.getElementById("all_top_satisfaction_monthly");
+        var selectedYear = $('#select_year').val();
+        var selectedMonth = $('#select_month').val();
         var count = $('#show_data').val();
         var tenantId = $('#tenantId').val();
-        const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-yearly/" + rating + '/' + year + '/' + count;
+        const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-monthly/" + rating + '/' + selectedYear + '/' + selectedMonth + '/' + count;
 
         $('#loading_state').removeClass('invisible');
 
@@ -186,11 +196,11 @@ if($('#all_top_satisfaction_yearly').length > 0) {
                     });
                     window.myChart = barChart;
                     $('#loading_state').addClass('invisible');
-                    $('#all_top_satisfaction_yearly').css('display', '');
+                    $('#all_top_satisfaction_monthly').css('display', '');
                     $('#not_found').css('display', 'none');
                 } else {
                     $('#not_found').css('display', '');
-                    $('#all_top_satisfaction_yearly').css('display', 'none');
+                    $('#all_top_satisfaction_monthly').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                 }
             }).catch(error => {
