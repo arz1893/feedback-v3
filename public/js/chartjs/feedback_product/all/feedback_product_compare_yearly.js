@@ -34,7 +34,7 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                         },
                     ]
                 },
-                option: {
+                options: {
                     maintainAspectRatio:true,
                     responsive: true,
                     scales: {
@@ -57,6 +57,16 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                             }
                         }]
                     },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            label: function(t, d) {
+                                var dstLabel = d.datasets[t.datasetIndex].label;
+                                var yLabel = t.yLabel;
+                                return dstLabel + ': ' + yLabel;
+                            }
+                        }
+                    }
                 }
             });
             window.myChart = barChart;
@@ -115,11 +125,12 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                                 },
                             ]
                         },
-                        option: {
+                        options: {
                             maintainAspectRatio:true,
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    stacked: true,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
@@ -130,6 +141,7 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                                     }
                                 }],
                                 xAxes: [{
+                                    stacked: true,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,
@@ -138,6 +150,16 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                                     }
                                 }]
                             },
+                            tooltips: {
+                                mode: 'label',
+                                callbacks: {
+                                    label: function(t, d) {
+                                        var dstLabel = d.datasets[t.datasetIndex].label;
+                                        var yLabel = t.yLabel;
+                                        return dstLabel + ': ' + yLabel;
+                                    }
+                                }
+                            }
                         }
                     });
                     window.myChart = myChart;

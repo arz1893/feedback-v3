@@ -47,6 +47,9 @@ if($('#all_top_satisfaction_yearly').length > 0) {
                 options: {
                     maintainAspectRatio:true,
                     responsive: true,
+                    tooltips: {
+                        mode: 'index'
+                    },
                     scales: {
                         yAxes: [{
                             scaleLabel: {

@@ -38,32 +38,39 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                             borderWidth: 1,
                         },
                     ],
-                    options: {
-                        maintainAspectRatio:true,
-                        responsive: true,
-                        tooltips: {
-                            mode: 'label'
-                        },
-                        scales: {
-                            yAxes: [{
-                                scaleLabel: {
-                                    labelString: 'total feedback'
-                                },
-                                ticks: {
-                                    beginAtZero:true,
-                                    fontSize: 10
-                                },
-                                stacked: true
-                            }],
-                            xAxes: [{
-                                ticks: {
-                                    maxRotation: 90,
-                                    fontSize: 10,
-                                    autoSkip: false
-                                },
-                                stacked: true
-                            }]
-                        },
+                },
+                options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
+                    scales: {
+                        yAxes: [{
+                            stacked: true,
+                            scaleLabel: {
+                                labelString: 'total feedback'
+                            },
+                            ticks: {
+                                beginAtZero:true,
+                                fontSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                maxRotation: 90,
+                                fontSize: 10,
+                                autoSkip: false
+                            }
+                        }]
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            label: function(t, d) {
+                                var dstLabel = d.datasets[t.datasetIndex].label;
+                                var yLabel = t.yLabel;
+                                return dstLabel + ': ' + yLabel;
+                            }
+                        }
                     }
                 }
             });
@@ -103,49 +110,56 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                                     label: 'not satisfied',
                                     data: response.data.dissatisfied,
                                     backgroundColor: 'rgba(255, 0, 0, 0.7)',
-                                    stack: 'Stack 0',
                                     borderWidth: 1,
                                 },
                                 {
                                     label: 'neutral',
                                     data: response.data.neutral,
                                     backgroundColor: 'rgba(255, 219, 77, 0.7)',
-                                    stack: 'Stack 0',
                                     borderWidth: 1,
                                 },
                                 {
                                     label: 'satisfied',
                                     data: response.data.satisfied,
                                     backgroundColor: 'rgba(46, 184, 46, 0.7)',
-                                    stack: 'Stack 0',
                                     borderWidth: 1,
                                 },
                             ],
-                            options: {
-                                maintainAspectRatio:true,
-                                responsive: true,
-                                scales: {
-                                    yAxes: [{
-                                        stacked: true,
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'total feedback'
-                                        },
-                                        ticks: {
-                                            beginAtZero:true,
-                                            fontSize: 10
-                                        }
-                                    }],
-                                    xAxes: [{
-                                        stacked: true,
-                                        ticks: {
-                                            display: true,
-                                            maxRotation: 90,
-                                            fontSize: 10,
-                                            autoSkip: false
-                                        },
-                                    }]
-                                },
+                        },
+                        options: {
+                            maintainAspectRatio:true,
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    stacked: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
+                                    ticks: {
+                                        beginAtZero:true,
+                                        fontSize: 10
+                                    }
+                                }],
+                                xAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        display: true,
+                                        maxRotation: 90,
+                                        fontSize: 10,
+                                        autoSkip: false
+                                    },
+                                }]
+                            },
+                            tooltips: {
+                                mode: 'label',
+                                callbacks: {
+                                    label: function(t, d) {
+                                        var dstLabel = d.datasets[t.datasetIndex].label;
+                                        var yLabel = t.yLabel;
+                                        return dstLabel + ': ' + yLabel;
+                                    }
+                                }
                             }
                         }
                     });

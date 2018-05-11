@@ -33,35 +33,43 @@ if($('#all_feedback_rating_yearly').length > 0) {
                             borderWidth: 1,
                         },
                     ],
-                    options: {
-                        maintainAspectRatio:true,
-                        responsive: true,
-                        scales: {
-                            yAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'total feedback'
-                                },
-                                ticks: {
-                                    beginAtZero:true,
-                                    fontSize: 10
-                                }
-                            }],
-                            xAxes: [{
-                                ticks: {
-                                    display: true,
-                                    maxRotation: 90,
-                                    fontSize: 10,
-                                    autoSkip: false
-                                }
-                            }]
-                        },
+                },
+                options: {
+                    maintainAspectRatio:true,
+                    responsive: true,
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'total feedback'
+                            },
+                            ticks: {
+                                beginAtZero:true,
+                                fontSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                display: true,
+                                maxRotation: 90,
+                                fontSize: 10,
+                                autoSkip: false
+                            }
+                        }]
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            label: function(t, d) {
+                                var dstLabel = d.datasets[t.datasetIndex].label;
+                                var yLabel = t.yLabel;
+                                return dstLabel + ': ' + yLabel;
+                            }
+                        }
                     }
                 }
             });
             window.myChart = barChart;
-            $('#all_feedback_rating_yearly').css('display', '');
-            $('#not_found').css('display', 'none');
         } else {
             $('#not_found').css('display', '');
             $('#loading_state').addClass('invisible');
@@ -107,29 +115,39 @@ if($('#all_feedback_rating_yearly').length > 0) {
                                     borderWidth: 1,
                                 },
                             ],
-                            options: {
-                                maintainAspectRatio:true,
-                                responsive: true,
-                                scales: {
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'total feedback'
-                                        },
-                                        ticks: {
-                                            beginAtZero:true,
-                                            fontSize: 10
-                                        }
-                                    }],
-                                    xAxes: [{
-                                        ticks: {
-                                            display: true,
-                                            maxRotation: 90,
-                                            fontSize: 10,
-                                            autoSkip: false
-                                        }
-                                    }]
-                                },
+                        },
+                        options: {
+                            maintainAspectRatio:true,
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
+                                    ticks: {
+                                        beginAtZero:true,
+                                        fontSize: 10
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        display: true,
+                                        maxRotation: 90,
+                                        fontSize: 10,
+                                        autoSkip: false
+                                    }
+                                }]
+                            },
+                            tooltips: {
+                                mode: 'label',
+                                callbacks: {
+                                    label: function(t, d) {
+                                        var dstLabel = d.datasets[t.datasetIndex].label;
+                                        var yLabel = t.yLabel;
+                                        return dstLabel + ': ' + yLabel;
+                                    }
+                                }
                             }
                         }
                     });

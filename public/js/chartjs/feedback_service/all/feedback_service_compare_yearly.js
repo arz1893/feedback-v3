@@ -10,35 +10,32 @@ if($('#feedback_service_comparison_yearly').length > 0) {
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
             console.log(response.data);
-            let myChart = new Chart(ctx, {
-                type: 'line',
+            let barChart = new Chart(ctx, {
+                type: 'bar',
                 data: {
                     labels: response.data.labels,
                     datasets: [
                         {
                             label: 'not satisfied',
                             data: response.data.dissatisfied,
-                            backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                            lineTension: 0,
-                            borderWidth: 2,
+                            backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                            borderWidth: 1,
                         },
                         {
                             label: 'neutral',
                             data: response.data.neutral,
-                            backgroundColor: 'rgba(255, 219, 77, 0.5)',
-                            lineTension: 0,
-                            borderWidth: 2,
+                            backgroundColor: 'rgba(255, 219, 77, 0.7)',
+                            borderWidth: 1,
                         },
                         {
                             label: 'satisfied',
                             data: response.data.satisfied,
-                            backgroundColor: 'rgba(46, 184, 46, 0.5)',
-                            lineTension: 0,
-                            borderWidth: 2,
+                            backgroundColor: 'rgba(46, 184, 46, 0.7)',
+                            borderWidth: 1,
                         },
                     ]
                 },
-                option: {
+                options: {
                     maintainAspectRatio:true,
                     responsive: true,
                     scales: {
@@ -59,11 +56,21 @@ if($('#feedback_service_comparison_yearly').length > 0) {
                                 fontSize: 10,
                                 autoSkip: false
                             }
-                        }]
+                        }],
                     },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            label: function(t, d) {
+                                var dstLabel = d.datasets[t.datasetIndex].label;
+                                var yLabel = t.yLabel;
+                                return dstLabel + ': ' + yLabel;
+                            }
+                        }
+                    }
                 }
             });
-            window.myChart = myChart;
+            window.myChart = barChart;
         } else {
             $('#not_found').css('display', '');
             $('#feedback_service_comparison_yearly').css('display', 'none');
@@ -93,35 +100,35 @@ if($('#feedback_service_comparison_yearly').length > 0) {
                 if(response.data.error === undefined) {
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
-                    let myChart = new Chart(ctx, {
-                        type: 'line',
+                    let barChart = new Chart(ctx, {
+                        type: 'bar',
                         data: {
                             labels: response.data.labels,
                             datasets: [
                                 {
                                     label: 'not satisfied',
                                     data: response.data.dissatisfied,
-                                    backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                                    lineTension: 0,
-                                    borderWidth: 2,
+                                    backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                                 {
                                     label: 'neutral',
                                     data: response.data.neutral,
-                                    backgroundColor: 'rgba(255, 219, 77, 0.5)',
-                                    lineTension: 0,
-                                    borderWidth: 2,
+                                    backgroundColor: 'rgba(255, 219, 77, 0.7)',
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                                 {
                                     label: 'satisfied',
                                     data: response.data.satisfied,
-                                    backgroundColor: 'rgba(46, 184, 46, 0.5)',
-                                    lineTension: 0,
-                                    borderWidth: 2,
+                                    backgroundColor: 'rgba(46, 184, 46, 0.7)',
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                             ]
                         },
-                        option: {
+                        options: {
                             maintainAspectRatio:true,
                             responsive: true,
                             scales: {
@@ -144,10 +151,22 @@ if($('#feedback_service_comparison_yearly').length > 0) {
                                     }
                                 }]
                             },
+                            tooltips: {
+                                mode: 'label',
+                                callbacks: {
+                                    label: function(t, d) {
+                                        var dstLabel = d.datasets[t.datasetIndex].label;
+                                        var yLabel = t.yLabel;
+                                        return dstLabel + ': ' + yLabel;
+                                    }
+                                }
+                            }
                         }
                     });
-                    window.myChart = myChart;
-                    $('#feedback_service_comparison_yearly').css({'display': ''});
+                    window.myChart = barChart;
+                    $('#feedback_service_comparison_yearly').css('display', '');
+                    $('#not_found').css('display', '');
+                    $('#loading_state').addClass('invisible');
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
