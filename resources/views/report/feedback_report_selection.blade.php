@@ -39,6 +39,9 @@
                         <a href="{{ route('all_top_satisfaction_yearly') }}" role="button" class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
+                        <a href="{{ route('all_global_feedback_yearly') }}" role="button" class="btn btn-app">
+                            <i class="fa fa-line-chart"></i> All Global Feedback
+                        </a>
                         <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
                             <i class="fa fa-line-chart"></i> All Compare
                         </a>

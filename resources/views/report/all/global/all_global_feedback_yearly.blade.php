@@ -3,15 +3,15 @@
 @push('scripts')
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/all/compare/all_feedback_compare_yearly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/all/global/feedback_global_report_all_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
-    <h3 style="margin-top: -0.5%;" class="text-info">All Feedback Comparison in <span id="current_year"></span></h3>
+    <h3 style="margin-top: -0.5%;" class="text-info">All Global Feedback in <span id="current_year"></span></h3>
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
-        <li class="active"> All Feedback Comparison (Yearly) </li>
+        <li class="active"> All Global Feedback (Yearly) </li>
     </ol>
 @endsection
 
@@ -20,7 +20,7 @@
 
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
-        <a href="{{ route('all_feedback_compare_monthly') }}" role="button" class="btn btn-xs btn-default">Monthly</a>
+        <a role="button" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div> <br> <br>
 
@@ -48,6 +48,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="all_feedback_comparison_yearly"></canvas>
+        <canvas id="all_global_feedback_yearly" height="125"></canvas>
     </div>
 @endsection

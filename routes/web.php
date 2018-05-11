@@ -127,8 +127,7 @@ Route::resource('user', 'User\UserController');
 /* Feedback Report All */
 Route::get('feedback_report_all/all-rating-report/yearly', 'Report\FeedbackReportAllController@showAllRatingYearly')->name('all_feedback_rating_yearly');
 Route::get('feedback_report_all/all-rating-report/monthly', 'Report\FeedbackReportAllController@showAllRatingMonthly')->name('all_feedback_rating_monthly');
-Route::get('feedback_report_all/all-compare-report/yearly', 'Report\FeedbackReportAllController@showAllCompareYearly')->name('all_feedback_compare_yearly');
-Route::get('feedback_report_all/all-compare-report/monthly', 'Report\FeedbackReportAllController@showAllCompareMonthly')->name('all_feedback_compare_monthly');
+Route::get('feedback_report_all/all-global-feedback-report/yearly', 'Report\FeedbackReportAllController@showAllGlobalFeedbackYearly')->name('all_global_feedback_yearly');
 Route::get('feedback_report_all/all-top-satisfaction/yearly', 'Report\FeedbackReportAllController@showAllTopSatisfactionYearly')->name('all_top_satisfaction_yearly');
 Route::get('feedback_report_all/all-top-satisfaction/monthly', 'Report\FeedbackReportAllController@showAllTopSatisfactionMonthly')->name('all_top_satisfaction_monthly');
 Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');

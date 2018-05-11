@@ -17,12 +17,8 @@ class FeedbackReportAllController extends Controller
         return view('report.all.rating.all_feedback_rating_monthly');
     }
 
-    public function showAllCompareYearly() {
-        return view('report.all.compare.all_feedback_compare_yearly');
-    }
-
-    public function showAllCompareMonthly() {
-        return view('report.all.compare.all_feedback_compare_monthly');
+    public function showAllGlobalFeedbackYearly() {
+        return view('report.all.global.all_global_feedback_yearly');
     }
 
     public function showAllTopSatisfactionYearly() {
@@ -158,130 +154,35 @@ class FeedbackReportAllController extends Controller
         }
     }
 
-    /* API Section Compare */
-    public function getAllFeedbackCompareYearly($tenant_id, $year) {
+    /* API Section Global Feedback */
+    public function getAllGlobalFeedbackYearly($tenant_id, $year) {
+
         $i = 1;
-        $nullCounter = 0;
         $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        $dissatisfied = array_fill(0, 12, 0);
-        $neutral = array_fill(0, 12, 0);
-        $satisfied = array_fill(0, 12, 0);
+        $allDatas = [];
+        $nullCounter = 0;
 
         while($i <= 12) {
             $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $i)->get();
             $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $i)->get();
 
-            if(count($feedbackProducts) == 0 && count($feedbackServices) == 0) {
-                $nullCounter++;
+            if(count($feedbackProducts) > 0 || count($feedbackServices) > 0) {
+                $allDatas[$i-1] = count($feedbackProducts) + count($feedbackServices);
             } else {
-                foreach ($feedbackProducts as $feedbackProduct) {
-                    switch ($feedbackProduct->customer_rating) {
-                        case 1: {
-                            $dissatisfied[$i-1] += 1;
-                            break;
-                        }
-                        case 2: {
-                            $neutral[$i-1] += 1;
-                            break;
-                        }
-                        case 3: {
-                            $satisfied[$i-1] += 1;
-                            break;
-                        }
-                    }
-                }
-
-                foreach ($feedbackServices as $feedbackService) {
-                    switch($feedbackService->customer_rating) {
-                        case 1: {
-                            $dissatisfied[$i-1] += 1;
-                            break;
-                        }
-                        case 2: {
-                            $neutral[$i-1] += 1;
-                            break;
-                        }
-                        case 3: {
-                            $satisfied[$i-1] += 1;
-                            break;
-                        }
-                    }
-                }
+                $allDatas[$i-1] = 0;
+                $nullCounter++;
             }
             $i++;
         }
 
         if($nullCounter < 12) {
-            return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
+            return ['labels' => $labels, 'allDatas' => $allDatas];
         } else {
-            return ['message' => 'There is no data in the current year'];
+            return ['error' => 'There is no data in current year'];
         }
     }
 
-    public function getAllFeedbackCompareMonthly($tenant_id, $year, $month) {
-        $i = 1;
-        $nullCounter = 0;
-        $totalDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-        $labels = [];
-        $dissatisfied = array_fill(0, $totalDays, 0);
-        $neutral = array_fill(0, $totalDays, 0);
-        $satisfied = array_fill(0, $totalDays, 0);
-
-
-
-        while($i <= $totalDays) {
-            $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
-            $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
-            $labels[$i-1] = $i;
-
-            if(count($feedbackProducts) == 0 && count($feedbackServices) == 0) {
-                $nullCounter++;
-            } else {
-                foreach ($feedbackProducts as $feedbackProduct) {
-                    switch ($feedbackProduct->customer_rating) {
-                        case 1: {
-                            $dissatisfied[$i-1] += 1;
-                            break;
-                        }
-                        case 2: {
-                            $neutral[$i-1] += 1;
-                            break;
-                        }
-                        case 3: {
-                            $satisfied[$i-1] += 1;
-                            break;
-                        }
-                    }
-                }
-
-                foreach ($feedbackServices as $feedbackService) {
-                    switch ($feedbackService->customer_rating) {
-                        case 1: {
-                            $dissatisfied[$i-1] += 1;
-                            break;
-                        }
-                        case 2: {
-                            $neutral[$i-1] += 1;
-                            break;
-                        }
-                        case 3: {
-                            $satisfied[$i-1] += 1;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            $i++;
-        }
-
-        if($nullCounter < $totalDays) {
-            return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
-        } else {
-            return ['message' => 'There is no data at the current month and year'];
-        }
-    }
-
+    /* API Section Satisfaction */
     public function getAllTopSatisfactionYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', '=', $year)->orderBy('created_at', 'desc')->get();
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', '=', $year)->orderBy('created_at', 'desc')->get();
@@ -415,7 +316,6 @@ class FeedbackReportAllController extends Controller
                     }
                 }
             }
-//            return ['productDatas' => $productDatas, 'serviceDatas' => $serviceDatas];
             return ['allIds' => array_slice($allIds, 0, $count), 'allLabels' => array_slice($allLabels, 0, $count), 'allDatas' => array_slice($allDatas, 0, $count), 'allMarkers' => array_slice($allMarkers, 0, $count)];
         } else {
             return ['error' => 'There is no data for the current selected year'];
@@ -555,7 +455,6 @@ class FeedbackReportAllController extends Controller
                     }
                 }
             }
-//            return ['productDatas' => $productDatas, 'serviceDatas' => $serviceDatas];
             return ['allIds' => array_slice($allIds, 0, $count), 'allLabels' => array_slice($allLabels, 0, $count), 'allDatas' => array_slice($allDatas, 0, $count), 'allMarkers' => array_slice($allMarkers, 0, $count)];
         } else {
             return ['error' => 'There is no data for the current selected year'];
