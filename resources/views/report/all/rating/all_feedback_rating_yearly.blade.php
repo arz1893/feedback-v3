@@ -48,6 +48,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="all_feedback_rating_yearly"></canvas>
+        <canvas id="all_feedback_rating_yearly" height="125"></canvas>
     </div>
 @endsection

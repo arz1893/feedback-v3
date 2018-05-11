@@ -94,7 +94,7 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="feedback_report_all_service_monthly" width="800" height="275"></canvas>
+        <canvas id="feedback_report_all_service_monthly" height="125"></canvas>
     </div>
 
     <!-- Modal -->

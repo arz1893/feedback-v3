@@ -48,6 +48,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="feedback_service_chart_all_yearly" width="800" height="275"></canvas>
+        <canvas id="feedback_service_chart_all_yearly" height="125"></canvas>
     </div>
 @endsection

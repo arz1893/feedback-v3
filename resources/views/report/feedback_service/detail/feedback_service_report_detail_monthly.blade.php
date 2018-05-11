@@ -77,6 +77,8 @@
             </div>
         </div>
 
-        <canvas id="feedback_service_chart_detail_monthly" style="height:55vh; width:80vw"></canvas>
+        <div class="chart-container">
+            <canvas id="feedback_service_chart_detail_monthly" height="125"></canvas>
+        </div>
     </div>
 @endsection

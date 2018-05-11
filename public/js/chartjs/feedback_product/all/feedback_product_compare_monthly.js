@@ -11,8 +11,8 @@ if($('#feedback_product_comparison_monthly').length > 0) {
 
     axios.get(url).then(response => {
         if(response.data.message === undefined) {
-            let lineChart = new Chart(ctx, {
-                type: 'line',
+            let barChart = new Chart(ctx, {
+                type: 'bar',
                 data: {
                     labels: response.data.labels,
                     datasets: [
@@ -20,21 +20,21 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                             label: 'not satisfied',
                             data: response.data.dissatisfied,
                             backgroundColor: 'rgba(255, 0, 0, 0.7)',
-                            lineTension: 0,
+                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                         {
                             label: 'neutral',
                             data: response.data.neutral,
                             backgroundColor: 'rgba(255, 219, 77, 0.7)',
-                            lineTension: 0,
+                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                         {
                             label: 'satisfied',
                             data: response.data.satisfied,
                             backgroundColor: 'rgba(46, 184, 46, 0.7)',
-                            lineTension: 0,
+                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                     ],
@@ -67,13 +67,9 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                     }
                 }
             });
-            window.myChart = lineChart;
-            $('#feedback_product_comparison_monthly').css('display', '');
-            $('#not_found').css('display', 'none');
-            $('#loading_state').addClass('invisible');
+            window.myChart = barChart;
         } else {
             $('#not_found').css('display', '');
-            $('#loading_state').addClass('invisible');
             $('#feedback_product_comparison_monthly').css('display', 'none');
         }
     }).catch(error => {
@@ -99,7 +95,7 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                 console.log(response.data);
                 if(response.data.message === undefined) {
                     let barChart = new Chart(ctx, {
-                        type: 'line',
+                        type: 'bar',
                         data: {
                             labels: response.data.labels,
                             datasets: [
@@ -107,22 +103,22 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                                     label: 'not satisfied',
                                     data: response.data.dissatisfied,
                                     backgroundColor: 'rgba(255, 0, 0, 0.7)',
-                                    lineTension: 0,
-                                    borderWidth: 2,
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                                 {
                                     label: 'neutral',
                                     data: response.data.neutral,
                                     backgroundColor: 'rgba(255, 219, 77, 0.7)',
-                                    lineTension: 0,
-                                    borderWidth: 2,
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                                 {
                                     label: 'satisfied',
                                     data: response.data.satisfied,
                                     backgroundColor: 'rgba(46, 184, 46, 0.7)',
-                                    lineTension: 0,
-                                    borderWidth: 3,
+                                    stack: 'Stack 0',
+                                    borderWidth: 1,
                                 },
                             ],
                             options: {

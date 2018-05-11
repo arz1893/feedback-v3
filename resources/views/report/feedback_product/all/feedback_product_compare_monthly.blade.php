@@ -52,6 +52,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="feedback_product_comparison_monthly"></canvas>
+        <canvas id="feedback_product_comparison_monthly" height="125"></canvas>
     </div>
 @endsection
