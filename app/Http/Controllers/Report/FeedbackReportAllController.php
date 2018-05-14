@@ -21,16 +21,16 @@ class FeedbackReportAllController extends Controller
         return view('report.all.global.all_global_feedback_yearly');
     }
 
-    public function showAllGlobalFeedbackMonthly() {
-
-    }
-
     public function showAllTopSatisfactionYearly() {
         return view('report.all.satisfaction.all_top_satisfaction_yearly');
     }
 
     public function showAllTopSatisfactionMonthly() {
         return view('report.all.satisfaction.all_top_satisfaction_monthly');
+    }
+
+    public function showGlobalSummaryYearly() {
+        return view('report.all.global_summary.all_summary_yearly');
     }
 
     /* API Section Rating */

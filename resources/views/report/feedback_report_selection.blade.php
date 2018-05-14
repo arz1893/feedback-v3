@@ -42,8 +42,11 @@
                         <a href="{{ route('all_global_feedback_yearly') }}" role="button" class="btn btn-app">
                             <i class="fa fa-line-chart"></i> All Global Feedback
                         </a>
-                        <a href="{{ route('all_feedback_rating_yearly') }}" class="btn btn-app">
+                        <a href="{{ route('all_feedback_rating_yearly') }}" role="button" class="btn btn-app">
                             <i class="fa fa-line-chart"></i> All Compare
+                        </a>
+                        <a href="{{ route('global_summary_yearly') }}" role="button" class="btn btn-app">
+                            <i class="fa fa-pie-chart"></i> Global Summary
                         </a>
                     </div>
                 </div>
