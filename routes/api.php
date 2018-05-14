@@ -152,4 +152,5 @@ Route::get('feedback_service_report/{tenant_id}/get-feedback-service-compare-mon
 Route::get('user_group/{tenant_id}/get-all-user-group', 'User\UserGroupController@getTenantUserRoles');
 
 /* User Management */
+Route::get('user_management/{tenant_id}/get-all-user', 'User\UserController@getAllUser');
 Route::post('user_management/add-user', 'User\UserController@addUser');

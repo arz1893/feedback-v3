@@ -18,7 +18,10 @@ class User extends JsonResource
             'systemId' => $this->systemId,
             'name' => $this->name,
             'email' => $this->email,
-            'role' => $this->user_group->name
+            'phone' => $this->phone,
+            'role' => $this->user_group->name,
+            'status' => $this->status,
+            'created_at' => ($this->created_at == null ? null:$this->created_at->format('d M Y'))
         ];
     }
 }

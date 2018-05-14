@@ -7,15 +7,39 @@
         <div class="col-lg-12">
             <table class="table table-bordered table-striped" id="table_user">
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Joined at</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Joined at</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
+                <tbody>
+                    <tr v-for="user in users">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            <span v-if="user.status === 1" class="text-green">Active</span>
+                            <span v-else class="text-red">Deactivated</span>
+                        </td>
+                        <td>
+                            {{ user.created_at }}
+                        </td>
+                        <td>
+                            <button class="btn btn-warning">
+                                <i class="fa fa-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -143,6 +167,7 @@
         name: "user-management-index",
         props: ['tenant_id'],
         created() {
+            this.getAllUser();
             this.getAllUserRoles();
 
             this.validator = new Validator({
@@ -162,6 +187,7 @@
                     phone: '',
                     role: ''
                 },
+                users: [],
                 validator: ''
             }
         },
@@ -180,6 +206,14 @@
             }
         },
         methods: {
+            getAllUser: function() {
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_management/' + this.tenant_id + '/' + 'get-all-user';
+                axios.get(url).then(response => {
+                    this.users = response.data.data;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
             getAllUserRoles: function () {
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
                 axios.get(url).then(response => {
