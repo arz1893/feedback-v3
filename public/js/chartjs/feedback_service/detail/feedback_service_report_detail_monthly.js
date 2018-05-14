@@ -27,22 +27,12 @@ if($('#feedback_service_chart_detail_monthly').length > 0) {
                         borderWidth: 1,
                     }]
                 },
-                // options: {
-                //     scales: {
-                //         yAxes: [{
-                //             ticks: {
-                //                 beginAtZero: true,
-                //                 fontSize: 10
-                //             }
-                //         }],
-                //         xAxes: [{
-                //             ticks: {
-                //                 maxRotation: 90,
-                //                 fontSize: 10
-                //             }
-                //         }]
-                //     }
-                // }
+                options: {
+                    pieceLabel: {
+                        render: 'percentage',
+                        precision: 2
+                    }
+                }
             });
             window.myChart = myChart;
         } else {
@@ -103,22 +93,12 @@ if($('#feedback_service_chart_detail_monthly').length > 0) {
                                 borderWidth: 1,
                             }]
                         },
-                        // options: {
-                        //     scales: {
-                        //         yAxes: [{
-                        //             ticks: {
-                        //                 beginAtZero: true,
-                        //                 fontSize: 10
-                        //             }
-                        //         }],
-                        //         xAxes: [{
-                        //             ticks: {
-                        //                 maxRotation: 90,
-                        //                 fontSize: 10
-                        //             }
-                        //         }]
-                        //     }
-                        // }
+                        options: {
+                            pieceLabel: {
+                                render: 'percentage',
+                                precision: 2
+                            }
+                        }
                     });
                     window.myChart = myChart;
                 } else {

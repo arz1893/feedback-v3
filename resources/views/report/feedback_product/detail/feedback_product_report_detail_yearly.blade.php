@@ -4,6 +4,7 @@
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/feedback_product/detail/feedback_product_report_detail_yearly.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/chartjs/plugin/Chart.PieceLabel.min.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
@@ -46,34 +47,32 @@
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div> <br> <br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="pull-left">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            {{ Form::label('select_year', 'Select Year') }}
-                            {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
-                        </div>
-                    </form>
-                </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="pull-left">
+                <form class="form-inline">
+                    <div class="form-group">
+                        {{ Form::label('select_year', 'Select Year') }}
+                        {{ Form::selectYear('select_year', 1990, intval(date('Y')), intval(date('Y')), ['class' => 'form-control']) }}
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <h4 class="text-center">All Feedback in <span id="current_year"></span></h4>
+    <h4 class="text-center">All Feedback in <span id="current_year"></span></h4>
 
-        <div id="loading_state" class="text-center invisible">
-            <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+    <div id="loading_state" class="text-center invisible">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+    </div>
+
+    <div id="not_found" class="well" style="margin-top: 2%; display: none;">
+        <div class="text-center">
+            There is no report found at current year
         </div>
+    </div>
 
-        <div id="not_found" class="well" style="margin-top: 2%; display: none;">
-            <div class="text-center">
-                There is no report found at current year
-            </div>
-        </div>
-
-        <div class="chart-container">
-            <canvas id="feedback_product_chart_detail_yearly" height="125"></canvas>
-        </div>
+    <div class="chart-container">
+        <canvas id="feedback_product_chart_detail_yearly" height="100"></canvas>
     </div>
 @endsection

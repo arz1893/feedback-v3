@@ -128,7 +128,7 @@
 
                 @if(Auth::user()->user_group->name == 'Administrator')
                     <li class="">
-                        <a href="{{ route('user.index') }}">
+                        <a href="{{ route('manage_user.index') }}">
                             <i class="fa fa-user-circle-o"></i>
                             <span>Manage Users</span>
                         </a>

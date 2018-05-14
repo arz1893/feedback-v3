@@ -156,3 +156,7 @@ Route::get('feedback_service_report/compare-satisfaction/yearly', 'Report\Feedba
 Route::get('feedback_service_report/compare-satisfaction/monthly', 'Report\FeedbackService\FeedbackServiceReportController@showFeedbackServiceCompareMonthly')->name('feedback_service_compare_monthly');
 Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');
 /* end of feedback service report */
+
+/* User Management Route */
+Route::resource('manage_user', 'User\UserController');
+/* end of user management route */

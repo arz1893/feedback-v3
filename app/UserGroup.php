@@ -26,4 +26,12 @@ class UserGroup extends Model
     public function users() {
         return $this->hasMany(User::class);
     }
+
+    public function tenant() {
+        return $this->belongsTo(Tenant::class, 'recOwner', 'systemId');
+    }
+
+    public function created_by() {
+        return $this->belongsTo(User::class, 'syscreator', 'systemId');
+    }
 }

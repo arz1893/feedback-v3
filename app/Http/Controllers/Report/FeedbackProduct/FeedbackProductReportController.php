@@ -199,6 +199,10 @@ class FeedbackProductReportController extends Controller
                 }
             }
 
+//            for($i=0;$i<3;$i++) {
+//                $ratingValue[$i] = ($ratingValue[$i] / count($feedbackProducts)) * 100;
+//            }
+
             return ['rating' => $rating, 'rating_value' => [$ratingValue]];
         } else {
             return ['error' => 'data not found'];

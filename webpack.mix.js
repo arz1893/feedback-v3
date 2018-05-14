@@ -47,7 +47,9 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/vue-assets/question/vue_question_edit.js', 'public/js/vue-assets/question')
     .js('resources/assets/js/vue-assets/faq/product/vue_add_faq_product.js', 'public/js/vue-assets/faq/product')
     .js('resources/assets/js/vue-assets/faq/service/vue_add_faq_service.js', 'public/js/vue-assets/faq/service')
+    .js('resources/assets/js/vue-assets/user/vue_user_management_index.js', 'public/js/vue-assets/user')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.js', 'public/js/vue-multiselect/')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.css', 'public/css/vue-multiselect')
-    .copy('node_modules/vue-bootstrap-datetimepicker/dist/vue-bootstrap-datetimepicker.min.js', 'public/js/vue-bootstrap-datetimepicker');
+    .copy('node_modules/vue-bootstrap-datetimepicker/dist/vue-bootstrap-datetimepicker.min.js', 'public/js/vue-bootstrap-datetimepicker')
+    .copy('node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js', 'public/js/chartjs/plugin');
