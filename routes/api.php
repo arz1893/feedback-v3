@@ -150,6 +150,9 @@ Route::get('feedback_service_report/{service_id}/get-report-detail-monthly/{year
 Route::get('feedback_service_report/{tenant_id}/get-feedback-service-compare-yearly/{year}', 'Report\FeedbackService\FeedbackServiceReportController@getFeedbackServiceCompareYearly');
 Route::get('feedback_service_report/{tenant_id}/get-feedback-service-compare-monthly/{year}/{month}', 'Report\FeedbackService\FeedbackServiceReportController@getFeedbackServiceCompareMonthly');
 
+/* Tag Report */
+Route::get('tag_report/{tenant_id}/get-top-tag-report-yearly/{year}', 'Report\Tag\TagReportController@getTopTagRatingYearly');
+
 /* User Group */
 Route::get('user_group/{tenant_id}/get-all-user-group', 'User\UserGroupController@getTenantUserRoles');
 

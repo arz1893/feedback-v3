@@ -159,6 +159,11 @@ Route::get('feedback_service_report/compare-satisfaction/monthly', 'Report\Feedb
 Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServiceReportController');
 /* end of feedback service report */
 
+/* Tag Report */
+Route::get('tag_report/top-tag-rating/yearly', 'Report\Tag\TagReportController@showTopTagRatingYearly')->name('top_tag_rating_yearly');
+Route::resource('tag_report', 'Report\Tag\TagReportController');
+/* end of tag report */
+
 /* User Management Route */
 Route::resource('manage_user', 'User\UserController');
 /* end of user management route */

@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('/feedback_report_selection') }}"><i class="fa fa-pie-chart"></i> Feedback Report Selection</a></li>
-        <li class="active"> All Feedback Summary (Yearly) </li>
+        <li class="active"> All Feedback Summary (Monthly) </li>
     </ol>
 @endsection
 
