@@ -128,6 +128,7 @@ Route::get('feedback_report_all/{tenantId}/get-all-global-feedback-yearly/{year}
 Route::get('feedback_report_all/{tenantId}/get-all-top-satisfaction-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackReportAllController@getAllTopSatisfactionYearly');
 Route::get('feedback_report_all/{tenantId}/get-all-top-satisfaction-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllTopSatisfactionMonthly');
 Route::get('feedback_report_all/{tenantId}/get-global-summary-yearly/{year}', 'Report\FeedbackReportAllController@getGlobalSummaryYearly');
+Route::get('feedback_report_all/{tenantId}/get-global-summary-monthly/{year}/{month}', 'Report\FeedbackReportAllController@getGlobalSummaryMonthly');
 
 /* Feedback Product Report */
 Route::get('feedback_product_report/{tenant_id}/get-top-product-report-yearly/{customer_rating}/{yearly}/{count}', 'Report\FeedbackProduct\FeedbackProductReportController@getTopProductReportYearly');

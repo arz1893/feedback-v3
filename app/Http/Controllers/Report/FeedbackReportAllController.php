@@ -33,6 +33,10 @@ class FeedbackReportAllController extends Controller
         return view('report.all.global_summary.all_summary_yearly');
     }
 
+    public function showGlobalSummaryMonthly() {
+        return view('report.all.global_summary.all_summary_monthly');
+    }
+
     /* API Section Rating */
     public function getAllFeedbackRatingYearly($tenant_id, $year) {
         $i = 1;
@@ -469,6 +473,54 @@ class FeedbackReportAllController extends Controller
     public function getGlobalSummaryYearly($tenant_id, $year) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->get();
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->get();
+
+        $labels = ['product dissatisfied', 'product neutral', 'product satisfied', 'service dissatisfied', 'service neutral', 'service satisfied'];
+        $feedbackRatings = [0,0,0,0,0,0];
+
+        if(count($feedbackProducts) > 0 || count($feedbackServices) > 0) {
+            foreach ($feedbackProducts as $feedbackProduct) {
+                switch($feedbackProduct->customer_rating) {
+                    case 1: {
+                        $feedbackRatings[0] += 1;
+                        break;
+                    }
+                    case 2: {
+                        $feedbackRatings[1] += 1;
+                        break;
+                    }
+                    case 3: {
+                        $feedbackRatings[2] += 1;
+                        break;
+                    }
+                }
+            }
+
+            foreach ($feedbackServices as $feedbackService) {
+                switch ($feedbackService->customer_rating) {
+                    case 1: {
+                        $feedbackRatings[3] += 1;
+                        break;
+                    }
+                    case 2: {
+                        $feedbackRatings[4] += 1;
+                        break;
+                    }
+                    case 3: {
+                        $feedbackRatings[5] += 1;
+                        break;
+                    }
+                }
+            }
+
+            return ['feedbackRatings' => $feedbackRatings, 'labels' => $labels];
+        } else {
+            return ['error' => 'There is no data at the current year'];
+        }
+    }
+
+    public function getGlobalSummaryMonthly($tenant_id, $year, $month) {
+        $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
+        $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
 
         $labels = ['product dissatisfied', 'product neutral', 'product satisfied', 'service dissatisfied', 'service neutral', 'service satisfied'];
         $feedbackRatings = [0,0,0,0,0,0];

@@ -1,14 +1,15 @@
-if($('#global_summary_yearly').length > 0) {
+if($('#global_summary_monthly').length > 0) {
+    $('#current_month').text($('#select_month option:selected').text());
     $('#current_year').text($('#select_year').val());
 
-    var ctx = document.getElementById('global_summary_yearly');
-    var year = $('#select_year').val();
+    var ctx = document.getElementById('global_summary_monthly');
     var tenantId = $('#tenantId').val();
-    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-global-summary-yearly/' + year;
-    window.myChart = "";
+    var year = $('#select_year').val();
+    var month = $('#select_month').val();
+    const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-global-summary-monthly/' + year + '/' + month;
+    window.myChart = '';
 
     axios.get(url).then(response => {
-        console.log(response.data);
         if(response.data.error === undefined) {
             let pieChart = new Chart(ctx, {
                 type: 'pie',
@@ -39,20 +40,25 @@ if($('#global_summary_yearly').length > 0) {
                 }
             });
             window.myChart = pieChart;
+            $('#not_found').css('display', 'none');
+            $('#loading_state').addClass('invisible');
+            $('#global_summary_monthly').css('display', '');
         } else {
             $('#not_found').css('display', '');
-            $('#global_summary_yearly').css('display', 'none');
+            $('#loading_state').addClass('invisible');
+            $('#global_summary_monthly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
     });
 
-    function onChangeParameter() {
+    function changeParameter() {
+        $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
-        let currentYear = $('#select_year').val();
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-global-summary-yearly/' + currentYear;
+        let selectedYear = $('#select_year').val();
+        let selectedMonth = $('#select_month').val();
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_report_all/' + tenantId + '/get-global-summary-monthly/' + selectedYear + '/' + selectedMonth;
         $('#loading_state').removeClass('invisible');
-        $('#not_found').css('display', 'none');
 
         if(myChart instanceof Chart) {
             myChart.destroy();
@@ -92,11 +98,11 @@ if($('#global_summary_yearly').length > 0) {
                     window.myChart = pieChart;
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
-                    $('#global_summary_yearly').css('display', '');
+                    $('#global_summary_monthly').css('display', '');
                 } else {
                     $('#not_found').css('display', '');
                     $('#loading_state').addClass('invisible');
-                    $('#global_summary_yearly').css('display', 'none');
+                    $('#global_summary_monthly').css('display', 'none');
                 }
             }).catch(error => {
                 console.log(error);
