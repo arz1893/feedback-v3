@@ -295,6 +295,7 @@
             {{--<script src="{{ asset('/js/lightgallery/lightgallery.js') }}" type="text/javascript"></script>--}}
             <!-- Chart JS -->
             <script src="{{ asset('/js/chartjs/Chart.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/js/chartjs/plugin/Chart.PieceLabel.min.js') }}" type="text/javascript"></script>
             <!-- Moment -->
             <script src="{{ asset('/js/moment/moment.js') }}" type="text/javascript"></script>
             <!-- Bootstrap Date Picker -->

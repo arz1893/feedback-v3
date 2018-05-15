@@ -1,6 +1,8 @@
 @extends('home')
 
 @push('scripts')
+    <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/all/global_summary/global_summary_yearly.js') }}" type="text/javascript"></script>
 @endpush
 
@@ -46,6 +48,6 @@
     </div>
 
     <div class="chart-container">
-        <canvas id="global_summary_yearly" height="100"></canvas>
+        <canvas id="global_summary_yearly" height="120"></canvas>
     </div>
 @endsection

@@ -4,7 +4,6 @@
     <script src="{{ asset('js/axios/axios.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/lodash/lodash.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/chartjs/feedback_service/detail/feedback_service_report_detail_monthly.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/chartjs/plugin/Chart.PieceLabel.min.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-header')
