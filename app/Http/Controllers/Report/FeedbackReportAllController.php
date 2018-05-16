@@ -21,6 +21,10 @@ class FeedbackReportAllController extends Controller
         return view('report.all.global.all_global_feedback_yearly');
     }
 
+    public function showAllGlobalFeedbackMonthly() {
+        return view('report.all.global.all_global_feedback_monthly');
+    }
+
     public function showAllTopSatisfactionYearly() {
         return view('report.all.satisfaction.all_top_satisfaction_yearly');
     }
@@ -167,7 +171,7 @@ class FeedbackReportAllController extends Controller
 
         $i = 1;
         $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        $allDatas = [];
+        $allDatas = array_fill(0, 12, 0);
         $nullCounter = 0;
 
         while($i <= 12) {
@@ -187,6 +191,33 @@ class FeedbackReportAllController extends Controller
             return ['labels' => $labels, 'allDatas' => $allDatas];
         } else {
             return ['error' => 'There is no data in current year'];
+        }
+    }
+
+    public function getAllGlobalFeedbackMonthly($tenant_id, $year, $month) {
+        $i=1;
+        $totalDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $labels = [];
+        $allDatas = array_fill(0, $totalDays, 0);
+        $nullCounter = 0;
+
+        while($i <= $totalDays) {
+            $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
+            $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i)->get();
+            $labels[$i-1] = "Day" . $i;
+
+            if(count($feedbackProducts) > 0 || count($feedbackServices) > 0) {
+                $allDatas[$i-1] = count($feedbackProducts) + count($feedbackServices);
+            } else {
+                $nullCounter++;
+            }
+            $i++;
+        }
+
+        if($nullCounter <= $totalDays) {
+            return ['labels' => $labels, 'allDatas' => $allDatas];
+        } else {
+            return ['error' => 'There is no data in current month and year'];
         }
     }
 

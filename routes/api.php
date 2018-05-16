@@ -125,6 +125,7 @@ Route::post('faq_service/delete-faq-service', 'FAQ\FAQServiceController@deleteFa
 Route::get('feedback_report_all/{tenantId}/get-all-rating-yearly/{year}', 'Report\FeedbackReportAllController@getAllFeedbackRatingYearly');
 Route::get('feedback_report_all/{tenantId}/get-all-rating-monthly/{year}/{month}', 'Report\FeedbackReportAllController@getAllFeedbackRatingMonthly');
 Route::get('feedback_report_all/{tenantId}/get-all-global-feedback-yearly/{year}', 'Report\FeedbackReportAllController@getAllGlobalFeedbackYearly');
+Route::get('feedback_report_all/{tenantId}/get-all-global-feedback-monthly/{year}/{month}', 'Report\FeedbackReportAllController@getAllGlobalFeedbackMonthly');
 Route::get('feedback_report_all/{tenantId}/get-all-top-satisfaction-yearly/{customer_rating}/{year}/{count}', 'Report\FeedbackReportAllController@getAllTopSatisfactionYearly');
 Route::get('feedback_report_all/{tenantId}/get-all-top-satisfaction-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\FeedbackReportAllController@getAllTopSatisfactionMonthly');
 Route::get('feedback_report_all/{tenantId}/get-global-summary-yearly/{year}', 'Report\FeedbackReportAllController@getGlobalSummaryYearly');

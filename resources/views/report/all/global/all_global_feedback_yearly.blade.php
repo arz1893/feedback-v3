@@ -20,7 +20,7 @@
 
     <div class="btn-group" role="group" aria-label="...">
         <a role="button" class="btn btn-xs btn-default">Daily</a>
-        <a role="button" class="btn btn-xs btn-default">Monthly</a>
+        <a href="{{ route('all_global_feedback_monthly') }}" role="button" class="btn btn-xs btn-default">Monthly</a>
         <a role="button" class="btn btn-xs btn-default active">Yearly</a>
     </div> <br> <br>
 
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="all_global_feedback_yearly" height="125"></canvas>
+    <div class="col-lg-12">
+        <canvas id="all_global_feedback_yearly"></canvas>
     </div>
 @endsection
