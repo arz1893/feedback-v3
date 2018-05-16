@@ -93,8 +93,8 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="feedback_report_all_service_monthly" height="125"></canvas>
+    <div class="col-lg-12">
+        <canvas id="feedback_report_all_service_monthly"></canvas>
     </div>
 
     <!-- Modal -->

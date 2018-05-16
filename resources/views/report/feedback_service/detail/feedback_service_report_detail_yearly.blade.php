@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="feedback_service_chart_detail_yearly" height="100"></canvas>
+    <div class="col-lg-12">
+        <canvas id="feedback_service_chart_detail_yearly"></canvas>
     </div>
 @endsection

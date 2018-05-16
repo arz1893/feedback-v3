@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="global_summary_monthly" height="120"></canvas>
+    <div class="col-lg-12">
+        <canvas id="global_summary_monthly"></canvas>
     </div>
 @endsection

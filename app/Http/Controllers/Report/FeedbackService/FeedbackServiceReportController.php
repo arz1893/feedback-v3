@@ -266,7 +266,7 @@ class FeedbackServiceReportController extends Controller
         if($nullCounter < 12) {
             return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
         } else {
-            return ['message' => 'There is no data in the current year'];
+            return ['error' => 'There is no data in the current year'];
         }
     }
 
@@ -312,7 +312,7 @@ class FeedbackServiceReportController extends Controller
         if($nullCounter < $totalDays) {
             return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
         } else {
-            return ['message' => 'There is no data at the current month and year'];
+            return ['error' => 'There is no data at the current month and year'];
         }
     }
 

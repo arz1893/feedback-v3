@@ -101,7 +101,7 @@ if($('#feedback_service_comparison_monthly').length > 0) {
         function changeData() {
             axios.get(url).then(response => {
                 console.log(response.data);
-                if(response.data.message === undefined) {
+                if(response.data.error === undefined) {
                     let barChart = new Chart(ctx, {
                         type: 'bar',
                         data: {

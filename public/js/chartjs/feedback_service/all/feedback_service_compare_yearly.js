@@ -93,6 +93,9 @@ if($('#feedback_service_comparison_yearly').length > 0) {
         var year = $('#select_year').val();
         $('#current_year').text($('#select_year').val());
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service_report/' + tenantId + '/get-feedback-service-compare-yearly/' + year;
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
@@ -165,7 +168,7 @@ if($('#feedback_service_comparison_yearly').length > 0) {
                     });
                     window.myChart = barChart;
                     $('#feedback_service_comparison_yearly').css('display', '');
-                    $('#not_found').css('display', '');
+                    $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                 } else {
                     $('#not_found').css('display', '');

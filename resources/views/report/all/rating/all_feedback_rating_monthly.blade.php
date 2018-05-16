@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="all_feedback_rating_monthly" height="125"></canvas>
+    <div class="col-lg-12">
+        <canvas id="all_feedback_rating_monthly"></canvas>
     </div>
 @endsection
