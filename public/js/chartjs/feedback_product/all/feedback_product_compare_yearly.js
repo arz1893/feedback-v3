@@ -92,16 +92,17 @@ if($('#feedback_product_comparison_yearly').length > 0) {
         var year = $('#select_year').val();
         $('#current_year').text($('#select_year').val());
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-feedback-product-compare-yearly/' + year;
-
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
             axios.get(url).then(response => {
+                console.log(response.data);
                 if(response.data.error === undefined) {
-                    $('#not_found').css('display', 'none');
-                    $('#loading_state').addClass('invisible');
-                    let myChart = new Chart(ctx, {
-                        type: 'line',
+                    let barChart = new Chart(ctx, {
+                        type: 'bar',
                         data: {
                             labels: response.data.labels,
                             datasets: [
@@ -130,7 +131,6 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
-                                    stacked: true,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
@@ -141,7 +141,6 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                                     }
                                 }],
                                 xAxes: [{
-                                    stacked: true,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,
@@ -162,9 +161,9 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                             }
                         }
                     });
-                    window.myChart = myChart;
+                    window.myChart = barChart;
                     $('#feedback_product_comparison_yearly').css('display', '');
-                    $('#not_found').css('display', '');
+                    $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                 } else {
                     $('#not_found').css('display', '');

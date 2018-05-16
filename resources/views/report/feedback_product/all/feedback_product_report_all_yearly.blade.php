@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="feedback_product_chart_all_yearly" height="125"></canvas>
+    <div class="col-lg-12">
+        <canvas id="feedback_product_chart_all_yearly"></canvas>
     </div>
 @endsection

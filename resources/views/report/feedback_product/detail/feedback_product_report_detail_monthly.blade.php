@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="feedback_product_chart_detail_monthly" height="100"></canvas>
+    <div class="col-lg-12">
+        <canvas id="feedback_product_chart_detail_monthly"></canvas>
     </div>
 @endsection

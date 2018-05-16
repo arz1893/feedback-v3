@@ -166,7 +166,7 @@ class FeedbackProductReportController extends Controller
         $daysOfMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
         for($i=0;$i<$daysOfMonth;$i++) {
-            $tempLabels[$i] = $i+1;
+            $tempLabels[$i] = 'Day' . ($i+1);
             $totalFeedback = count(FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i+1)->get());
             $tempDatas[$i] = $totalFeedback;
 
@@ -269,7 +269,7 @@ class FeedbackProductReportController extends Controller
         if($nullCounter < 12) {
             return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
         } else {
-            return ['message' => 'There is no data in the current year'];
+            return ['error' => 'There is no data in the current year'];
         }
     }
 
@@ -315,7 +315,7 @@ class FeedbackProductReportController extends Controller
         if($nullCounter < $totalDays) {
             return ['labels' => $labels, 'dissatisfied' => $dissatisfied, 'neutral' => $neutral, 'satisfied' => $satisfied];
         } else {
-            return ['message' => 'There is no data at the current month and year'];
+            return ['error' => 'There is no data at the current month and year'];
         }
     }
 }

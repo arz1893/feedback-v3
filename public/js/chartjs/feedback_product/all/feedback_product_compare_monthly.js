@@ -10,7 +10,7 @@ if($('#feedback_product_comparison_monthly').length > 0) {
     window.myChart = '';
 
     axios.get(url).then(response => {
-        if(response.data.message === undefined) {
+        if(response.data.error === undefined) {
             let barChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -86,7 +86,9 @@ if($('#feedback_product_comparison_monthly').length > 0) {
     function onChangeParameter() {
         $('#current_month').text($('#select_month option:selected').text());
         $('#current_year').text($('#select_year').val());
-
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
         let year = $('#select_year').val();
         let month = $('#select_month').val();
         const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-feedback-product-compare-monthly/' + year + '/' + month;
@@ -100,7 +102,7 @@ if($('#feedback_product_comparison_monthly').length > 0) {
         function changeData() {
             axios.get(url).then(response => {
                 console.log(response.data);
-                if(response.data.message === undefined) {
+                if(response.data.error === undefined) {
                     let barChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
