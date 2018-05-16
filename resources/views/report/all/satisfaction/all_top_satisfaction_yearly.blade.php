@@ -94,7 +94,22 @@
         </div>
     </div>
 
-    <div class="chart-container">
-        <canvas id="all_top_satisfaction_yearly" height="125"></canvas>
+    <div class="col-lg-12">
+        <canvas id="all_top_satisfaction_yearly"></canvas>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_customer_feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span id="item_name"></span></h4>
+                </div>
+                <div class="modal-body" style="max-height: calc(100vh - 212px); overflow-y: auto;">
+                    <div id="feedback_content"></div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

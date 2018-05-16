@@ -25,14 +25,14 @@ if($('#feedback_report_all_product_yearly').length > 0) {
             deviceAgent.match(/blackberry/i) ||
             deviceAgent.match(/bada/i));
     if(isTouchDevice) {
-        window.showXLabel = false;
+        // window.showXLabel = false;
     }
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
             window.dataIds = response.data.id;
             let myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'horizontalBar',
                 data: {
                     labels: response.data.labels,
                     datasets: [{
@@ -47,21 +47,22 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            ticks: {
+                                display: showXLabel,
+                                beginAtZero:true,
+                                fontSize: 8
+                            }
+                        }],
+                        xAxes: [{
                             scaleLabel: {
                                 display: true,
                                 labelString: 'total feedback'
                             },
                             ticks: {
-                                beginAtZero:true,
-                                fontSize: 10
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                display: showXLabel,
                                 maxRotation: 90,
-                                fontSize: 10,
-                                autoSkip: false
+                                fontSize: 9,
+                                autoSkip: false,
+                                beginAtZero:true
                             }
                         }]
                     },
@@ -132,11 +133,15 @@ if($('#feedback_report_all_product_yearly').length > 0) {
     }
 
     function onChangeParameter() {
-        var ctx = document.getElementById("feedback_report_all_product_yearly");
-        var tenantId = $('#tenantId').val();
-        var year = $('#select_year').val();
-        var count = $('#show_data').val();
-        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-yearly/' + rating + '/' + year + '/' + count;
+        let currentYear = $('#select_year').val();
+        let currentCount = $('#show_data').val();
+        console.log(currentCount);
+        // if(currentCount > 10) {
+        //     window.showXLabel = false;
+        // } else if (currentCount <= 10) {
+        //     window.showXLabel = true;
+        // }
+        const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product_report/' + tenantId + '/get-top-product-report-yearly/' + rating + '/' + currentYear + '/' + currentCount;
         $('#loading_state').removeClass('invisible');
 
         function sendRequest() {
@@ -146,7 +151,7 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                     let myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'horizontalBar',
                         data: {
                             labels: response.data.labels,
                             datasets: [{
@@ -157,25 +162,25 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                             }]
                         },
                         options: {
-                            maintainAspectRatio:true,
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    ticks: {
+                                        display: showXLabel,
+                                        beginAtZero:true,
+                                        fontSize: 8
+                                    }
+                                }],
+                                xAxes: [{
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
                                     },
                                     ticks: {
-                                        beginAtZero:true,
-                                        fontSize: 10
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        display: showXLabel,
                                         maxRotation: 90,
                                         fontSize: 10,
-                                        autoSkip: false
+                                        autoSkip: false,
+                                        beginAtZero:true
                                     }
                                 }]
                             },

@@ -248,6 +248,7 @@ class FeedbackReportAllController extends Controller
             $productIds = array_slice($productIds, 0, $count);
             $productLabels = array_slice($productLabels, 0, $count);
             $productDatas = array_slice($productDatas, 0, $count);
+            $productMarker = array_slice($productMarker, 0, $count);
         }
 
         if(count($feedbackServices) > 0) {
@@ -294,6 +295,7 @@ class FeedbackReportAllController extends Controller
             $serviceIds = array_slice($serviceIds, 0, $count);
             $serviceLabels = array_slice($serviceLabels, 0, $count);
             $serviceDatas = array_slice($serviceDatas, 0, $count);
+            $serviceMarker = array_slice($serviceMarker, 0, $count);
         }
 
         if(count($productDatas) > 0 && count($serviceDatas) > 0) {
@@ -387,6 +389,7 @@ class FeedbackReportAllController extends Controller
             $productIds = array_slice($productIds, 0, $count);
             $productLabels = array_slice($productLabels, 0, $count);
             $productDatas = array_slice($productDatas, 0, $count);
+            $productMarker = array_slice($productMarker, 0, $count);
         }
 
         if(count($feedbackServices) > 0) {
@@ -433,6 +436,7 @@ class FeedbackReportAllController extends Controller
             $serviceIds = array_slice($serviceIds, 0, $count);
             $serviceLabels = array_slice($serviceLabels, 0, $count);
             $serviceDatas = array_slice($serviceDatas, 0, $count);
+            $serviceMarker = array_slice($serviceMarker, 0, $count);
         }
 
         if(count($productDatas) > 0 || count($serviceDatas) > 0) {

@@ -28,14 +28,14 @@ if($('#feedback_product_all_product_monthly').length > 0) {
             deviceAgent.match(/blackberry/i) ||
             deviceAgent.match(/bada/i));
     if(isTouchDevice) {
-        window.showXLabel = false;
+        // window.showXLabel = false;
     }
 
     axios.get(url).then(response => {
         if(response.data.error === undefined) {
             window.dataIds = response.data.id;
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'horizontalBar',
                 data: {
                     labels: response.data.labels,
                     datasets: [{
@@ -50,21 +50,22 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontSize: 8,
+                                display: showXLabel
+                            }
+                        }],
+                        xAxes: [{
                             scaleLabel: {
                                 display: true,
                                 labelString: 'total feedback'
                             },
                             ticks: {
-                                beginAtZero:true,
-                                fontSize: 10
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                display: showXLabel,
                                 maxRotation: 90,
                                 fontSize: 10,
-                                autoSkip: false
+                                autoSkip: false,
+                                beginAtZero:true
                             }
                         }]
                     },
@@ -164,7 +165,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                     $('#not_found').css('display', 'none');
                     $('#loading_state').addClass('invisible');
                     let myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'horizontalBar',
                         data: {
                             labels: response.data.labels,
                             datasets: [{
@@ -179,21 +180,22 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true,
+                                        fontSize: 8
+                                    }
+                                }],
+                                xAxes: [{
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
                                     },
                                     ticks: {
-                                        beginAtZero:true,
-                                        fontSize: 10
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
                                         display: showXLabel,
                                         maxRotation: 90,
                                         fontSize: 10,
-                                        autoSkip: false
+                                        autoSkip: false,
+                                        beginAtZero:true,
                                     }
                                 }]
                             },
