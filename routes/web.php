@@ -161,7 +161,7 @@ Route::resource('feedback_service_report', 'Report\FeedbackService\FeedbackServi
 /* end of feedback service report */
 
 /* Tag Report */
-Route::get('tag_report/top-tag-rating/yearly', 'Report\Tag\TagReportController@showTopTagRatingYearly')->name('top_tag_rating_yearly');
+Route::get('tag_report/top-tag-rating/yearly', 'Report\Tag\TagReportController@showTopTagSatisfactionYearly')->name('top_tag_satisfaction_yearly');
 Route::resource('tag_report', 'Report\Tag\TagReportController');
 /* end of tag report */
 

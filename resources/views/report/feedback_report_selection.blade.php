@@ -59,7 +59,7 @@
             <div class="collapse" id="collapse_all_tag">
                 <div class="well">
                     <div class="text-center">
-                        <a href="{{ route('top_tag_rating_yearly') }}" class="btn btn-app">
+                        <a href="{{ route('top_tag_satisfaction_yearly') }}" class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a class="btn btn-app">
