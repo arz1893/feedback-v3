@@ -52,4 +52,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css/admin-lte/template_all.css')
     .copy('node_modules/vue-multiselect/dist/vue-multiselect.min.css', 'public/css/vue-multiselect')
     .copy('node_modules/vue-bootstrap-datetimepicker/dist/vue-bootstrap-datetimepicker.min.js', 'public/js/vue-bootstrap-datetimepicker')
-    .copy('node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js', 'public/js/chartjs/plugin');
+    .copy('node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js', 'public/js/chartjs/plugin')
+    .copyDirectory('node_modules/material-design-icons/iconfont', 'public/fonts/material-icons/')
+    .copy('node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js', 'public/js/jquery-contextmenu')
+    .copy('node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.css', 'public/css/jquery-contextmenu');

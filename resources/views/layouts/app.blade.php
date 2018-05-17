@@ -19,7 +19,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('/css/ionicons/css/ionicons.css') }}">
     <!-- Material icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('/fonts/material-icons/material-icons.css') }}" rel="stylesheet">
     <!-- Data Table -->
     <link rel="stylesheet" href="{{ asset('/css/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/datatables/responsive.dataTables.css') }}">
@@ -30,7 +30,7 @@
     <!-- Fancy Tree -->
     <link href="{{ asset('/css/fancytree/skin-material/ui.fancytree.css') }}" rel="stylesheet" class="skinswitcher">
     <!-- Context Menu Dependency -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/jquery-contextmenu/jquery.contextMenu.min.css') }}" />
     <!-- Custom chart js -->
     <link rel="stylesheet" href="{{ asset('css/charts/chart-stylesheet.css') }}">
 
@@ -287,8 +287,8 @@
             <script src="{{ asset('/js/fancytree/jquery.fancytree-all-deps.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('/js/fancytree/jquery.fancytree.glyph.js') }}" type="text/javascript"></script>
             <!-- Context Menu Dependency -->
-            <script src="{{ asset('/js/fancytree/jquery-ui.custom.js') }}"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.2.3/jquery.contextMenu.min.js"></script>
+            <script src="{{ asset('/js/fancytree/jquery-ui.custom.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/jquery-contextmenu/jquery.contextMenu.min.js')  }}" type="text/javascript"></script>
             {{--<!-- Fancy Tree Context Menu -->--}}
             {{--<script src="{{ asset('/js/fancytree/jquery.ui-contextmenu.js') }}" type="text/javascript"></script>--}}
             {{--<!-- Light Gallery -->--}}

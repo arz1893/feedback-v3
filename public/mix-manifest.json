@@ -1,6 +1,7 @@
 {
     "/js/vue-assets/feedback/service/feedback_service_list.js": "/js/vue-assets/feedback/service/feedback_service_list.js",
     "/js/vue-assets/feedback/product/feedback_product_list.js": "/js/vue-assets/feedback/product/feedback_product_list.js",
+    "/js/vue-assets/user/vue_user_management_index.js": "/js/vue-assets/user/vue_user_management_index.js",
     "/js/vue-assets/question/vue_question_index.js": "/js/vue-assets/question/vue_question_index.js",
     "/js/vue-assets/master_data/service/vue_edit_service.js": "/js/vue-assets/master_data/service/vue_edit_service.js",
     "/js/vue-assets/master_data/service/vue_add_service.js": "/js/vue-assets/master_data/service/vue_add_service.js",
@@ -10,7 +11,6 @@
     "/js/vue-assets/feedback/service/feedback_service_edit.js": "/js/vue-assets/feedback/service/feedback_service_edit.js",
     "/js/vue-assets/feedback/product/feedback_product_show.js": "/js/vue-assets/feedback/product/feedback_product_show.js",
     "/js/vue-assets/feedback/product/feedback_product_edit.js": "/js/vue-assets/feedback/product/feedback_product_edit.js",
-    "/js/vue-assets/user/vue_user_management_index.js": "/js/vue-assets/user/vue_user_management_index.js",
     "/js/vue-assets/selection/service/service_selection.js": "/js/vue-assets/selection/service/service_selection.js",
     "/js/vue-assets/selection/product/product_selection.js": "/js/vue-assets/selection/product/product_selection.js",
     "/js/vue-assets/question/vue_question_list.js": "/js/vue-assets/question/vue_question_list.js",
@@ -40,5 +40,7 @@
     "/js/vue-multiselect/vue-multiselect.min.js": "/js/vue-multiselect/vue-multiselect.min.js",
     "/css/vue-multiselect/vue-multiselect.min.css": "/css/vue-multiselect/vue-multiselect.min.css",
     "/js/vue-bootstrap-datetimepicker/vue-bootstrap-datetimepicker.min.js": "/js/vue-bootstrap-datetimepicker/vue-bootstrap-datetimepicker.min.js",
-    "/js/chartjs/plugin/Chart.PieceLabel.min.js": "/js/chartjs/plugin/Chart.PieceLabel.min.js"
+    "/js/chartjs/plugin/Chart.PieceLabel.min.js": "/js/chartjs/plugin/Chart.PieceLabel.min.js",
+    "/js/jquery-contextmenu/jquery.contextMenu.min.js": "/js/jquery-contextmenu/jquery.contextMenu.min.js",
+    "/css/jquery-contextmenu/jquery.contextMenu.min.css": "/css/jquery-contextmenu/jquery.contextMenu.min.css"
 }
