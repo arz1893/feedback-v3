@@ -1,16 +1,18 @@
-if($('#all_top_satisfaction_yearly').length > 0) {
+if($('#top_tag_satisfaction_monthly').length > 0) {
+    $('#current_month').text($("input[name='select_month'] option:selected").text());
     $('#current_year').text($('#select_year').val());
 
-    var ctx = document.getElementById("all_top_satisfaction_yearly");
-    var year = $('#select_year').val();
-    var count = $('#show_data').val();
+    var ctx = document.getElementById('top_tag_satisfaction_monthly');
     var tenantId = $('#tenantId').val();
+    var year = $('#select_year').val();
+    var month = $('#select_month').val();
+    var count = $('#show_data').val();
     window.rating = 3;
     window.feedbackLabel = "Satisfied";
     window.bgColor = "rgba(46, 184, 46, 0.7)";
     window.myChart = "";
     window.showXLabel = true;
-    const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-yearly/" + rating + '/' + year + '/' + count;
+    const url = window.location.protocol + "//" + window.location.host + '/api/tag_report/' + tenantId + '/get-tag-top-satisfaction-monthly/' + rating + '/' + year + '/' + month + '/' + count;
 
     var deviceAgent = navigator.userAgent.toLowerCase();
     var isTouchDevice = Modernizr.touch ||
@@ -29,15 +31,13 @@ if($('#all_top_satisfaction_yearly').length > 0) {
     axios.get(url).then(response => {
         console.log(response.data);
         if(response.data.error === undefined) {
-            window.dataIds = response.data.allIds;
-            window.dataMarkers = response.data.allMarkers;
             let barChart = new Chart(ctx, {
                 type: 'horizontalBar',
                 data: {
-                    labels: response.data.allLabels,
+                    labels: response.data.allTags,
                     datasets: [{
                         label: feedbackLabel,
-                        data: response.data.allDatas,
+                        data: response.data.tagValues,
                         backgroundColor: bgColor,
                         borderWidth: 1,
                     }]
@@ -69,13 +69,13 @@ if($('#all_top_satisfaction_yearly').length > 0) {
                             }
                         }]
                     },
-                    onClick: handleClick
+                    // onClick: handleClick
                 }
             });
             window.myChart = barChart;
         } else {
             $('#not_found').css('display', '');
-            $('#all_top_satisfaction_yearly').css('display', 'none');
+            $('#top_tag_satisfaction_monthly').css('display', 'none');
         }
     }).catch(error => {
         console.log(error);
@@ -86,6 +86,14 @@ if($('#all_top_satisfaction_yearly').length > 0) {
             myChart.destroy();
         }
         $('#current_year').text($('#select_year').val());
+        onChangeParameter();
+    });
+
+    $('#select_month').change(function () {
+        if(myChart instanceof Chart) {
+            myChart.destroy();
+        }
+        $('#current_month').text($("input[name='select_month'] option:selected").text());
         onChangeParameter();
     });
 
@@ -136,27 +144,24 @@ if($('#all_top_satisfaction_yearly').length > 0) {
     }
 
     function onChangeParameter() {
-        var ctx = document.getElementById("all_top_satisfaction_yearly");
-        var year = $('#select_year').val();
-        var count = $('#show_data').val();
-        var tenantId = $('#tenantId').val();
-        const url = window.location.protocol + "//" + window.location.host + "/api/feedback_report_all/" + tenantId + "/get-all-top-satisfaction-yearly/" + rating + '/' + year + '/' + count;
-
+        $('#current_month').text($("input[name='select_month'] option:selected").text());
+        $('#current_year').text($('#select_year').val());
+        let selectedYear = $('#select_year').val();
+        let selectedMonth = $('#select_month').val();
+        let currentCount = $('#show_data').val();
+        const url = window.location.protocol + "//" + window.location.host + '/api/tag_report/' + tenantId + '/get-tag-top-satisfaction-monthly/' + rating + '/' + selectedYear + '/' + selectedMonth + '/' + currentCount;
         $('#loading_state').removeClass('invisible');
 
         function changeData() {
             axios.get(url).then(response => {
-                console.log(response.data);
                 if(response.data.error === undefined) {
-                    window.dataIds = response.data.allIds;
-                    window.dataMarkers = response.data.allMarkers;
                     let barChart = new Chart(ctx, {
                         type: 'horizontalBar',
                         data: {
-                            labels: response.data.allLabels,
+                            labels: response.data.allTags,
                             datasets: [{
                                 label: feedbackLabel,
-                                data: response.data.allDatas,
+                                data: response.data.tagValues,
                                 backgroundColor: bgColor,
                                 borderWidth: 1,
                             }]
@@ -164,6 +169,9 @@ if($('#all_top_satisfaction_yearly').length > 0) {
                         options: {
                             maintainAspectRatio:true,
                             responsive: true,
+                            tooltips: {
+                                mode: 'index'
+                            },
                             scales: {
                                 yAxes: [{
                                     ticks: {
@@ -185,17 +193,17 @@ if($('#all_top_satisfaction_yearly').length > 0) {
                                     }
                                 }]
                             },
-                            onClick: handleClick
+                            // onClick: handleClick
                         }
                     });
                     window.myChart = barChart;
-                    $('#loading_state').addClass('invisible');
-                    $('#all_top_satisfaction_yearly').css('display', '');
                     $('#not_found').css('display', 'none');
+                    $('#loading_state').addClass('invisible');
+                    $('#top_tag_satisfaction_monthly').css('display', '');
                 } else {
                     $('#not_found').css('display', '');
-                    $('#all_top_satisfaction_yearly').css('display', 'none');
                     $('#loading_state').addClass('invisible');
+                    $('#top_tag_satisfaction_monthly').css('display', 'none');
                 }
             }).catch(error => {
                 console.log(error);
@@ -204,60 +212,5 @@ if($('#all_top_satisfaction_yearly').length > 0) {
 
         let debounceFunction = _.debounce(changeData, 1000);
         debounceFunction();
-    }
-
-    function handleClick(evt) {
-        let firstPoint = myChart.getElementAtEvent(evt)[0];
-        if (firstPoint) {
-            let year = $('#select_year').val();
-            let customer_rating = $("input[name='customer_rating']:checked").val();
-            if(dataMarkers[firstPoint._index] === 1) {
-                const url = window.location.protocol + "//" + window.location.host + '/api/feedback_product/' + dataIds[firstPoint._index] + '/get-customer-feedback/yearly/'+ customer_rating + '/' + year;
-                $('#feedback_content').empty();
-                $('#item_name').text(myChart.data.labels[firstPoint._index]);
-
-                axios.get(url).then(response => {
-                    for(let i=0;i<response.data.allFeedback.length;i++) {
-                        let template = "     <div class=\"direct-chat-msg\">\n" +
-                            "                  <div class=\"direct-chat-info clearfix\">\n" +
-                            "                    <span class=\"direct-chat-name pull-left\">"+ response.data.allFeedback[i].customer_name + "</span>\n" +
-                            "                    <span class=\"direct-chat-timestamp pull-right\">" + response.data.allFeedback[i].created_at + "</span>\n" +
-                            "                  </div>\n" +
-                            "                  <img class=\"direct-chat-img\" src="+ window.location.protocol + "//" + window.location.host  + '/default-images/default-user.png' +"> \n" +
-                            "                  <div class=\"direct-chat-text\">\n" +
-                            "                    "+ response.data.allFeedback[i].customer_feedback + "\n" +
-                            "                  </div>\n" +
-                            "                </div>";
-                        $('#feedback_content').append(template);
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            } else if(dataMarkers[firstPoint._index] === 0) {
-                const url = window.location.protocol + "//" + window.location.host + '/api/feedback_service/' + dataIds[firstPoint._index] + '/get-customer-feedback/yearly/'+ customer_rating + '/' + year;
-                $('#feedback_content').empty();
-                $('#item_name').text(myChart.data.labels[firstPoint._index]);
-
-                axios.get(url).then(response => {
-                    for(let i=0;i<response.data.allFeedback.length;i++) {
-                        let template = "     <div class=\"direct-chat-msg\">\n" +
-                            "                  <div class=\"direct-chat-info clearfix\">\n" +
-                            "                    <span class=\"direct-chat-name pull-left\">"+ response.data.allFeedback[i].customer_name + "</span>\n" +
-                            "                    <span class=\"direct-chat-timestamp pull-right\">" + response.data.allFeedback[i].created_at + "</span>\n" +
-                            "                  </div>\n" +
-                            "                  <img class=\"direct-chat-img\" src="+ window.location.protocol + "//" + window.location.host  + '/default-images/default-user.png' +"> \n" +
-                            "                  <div class=\"direct-chat-text\">\n" +
-                            "                    "+ response.data.allFeedback[i].customer_feedback + "\n" +
-                            "                  </div>\n" +
-                            "                </div>";
-                        $('#feedback_content').append(template);
-                    }
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
-
-            $('#modal_customer_feedback').modal('show');
-        }
     }
 }

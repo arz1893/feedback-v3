@@ -27,7 +27,6 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
     }
 
     axios.get(url).then(response => {
-        console.log(response.data);
         if(response.data.error === undefined) {
             let barChart = new Chart(ctx, {
                 type: 'horizontalBar',
@@ -134,6 +133,7 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
     }
 
     function onChangeParameter() {
+        $('#current_year').text($('#select_year').val());
         let selectedYear = $('#select_year').val();
         let currentCount = $('#show_data').val();
         const url = window.location.protocol + "//" + window.location.host + '/api/tag_report/' + tenantId + '/get-tag-top-satisfaction-yearly/' + rating + '/' + selectedYear + '/' + currentCount;
@@ -141,7 +141,6 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
 
         function changeData() {
             axios.get(url).then(response => {
-                console.log(response.data);
                 if(response.data.error === undefined) {
                     let barChart = new Chart(ctx, {
                         type: 'horizontalBar',

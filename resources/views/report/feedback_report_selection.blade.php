@@ -63,13 +63,10 @@
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
                         <a class="btn btn-app">
-                            <i class="fa fa-repeat"></i> Action 2
+                            <i class="fa fa-line-chart"></i> Tag Global Feedback
                         </a>
                         <a class="btn btn-app">
-                            <i class="fa fa-pause"></i> Action 3
-                        </a>
-                        <a class="btn btn-app">
-                            <i class="fa fa-save"></i> Action 4
+                            <i class="fa fa-line-chart"></i> Tag Compare
                         </a>
                     </div>
                 </div>

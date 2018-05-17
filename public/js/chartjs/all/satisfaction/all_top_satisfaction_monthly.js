@@ -1,6 +1,6 @@
 if($('#all_top_satisfaction_monthly').length > 0) {
     $('#current_year').text($('#select_year').val());
-    $('#current_month').text($("input[name=select_monthy] option:selected").text());
+    $('#current_month').text($("input[name=select_month] option:selected").text());
 
     var ctx = document.getElementById("all_top_satisfaction_monthly");
     var year = $('#select_year').val();
