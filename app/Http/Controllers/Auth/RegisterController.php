@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Invite;
 use App\Tenant;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\UserGroup;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -100,5 +103,40 @@ class RegisterController extends Controller
         ]);
 
         return $user;
+    }
+
+    protected function acceptInvitation($token) {
+        $invitation = Invite::where('token', $token)->first();
+        if($invitation != null) {
+            if($invitation->is_expired == 1) {
+                return view('layouts.errors.invitation_expired');
+            } else if($invitation->is_expired == 0) {
+                return view('auth.account_setup', compact('invitation'));
+            }
+        }
+        return abort(404);
+    }
+
+    protected function registerViaEmail(Request $request, $id) {
+        $this->validator($request->all());
+
+        $invite = Invite::findOrFail($id);
+        $user = User::create([
+            'systemId' => Uuid::generate(4),
+            'name' => $invite->name,
+            'email' => $invite->email,
+            'phone' => $request->phone,
+            'tenantId' => $request->tenantId,
+            'usergroupId' => $request->usergroupId,
+            'password' => bcrypt($request->password),
+            'active' => 1,
+            'syscreator' => $invite->userId
+        ]);
+
+        $invite->is_expired = 1;
+        $invite->update();
+
+        Auth::login($user);
+        return redirect($this->redirectTo);
     }
 }

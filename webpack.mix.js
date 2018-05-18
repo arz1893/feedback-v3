@@ -55,4 +55,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .copy('node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js', 'public/js/chartjs/plugin')
     .copyDirectory('node_modules/material-design-icons/iconfont', 'public/fonts/material-icons/')
     .copy('node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js', 'public/js/jquery-contextmenu')
-    .copy('node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.css', 'public/css/jquery-contextmenu');
+    .copy('node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.css', 'public/css/jquery-contextmenu')
+    .copy('node_modules/inputmask/dist/jquery.inputmask.bundle.js', 'public/js/inputmask')
+    .copy('node_modules/inputmask/dist/inputmask/phone-codes/phone.js', 'public/js/inputmask');

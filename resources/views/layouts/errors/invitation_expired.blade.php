@@ -20,7 +20,7 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
     <div class="lockscreen-logo">
-        <a href="../../index2.html"><b>Customer</b>Feedback</a>
+        <a href="{{ url('/') }}"><b>Customer</b>Feedback</a>
     </div>
     <!-- User name -->
     <div class="lockscreen-name">Whoops!</div>
@@ -41,7 +41,7 @@
 <!-- /.center -->
 
 <!-- jQuery 3 -->
-<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery/jquery-3.3.1.js') }}" type="text/javascript"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
 </body>

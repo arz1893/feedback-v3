@@ -42,5 +42,7 @@
     "/js/vue-bootstrap-datetimepicker/vue-bootstrap-datetimepicker.min.js": "/js/vue-bootstrap-datetimepicker/vue-bootstrap-datetimepicker.min.js",
     "/js/chartjs/plugin/Chart.PieceLabel.min.js": "/js/chartjs/plugin/Chart.PieceLabel.min.js",
     "/js/jquery-contextmenu/jquery.contextMenu.min.js": "/js/jquery-contextmenu/jquery.contextMenu.min.js",
-    "/css/jquery-contextmenu/jquery.contextMenu.min.css": "/css/jquery-contextmenu/jquery.contextMenu.min.css"
+    "/css/jquery-contextmenu/jquery.contextMenu.min.css": "/css/jquery-contextmenu/jquery.contextMenu.min.css",
+    "/js/inputmask/jquery.inputmask.bundle.js": "/js/inputmask/jquery.inputmask.bundle.js",
+    "/js/inputmask/phone.js": "/js/inputmask/phone.js"
 }

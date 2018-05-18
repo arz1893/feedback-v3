@@ -28,6 +28,7 @@
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
         "font-awesome": "^4.7.0",
         "hchs-vue-charts": "^1.2.31",
+        "inputmask": "^3.3.11",
         "ionicons": "^3.0.0",
         "jquery-contextmenu": "^2.6.4",
         "jquery-validation": "^1.17.0",

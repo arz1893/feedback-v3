@@ -117,13 +117,6 @@ Route::resource('question_list', 'Question\QuestionListController');
 Route::resource('customer', 'Customer\CustomerController');
 /* end of customer routes */
 
-/* User Management Routes */
-Route::post('user/invite', 'User\UserController@sendInvitation');
-Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation');
-Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
-Route::resource('user', 'User\UserController');
-/* end of user management */
-
 /* Feedback Report All */
 Route::get('feedback_report_all/all-rating-report/yearly', 'Report\FeedbackReportAllController@showAllRatingYearly')->name('all_feedback_rating_yearly');
 Route::get('feedback_report_all/all-rating-report/monthly', 'Report\FeedbackReportAllController@showAllRatingMonthly')->name('all_feedback_rating_monthly');
@@ -166,6 +159,9 @@ Route::get('tag_report/top-tag-rating/monthly', 'Report\Tag\TagReportController@
 Route::resource('tag_report', 'Report\Tag\TagReportController');
 /* end of tag report */
 
-/* User Management Route */
+/* User Management Routes */
+Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation');
+Route::post('user/invite', 'User\UserController@sendInvitation');
+Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
 Route::resource('manage_user', 'User\UserController');
-/* end of user management route */
+/* end of user management */
