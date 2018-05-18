@@ -161,3 +161,4 @@ Route::get('user_group/{tenant_id}/get-all-user-group', 'User\UserGroupControlle
 /* User Management */
 Route::get('user_management/{tenant_id}/get-all-user', 'User\UserController@getAllUser');
 Route::post('user_management/add-user', 'User\UserController@addUser');
+Route::post('user_management/delete-user', 'User\UserController@deleteUser');

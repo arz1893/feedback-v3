@@ -24,6 +24,8 @@ class UserController extends Controller
         return new UserCollection($users);
     }
 
+    /* API Section */
+
     public function addUser(Request $request) {
         $token = str_random(16);
         $creator = User::findOrFail($request->creator_id);
@@ -51,7 +53,12 @@ class UserController extends Controller
         } catch (\Exception $ex) {
             return ['error' => $ex->getMessage()];
         }
+    }
 
-//        return ['tenant_id' => $request->tenant_id, 'user\'s name' => $request->user['name'], 'user\'s phone' => $request->user['phone'], 'user\'s email' => $request->user['email'], 'role' => $request->user['role']];
+    public function deleteUser(Request $request) {
+        $user = User::findOrFail($request->user_id);
+        $user->delete();
+
+        return ['message' => 'User has been deleted'];
     }
 }

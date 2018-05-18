@@ -70035,7 +70035,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70047,6 +70047,30 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70254,7 +70278,8 @@ Vue.use(VeeValidate, {
                 type: true,
                 showAlert: false,
                 alertContent: ''
-            }
+            },
+            showModal: false
         };
     },
 
@@ -70347,6 +70372,35 @@ Vue.use(VeeValidate, {
             vm.user.phone = '';
             vm.user.role = '';
             vm.validator.errors.clear();
+        },
+        changeCurrentUser: function changeCurrentUser(currentUser) {
+            var vm = this;
+            vm.user.systemId = currentUser.systemId;
+            vm.user.name = currentUser.name;
+            vm.user.name = currentUser.name;
+            vm.user.email = currentUser.email;
+            vm.user.phone = currentUser.phone;
+            vm.user.role = currentUser.role;
+        },
+        deleteUser: function deleteUser() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_management/delete-user";
+            axios.post(url, {
+                'user_id': vm.user.systemId
+            }).then(function (response) {
+                vm.showLoading = true;
+                if (response.data.message !== undefined) {
+                    var refreshData = function refreshData() {
+                        vm.getAllUser();
+                        vm.showLoading = false;
+                    };
+
+                    var debounceFunction = _.debounce(refreshData, 1000);
+                    debounceFunction();
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -70365,6 +70419,26 @@ var render = function() {
     _c("br"),
     _vm._v(" "),
     _c("br"),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showLoading,
+            expression: "showLoading"
+          }
+        ],
+        staticClass: "text-center"
+      },
+      [
+        _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Loading...")])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-12" }, [
       _c(
@@ -70406,7 +70480,31 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(2, true)
+                _c("td", [
+                  user.role !== "Administrator"
+                    ? _c("div", [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              type: "button",
+                              "data-toggle": "modal",
+                              "data-target": "#modal_delete_user"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.changeCurrentUser(user)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ])
+                    : _vm._e()
+                ])
               ])
             })
           )
@@ -70422,7 +70520,7 @@ var render = function() {
           id: "modal_add_user",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "myModalLabel"
+          "aria-labelledby": "addUserLabel"
         }
       },
       [
@@ -70840,7 +70938,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-default",
-                      attrs: { type: "button", "data-dismiss": "modal" }
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          _vm.clearState()
+                        }
+                      }
                     },
                     [_vm._v("Close")]
                   ),
@@ -70863,6 +70966,63 @@ var render = function() {
                     ]
                   )
                 ])
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade in",
+        attrs: {
+          id: "modal_delete_user",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "deleteUserLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(8),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  '\n                    Are you sure want to dismiss "' +
+                    _vm._s(_vm.user.name) +
+                    '" ?\n                '
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteUser()
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
               ])
             ])
           ]
@@ -70918,15 +71078,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-warning" }, [
-        _c("i", { staticClass: "fa fa-pencil-square" })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _c("i", { staticClass: "fa fa-trash-o" })
-      ])
-    ])
+    return _c(
+      "button",
+      { staticClass: "btn btn-warning", attrs: { type: "button" } },
+      [_c("i", { staticClass: "fa fa-pencil-square" })]
+    )
   },
   function() {
     var _vm = this
@@ -70950,7 +71106,7 @@ var staticRenderFns = [
         "h4",
         {
           staticClass: "modal-title text-green",
-          attrs: { id: "myModalLabel" }
+          attrs: { id: "addUserLabel" }
         },
         [_vm._v("Add User")]
       )
@@ -70989,6 +71145,34 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-user-secret" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "h4",
+        {
+          staticClass: "modal-title text-red",
+          attrs: { id: "deleteUserLabel" }
+        },
+        [_vm._v("Delete User")]
+      )
     ])
   }
 ]

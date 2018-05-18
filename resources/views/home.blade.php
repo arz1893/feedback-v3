@@ -106,7 +106,7 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#">
+                    <a role="button">
                         <i class="ion ion-soup-can"></i> <span>Master Data</span>
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
@@ -127,11 +127,19 @@
                 </li>
 
                 @if(Auth::user()->user_group->name == 'Administrator')
-                    <li class="">
-                        <a href="{{ route('manage_user.index') }}">
-                            <i class="fa fa-user-circle-o"></i>
-                            <span>Manage Users</span>
+                    <li class="treeview">
+                        <a role="button">
+                            <i class="fa fa-users"></i>
+                            <span>Users</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
+
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('manage_user.index') }}"><i class="fa fa-user-circle-o"></i> Manage User </a></li>
+                            <li><a role="button"><i class="fa fa-sitemap"></i> Manage Role </a></li>
+                        </ul>
                     </li>
                 @endif
 

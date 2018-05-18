@@ -4,6 +4,11 @@
             Add User <i class="fa fa-user-plus"></i>
         </button> <br> <br>
 
+        <div class="text-center" v-show="showLoading">
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <span>Loading...</span>
+        </div>
+
         <div class="col-lg-12">
             <table class="table table-bordered table-striped" id="table_user">
                 <thead>
@@ -31,25 +36,27 @@
                             {{ user.created_at }}
                         </td>
                         <td>
-                            <button class="btn btn-warning">
-                                <i class="fa fa-pencil-square"></i>
-                            </button>
-                            <button class="btn btn-danger">
-                                <i class="fa fa-trash-o"></i>
-                            </button>
+                            <div v-if="user.role !== 'Administrator'">
+                                <button type="button" class="btn btn-warning">
+                                    <i class="fa fa-pencil-square"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_user" @click="changeCurrentUser(user)">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal_add_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Modal Add User -->
+        <div class="modal fade" id="modal_add_user" tabindex="-1" role="dialog" aria-labelledby="addUserLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-green" id="myModalLabel">Add User</h4>
+                        <h4 class="modal-title text-green" id="addUserLabel">Add User</h4>
                     </div>
                     <div class="text-center" v-show="showLoading">
                         <i class="fa fa-spinner fa-pulse fa-fw"></i>
@@ -135,7 +142,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
                             <button type="button" class="btn btn-success" @click="addUser()">
                                 Add User
                             </button>
@@ -146,6 +153,23 @@
         </div>
 
         <!-- Modal Delete User -->
+        <div class="modal fade in" id="modal_delete_user" tabindex="-1" role="dialog" aria-labelledby="deleteUserLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="deleteUserLabel">Delete User</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to dismiss "{{ user.name }}" ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteUser()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </template>
@@ -205,7 +229,8 @@
                     type: true,
                     showAlert: false,
                     alertContent: ''
-                }
+                },
+                showModal: false
             }
         },
         watch: {
@@ -291,6 +316,34 @@
                 vm.user.phone = '';
                 vm.user.role = '';
                 vm.validator.errors.clear();
+            },
+            changeCurrentUser: function (currentUser) {
+                let vm = this;
+                vm.user.systemId = currentUser.systemId;
+                vm.user.name = currentUser.name;
+                vm.user.name = currentUser.name;
+                vm.user.email = currentUser.email;
+                vm.user.phone = currentUser.phone;
+                vm.user.role = currentUser.role;
+            },
+            deleteUser: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/api/user_management/delete-user";
+                axios.post(url, {
+                    'user_id': vm.user.systemId
+                }).then(response => {
+                    vm.showLoading = true;
+                    if(response.data.message !== undefined) {
+                        function refreshData() {
+                            vm.getAllUser();
+                            vm.showLoading = false;
+                        }
+                        let debounceFunction = _.debounce(refreshData, 1000);
+                        debounceFunction();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
             }
         }
     }

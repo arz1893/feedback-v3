@@ -50,7 +50,7 @@
                                                         <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
                                                             <table border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;"><tr>
                                                                     <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                                                                        <a href="{{ url('//' . $hostname . '/register/accept/' . $token) }}"
+                                                                        <a href="{{ url('http://' . $hostname . '/register/accept/' . $token) }}"
                                                                            class="button button-blue"
                                                                            target="_blank"
                                                                            style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); color: #FFF;
@@ -76,8 +76,8 @@
                                             <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
                                                 <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; line-height: 1.5em; margin-top: 0; text-align: left; font-size: 12px;">If you’re having trouble clicking the "Reset Password" button, copy and paste the URL below
                                                     into your web browser:
-                                                    <a href="{{ url('//' . $hostname . '/register/accept/' . $token) }}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #3869D4;">
-                                                        http://localhost:8000/register/accept/{{ $token }}
+                                                    <a href="{{ url('http://' . $hostname . '/register/accept/' . $token) }}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #3869D4;">
+                                                        {{ 'http;//' . $hostname . 'register/accept/' . $token }}
                                                     </a>
                                                 </p>
                                             </td>
