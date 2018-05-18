@@ -165,3 +165,7 @@ Route::post('user/invite', 'User\UserController@sendInvitation');
 Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
 Route::resource('manage_user', 'User\UserController');
 /* end of user management */
+
+/* User Group Routes */
+Route::resource('user_group', 'User\UserGroupController');
+/* end of user group */

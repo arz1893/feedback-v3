@@ -138,7 +138,7 @@
 
                         <ul class="treeview-menu">
                             <li><a href="{{ route('manage_user.index') }}"><i class="fa fa-user-circle-o"></i> Manage User </a></li>
-                            <li><a role="button"><i class="fa fa-sitemap"></i> Manage Role </a></li>
+                            <li><a href="{{ route('user_group.index') }}" role="button"><i class="fa fa-sitemap"></i> Manage Role </a></li>
                         </ul>
                     </li>
                 @endif
