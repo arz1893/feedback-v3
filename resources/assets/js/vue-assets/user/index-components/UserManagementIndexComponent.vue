@@ -51,6 +51,14 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title text-green" id="myModalLabel">Add User</h4>
                     </div>
+                    <div class="text-center" v-show="showLoading">
+                        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                        <span>Sending...</span>
+                    </div>
+                    <div class="alert alert-dismissible" role="alert" v-show="alert.showAlert" v-bind:class="{ 'alert-success': alert.type === true, 'alert-danger': alert.type === false }" style="margin-bottom: -1%;">
+                        <button type="button" class="close" @click="alert.showAlert = false"><span aria-hidden="true">&times;</span></button>
+                        <strong>Info!</strong> {{ alert.alertContent }}
+                    </div>
                     <form id="form_add_user">
                         <div class="modal-body">
                             <div class="row">
@@ -165,7 +173,7 @@
 
     export default {
         name: "user-management-index",
-        props: ['tenant_id'],
+        props: ['tenant_id', 'creator_id'],
         created() {
             this.getAllUser();
             this.getAllUserRoles();
@@ -188,21 +196,35 @@
                     role: ''
                 },
                 users: [],
-                validator: ''
+                validator: '',
+                showLoading: false,
+                alert: {
+                    type: true,
+                    showAlert: false,
+                    alertContent: ''
+                }
             }
         },
         watch: {
             'user.name': function() {
-                this.validator.validate('name', this.user.name);
+                if(this.alert.showAlert === false) {
+                    this.validator.validate('name', this.user.name);
+                }
             },
             'user.email': function () {
-                this.validator.validate('email', this.user.email);
+                if(this.alert.showAlert === false) {
+                    this.validator.validate('email', this.user.email);
+                }
             },
             'user.phone': function () {
-                this.validator.validate('phone', this.user.phone);
+                if(this.alert.showAlert === false) {
+                    this.validator.validate('phone', this.user.phone);
+                }
             },
             'user.role': function () {
-                this.validator.validate('role', this.user.role);
+                if(this.alert.showAlert === false) {
+                    this.validator.validate('role', this.user.role);
+                }
             }
         },
         methods: {
@@ -231,18 +253,41 @@
                     role: vm.user.role
                 }).then(result => {
                     if(result) {
-                        const url = window.location.protocol + "//" + window.location.host + "/api/user_management/add-user";
-                        axios.post(url, {
-                            user: vm.user, tenant_id: vm.tenant_id
-                        }).then(response => {
-                            console.log(response.data);
-                        }).catch(error => {
-                            console.log(error);
-                        });
+                        vm.showLoading = true;
+                        function sendRequest() {
+                            const url = window.location.protocol + "//" + window.location.host + "/api/user_management/add-user";
+                            axios.post(url, {
+                                user: vm.user, tenant_id: vm.tenant_id, creator_id: vm.creator_id
+                            }).then(response => {
+                                if(response.data.error === undefined) {
+                                    vm.alert.showAlert = true;
+                                    vm.alert.alertContent = response.data.info;
+                                    vm.alert.type = true;
+                                } else {
+                                    vm.alert.showAlert = true;
+                                    vm.alert.alertContent = response.data.error;
+                                    vm.alert.type = false;
+                                }
+                                vm.showLoading = false;
+                                vm.clearState();
+                            }).catch(error => {
+                                console.log(error);
+                            });
+                        }
+                        let debounceFunction = _.debounce(sendRequest, 1000);
+                        debounceFunction();
                     }
                 }).catch(error => {
                     console.log(error);
                 });
+            },
+            clearState: function () {
+                let vm = this;
+                vm.user.name = '';
+                vm.user.email = '';
+                vm.user.phone = '';
+                vm.user.role = '';
+                vm.validator.errors.clear();
             }
         }
     }

@@ -14,6 +14,6 @@
 
 @section('main-content')
     <div id="user_management_index">
-        <user-management-index tenant_id="{{ Auth::user()->tenantId }}"></user-management-index>
+        <user-management-index tenant_id="{{ Auth::user()->tenantId }}" creator_id="{{ Auth::user()->systemId }}"></user-management-index>
     </div>
 @endsection

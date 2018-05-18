@@ -70035,7 +70035,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70047,6 +70047,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70214,7 +70222,7 @@ Vue.use(VeeValidate, {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "user-management-index",
-    props: ['tenant_id'],
+    props: ['tenant_id', 'creator_id'],
     created: function created() {
         this.getAllUser();
         this.getAllUserRoles();
@@ -70237,22 +70245,36 @@ Vue.use(VeeValidate, {
                 role: ''
             },
             users: [],
-            validator: ''
+            validator: '',
+            showLoading: false,
+            alert: {
+                type: true,
+                showAlert: false,
+                alertContent: ''
+            }
         };
     },
 
     watch: {
         'user.name': function userName() {
-            this.validator.validate('name', this.user.name);
+            if (this.alert.showAlert === false) {
+                this.validator.validate('name', this.user.name);
+            }
         },
         'user.email': function userEmail() {
-            this.validator.validate('email', this.user.email);
+            if (this.alert.showAlert === false) {
+                this.validator.validate('email', this.user.email);
+            }
         },
         'user.phone': function userPhone() {
-            this.validator.validate('phone', this.user.phone);
+            if (this.alert.showAlert === false) {
+                this.validator.validate('phone', this.user.phone);
+            }
         },
         'user.role': function userRole() {
-            this.validator.validate('role', this.user.role);
+            if (this.alert.showAlert === false) {
+                this.validator.validate('role', this.user.role);
+            }
         }
     },
     methods: {
@@ -70285,18 +70307,43 @@ Vue.use(VeeValidate, {
                 role: vm.user.role
             }).then(function (result) {
                 if (result) {
-                    var url = window.location.protocol + "//" + window.location.host + "/api/user_management/add-user";
-                    axios.post(url, {
-                        user: vm.user, tenant_id: vm.tenant_id
-                    }).then(function (response) {
-                        console.log(response.data);
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
+                    var sendRequest = function sendRequest() {
+                        var url = window.location.protocol + "//" + window.location.host + "/api/user_management/add-user";
+                        axios.post(url, {
+                            user: vm.user, tenant_id: vm.tenant_id, creator_id: vm.creator_id
+                        }).then(function (response) {
+                            if (response.data.error === undefined) {
+                                vm.alert.showAlert = true;
+                                vm.alert.alertContent = response.data.info;
+                                vm.alert.type = true;
+                            } else {
+                                vm.alert.showAlert = true;
+                                vm.alert.alertContent = response.data.error;
+                                vm.alert.type = false;
+                            }
+                            vm.showLoading = false;
+                            vm.clearState();
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    };
+
+                    vm.showLoading = true;
+
+                    var debounceFunction = _.debounce(sendRequest, 1000);
+                    debounceFunction();
                 }
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        clearState: function clearState() {
+            var vm = this;
+            vm.user.name = '';
+            vm.user.email = '';
+            vm.user.phone = '';
+            vm.user.role = '';
+            vm.validator.errors.clear();
         }
     }
 });
@@ -70382,6 +70429,71 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showLoading,
+                      expression: "showLoading"
+                    }
+                  ],
+                  staticClass: "text-center"
+                },
+                [
+                  _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Sending...")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.alert.showAlert,
+                      expression: "alert.showAlert"
+                    }
+                  ],
+                  staticClass: "alert alert-dismissible",
+                  class: {
+                    "alert-success": _vm.alert.type === true,
+                    "alert-danger": _vm.alert.type === false
+                  },
+                  staticStyle: { "margin-bottom": "-1%" },
+                  attrs: { role: "alert" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.alert.showAlert = false
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Info!")]),
+                  _vm._v(
+                    " " + _vm._s(_vm.alert.alertContent) + "\n                "
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c("form", { attrs: { id: "form_add_user" } }, [
                 _c("div", { staticClass: "modal-body" }, [

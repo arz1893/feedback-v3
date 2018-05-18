@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Resources\User\UserCollection;
+use App\Invite;
+use App\Mail\UserInvitation;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
 {
@@ -20,6 +25,33 @@ class UserController extends Controller
     }
 
     public function addUser(Request $request) {
-        return ['tenant_id' => $request->tenant_id, 'user\'s name' => $request->user['name'], 'user\'s phone' => $request->user['phone'], 'user\'s email' => $request->user['email'], 'role' => $request->user['role']];
+        $token = str_random(16);
+        $creator = User::findOrFail($request->creator_id);
+
+        Invite::create([
+            'systemId' => Uuid::generate(4),
+            'name' => $request->user['name'],
+            'email' => $request->user['email'],
+            'token' => $token,
+            'tenantId' => $request->tenant_id,
+            'userId' => $creator->systemId,
+            'usergroupId' => $request->user['role']
+        ]);
+
+        $mail = new \stdClass();
+        $mail->sender_name = $creator->name;
+        $mail->sender_email = $creator->email;
+        $mail->receiver_name = $request->user['name'];
+        $mail->receiver_email = $request->user['email'];
+        $mail->token = $token;
+
+        try {
+            Mail::to($request->user['email'])->send(new UserInvitation($mail));
+            return ['info' => 'message sent'];
+        } catch (\Exception $ex) {
+            return ['error' => $ex->getMessage()];
+        }
+
+//        return ['tenant_id' => $request->tenant_id, 'user\'s name' => $request->user['name'], 'user\'s phone' => $request->user['phone'], 'user\'s email' => $request->user['email'], 'role' => $request->user['role']];
     }
 }

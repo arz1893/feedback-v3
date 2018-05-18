@@ -30,6 +30,7 @@ class UserInvitation extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name')->with(['sender' => $this->mail->sender, 'receiver' => $this->mail->receiver]);
+        return $this->from($this->mail->sender_email)->view('layouts.email.email_invitation_template')->with(['sender_email' => $this->mail->sender_email, 'sender_name' => $this->mail->sender_name,
+            'receiver_email' => $this->mail->receiver_email, 'receiver_name' => $this->mail->receiver_name, 'token' => $this->mail->token]);
     }
 }
