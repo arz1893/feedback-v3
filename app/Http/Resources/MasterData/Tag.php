@@ -20,7 +20,8 @@ class Tag extends JsonResource
             'bgColor' => $this->bgColor,
             'defValue' => $this->defValue,
             'recOwner' => $this->recOwner,
-            'edit_url' => route('tag.edit', $this->systemId)
+            'edit_url' => route('tag.edit', $this->systemId),
+            'report_url' => route('tag_detail_report_yearly', $this->systemId)
         ];
     }
 }

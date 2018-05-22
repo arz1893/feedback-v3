@@ -63021,7 +63021,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63032,6 +63032,30 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63053,9 +63077,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getAllTags: function getAllTags() {
+            var _this = this;
+
             var url = window.location.protocol + "//" + window.location.host + '/api/tag/' + this.tenant_id + '/get-tag-list';
             axios.get(url).then(function (response) {
-                console.log(response.data);
+                _this.tags = response.data.data;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -63071,9 +63097,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.tags, function(tag) {
+        return _c("a", { attrs: { href: tag.report_url, role: "button" } }, [
+          _c("div", { staticClass: "col-lg-3 col-xs-6" }, [
+            _c(
+              "div",
+              {
+                staticClass: "panel text-center",
+                style: { background: tag.bgColor }
+              },
+              [
+                _c("span", { staticStyle: { color: "white" } }, [
+                  _vm._v(_vm._s(tag.name))
+                ])
+              ]
+            )
+          ])
+        ])
+      })
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "search_text",
+                id: "search_text",
+                placeholder: "Search Tag..."
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "input-group-btn" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                [_c("i", { staticClass: "fa fa-search" })]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
