@@ -47,7 +47,7 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
-                            barPercentage: 0.5,
+                            barPercentage: 0.4,
                             categoryPercentage: 1.0,
                             ticks: {
                                 display: showXLabel,
@@ -174,7 +174,7 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
-                                    barPercentage: 0.5,
+                                    barPercentage: 0.4,
                                     categoryPercentage: 1.0,
                                     ticks: {
                                         display: showXLabel,

@@ -20,21 +20,18 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                             label: 'not satisfied',
                             data: response.data.dissatisfied,
                             backgroundColor: 'rgba(255, 0, 0, 0.7)',
-                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                         {
                             label: 'neutral',
                             data: response.data.neutral,
                             backgroundColor: 'rgba(255, 219, 77, 0.7)',
-                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                         {
                             label: 'satisfied',
                             data: response.data.satisfied,
                             backgroundColor: 'rgba(46, 184, 46, 0.7)',
-                            stack: 'Stack 0',
                             borderWidth: 1,
                         },
                     ],
@@ -44,7 +41,6 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
-                            stacked: true,
                             scaleLabel: {
                                 labelString: 'total feedback'
                             },
@@ -54,7 +50,8 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                             }
                         }],
                         xAxes: [{
-                            stacked: true,
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 maxRotation: 90,
                                 fontSize: 10,
@@ -133,7 +130,6 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
-                                    stacked: true,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
@@ -144,7 +140,8 @@ if($('#feedback_product_comparison_monthly').length > 0) {
                                     }
                                 }],
                                 xAxes: [{
-                                    stacked: true,
+                                    barPercentage: 1.0,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,

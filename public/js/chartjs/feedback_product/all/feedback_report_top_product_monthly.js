@@ -50,7 +50,7 @@ if($('#feedback_product_all_product_monthly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
-                            barPercentage: 0.5,
+                            barPercentage: 0.4,
                             categoryPercentage: 1.0,
                             ticks: {
                                 beginAtZero:true,

@@ -42,7 +42,7 @@
                class="smiley_rating material-icons text-maroon"
                style="font-size: 3.5em;"
                data-value="1" onclick="customerRating(this)">
-                sentiment_very_dissatisfied
+                sentiment_dissatisfied
             </i>
         </a>
         <a>
@@ -58,7 +58,7 @@
                class="smiley_rating material-icons text-green is-selected"
                style="font-size: 3.5em;"
                data-value="3" onclick="customerRating(this)">
-                sentiment_very_satisfied
+                sentiment_satisfied
             </i>
         </a>
     </div>

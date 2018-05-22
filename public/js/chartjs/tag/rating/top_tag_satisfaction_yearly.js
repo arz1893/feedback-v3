@@ -47,6 +47,8 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
                     },
                     scales: {
                         yAxes: [{
+                            barPercentage: 0.4,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 beginAtZero:true,
                                 fontSize: 8
@@ -63,6 +65,13 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
                                 fontSize: 10,
                                 autoSkip: false,
                                 beginAtZero:true,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                },
                             }
                         }]
                     },
@@ -161,6 +170,8 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
                             },
                             scales: {
                                 yAxes: [{
+                                    barPercentage: 0.4,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         beginAtZero:true,
                                         fontSize: 8
@@ -177,6 +188,13 @@ if($('#top_tag_satisfaction_yearly').length > 0) {
                                         fontSize: 10,
                                         autoSkip: false,
                                         beginAtZero:true,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        },
                                     }
                                 }]
                             },

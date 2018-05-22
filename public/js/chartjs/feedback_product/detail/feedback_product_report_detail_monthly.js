@@ -20,9 +20,9 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
                         label: 'Feedback',
                         data: response.data.rating_value[0],
                         backgroundColor: [
-                            'rgba(255, 77, 77, 0.7)',
-                            'rgba(230, 184, 0, 0.7)',
-                            'rgba(109, 167, 247, 0.7)'
+                            'rgba(255, 0, 0, 0.7)',
+                            'rgba(255, 219, 77, 0.7)',
+                            'rgba(46, 184, 46, 0.7)'
                         ],
                         borderWidth: 1,
                     }]
@@ -86,9 +86,9 @@ if($('#feedback_product_chart_detail_monthly').length > 0) {
                                 label: 'Feedback',
                                 data: response.data.rating_value[0],
                                 backgroundColor: [
-                                    'rgba(255, 77, 77, 0.7)',
-                                    'rgba(230, 184, 0, 0.7)',
-                                    'rgba(109, 167, 247, 0.7)'
+                                    'rgba(255, 0, 0, 0.7)',
+                                    'rgba(255, 219, 77, 0.7)',
+                                    'rgba(46, 184, 46, 0.7)'
                                 ],
                                 borderWidth: 1,
                             }]
