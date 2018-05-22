@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-lg-10">
         <canvas id="global_summary_yearly"></canvas>
     </div>
 @endsection

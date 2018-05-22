@@ -49,6 +49,8 @@ if($('#all_feedback_rating_yearly').length > 0) {
                             }
                         }],
                         xAxes: [{
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 display: true,
                                 maxRotation: 90,
@@ -131,6 +133,8 @@ if($('#all_feedback_rating_yearly').length > 0) {
                                     }
                                 }],
                                 xAxes: [{
+                                    barPercentage: 1.0,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,

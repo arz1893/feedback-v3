@@ -18,21 +18,18 @@ if($('#all_feedback_rating_monthly').length > 0) {
                     datasets: [
                         {
                             label: 'not satisfied',
-                            stack: 'Stack 0',
                             data: response.data.dissatisfied,
                             backgroundColor: 'rgba(255, 0, 0, 0.7)',
                             borderWidth: 1,
                         },
                         {
                             label: 'neutral',
-                            stack: 'Stack 0',
                             data: response.data.neutral,
                             backgroundColor: 'rgba(255, 219, 77, 0.7)',
                             borderWidth: 1,
                         },
                         {
                             label: 'satisfied',
-                            stack: 'Stack 0',
                             data: response.data.satisfied,
                             backgroundColor: 'rgba(46, 184, 46, 0.7)',
                             borderWidth: 1,
@@ -54,6 +51,8 @@ if($('#all_feedback_rating_monthly').length > 0) {
                             }
                         }],
                         xAxes: [{
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 display: true,
                                 maxRotation: 90,
@@ -108,21 +107,18 @@ if($('#all_feedback_rating_monthly').length > 0) {
                             datasets: [
                                 {
                                     label: 'not satisfied',
-                                    stack: 'Stack 0',
                                     data: response.data.dissatisfied,
                                     backgroundColor: 'rgba(255, 0, 0, 0.7)',
                                     borderWidth: 1,
                                 },
                                 {
                                     label: 'neutral',
-                                    stack: 'Stack 0',
                                     data: response.data.neutral,
                                     backgroundColor: 'rgba(255, 219, 77, 0.7)',
                                     borderWidth: 1,
                                 },
                                 {
                                     label: 'satisfied',
-                                    stack: 'Stack 0',
                                     data: response.data.satisfied,
                                     backgroundColor: 'rgba(46, 184, 46, 0.7)',
                                     borderWidth: 1,
@@ -144,6 +140,8 @@ if($('#all_feedback_rating_monthly').length > 0) {
                                     }
                                 }],
                                 xAxes: [{
+                                    barPercentage: 1.0,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,

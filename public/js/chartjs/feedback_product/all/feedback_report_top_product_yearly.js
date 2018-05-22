@@ -47,10 +47,12 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            barPercentage: 0.5,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 display: showXLabel,
                                 beginAtZero:true,
-                                fontSize: 8
+                                fontSize: 8,
                             }
                         }],
                         xAxes: [{
@@ -62,7 +64,14 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                                 maxRotation: 90,
                                 fontSize: 9,
                                 autoSkip: false,
-                                beginAtZero:true
+                                beginAtZero:true,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                }
                             }
                         }]
                     },
@@ -165,10 +174,13 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    barPercentage: 0.5,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         display: showXLabel,
                                         beginAtZero:true,
-                                        fontSize: 8
+                                        fontSize: 8,
+                                        stepSize: 1,
                                     }
                                 }],
                                 xAxes: [{
@@ -180,7 +192,14 @@ if($('#feedback_report_all_product_yearly').length > 0) {
                                         maxRotation: 90,
                                         fontSize: 10,
                                         autoSkip: false,
-                                        beginAtZero:true
+                                        beginAtZero:true,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        },
                                     }
                                 }]
                             },

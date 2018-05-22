@@ -49,6 +49,8 @@ if($('#feedback_product_comparison_yearly').length > 0) {
                             }
                         }],
                         xAxes: [{
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 display: true,
                                 maxRotation: 90,

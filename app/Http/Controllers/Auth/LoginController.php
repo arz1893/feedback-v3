@@ -46,7 +46,7 @@ class LoginController extends Controller
     public function checkTenant(Request $request) {
         $tenant = Tenant::where('email', $request->tenant_email)->first();
         if(is_null($tenant)) {
-            return redirect()->back()->withErrors(['error' => 'Sorry we couldn\'t find your company']);
+            return redirect()->back()->withErrors(['error' => 'Sorry we couldn\'t find your company'])->withInput();
         } else {
             $request->session()->put('tenant_id', $tenant->systemId);
             return redirect()->route('login');

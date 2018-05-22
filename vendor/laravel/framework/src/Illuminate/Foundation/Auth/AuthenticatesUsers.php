@@ -50,7 +50,7 @@ trait AuthenticatesUsers
         } else if($this->attemptLogin($request) == false) {
             $message_bag = new MessageBag();
             $message_bag->add('tenant', 'cannot login with current user credentials to the current tenant');
-            return redirect('login')->withErrors($message_bag);
+            return redirect('login')->withErrors($message_bag)->withInput();
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -84,12 +84,14 @@ trait AuthenticatesUsers
     protected function attemptLogin(Request $request)
     {
         $user = User::where('email', $request['email'])->first();
-        if($user->tenantId != $request['tenantId']) {
-            return false;
-        } else {
-            return $this->guard()->attempt(
-                $this->credentials($request), $request->filled('remember')
-            );
+        if($user != null) {
+            if($user->tenantId != $request['tenantId']) {
+                return false;
+            } else {
+                return $this->guard()->attempt(
+                    $this->credentials($request), $request->filled('remember')
+                );
+            }
         }
     }
 
