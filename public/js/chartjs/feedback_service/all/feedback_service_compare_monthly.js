@@ -46,11 +46,20 @@ if($('#feedback_service_comparison_monthly').length > 0) {
                             },
                             ticks: {
                                 beginAtZero:true,
-                                fontSize: 10
+                                fontSize: 10,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                },
                             },
                             stacked: true
                         }],
                         xAxes: [{
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             ticks: {
                                 maxRotation: 90,
                                 fontSize: 10,
@@ -132,18 +141,25 @@ if($('#feedback_service_comparison_monthly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
-                                    stacked: true,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'total feedback'
                                     },
                                     ticks: {
                                         beginAtZero:true,
-                                        fontSize: 10
+                                        fontSize: 10,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        },
                                     }
                                 }],
                                 xAxes: [{
-                                    stacked: true,
+                                    barPercentage: 1.0,
+                                    categoryPercentage: 1.0,
                                     ticks: {
                                         display: true,
                                         maxRotation: 90,

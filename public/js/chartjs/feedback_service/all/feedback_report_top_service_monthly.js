@@ -34,7 +34,7 @@ if($('#feedback_report_all_service_monthly').length > 0) {
         if(response.data.error === undefined) {
             window.dataIds = response.data.id;
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'horizontalBar',
                 data: {
                     labels: response.data.labels,
                     datasets: [{
@@ -49,21 +49,31 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                     responsive: true,
                     scales: {
                         yAxes: [{
+                            barPercentage: 0.4,
+                            categoryPercentage: 1.0,
+                            ticks: {
+                                display: showXLabel,
+                                beginAtZero:true,
+                                fontSize: 9,
+                            }
+                        }],
+                        xAxes: [{
                             scaleLabel: {
                                 display: true,
                                 labelString: 'total feedback'
                             },
                             ticks: {
-                                beginAtZero:true,
-                                fontSize: 10
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                display: showXLabel,
                                 maxRotation: 90,
-                                fontSize: 10,
-                                autoSkip: false
+                                fontSize: 9,
+                                autoSkip: false,
+                                beginAtZero:true,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                }
                             }
                         }]
                     },
@@ -144,7 +154,7 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                     $('#loading_state').addClass('invisible');
                     window.dataIds = response.data.id;
                     let myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'horizontalBar',
                         data: {
                             labels: response.data.labels,
                             datasets: [{
@@ -159,17 +169,31 @@ if($('#feedback_report_all_service_monthly').length > 0) {
                             responsive: true,
                             scales: {
                                 yAxes: [{
+                                    barPercentage: 0.4,
+                                    categoryPercentage: 1.0,
                                     ticks: {
+                                        display: showXLabel,
                                         beginAtZero:true,
-                                        fontSize: 10
+                                        fontSize: 9,
                                     }
                                 }],
                                 xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'total feedback'
+                                    },
                                     ticks: {
-                                        display: showXLabel,
                                         maxRotation: 90,
-                                        fontSize: 10,
-                                        autoSkip: false
+                                        fontSize: 9,
+                                        autoSkip: false,
+                                        beginAtZero:true,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        }
                                     }
                                 }]
                             },

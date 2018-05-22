@@ -36,10 +36,19 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
                             },
                             ticks: {
                                 beginAtZero:true,
-                                fontSize: 10
+                                fontSize: 10,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                },
                             }
                         }],
                         xAxes: [{
+                            barPercentage: 1.0,
+                            categoryPercentage: 1.0,
                             scaleLabel: {
                                 display: true,
                                 labelString: 'days'
@@ -108,10 +117,19 @@ if($('#feedback_service_chart_all_monthly').length > 0) {
                                     },
                                     ticks: {
                                         beginAtZero:true,
-                                        fontSize: 10
+                                        fontSize: 10,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        },
                                     }
                                 }],
                                 xAxes: [{
+                                    barPercentage: 1.0,
+                                    categoryPercentage: 1.0,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'days'

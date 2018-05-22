@@ -166,7 +166,7 @@ class FeedbackServiceReportController extends Controller
         $daysOfMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
         for($i=0;$i<$daysOfMonth;$i++) {
-            $tempLabels[$i] = $i+1;
+            $tempLabels[$i] = 'Day' . ($i+1);
             $totalFeedback = count(FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->whereDay('created_at', '=', $i+1)->get());
             $tempDatas[$i] = $totalFeedback;
 

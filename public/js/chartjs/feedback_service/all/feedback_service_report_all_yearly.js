@@ -34,7 +34,14 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
                             },
                             ticks: {
                                 beginAtZero:true,
-                                fontSize: 10
+                                fontSize: 10,
+                                userCallback: function(label, index, labels) {
+                                    // when the floored value is the same as the value we have a whole number
+                                    if (Math.floor(label) === label) {
+                                        return label;
+                                    }
+
+                                },
                             }
                         }],
                         xAxes: [{
@@ -103,7 +110,14 @@ if($('#feedback_service_chart_all_yearly').length > 0) {
                                     },
                                     ticks: {
                                         beginAtZero:true,
-                                        fontSize: 10
+                                        fontSize: 10,
+                                        userCallback: function(label, index, labels) {
+                                            // when the floored value is the same as the value we have a whole number
+                                            if (Math.floor(label) === label) {
+                                                return label;
+                                            }
+
+                                        },
                                     }
                                 }],
                                 xAxes: [{
