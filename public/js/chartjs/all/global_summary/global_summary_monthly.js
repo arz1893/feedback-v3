@@ -19,12 +19,12 @@ if($('#global_summary_monthly').length > 0) {
                         label: 'Feedback',
                         data: response.data.feedbackRatings,
                         backgroundColor: [
-                            'rgba(0, 153, 0, 0.7)',
-                            'rgba(51, 204, 51, 0.7)',
-                            'rgba(121, 255, 77, 0.7)',
-                            'rgba(0, 0, 179, 0.7)',
-                            'rgba(51, 51, 255, 0.7)',
-                            'rgba(102, 153, 255, 0.7)'
+                            'rgba(255, 102, 102, 0.7)',
+                            'rgba(255, 0, 0, 0.7)',
+                            'rgba(153, 0, 0, 0.7)',
+                            'rgba(102, 179, 255, 0.7)',
+                            'rgba(0, 0, 255, 0.7)',
+                            'rgba(0, 0, 179, 0.7)'
                         ],
                         borderWidth: 1
                     }]
@@ -79,12 +79,12 @@ if($('#global_summary_monthly').length > 0) {
                                 label: 'Feedback',
                                 data: response.data.feedbackRatings,
                                 backgroundColor: [
-                                    'rgba(0, 153, 0, 0.7)',
-                                    'rgba(51, 204, 51, 0.7)',
-                                    'rgba(121, 255, 77, 0.7)',
-                                    'rgba(0, 0, 179, 0.7)',
-                                    'rgba(51, 51, 255, 0.7)',
-                                    'rgba(102, 153, 255, 0.7)'
+                                    'rgba(255, 102, 102, 0.7)',
+                                    'rgba(255, 0, 0, 0.7)',
+                                    'rgba(153, 0, 0, 0.7)',
+                                    'rgba(102, 179, 255, 0.7)',
+                                    'rgba(0, 0, 255, 0.7)',
+                                    'rgba(0, 0, 179, 0.7)'
                                 ],
                                 borderWidth: 1
                             }]

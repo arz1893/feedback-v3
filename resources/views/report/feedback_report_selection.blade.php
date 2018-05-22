@@ -62,11 +62,8 @@
                         <a href="{{ route('top_tag_satisfaction_yearly') }}" class="btn btn-app">
                             <i class="fa fa-bar-chart"></i> Top Satisfaction
                         </a>
-                        <a class="btn btn-app">
-                            <i class="fa fa-line-chart"></i> Tag Global Feedback
-                        </a>
-                        <a class="btn btn-app">
-                            <i class="fa fa-line-chart"></i> Tag Compare
+                        <a href="{{ route('tag_report.index') }}" class="btn btn-app">
+                            <i class="fa fa-pie-chart"></i> Tag Detail
                         </a>
                     </div>
                 </div>

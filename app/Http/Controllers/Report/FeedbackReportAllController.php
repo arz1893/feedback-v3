@@ -509,14 +509,14 @@ class FeedbackReportAllController extends Controller
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->get();
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->get();
 
-        $labels = ['product dissatisfied', 'product neutral', 'product satisfied', 'service dissatisfied', 'service neutral', 'service satisfied'];
+        $labels = ['product satisfied', 'product neutral', 'product dissatisfied', 'service satisfied', 'service neutral', 'service dissatisfied'];
         $feedbackRatings = [0,0,0,0,0,0];
 
         if(count($feedbackProducts) > 0 || count($feedbackServices) > 0) {
             foreach ($feedbackProducts as $feedbackProduct) {
                 switch($feedbackProduct->customer_rating) {
                     case 1: {
-                        $feedbackRatings[0] += 1;
+                        $feedbackRatings[2] += 1;
                         break;
                     }
                     case 2: {
@@ -524,7 +524,7 @@ class FeedbackReportAllController extends Controller
                         break;
                     }
                     case 3: {
-                        $feedbackRatings[2] += 1;
+                        $feedbackRatings[0] += 1;
                         break;
                     }
                 }
@@ -533,7 +533,7 @@ class FeedbackReportAllController extends Controller
             foreach ($feedbackServices as $feedbackService) {
                 switch ($feedbackService->customer_rating) {
                     case 1: {
-                        $feedbackRatings[3] += 1;
+                        $feedbackRatings[5] += 1;
                         break;
                     }
                     case 2: {
@@ -541,7 +541,7 @@ class FeedbackReportAllController extends Controller
                         break;
                     }
                     case 3: {
-                        $feedbackRatings[5] += 1;
+                        $feedbackRatings[3] += 1;
                         break;
                     }
                 }
@@ -557,14 +557,14 @@ class FeedbackReportAllController extends Controller
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
         $feedbackServices = FeedbackService::where('tenantId', $tenant_id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
 
-        $labels = ['product dissatisfied', 'product neutral', 'product satisfied', 'service dissatisfied', 'service neutral', 'service satisfied'];
+        $labels = ['product satisfied', 'product neutral', 'product dissatisfied', 'service satisfied', 'service neutral', 'service dissatisfied'];
         $feedbackRatings = [0,0,0,0,0,0];
 
         if(count($feedbackProducts) > 0 || count($feedbackServices) > 0) {
             foreach ($feedbackProducts as $feedbackProduct) {
                 switch($feedbackProduct->customer_rating) {
                     case 1: {
-                        $feedbackRatings[0] += 1;
+                        $feedbackRatings[2] += 1;
                         break;
                     }
                     case 2: {
@@ -572,7 +572,7 @@ class FeedbackReportAllController extends Controller
                         break;
                     }
                     case 3: {
-                        $feedbackRatings[2] += 1;
+                        $feedbackRatings[0] += 1;
                         break;
                     }
                 }
@@ -581,7 +581,7 @@ class FeedbackReportAllController extends Controller
             foreach ($feedbackServices as $feedbackService) {
                 switch ($feedbackService->customer_rating) {
                     case 1: {
-                        $feedbackRatings[3] += 1;
+                        $feedbackRatings[5] += 1;
                         break;
                     }
                     case 2: {
@@ -589,7 +589,7 @@ class FeedbackReportAllController extends Controller
                         break;
                     }
                     case 3: {
-                        $feedbackRatings[5] += 1;
+                        $feedbackRatings[3] += 1;
                         break;
                     }
                 }

@@ -10,12 +10,20 @@ use App\Http\Controllers\Controller;
 
 class TagReportController extends Controller
 {
+    public function index() {
+        return view('report.tag.tag_report_index');
+    }
+
     public function showTopTagSatisfactionYearly() {
         return view('report.tag.satisfaction.top_tag_satisfaction_yearly');
     }
 
     public function showTopTagSatisfactionMonthly() {
         return view('report.tag.satisfaction.top_tag_satisfaction_monthly');
+    }
+
+    public function showTagSummaryYearly() {
+        return view('');
     }
 
     /* API Section */
