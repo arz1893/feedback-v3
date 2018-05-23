@@ -27,6 +27,11 @@ class TagReportController extends Controller
         return view('report.tag.detail.show_tag_detail_report_yearly', compact('tag'));
     }
 
+    public function showTagDetailReportMonthly($tag_id) {
+        $tag = Tag::findOrFail($tag_id);
+        return view('report.tag.detail.show_tag_detail_report_monthly', compact('tag'));
+    }
+
     /* API Section */
     public function getTopSatisfactionYearly($tenant_id, $customer_rating, $year, $count) {
         $feedbackProducts = FeedbackProduct::where('tenantId', $tenant_id)->where('customer_rating', $customer_rating)->whereYear('created_at', '=', $year)->get();
@@ -150,11 +155,9 @@ class TagReportController extends Controller
         $tag = Tag::findOrFail($tag_id);
         $values = [0,0,0];
         $labels = ['satisfied', 'neutral', 'dissatisfied'];
-        $nullCounter = 0;
 
         if(count($tag->products) > 0) {
             $products = $tag->products;
-            $totalProduct = count($tag->products);
             foreach ($products as $product) {
                 $feedbackProducts = FeedbackProduct::where('productId', $product->systemId)->whereYear('created_at', '=', $year)->get();
                 if(count($feedbackProducts) > 0) {
@@ -174,14 +177,12 @@ class TagReportController extends Controller
                             }
                         }
                     }
-                } else {
-                    $nullCounter++;
                 }
             }
-            if($nullCounter < $totalProduct) {
+            if($values[0] != 0 || $values[1] != 0 || $values[2] != 0) {
                 return ['values' => $values, 'labels' => $labels];
             } else {
-                return ['error' => 'There is no feedback yet for this tag at this year'];
+                return ['error' => 'There is no data in this current year'];
             }
         } else if(count($tag->services) > 0) {
             $services = $tag->services;
@@ -204,14 +205,81 @@ class TagReportController extends Controller
                             }
                         }
                     }
-                    return ['values' => $values, 'labels' => $labels];
-                } else {
-                    return ['error' => 'There is no feedback yet for this tag at this year'];
                 }
             }
-            return ['values' => $values, 'labels' => $labels];
+            if($values[0] != 0 || $values[1] || 0 || $values[2] != 0) {
+                return ['values' => $values, 'labels' => $labels];
+            } else {
+                return ['error' => 'There is no data in this current year'];
+            }
         } else {
-            return ['error' => 'There is no feedback yet for this tag at this year'];
+            return ['error' => 'There is no data for this current tag'];
+        }
+    }
+
+    public function getTagReportDetailMonthly($tag_id, $month, $year) {
+        $tag = Tag::findOrFail($tag_id);
+        $values = [0,0,0];
+        $labels = ['satisfied', 'neutral', 'dissatisfied'];
+
+        if(count($tag->products) > 0) {
+            $products = $tag->products;
+            foreach ($products as $product) {
+                $feedbackProducts = FeedbackProduct::where('productId', $product->systemId)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
+                if(count($feedbackProducts) > 0) {
+                    foreach ($feedbackProducts as $feedbackProduct) {
+                        switch ($feedbackProduct->customer_rating) {
+                            case 1: {
+                                $values[2] += 1;
+                                break;
+                            }
+                            case 2: {
+                                $values[1] += 1;
+                                break;
+                            }
+                            case 3: {
+                                $values[0] += 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if($values[0] != 0 || $values[1] != 0 || $values[2] != 0) {
+                return ['values' => $values, 'labels' => $labels];
+            } else {
+                return ['error' => 'There is no data in this current year'];
+            }
+        } else if(count($tag->services) > 0) {
+            $services = $tag->services;
+            foreach ($services as $service) {
+                $feedbackServices = FeedbackService::where('serviceId', $service->systemId)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->get();
+                if(count($feedbackServices) > 0) {
+                    foreach ($feedbackServices as $feedbackService) {
+                        switch ($feedbackService->customer_rating) {
+                            case 1: {
+                                $values[2] += 1;
+                                break;
+                            }
+                            case 2: {
+                                $values[1] += 1;
+                                break;
+                            }
+                            case 3: {
+                                $values[0] += 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if($values[0] != 0 || $values[1] || 0 || $values[2] != 0) {
+                return ['values' => $values, 'labels' => $labels];
+            } else {
+                return ['error' => 'There is no data in this current year'];
+            }
+        } else {
+            return ['error' => 'There is no data for this current tag'];
         }
     }
 }

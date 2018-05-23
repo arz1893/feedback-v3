@@ -155,6 +155,7 @@ Route::get('feedback_service_report/{tenant_id}/get-feedback-service-compare-mon
 Route::get('tag_report/{tenant_id}/get-tag-top-satisfaction-yearly/{customer_rating}/{year}/{count}', 'Report\Tag\TagReportController@getTopSatisfactionYearly');
 Route::get('tag_report/{tenant_id}/get-tag-top-satisfaction-monthly/{customer_rating}/{year}/{month}/{count}', 'Report\Tag\TagReportController@getTopSatisfactionMonthly');
 Route::get('tag_report/{tag_id}/get-report-detail-yearly/{year}', 'Report\Tag\TagReportController@getTagReportDetailYearly');
+Route::get('tag_report/{tag_id}/get-report-detail-monthly/{month}/{year}', 'Report\Tag\TagReportController@getTagReportDetailMonthly');
 
 /* User Group */
 Route::get('user_group/{tenant_id}/get-all-user-group', 'User\UserGroupController@getTenantUserRoles');
