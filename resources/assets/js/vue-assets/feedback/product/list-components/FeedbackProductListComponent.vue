@@ -82,7 +82,7 @@
                         <td>
                             <span v-if="feedbackProduct.customer_rating === 1">
                                 <i class="text-center material-icons text-red" style="font-size: 2em;">
-                                    sentiment_very_dissatisfied
+                                    sentiment_dissatisfied
                                 </i>
                             </span>
                             <span v-else-if="feedbackProduct.customer_rating === 2">
@@ -92,7 +92,7 @@
                             </span>
                             <span v-else-if="feedbackProduct.customer_rating === 3">
                                 <i class="text-center material-icons text-green" style="font-size: 2em;">
-                                    sentiment_very_satisfied
+                                    sentiment_satisfied
                                 </i>
                             </span>
                         </td>

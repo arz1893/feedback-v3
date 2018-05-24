@@ -71005,7 +71005,12 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.clearState()
+                      }
+                    }
                   },
                   [_vm._v("Cancel")]
                 ),

@@ -74,7 +74,7 @@
                                        data-value="1"
                                        @click="changeRating($event)"
                                        style="font-size: 3.5em;">
-                                        sentiment_very_dissatisfied
+                                        sentiment_dissatisfied
                                     </i>
                                 </a>
                                 <a role="button">
@@ -92,7 +92,7 @@
                                        data-value="3"
                                        @click="changeRating($event)"
                                        style="font-size: 3.5em;">
-                                        sentiment_very_satisfied
+                                        sentiment_satisfied
                                     </i>
                                 </a>
                                 <br>

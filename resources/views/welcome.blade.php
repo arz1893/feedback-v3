@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="margin-top: 20px;">
+
+    <div class="container mt-5" style="margin-top: 20px;">
         <div class="row intro">
             <div class="col-md-6 col-sm-8 intro-left">
                 <div class="intro-left-content">

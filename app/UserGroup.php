@@ -34,4 +34,28 @@ class UserGroup extends Model
     public function created_by() {
         return $this->belongsTo(User::class, 'syscreator', 'systemId');
     }
+
+    public function getMasterDataRight() {
+        return $this->hasOne(MasterDataRight::class, 'systemId', 'usergroupid');
+    }
+
+    public function getFeedbackCrudRight() {
+        return $this->hasOne(FeedbackCrudRight::class, 'systemId', 'usergroupid');
+    }
+
+    public function getFeedbackListCrudRight() {
+        return $this->hasOne(FeedbackListCrudRight::class, 'systemId', 'usergroupid');
+    }
+
+    public function getFaqCrudRight() {
+        return $this->hasOne(FaqCrudRight::class, 'systemId', 'usergroupid');
+    }
+
+    public function getQuestionCrudRight() {
+        return $this->hasOne(QuestionCrudRight::class, 'systemId', 'usergroupid');
+    }
+
+    public function getQuestionListCrudRight() {
+        return $this->hasOne(QuestionListCrudRight::class, 'systemId', 'usergroupid');
+    }
 }

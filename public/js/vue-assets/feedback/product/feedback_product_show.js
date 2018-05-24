@@ -70966,7 +70966,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                    sentiment_very_dissatisfied\n                                "
+                            "\n                                    sentiment_dissatisfied\n                                "
                           )
                         ]
                       )
@@ -71010,7 +71010,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                    sentiment_very_satisfied\n                                "
+                            "\n                                    sentiment_satisfied\n                                "
                           )
                         ]
                       )
