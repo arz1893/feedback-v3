@@ -1,27 +1,29 @@
 <!-- Small boxes (Stat box) -->
 <div class="row">
 
-    <a href="{{ url('/faq') }}">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="ion ion-clipboard"></i></span>
+    @if(Auth::user()->user_group->getFaqCrudRights->view == 1)
+        <a href="{{ url('/faq') }}">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon"><i class="ion ion-clipboard"></i></span>
 
-                <div class="info-box-content">
-                    {{--<span class="info-box-text">FAQ</span>--}}
-                    <span class="info-box-number">FAQ</span>
+                    <div class="info-box-content">
+                        {{--<span class="info-box-text">FAQ</span>--}}
+                        <span class="info-box-number">FAQ</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                    <span class="progress-description">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
                     frequently asked question
                   </span>
+                    </div>
+                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box-content -->
+                <!-- /.info-box -->
             </div>
-            <!-- /.info-box -->
-        </div>
-    </a>
+        </a>
+    @endif
 
     <a href="{{ route('feedback.index') }}">
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">

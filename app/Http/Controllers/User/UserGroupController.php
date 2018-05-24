@@ -15,7 +15,7 @@ class UserGroupController extends Controller
 
     /* API Section */
     public function getTenantUserRoles($tenant_id) {
-        $userGroups = UserGroup::where('recOwner', null)->orWhere('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
+        $userGroups = UserGroup::where('recOwner', $tenant_id)->orderBy('name', 'asc')->get();
         return new UserGroupCollection($userGroups);
     }
 }

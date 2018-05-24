@@ -47,19 +47,21 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="treeview">
-                            <a href="#!">
-                                <i class="ion ion-clipboard"></i> FAQ
-                                <span class="pull-right-container">
+                        @if(Auth::user()->user_group->getFaqCrudRights->view == 1)
+                            <li class="treeview">
+                                <a href="#!">
+                                    <i class="ion ion-clipboard"></i> FAQ
+                                    <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
-                            </a>
+                                </a>
 
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('faq_product.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Product</a></li>
-                                <li><a href="{{ route('faq_service.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Service</a></li>
-                            </ul>
-                        </li>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ route('faq_product.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Product</a></li>
+                                    <li><a href="{{ route('faq_service.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Service</a></li>
+                                </ul>
+                            </li>
+                        @endif
                         <li class="treeview">
                             <a href="#!">
                                 <i class="fa fa-comments-o"></i> Feedback

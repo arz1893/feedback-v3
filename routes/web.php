@@ -77,9 +77,11 @@ Route::resource('tag', 'MasterData\TagController');
 Route::post('tag/delete-tag', 'MasterData\TagController@deleteTag');
 /* end of tag routes */
 
-/* Faq Product Routes */
-Route::resource('faq_product', 'FAQ\FAQProductController');
-/* end of faq product routes */
+Route::group(['middleware' => ['faq_crud_permit']], function () {
+    /* Faq Product Routes */
+    Route::resource('faq_product', 'FAQ\FAQProductController');
+    /* end of faq product routes */
+});
 
 /* Faq Service Routes */
 Route::resource('faq_service', 'FAQ\FAQServiceController');
@@ -161,13 +163,18 @@ Route::get('tag_report/{tag_id}/tag-report-detail/monthly', 'Report\Tag\TagRepor
 Route::resource('tag_report', 'Report\Tag\TagReportController');
 /* end of tag report */
 
-/* User Management Routes */
-Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation');
-Route::post('user/invite', 'User\UserController@sendInvitation');
-Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
-Route::resource('manage_user', 'User\UserController');
-/* end of user management */
+Route::group(['middleware' => ['user_management_permit']], function () {
+    /* User Management Routes */
+    Route::post('user/invite', 'User\UserController@sendInvitation');
+    Route::resource('manage_user', 'User\UserController');
+    /* end of user management */
 
-/* User Group Routes */
-Route::resource('user_group', 'User\UserGroupController');
-/* end of user group */
+    /* User Group Routes */
+    Route::resource('user_group', 'User\UserGroupController');
+    /* end of user group */
+});
+
+/* User Invitation Accept Routes */
+Route::get('register/accept/{token}', 'Auth\RegisterController@acceptInvitation');
+Route::post('register/via-invitation/{id}', 'Auth\RegisterController@registerViaEmail')->name('register_via_invitation');
+/* end of user invitation accept routes */

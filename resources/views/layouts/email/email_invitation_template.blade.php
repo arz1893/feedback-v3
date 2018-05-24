@@ -77,7 +77,7 @@
                                                 <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; line-height: 1.5em; margin-top: 0; text-align: left; font-size: 12px;">If you’re having trouble clicking the "Reset Password" button, copy and paste the URL below
                                                     into your web browser:
                                                     <a href="{{ url('http://' . $hostname . '/register/accept/' . $token) }}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #3869D4;">
-                                                        {{ 'http;//' . $hostname . 'register/accept/' . $token }}
+                                                        {{ 'http://' . $hostname . 'register/accept/' . $token }}
                                                     </a>
                                                 </p>
                                             </td>

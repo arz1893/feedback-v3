@@ -18,7 +18,13 @@ class UserGroup extends JsonResource
             'systemId' => $this->systemId,
             'name' => $this->name,
             'recOwner' => $this->recOwner,
-            'syscreator' => ($this->syscreator == null ? null:$this->created_by->name)
+            'syscreator' => ($this->syscreator == null ? null:$this->created_by->name),
+            'master_data_rights' => $this->getMasterDataRights,
+            'feedback_crud_rights' => $this->getFeedbackCrudRights,
+            'feedback_list_crud_rights' => $this->getFeedbackListCrudRights,
+            'faq_crud_rights' => $this->getFaqCrudRights,
+            'question_crud_rights' => $this->getQuestionCrudRights,
+            'question_list_crud_rights' => $this->getQuestionCListCrudRights
         ];
     }
 }

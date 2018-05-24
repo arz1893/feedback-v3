@@ -35,27 +35,27 @@ class UserGroup extends Model
         return $this->belongsTo(User::class, 'syscreator', 'systemId');
     }
 
-    public function getMasterDataRight() {
-        return $this->hasOne(MasterDataRight::class, 'systemId', 'usergroupid');
+    public function getMasterDataRights() {
+        return $this->hasOne(MasterDataRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getFeedbackCrudRight() {
-        return $this->hasOne(FeedbackCrudRight::class, 'systemId', 'usergroupid');
+    public function getFeedbackCrudRights() {
+        return $this->hasOne(FeedbackCrudRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getFeedbackListCrudRight() {
-        return $this->hasOne(FeedbackListCrudRight::class, 'systemId', 'usergroupid');
+    public function getFeedbackListCrudRights() {
+        return $this->hasOne(FeedbackListCrudRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getFaqCrudRight() {
-        return $this->hasOne(FaqCrudRight::class, 'systemId', 'usergroupid');
+    public function getFaqCrudRights() {
+        return $this->hasOne(FaqCrudRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getQuestionCrudRight() {
-        return $this->hasOne(QuestionCrudRight::class, 'systemId', 'usergroupid');
+    public function getQuestionCrudRights() {
+        return $this->hasOne(QuestionCrudRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getQuestionListCrudRight() {
-        return $this->hasOne(QuestionListCrudRight::class, 'systemId', 'usergroupid');
+    public function getQuestionListCrudRights() {
+        return $this->hasOne(QuestionListCrudRight::class, 'usergroupid', 'systemId');
     }
 }

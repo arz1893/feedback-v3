@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\UserManagement\UserManagementPermit;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -59,5 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'user_management_permit' => \App\Http\Middleware\UserManagement\UserManagementPermit::class,
+        'faq_crud_permit' => \App\Http\Middleware\FaqCrud\FaqCrudPermit::class
     ];
 }

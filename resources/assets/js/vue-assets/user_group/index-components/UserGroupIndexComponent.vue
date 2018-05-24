@@ -51,7 +51,7 @@
             getAllUserGroup: function () {
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
                 axios.get(url).then(response => {
-                    this.user_groups = response.data.data;
+                    this.user_groups = response.data;
                 }).catch(error => {
                     console.log(error);
                 })
