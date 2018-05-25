@@ -58,4 +58,8 @@ class UserGroup extends Model
     public function getQuestionListCrudRights() {
         return $this->hasOne(QuestionListCrudRight::class, 'usergroupid', 'systemId');
     }
+
+    public function getCustomerCrudRights() {
+        return $this->hasOne(CustomerCrudRight::class, 'usergoupid', 'systemId');
+    }
 }

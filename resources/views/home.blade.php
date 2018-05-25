@@ -107,26 +107,29 @@
                         </li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a role="button">
-                        <i class="ion ion-soup-can"></i> <span>Master Data</span>
-                        <span class="pull-right-container">
+
+                @if(Auth::user()->user_group->getMasterDataRights->view == 1)
+                    <li class="treeview">
+                        <a role="button">
+                            <i class="ion ion-soup-can"></i> <span>Master Data</span>
+                            <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('product.index') }}"> <i class="ion ion-filing"></i> Master Product </a></li>
-                        <li><a href="{{ route('service.index') }}"> <i class="ion ion-bowtie"></i> Master Service </a></li>
-                        <li><a href="{{ route('tag.index') }}"> <i class="ion ion-pricetag"></i> Master Tag </a></li>
-                        <li><a href="{{ route('customer.index') }}"> <i class="ion ion-ios-people"></i> Customer List </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ url('/feedback_report_selection') }}">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>Report</span>
-                    </a>
-                </li>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('product.index') }}"> <i class="ion ion-filing"></i> Master Product </a></li>
+                            <li><a href="{{ route('service.index') }}"> <i class="ion ion-bowtie"></i> Master Service </a></li>
+                            <li><a href="{{ route('tag.index') }}"> <i class="ion ion-pricetag"></i> Master Tag </a></li>
+                            <li><a href="{{ route('customer.index') }}"> <i class="ion ion-ios-people"></i> Customer List </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ url('/feedback_report_selection') }}">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Report</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if(Auth::user()->user_group->name == 'Administrator')
                     <li class="treeview">

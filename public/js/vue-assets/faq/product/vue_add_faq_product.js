@@ -70016,7 +70016,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70180,6 +70180,11 @@ Vue.use(VeeValidate, {
                 question: '',
                 answer: ''
             },
+            user_rights: {
+                create: '',
+                edit: '',
+                delete: ''
+            },
             type: '',
             searchStatus: '',
             validator: '',
@@ -70193,6 +70198,7 @@ Vue.use(VeeValidate, {
     created: function created() {
         this.getProduct();
         this.getFaqProducts();
+        this.getUserRights();
         this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["Validator"]({
             question: 'required',
             answer: 'required'
@@ -70228,6 +70234,19 @@ Vue.use(VeeValidate, {
             }
             var debounceFunction = _.debounce(getFaqs, 1000);
             debounceFunction();
+        },
+
+        getUserRights: function getUserRights() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + '/api/user_group/' + vm.user + '/get-faq-crud-rights';
+
+            axios.get(url).then(function (response) {
+                vm.user_rights.create = response.data.user_rights.create;
+                vm.user_rights.edit = response.data.user_rights.edit;
+                vm.user_rights.delete = response.data.user_rights.delete;
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
 
         editFaqProduct: function editFaqProduct(currentFaqProduct) {
@@ -70345,6 +70364,7 @@ Vue.use(VeeValidate, {
         addTypeSubmit: function addTypeSubmit(type, title) {
             this.type = type;
             this.title = title;
+            this.clearState();
         },
 
         clearState: function clearState() {
@@ -70409,26 +70429,28 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              staticStyle: { "margin-top": "0.8%" },
-              attrs: {
-                "data-toggle": "modal",
-                "data-target": "#modal_faq_product"
-              },
-              on: {
-                click: function($event) {
-                  _vm.addTypeSubmit("add", "Add FAQ")
-                }
-              }
-            },
-            [
-              _c("i", { staticClass: "fa fa-plus" }),
-              _vm._v(" Add FAQ\n            ")
-            ]
-          )
+          _vm.user_rights.create === 1
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  staticStyle: { "margin-top": "0.8%" },
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#modal_faq_product"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.addTypeSubmit("add", "Add FAQ")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-plus" }),
+                  _vm._v(" Add FAQ\n            ")
+                ]
+              )
+            : _vm._e()
         ],
         2
       )
@@ -70509,41 +70531,45 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "box-tools pull-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-box-tool",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#modal_faq_product"
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.editFaqProduct(faq)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fa fa-pencil-square" })]
-                ),
+                _vm.user_rights.edit === 1
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-box-tool",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#modal_faq_product"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.editFaqProduct(faq)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-pencil-square" })]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-box-tool",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#modal_delete_faq_product"
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.setDeleteTarget(faq)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fa fa-trash-o" })]
-                )
+                _vm.user_rights.delete === 1
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-box-tool",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#modal_delete_faq_product"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.setDeleteTarget(faq)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-trash-o" })]
+                    )
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),

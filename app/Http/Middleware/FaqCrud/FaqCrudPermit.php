@@ -35,6 +35,25 @@ class FaqCrudPermit
                 }
                 break;
             }
+
+            case 'faq_service.index': {
+                if(Auth::user()->user_group->getFaqCrudRights->view != 1) {
+                    return redirect()->route('home');
+                }
+                break;
+            }
+            case 'faq_service.store': {
+                if(Auth::user()->user_group->getFaqCrudRights->create != 1) {
+                    abort(403, 'Unauthorized action');
+                }
+                break;
+            }
+            case 'faq_service.edit': {
+                if(Auth::user()->user_group->getFaqCrudRights->edit != 1) {
+                    return redirect()->route('home');
+                }
+                break;
+            }
         }
 
         return $next($request);

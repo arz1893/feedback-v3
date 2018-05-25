@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'user_management_permit' => \App\Http\Middleware\UserManagement\UserManagementPermit::class,
-        'faq_crud_permit' => \App\Http\Middleware\FaqCrud\FaqCrudPermit::class
+        'faq_crud_permit' => \App\Http\Middleware\FaqCrud\FaqCrudPermit::class,
+        'master_data_permit' => \App\Http\Middleware\MasterDataCrud\MasterDataCrudPermit::class
     ];
 }

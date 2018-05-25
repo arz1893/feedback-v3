@@ -159,6 +159,7 @@ Route::get('tag_report/{tag_id}/get-report-detail-monthly/{month}/{year}', 'Repo
 
 /* User Group */
 Route::get('user_group/{tenant_id}/get-all-user-group', 'User\UserGroupController@getTenantUserRoles');
+Route::get('user_group/{user_id}/get-faq-crud-rights', 'User\UserGroupController@getFaqCrudRights');
 
 /* User Management */
 Route::get('user_management/{tenant_id}/get-all-user', 'User\UserController@getAllUser');

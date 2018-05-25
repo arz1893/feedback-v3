@@ -80,63 +80,65 @@
     <div class="content">
         <div class="row">
 
-            <a href="{{ route('product.index') }}">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box bg-gray-light">
-                        <span class="info-box-icon bg-blue"><i class="ion ion-filing"></i></span>
+            @if(Auth::user()->user_group->getMasterDataRights->view == 1)
+                <a href="{{ route('product.index') }}">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box bg-gray-light">
+                            <span class="info-box-icon bg-blue"><i class="ion ion-filing"></i></span>
 
-                        <div class="info-box-content">
-                            <b>Products</b> <br>
-                            @if($totalProduct == 0)
-                                <span class="info-box-text">You don't have any products registered yet</span>
-                            @else
-                                <span class="info-box-text">{{ 'You have :' . $totalProduct . ' product' }}</span>
-                            @endif
-                            <span class="info-box-number"></span>
+                            <div class="info-box-content">
+                                <b>Products</b> <br>
+                                @if($totalProduct == 0)
+                                    <span class="info-box-text">You don't have any products registered yet</span>
+                                @else
+                                    <span class="info-box-text">{{ 'You have :' . $totalProduct . ' product' }}</span>
+                                @endif
+                                <span class="info-box-number"></span>
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
+                        <!-- /.info-box -->
                     </div>
-                    <!-- /.info-box -->
-                </div>
-            </a>
+                </a>
 
-            <a href="{{ route('service.index') }}">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box bg-gray-light">
-                        <span class="info-box-icon bg-orange"><i class="ion ion-bowtie"></i></span>
+                <a href="{{ route('service.index') }}">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box bg-gray-light">
+                            <span class="info-box-icon bg-orange"><i class="ion ion-bowtie"></i></span>
 
-                        <div class="info-box-content">
-                            <b>Services</b> <br>
-                            @if($totalService == 0)
-                                <span class="info-box-text">You don't have any services registered yet</span>
-                            @else
-                                <span class="info-box-text">{{ 'You have :' . $totalService . ' service' }}</span>
-                            @endif
+                            <div class="info-box-content">
+                                <b>Services</b> <br>
+                                @if($totalService == 0)
+                                    <span class="info-box-text">You don't have any services registered yet</span>
+                                @else
+                                    <span class="info-box-text">{{ 'You have :' . $totalService . ' service' }}</span>
+                                @endif
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
+                        <!-- /.info-box -->
                     </div>
-                    <!-- /.info-box -->
-                </div>
-            </a>
+                </a>
 
-            <a href="{{ route('tag.index') }}">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box bg-gray-light">
-                        <span class="info-box-icon bg-teal"><i class="ion ion-pricetag"></i></span>
+                <a href="{{ route('tag.index') }}">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box bg-gray-light">
+                            <span class="info-box-icon bg-teal"><i class="ion ion-pricetag"></i></span>
 
-                        <div class="info-box-content">
-                            <b>Tags</b> <br>
-                            @if($totalTag == 0)
-                                <span class="info-box-text">You don't have any tag registered yet</span>
-                            @else
-                                <span class="info-box-text">{{ 'You have :' . $totalTag . ' tag' }}</span>
-                            @endif
+                            <div class="info-box-content">
+                                <b>Tags</b> <br>
+                                @if($totalTag == 0)
+                                    <span class="info-box-text">You don't have any tag registered yet</span>
+                                @else
+                                    <span class="info-box-text">{{ 'You have :' . $totalTag . ' tag' }}</span>
+                                @endif
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
+                        <!-- /.info-box -->
                     </div>
-                    <!-- /.info-box -->
-                </div>
-            </a>
+                </a>
+            @endif
 
             <a href="{{ route('customer.index') }}">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">

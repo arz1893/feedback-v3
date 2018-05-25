@@ -15,7 +15,7 @@
                     {{ tag.name }}
                 </span> <br>
 
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modal_faq_product" style="margin-top: 0.8%;" @click="addTypeSubmit('add', 'Add FAQ')">
+                <button v-if="user_rights.create === 1" class="btn btn-primary" data-toggle="modal" data-target="#modal_faq_product" style="margin-top: 0.8%;" @click="addTypeSubmit('add', 'Add FAQ')">
                     <i class="fa fa-plus"></i> Add FAQ
                 </button>
             </div>
@@ -45,8 +45,8 @@
                         <h3 class="box-title">{{ faq.question }}</h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal_faq_product" @click="editFaqProduct(faq)"><i class="fa fa-pencil-square"></i></button>
-                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal_delete_faq_product" @click="setDeleteTarget(faq)"><i class="fa fa-trash-o"></i></button>
+                            <button v-if="user_rights.edit === 1" type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal_faq_product" @click="editFaqProduct(faq)"><i class="fa fa-pencil-square"></i></button>
+                            <button v-if="user_rights.delete === 1" type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal_delete_faq_product" @click="setDeleteTarget(faq)"><i class="fa fa-trash-o"></i></button>
                         </div>
                         <!-- /.box-tools -->
                     </div>
@@ -150,6 +150,11 @@
                     question: '',
                     answer: ''
                 },
+                user_rights: {
+                    create: '',
+                    edit: '',
+                    delete: ''
+                },
                 type: '',
                 searchStatus: '',
                 validator: '',
@@ -163,6 +168,7 @@
         created() {
             this.getProduct();
             this.getFaqProducts();
+            this.getUserRights();
             this.validator = new Validator({
                 question: 'required',
                 answer: 'required'
@@ -197,6 +203,19 @@
                 }
                 let debounceFunction = _.debounce(getFaqs, 1000);
                 debounceFunction();
+            },
+
+            getUserRights: function() {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + '/api/user_group/' + vm.user + '/get-faq-crud-rights';
+
+                axios.get(url).then(response => {
+                    vm.user_rights.create = response.data.user_rights.create;
+                    vm.user_rights.edit = response.data.user_rights.edit;
+                    vm.user_rights.delete = response.data.user_rights.delete;
+                }).catch(error => {
+                    console.log(error);
+                });
             },
 
             editFaqProduct: function(currentFaqProduct) {
@@ -308,6 +327,7 @@
             addTypeSubmit: function(type, title) {
                 this.type = type;
                 this.title = title;
+                this.clearState();
             },
 
             clearState: function() {

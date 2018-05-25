@@ -37,9 +37,15 @@ Route::post('/check-tenant', 'Auth\LoginController@checkTenant')->name('check_te
 //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 /* end of password reset routes */
 
-/* Product Routes */
-Route::resource('product', 'MasterData\ProductController');
-/* end of product routes */
+Route::group(['middleware' => ['master_data_permit']], function () {
+    /* Product Routes */
+    Route::resource('product', 'MasterData\ProductController');
+    /* end of product routes */
+
+    /* Service Routes */
+    Route::resource('service', 'MasterData\ServiceController');
+    /* end of service routes */
+});
 
 /* Product Category Routes */
 Route::post('product_category/get-category', 'MasterData\ProductCategoryController@getProductCategory');
@@ -54,10 +60,6 @@ Route::post('product_category/delete-node', 'MasterData\ProductCategoryControlle
 Route::post('product_category/delete-product-category', 'MasterData\ProductCategoryController@deleteProductCategory');
 Route::resource('product_category', 'MasterData\ProductCategoryController');
 /* end of product category route */
-
-/* Service Routes */
-Route::resource('service', 'MasterData\ServiceController');
-/* end of service routes */
 
 /* Service Category Routes */
 Route::post('service_category/get-trees', 'MasterData\ServiceCategoryController@getTrees');
@@ -81,11 +83,11 @@ Route::group(['middleware' => ['faq_crud_permit']], function () {
     /* Faq Product Routes */
     Route::resource('faq_product', 'FAQ\FAQProductController');
     /* end of faq product routes */
-});
 
-/* Faq Service Routes */
-Route::resource('faq_service', 'FAQ\FAQServiceController');
-/* end of faq service routes */
+    /* Faq Service Routes */
+    Route::resource('faq_service', 'FAQ\FAQServiceController');
+    /* end of faq service routes */
+});
 
 /* Feedback Routes */
 Route::resource('feedback', 'Feedback\FeedbackController');

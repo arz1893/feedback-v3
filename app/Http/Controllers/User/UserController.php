@@ -24,8 +24,6 @@ class UserController extends Controller
         return new UserCollection($users);
     }
 
-    /* API Section */
-
     public function addUser(Request $request) {
         $token = str_random(16);
         $creator = User::findOrFail($request->creator_id);

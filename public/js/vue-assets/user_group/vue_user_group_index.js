@@ -70109,7 +70109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
             axios.get(url).then(function (response) {
-                _this.user_groups = response.data.data;
+                _this.user_groups = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
