@@ -12,7 +12,7 @@ class QuestionListCrudRight extends Model
 
     protected $fillable = [
         'usergroupid',
-        'create',
+        'answer',
         'edit',
         'delete',
         'view'

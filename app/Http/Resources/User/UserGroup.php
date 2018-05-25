@@ -24,7 +24,8 @@ class UserGroup extends JsonResource
             'feedback_list_crud_rights' => $this->getFeedbackListCrudRights,
             'faq_crud_rights' => $this->getFaqCrudRights,
             'question_crud_rights' => $this->getQuestionCrudRights,
-            'question_list_crud_rights' => $this->getQuestionCListCrudRights
+            'question_list_crud_rights' => $this->getQuestionListCrudRights,
+            'show_url' => route('user_group.show', $this->systemId)
         ];
     }
 }

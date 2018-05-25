@@ -9,6 +9,7 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
+                    <th>Permissions</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -16,6 +17,11 @@
                 <tr v-for="(user_group, index) in user_groups">
                     <td>{{ index + 1 }}</td>
                     <td>{{ user_group.name }}</td>
+                    <td>
+                        <a v-bind:href="user_group.show_url" role="button">
+                            Manage permissions here <i class="fa fa-cogs"></i>
+                        </a>
+                    </td>
                     <td>
                         <a role="button" class="btn btn-warning">
                             <i class="fa fa-pencil-square"></i>
@@ -51,7 +57,8 @@
             getAllUserGroup: function () {
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
                 axios.get(url).then(response => {
-                    this.user_groups = response.data;
+                    console.log(response.data);
+                    this.user_groups = response.data.data;
                 }).catch(error => {
                     console.log(error);
                 })

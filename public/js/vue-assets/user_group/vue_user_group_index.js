@@ -70042,7 +70042,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70053,6 +70053,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70109,7 +70115,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
             axios.get(url).then(function (response) {
-                _this.user_groups = response.data;
+                console.log(response.data);
+                _this.user_groups = response.data.data;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70143,6 +70150,17 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(user_group.name))]),
             _vm._v(" "),
+            _c("td", [
+              _c(
+                "a",
+                { attrs: { href: user_group.show_url, role: "button" } },
+                [
+                  _vm._v("\n                        Manage permissions here "),
+                  _c("i", { staticClass: "fa fa-cogs" })
+                ]
+              )
+            ]),
+            _vm._v(" "),
             _vm._m(2, true)
           ])
         })
@@ -70173,6 +70191,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("No")]),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Permissions")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
