@@ -70049,7 +70049,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70060,6 +70060,51 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70289,8 +70334,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 question_list_view: '',
                 question_list_answer: '',
                 question_list_edit: '',
-                question_list_delete: ''
-            }
+                question_list_delete: '',
+                customer_view: '',
+                customer_create: '',
+                customer_edit: '',
+                customer_delete: ''
+            },
+            showLoading: false,
+            showAlert: false
         };
     },
     created: function created() {
@@ -70328,9 +70379,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.user_group.question_list_answer = response.data.data.question_list_crud_rights.answer;
                 vm.user_group.question_list_edit = response.data.data.question_list_crud_rights.edit;
                 vm.user_group.question_list_delete = response.data.data.question_list_crud_rights.delete;
+                vm.user_group.customer_view = response.data.data.customer_crud_rights.view;
+                vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
+                vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
+                vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        updateRoleRights: function updateRoleRights() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + vm.usergroup_id + '/update-role-rights';
+            vm.showLoading = true;
+            function sendRequest() {
+                axios.post(url, {
+                    user_group: vm.user_group
+                }).then(function (response) {
+                    console.log(response.data);
+                    vm.showLoading = false;
+                    vm.showAlert = true;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            var debounceFunction = _.debounce(sendRequest, 1000);
+            debounceFunction();
         }
     }
 });
@@ -70347,6 +70420,42 @@ var render = function() {
     _c("h3", { staticClass: "text-center" }, [
       _vm._v(_vm._s(_vm.user_group.name))
     ]),
+    _vm._v(" "),
+    _vm.showAlert
+      ? _c(
+          "div",
+          {
+            staticClass: "alert alert-success alert-dismissible",
+            attrs: { role: "alert" }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    _vm.showAlert = false
+                  }
+                }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            ),
+            _vm._v(" "),
+            _c("strong", [_vm._v("Info!")]),
+            _vm._v(" Permission has been changed\n    ")
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showLoading
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+          _vm._v(" Loading...\n        "),
+          _c("br")
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-6" }, [
       _c("div", { staticClass: "panel panel-default" }, [
@@ -71697,7 +71806,236 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6 col-lg-offset-3" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _vm._m(6),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("div", { staticClass: "checkbox" }, [
+                _c("label", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user_group.customer_view,
+                        expression: "user_group.customer_view"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      name: "customer_view",
+                      id: "customer_view"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.user_group.customer_view)
+                        ? _vm._i(_vm.user_group.customer_view, null) > -1
+                        : _vm.user_group.customer_view
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.user_group.customer_view,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_view",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_view",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.user_group, "customer_view", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" View\n                            ")
+                ])
+              ]),
+              _vm._v("    \n                        "),
+              _c("div", { staticClass: "checkbox" }, [
+                _c("label", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user_group.customer_create,
+                        expression: "user_group.customer_create"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      name: "customer_create",
+                      id: "customer_create"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.user_group.customer_create)
+                        ? _vm._i(_vm.user_group.customer_create, null) > -1
+                        : _vm.user_group.customer_create
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.user_group.customer_create,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_create",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_create",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.user_group, "customer_create", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" Create\n                            ")
+                ])
+              ]),
+              _vm._v("    \n                        "),
+              _c("div", { staticClass: "checkbox" }, [
+                _c("label", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user_group.customer_edit,
+                        expression: "user_group.customer_edit"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      name: "customer_edit",
+                      id: "customer_edit"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.user_group.customer_edit)
+                        ? _vm._i(_vm.user_group.customer_edit, null) > -1
+                        : _vm.user_group.customer_edit
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.user_group.customer_edit,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_edit",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_edit",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.user_group, "customer_edit", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" Edit\n                            ")
+                ])
+              ]),
+              _vm._v("    \n                        "),
+              _c("div", { staticClass: "checkbox" }, [
+                _c("label", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user_group.customer_delete,
+                        expression: "user_group.customer_delete"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      name: "customer_delete",
+                      id: "customer_delete"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.user_group.customer_delete)
+                        ? _vm._i(_vm.user_group.customer_delete, null) > -1
+                        : _vm.user_group.customer_delete
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.user_group.customer_delete,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_delete",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.user_group,
+                                "customer_delete",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.user_group, "customer_delete", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" Delete\n                            ")
+                ])
+              ]),
+              _vm._v("    \n                    ")
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(7)
   ])
 }
 var staticRenderFns = [
@@ -71749,6 +72087,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
       _c("strong", [_vm._v("Question List Permissions")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("strong", [_vm._v("Customer CRUD Permissions")])
     ])
   },
   function() {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\User;
 
+use App\CustomerCrudRight;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserGroup extends JsonResource
@@ -25,6 +26,7 @@ class UserGroup extends JsonResource
             'faq_crud_rights' => $this->getFaqCrudRights,
             'question_crud_rights' => $this->getQuestionCrudRights,
             'question_list_crud_rights' => $this->getQuestionListCrudRights,
+            'customer_crud_rights' => $this->getCustomerCrudRights,
             'show_url' => route('user_group.show', $this->systemId)
         ];
     }

@@ -14,7 +14,8 @@ class CustomerCrudRight extends Model
         'usergroupid',
         'create',
         'edit',
-        'delete'
+        'delete',
+        'view'
     ];
 
     public function getUserGroup() {

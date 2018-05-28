@@ -18,9 +18,9 @@ if($('#global_summary_yearly').length > 0) {
                         label: 'Feedback',
                         data: response.data.feedbackRatings,
                         backgroundColor: [
-                            'rgba(255, 102, 102, 0.7)',
-                            'rgba(255, 0, 0, 0.7)',
-                            'rgba(153, 0, 0, 0.7)',
+                            'rgba(204, 153, 102, 0.7)',
+                            'rgba(172, 115, 57, 0.7)',
+                            'rgba(96, 64, 32, 0.7)',
                             'rgba(102, 179, 255, 0.7)',
                             'rgba(0, 0, 255, 0.7)',
                             'rgba(0, 0, 179, 0.7)'
@@ -31,7 +31,11 @@ if($('#global_summary_yearly').length > 0) {
                 options: {
                     legend: {
                         position: 'left',
-                        align: 'center'
+                        align: 'center',
+                        labels: {
+                            fontSize: 15,
+                            padding: 12
+                        }
                     },
                     maintainAspectRatio:true,
                     responsive: true,

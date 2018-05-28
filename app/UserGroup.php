@@ -60,6 +60,6 @@ class UserGroup extends Model
     }
 
     public function getCustomerCrudRights() {
-        return $this->hasOne(CustomerCrudRight::class, 'usergoupid', 'systemId');
+        return $this->hasOne(CustomerCrudRight::class, 'usergroupid', 'systemId');
     }
 }

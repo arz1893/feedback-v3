@@ -15,10 +15,10 @@ class CreateCustomerCrudRightsTable extends Migration
     {
         Schema::create('customer_crud_rights', function (Blueprint $table) {
             $table->uuid('usergroupid')->primary();
-            $table->boolean('create');
-            $table->boolean('edit');
-            $table->boolean('delete');
-            $table->boolean('view');
+            $table->boolean('create')->default(1);
+            $table->boolean('edit')->default(1);
+            $table->boolean('delete')->default(1);
+            $table->boolean('view')->default(1);
             $table->timestamps();
 
             $table->foreign('usergroupid')->references('systemId')->on('user_groups')->onDelete('cascade');

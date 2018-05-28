@@ -2,6 +2,16 @@
     <div>
         <h3 class="text-center">{{ user_group.name }}</h3>
 
+        <div class="alert alert-success alert-dismissible" role="alert" v-if="showAlert">
+            <button type="button" class="close" aria-label="Close" @click="showAlert = false"><span aria-hidden="true">&times;</span></button>
+            <strong>Info!</strong> Permission has been changed
+        </div>
+
+        <div class="text-center" v-if="showLoading">
+            <i class="fa fa-spinner fa-pulse fa-fw"></i> Loading...
+            <br>
+        </div>
+
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -185,6 +195,41 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Customer CRUD Permissions</strong>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="customer_view" id="customer_view" v-model="user_group.customer_view"> View
+                                </label>
+                            </div> &nbsp; &nbsp;
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="customer_create" id="customer_create" v-model="user_group.customer_create"> Create
+                                </label>
+                            </div> &nbsp; &nbsp;
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="customer_edit" id="customer_edit" v-model="user_group.customer_edit"> Edit
+                                </label>
+                            </div> &nbsp; &nbsp;
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="customer_delete" id="customer_delete" v-model="user_group.customer_delete"> Delete
+                                </label>
+                            </div> &nbsp; &nbsp;
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="text-center">
             <button class="btn btn-success">
                 Save Changes
@@ -228,7 +273,13 @@
                     question_list_answer: '',
                     question_list_edit: '',
                     question_list_delete: '',
-                }
+                    customer_view: '',
+                    customer_create: '',
+                    customer_edit: '',
+                    customer_delete: ''
+                },
+                showLoading: false,
+                showAlert: false
             }
         },
         created() {
@@ -265,9 +316,31 @@
                     vm.user_group.question_list_answer = response.data.data.question_list_crud_rights.answer;
                     vm.user_group.question_list_edit = response.data.data.question_list_crud_rights.edit;
                     vm.user_group.question_list_delete = response.data.data.question_list_crud_rights.delete;
+                    vm.user_group.customer_view = response.data.data.customer_crud_rights.view;
+                    vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
+                    vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
+                    vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
                 }).catch(error => {
                     console.log(error);
                 });
+            },
+            updateRoleRights: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + vm.usergroup_id + '/update-role-rights';
+                vm.showLoading = true;
+                function sendRequest() {
+                    axios.post(url, {
+                        user_group: vm.user_group
+                    }).then(response => {
+                        console.log(response.data);
+                        vm.showLoading = false;
+                        vm.showAlert = true;
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+                let debounceFunction = _.debounce(sendRequest, 1000);
+                debounceFunction();
             }
         }
     }
