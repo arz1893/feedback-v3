@@ -28,6 +28,11 @@ class UserGroupController extends Controller
         return new UserGroupCollection($userGroups);
     }
 
+    public function getUserGroup($usergroup_id) {
+        $userGroup = UserGroup::findOrFail($usergroup_id);
+        return ['user_group' => $userGroup];
+    }
+
     public function getFaqCrudRights($user_id) {
         $user = User::findOrFail($user_id);
         $faqCrudRights = $user->user_group->getFaqCrudRights;
@@ -39,7 +44,7 @@ class UserGroupController extends Controller
         return new UserGroupResource($userGroup);
     }
 
-    public function updateUserRole(Request $request, $usergroup_id) {
+    public function updateRoleRights(Request $request, $usergroup_id) {
         $userGroup = UserGroup::findOrFail($usergroup_id);
 
         $faqCrudRight = $userGroup->getFaqCrudRights;
@@ -91,6 +96,13 @@ class UserGroupController extends Controller
         $customerCrudRights->delete = $request->user_group['customer_delete'];
         $customerCrudRights->update();
 
+        return ['message' => 'Role updated!'];
+    }
+
+    public function updateUserGroup(Request $request, $usergoup_id) {
+        $userGroup = UserGroup::findOrFail($usergoup_id);
+        $userGroup->name = $request->usergroup_name;
+        $userGroup->update();
         return ['message' => 'Role updated!'];
     }
 }

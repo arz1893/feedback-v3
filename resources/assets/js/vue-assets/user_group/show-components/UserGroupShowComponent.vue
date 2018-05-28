@@ -118,7 +118,7 @@
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_list_answer" id="feedback_list_answer" v-model="user_group.feedback_list_answer"> Create
+                                <input type="checkbox" name="feedback_list_answer" id="feedback_list_answer" v-model="user_group.feedback_list_answer"> Answer
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
@@ -178,7 +178,7 @@
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="question_list_answer" id="question_list_answer" v-model="user_group.question_list_answer"> Create
+                                <input type="checkbox" name="question_list_answer" id="question_list_answer" v-model="user_group.question_list_answer"> Answer
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
@@ -231,7 +231,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success">
+            <button class="btn btn-success" @click="updateRoleRights()">
                 Save Changes
             </button>
             <button class="btn btn-default">
@@ -335,6 +335,7 @@
                         console.log(response.data);
                         vm.showLoading = false;
                         vm.showAlert = true;
+                        vm.getRoleRights();
                     }).catch(error => {
                         console.log(error);
                     });

@@ -70042,7 +70042,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.modal-body[data-v-0dc2ecf2] {\n    max-height: calc(70vh - 140px);\n    overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -70053,6 +70053,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
 //
 //
 //
@@ -70091,32 +70092,279 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+Vue.use(VeeValidate, {
+    dictionary: {
+        en: {
+            custom: {
+                role_name: {
+                    required: "Please enter role name"
+                }
+            }
+        }
+    }
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "user-group-index",
     props: ['tenant_id'],
     created: function created() {
         this.getAllUserGroup();
+        this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["Validator"]({
+            role_name: 'required'
+        });
     },
     data: function data() {
         return {
             user_group: {
                 systemId: '',
                 name: '',
-                recOwner: ''
+                master_data_view: '',
+                master_data_create: '',
+                master_data_edit: '',
+                master_data_delete: '',
+                faq_view: '',
+                faq_create: '',
+                faq_edit: '',
+                faq_delete: '',
+                feedback_view: '',
+                feedback_create: '',
+                feedback_edit: '',
+                feedback_delete: '',
+                feedback_list_view: '',
+                feedback_list_answer: '',
+                feedback_list_edit: '',
+                feedback_list_delete: '',
+                question_view: '',
+                question_create: '',
+                question_edit: '',
+                question_delete: '',
+                question_list_view: '',
+                question_list_answer: '',
+                question_list_edit: '',
+                question_list_delete: '',
+                customer_view: '',
+                customer_create: '',
+                customer_edit: '',
+                customer_delete: ''
             },
-            user_groups: []
+            showAlert: false,
+            showLoading: false,
+            user_groups: [],
+            validator: ''
         };
     },
 
+    watch: {
+        'user_group.name': function user_groupName() {
+            if (this.showAlert === false) {
+                this.validator.validate('role_name', this.user_group.name);
+            }
+        }
+    },
     methods: {
         getAllUserGroup: function getAllUserGroup() {
             var _this = this;
 
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + this.tenant_id + '/' + 'get-all-user-group';
             axios.get(url).then(function (response) {
-                console.log(response.data);
                 _this.user_groups = response.data.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getRoleRights: function getRoleRights(usergroup_id) {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + usergroup_id + '/get-role-rights';
+            axios.get(url).then(function (response) {
+                vm.user_group.name = response.data.data.name;
+                vm.user_group.master_data_view = response.data.data.master_data_rights.view;
+                vm.user_group.master_data_create = response.data.data.master_data_rights.create;
+                vm.user_group.master_data_edit = response.data.data.master_data_rights.edit;
+                vm.user_group.master_data_delete = response.data.data.master_data_rights.delete;
+                vm.user_group.faq_view = response.data.data.faq_crud_rights.view;
+                vm.user_group.faq_create = response.data.data.faq_crud_rights.create;
+                vm.user_group.faq_edit = response.data.data.faq_crud_rights.edit;
+                vm.user_group.faq_delete = response.data.data.faq_crud_rights.delete;
+                vm.user_group.feedback_view = response.data.data.feedback_crud_rights.view;
+                vm.user_group.feedback_create = response.data.data.feedback_crud_rights.create;
+                vm.user_group.feedback_edit = response.data.data.feedback_crud_rights.edit;
+                vm.user_group.feedback_delete = response.data.data.feedback_crud_rights.delete;
+                vm.user_group.feedback_list_view = response.data.data.feedback_list_crud_rights.view;
+                vm.user_group.feedback_list_answer = response.data.data.feedback_list_crud_rights.answer;
+                vm.user_group.feedback_list_edit = response.data.data.feedback_list_crud_rights.edit;
+                vm.user_group.feedback_list_delete = response.data.data.feedback_list_crud_rights.delete;
+                vm.user_group.question_view = response.data.data.question_crud_rights.view;
+                vm.user_group.question_create = response.data.data.question_crud_rights.create;
+                vm.user_group.question_edit = response.data.data.question_crud_rights.edit;
+                vm.user_group.question_delete = response.data.data.question_crud_rights.delete;
+                vm.user_group.question_list_view = response.data.data.question_list_crud_rights.view;
+                vm.user_group.question_list_answer = response.data.data.question_list_crud_rights.answer;
+                vm.user_group.question_list_edit = response.data.data.question_list_crud_rights.edit;
+                vm.user_group.question_list_delete = response.data.data.question_list_crud_rights.delete;
+                vm.user_group.customer_view = response.data.data.customer_crud_rights.view;
+                vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
+                vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
+                vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getUserGroup: function getUserGroup(usergroup_id) {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + usergroup_id + '/get-user-group';
+            axios.get(url).then(function (response) {
+                vm.user_group.systemId = response.data.user_group.systemId;
+                vm.user_group.name = response.data.user_group.name;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        updateUserGroup: function updateUserGroup() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + vm.user_group.systemId + '/update-user-group';
+            vm.validator.validateAll({
+                role_name: vm.user_group.name
+            }).then(function (result) {
+                if (result) {
+                    var sendRequest = function sendRequest() {
+                        axios.post(url, {
+                            usergroup_name: vm.user_group.name
+                        }).then(function (response) {
+                            console.log(response.data);
+                            vm.showAlert = true;
+                            vm.showLoading = false;
+                            vm.getUserGroup(vm.user_group.systemId);
+                            vm.getAllUserGroup();
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    };
+
+                    vm.showLoading = true;
+
+                    var debounceFunction = _.debounce(sendRequest, 1000);
+                    debounceFunction();
+                }
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70148,7 +70396,30 @@ var render = function() {
           return _c("tr", [
             _c("td", [_vm._v(_vm._s(index + 1))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user_group.name))]),
+            _c("td", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    role: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#modalShowUserGroup"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.getRoleRights(user_group.systemId)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(user_group.name) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("td", [
               _c(
@@ -70161,11 +70432,520 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(2, true)
+            _c("td", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-warning",
+                  attrs: {
+                    role: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#modalEditUserGroup"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.getUserGroup(user_group.systemId)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-pencil-square" })]
+              ),
+              _vm._v(" "),
+              _vm._m(2, true)
+            ])
           ])
         })
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modalShowUserGroup",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "userGroupLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "userGroupLabel" }
+                  },
+                  [_vm._v(_vm._s(_vm.user_group.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("h4", [_vm._v("Permissions")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("FAQ CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.faq_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.faq_create
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.faq_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.faq_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Master Data CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.master_data_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.master_data_create
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.master_data_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.master_data_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Feedback CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.feedback_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.feedback_create
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.feedback_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.feedback_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Feedback List")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.feedback_list_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.feedback_list_answer
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.feedback_list_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.feedback_list_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Question CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.question_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.question_create
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.question_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.question_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Question List")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.question_list_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.question_list_answer
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.question_list_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.question_list_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Customer CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.customer_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.customer_create
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.customer_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.customer_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modalEditUserGroup",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "editUserGroupLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.showAlert
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "alert alert-success alert-dismissible",
+                        attrs: { role: "alert" }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: { type: "button", "aria-label": "Close" },
+                            on: {
+                              click: function($event) {
+                                _vm.showAlert = false
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { attrs: { "aria-hidden": "true" } }, [
+                              _vm._v("×")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("strong", [_vm._v("Info!")]),
+                        _vm._v(
+                          " Permission has been changed\n                    "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.showLoading
+                  ? _c("div", { staticClass: "text-center" }, [
+                      _c("i", { staticClass: "fa fa-spinner fa-pulse fa-fw" }),
+                      _vm._v(" Loading...\n                        "),
+                      _c("br")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "form-group",
+                    class: {
+                      "has-error": _vm.validator.errors.has("role_name")
+                    }
+                  },
+                  [
+                    _c("label", { attrs: { for: "user_group_name" } }, [
+                      _vm._v("Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user_group.name,
+                          expression: "user_group.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "user_group_name",
+                        id: "user_group_name"
+                      },
+                      domProps: { value: _vm.user_group.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.user_group, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.validator.errors.has("role_name"),
+                            expression: "validator.errors.has('role_name')"
+                          }
+                        ],
+                        staticClass: "help-block text-red"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.validator.errors.first("role_name")) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.updateUserGroup()
+                      }
+                    }
+                  },
+                  [_vm._v("Update")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -70202,14 +70982,52 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { staticClass: "btn btn-warning", attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa fa-pencil-square" })
-      ]),
+    return _c(
+      "a",
+      { staticClass: "btn btn-danger", attrs: { role: "button" } },
+      [_c("i", { staticClass: "fa fa-trash" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
       _vm._v(" "),
-      _c("a", { staticClass: "btn btn-danger", attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa fa-trash" })
-      ])
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "editUserGroupLabel" } },
+        [_vm._v("Edit Role")]
+      )
     ])
   }
 ]
