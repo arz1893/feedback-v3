@@ -4,17 +4,27 @@ namespace App\Http\Controllers\User;
 
 use App\CustomerCrudRight;
 use App\FaqCrudRight;
+use App\FeedbackCrudRight;
+use App\FeedbackListCrudRight;
 use App\Http\Resources\User\UserGroupCollection;
+use App\MasterDataRight;
+use App\QuestionCrudRight;
+use App\QuestionListCrudRight;
 use App\User;
 use App\UserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserGroup as UserGroupResource;
+use Webpatser\Uuid\Uuid;
 
 class UserGroupController extends Controller
 {
     public function index() {
         return view('user_group.user_group_index');
+    }
+
+    public function create() {
+        return view('user_group.user_group_add');
     }
 
     public function show($usergorup_id) {
@@ -104,5 +114,75 @@ class UserGroupController extends Controller
         $userGroup->name = $request->usergroup_name;
         $userGroup->update();
         return ['message' => 'Role updated!'];
+    }
+
+    public function addUserGroup(Request $request) {
+        $userGroup = UserGroup::create([
+            'systemId' => Uuid::generate(4),
+            'name' => $request->user_group['name'],
+            'recOwner' => $request->tenant_id,
+            'syscreator' => $request->syscreator
+        ]);
+
+        if($userGroup != null) {
+            FaqCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['faq_view'],
+                'create' => $request->user_group['faq_create'],
+                'edit' => $request->user_group['faq_edit'],
+                'delete' => $request->user_group['faq_delete']
+            ]);
+
+            MasterDataRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['master_data_view'],
+                'create' => $request->user_group['master_data_create'],
+                'edit' => $request->user_group['master_data_edit'],
+                'delete' => $request->user_group['master_data_delete']
+            ]);
+
+            FeedbackCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['feedback_view'],
+                'create' => $request->user_group['feedback_create'],
+                'edit' => $request->user_group['feedback_edit'],
+                'delete' => $request->user_group['feedback_delete'],
+            ]);
+
+            FeedbackListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['feedback_list_view'],
+                'answer' => $request->user_group['feedback_list_answer'],
+                'edit' => $request->user_group['feedback_list_edit'],
+                'delete' => $request->user_group['feedback_list_delete'],
+            ]);
+
+            QuestionCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['question_view'],
+                'create' => $request->user_group['question_create'],
+                'edit' => $request->user_group['question_edit'],
+                'delete' => $request->user_group['question_delete'],
+            ]);
+
+            QuestionListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['question_list_view'],
+                'answer' => $request->user_group['question_list_answer'],
+                'edit' => $request->user_group['question_list_edit'],
+                'delete' => $request->user_group['question_list_delete']
+            ]);
+
+            CustomerCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['customer_view'],
+                'create' => $request->user_group['customer_create'],
+                'edit' => $request->user_group['customer_edit'],
+                'delete' => $request->user_group['customer_delete'],
+            ]);
+            return ['message' => 'Role has been added'];
+        } else {
+            return ['error' => 'There is something wrong within the process'];
+        }
     }
 }

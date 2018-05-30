@@ -3,6 +3,7 @@
     "/js/vue-assets/feedback/product/feedback_product_list.js": "/js/vue-assets/feedback/product/feedback_product_list.js",
     "/js/vue-assets/user_group/vue_user_group_show.js": "/js/vue-assets/user_group/vue_user_group_show.js",
     "/js/vue-assets/user_group/vue_user_group_index.js": "/js/vue-assets/user_group/vue_user_group_index.js",
+    "/js/vue-assets/user_group/vue_user_group_add.js": "/js/vue-assets/user_group/vue_user_group_add.js",
     "/js/vue-assets/user/vue_user_management_index.js": "/js/vue-assets/user/vue_user_management_index.js",
     "/js/vue-assets/question/vue_question_index.js": "/js/vue-assets/question/vue_question_index.js",
     "/js/vue-assets/master_data/service/vue_edit_service.js": "/js/vue-assets/master_data/service/vue_edit_service.js",

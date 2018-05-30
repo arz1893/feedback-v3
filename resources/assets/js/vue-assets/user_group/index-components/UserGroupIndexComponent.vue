@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button type="button" class="btn btn-success">
+        <a :href="add_url" type="button" class="btn btn-success">
             Add Role <i class="fa fa-plus-circle"></i>
-        </button> <br> <br>
+        </a> <br> <br>
 
         <table class="table table-bordered table-striped">
             <thead>
@@ -214,7 +214,8 @@
                 showAlert: false,
                 showLoading: false,
                 user_groups: [],
-                validator: ''
+                validator: '',
+                add_url: window.location.protocol + "//" + window.location.host + "/user_group/create"
             }
         },
         watch: {

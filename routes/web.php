@@ -130,7 +130,7 @@ Route::get('feedback_report_all/all-top-satisfaction/yearly', 'Report\FeedbackRe
 Route::get('feedback_report_all/all-top-satisfaction/monthly', 'Report\FeedbackReportAllController@showAllTopSatisfactionMonthly')->name('all_top_satisfaction_monthly');
 Route::get('feedback_report_all/all-global-summary/monthly', 'Report\FeedbackReportAllController@showGlobalSummaryMonthly')->name('global_summary_monthly');
 Route::get('feedback_report_all/all-global-summary/yearly', 'Report\FeedbackReportAllController@showGlobalSummaryYearly')->name('global_summary_yearly');
-Route::resource('feedback_report_all', 'Report/FeedbackReportAllController');
+Route::resource('feedback_report_all', 'Report\FeedbackReportAllController');
 /* end of feedback report all */
 
 /* Feedback Product Report */
