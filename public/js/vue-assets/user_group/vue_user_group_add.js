@@ -70337,6 +70337,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70389,7 +70408,8 @@ Vue.use(VeeValidate, {
                 customer_delete: false
             },
             validator: '',
-            showAlert: false
+            showAlert: false,
+            alertContent: ''
         };
     },
     created: function created() {
@@ -70397,9 +70417,10 @@ Vue.use(VeeValidate, {
             user_group_name: 'required'
         });
 
-        if (sessionStorage.getItem('user_group_success') === 'true') {
+        if (sessionStorage.getItem('role_added') === 'true') {
             this.showAlert = true;
-            sessionStorage.removeItem('user_group_success');
+            this.alertContent = "Role has been added";
+            sessionStorage.removeItem('role_added');
         }
     },
 
@@ -70417,7 +70438,7 @@ Vue.use(VeeValidate, {
                 user_group_name: vm.user_group.name
             }).then(function (result) {
                 if (result) {
-                    $('#modal_confirm').modal('show');
+                    $('#modal_confirm_store').modal('show');
                 }
             }).catch(function (error) {
                 console.log(error);
@@ -70434,7 +70455,7 @@ Vue.use(VeeValidate, {
             }).then(function (response) {
                 console.log(response.data);
                 if (response.data.error === undefined) {
-                    sessionStorage.setItem('user_group_success', 'true');
+                    sessionStorage.setItem('role_added', 'true');
                     location.reload();
                 }
             }).catch(function (error) {
@@ -70483,7 +70504,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("strong", [_vm._v("Success!")]),
-        _vm._v(" Role has been added\n    ")
+        _vm._v(" " + _vm._s(_vm.alertContent) + "\n    ")
       ]
     ),
     _vm._v(" "),
@@ -72206,7 +72227,7 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "modal_confirm",
+          id: "modal_confirm_store",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "modalConfirmLabel"
@@ -72254,7 +72275,9 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(8)
   ])
 }
 var staticRenderFns = [
@@ -72341,6 +72364,78 @@ var staticRenderFns = [
         [_vm._v("Alert!")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modal_confirm_delete",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myModalLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  { staticClass: "modal-title", attrs: { id: "myModalLabel" } },
+                  [_vm._v("Modal title")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v("\n                    ...\n                ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Save changes")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

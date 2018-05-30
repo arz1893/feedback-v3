@@ -165,6 +165,7 @@ Route::get('user_group/{usergroup_id}/get-user-group', 'User\UserGroupController
 Route::post('user_group/{usergroup_id}/update-role-rights', 'User\UserGroupController@updateRoleRights');
 Route::post('user_group/{usergroup_id}/update-user-group', 'User\UserGroupController@updateUserGroup');
 Route::post('user_group/add-user-group', 'User\UserGroupController@addUserGroup');
+Route::post('user_group/delete-user-group', 'User\UserGroupController@deleteUserGroup');
 
 /* User Management */
 Route::get('user_management/{tenant_id}/get-all-user', 'User\UserController@getAllUser');

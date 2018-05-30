@@ -70209,6 +70209,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70232,6 +70256,12 @@ Vue.use(VeeValidate, {
         this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["Validator"]({
             role_name: 'required'
         });
+
+        if (sessionStorage.getItem('role_deleted') === 'true') {
+            this.showAlertDelete = true;
+            this.alertDeleteContent = "Role has been deleted";
+            sessionStorage.removeItem('role_deleted');
+        }
     },
     data: function data() {
         return {
@@ -70267,9 +70297,15 @@ Vue.use(VeeValidate, {
                 customer_edit: '',
                 customer_delete: ''
             },
-            showAlert: false,
+            showAlertUpdate: false,
+            showAlertDelete: false,
+            alertDeleteContent: '',
             showLoading: false,
             user_groups: [],
+            selectedUserGroup: {
+                systemId: '',
+                name: ''
+            },
             validator: '',
             add_url: window.location.protocol + "//" + window.location.host + "/user_group/create"
         };
@@ -70369,6 +70405,25 @@ Vue.use(VeeValidate, {
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        selectUserGroup: function selectUserGroup(usergroup_id, usergroup_name) {
+            this.selectedUserGroup.systemId = usergroup_id;
+            this.selectedUserGroup.name = usergroup_name;
+        },
+        deleteUserGroup: function deleteUserGroup() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/delete-user-group";
+            console.log(vm.selectedUserGroup);
+            axios.post(url, {
+                usergroup_id: vm.selectedUserGroup.systemId
+            }).then(function (response) {
+                if (response.data.error === undefined) {
+                    sessionStorage.setItem('role_deleted', 'true');
+                    location.reload();
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -70398,6 +70453,31 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
+    _vm.showAlertDelete
+      ? _c(
+          "div",
+          { staticClass: "alert alert-success", attrs: { role: "alert" } },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    _vm.showAlertDelete = false
+                  }
+                }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            ),
+            _vm._v(" "),
+            _c("strong", [_vm._v("Success!")]),
+            _vm._v(" " + _vm._s(_vm.alertDeleteContent) + "\n    ")
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c("table", { staticClass: "table table-bordered table-striped" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -70418,7 +70498,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      _vm.getRoleRights(user_group.systemId)
+                      _vm.getRoleRights(user_group.systemId, user_group.name)
                     }
                   }
                 },
@@ -70462,7 +70542,23 @@ var render = function() {
                 [_c("i", { staticClass: "fa fa-pencil-square" })]
               ),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: {
+                    role: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#modalDeleteUserGroup"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.selectUserGroup(user_group.systemId, user_group.name)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-trash" })]
+              )
             ])
           ])
         })
@@ -70487,7 +70583,7 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "h4",
@@ -70819,10 +70915,10 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm.showAlert
+                _vm.showAlertUpdate
                   ? _c(
                       "div",
                       {
@@ -70956,6 +71052,61 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modalDeleteUserGroup",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "deleteUserGroupLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    Are you sure want to delete this role ? (including all user that this role)\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteUserGroup()
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -70975,16 +71126,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Action")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-danger", attrs: { role: "button" } },
-      [_c("i", { staticClass: "fa fa-trash" })]
-    )
   },
   function() {
     var _vm = this
@@ -71025,6 +71166,34 @@ var staticRenderFns = [
         "h4",
         { staticClass: "modal-title", attrs: { id: "editUserGroupLabel" } },
         [_vm._v("Edit Role")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "h4",
+        {
+          staticClass: "modal-title text-red",
+          attrs: { id: "deleteUserGroupLabel" }
+        },
+        [_vm._v("Alert!")]
       )
     ])
   }

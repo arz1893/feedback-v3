@@ -185,4 +185,15 @@ class UserGroupController extends Controller
             return ['error' => 'There is something wrong within the process'];
         }
     }
+
+    public function deleteUserGroup(Request $request) {
+        $userGroup = UserGroup::findOrFail($request->usergroup_id);
+        $result = $userGroup->delete();
+
+        if($result == true) {
+            return ['message' => 'Role has been deleted'];
+        } else {
+            return ['error' => 'Invalid role'];
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
         <div class="alert alert-success" role="alert" v-show="showAlert">
             <button type="button" class="close" @click="showAlert = false"><span aria-hidden="true">&times;</span></button>
-            <strong>Success!</strong> Role has been added
+            <strong>Success!</strong> {{ alertContent }}
         </div>
 
         <div class="row">
@@ -247,7 +247,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="modal_confirm" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel">
+        <div class="modal fade" id="modal_confirm_store" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -260,6 +260,25 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                         <button type="button" class="btn btn-primary" @click="addUserGroup()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_confirm_delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -319,7 +338,8 @@
                     customer_delete: false
                 },
                 validator: '',
-                showAlert: false
+                showAlert: false,
+                alertContent: ''
             }
         },
         created() {
@@ -327,9 +347,10 @@
                 user_group_name: 'required'
             });
 
-            if(sessionStorage.getItem('user_group_success') === 'true') {
+            if(sessionStorage.getItem('role_added') === 'true') {
                 this.showAlert = true;
-                sessionStorage.removeItem('user_group_success');
+                this.alertContent = "Role has been added";
+                sessionStorage.removeItem('role_added');
             }
         },
         watch: {
@@ -346,7 +367,7 @@
                     user_group_name: vm.user_group.name
                 }).then(result => {
                     if(result) {
-                        $('#modal_confirm').modal('show');
+                        $('#modal_confirm_store').modal('show');
                     }
                 }).catch(error => {
                     console.log(error);
@@ -363,7 +384,7 @@
                 }).then(response => {
                     console.log(response.data);
                     if(response.data.error === undefined) {
-                        sessionStorage.setItem('user_group_success', 'true');
+                        sessionStorage.setItem('role_added', 'true');
                         location.reload();
                     }
                 }).catch(error => {

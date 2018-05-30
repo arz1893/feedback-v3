@@ -4,6 +4,11 @@
             Add Role <i class="fa fa-plus-circle"></i>
         </a> <br> <br>
 
+        <div class="alert alert-success" role="alert" v-if="showAlertDelete">
+            <button type="button" class="close" aria-label="Close" @click="showAlertDelete = false"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> {{ alertDeleteContent }}
+        </div>
+
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -17,7 +22,7 @@
                 <tr v-for="(user_group, index) in user_groups">
                     <td>{{ index + 1 }}</td>
                     <td>
-                        <a role="button" data-toggle="modal" data-target="#modalShowUserGroup" @click="getRoleRights(user_group.systemId)">
+                        <a role="button" data-toggle="modal" data-target="#modalShowUserGroup" @click="getRoleRights(user_group.systemId, user_group.name)">
                             {{ user_group.name }}
                         </a>
                     </td>
@@ -30,7 +35,7 @@
                         <a role="button" class="btn btn-warning" @click="getUserGroup(user_group.systemId)" data-toggle="modal" data-target="#modalEditUserGroup">
                             <i class="fa fa-pencil-square"></i>
                         </a>
-                        <a role="button" class="btn btn-danger">
+                        <a role="button" class="btn btn-danger" @click="selectUserGroup(user_group.systemId, user_group.name)" data-toggle="modal" data-target="#modalDeleteUserGroup">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
@@ -125,7 +130,7 @@
                         <h4 class="modal-title" id="editUserGroupLabel">Edit Role</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-success alert-dismissible" role="alert" v-if="showAlert">
+                        <div class="alert alert-success alert-dismissible" role="alert" v-if="showAlertUpdate">
                             <button type="button" class="close" aria-label="Close" @click="showAlert = false"><span aria-hidden="true">&times;</span></button>
                             <strong>Info!</strong> Permission has been changed
                         </div>
@@ -146,6 +151,25 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" @click="updateUserGroup()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDeleteUserGroup" tabindex="-1" role="dialog" aria-labelledby="deleteUserGroupLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-red" id="deleteUserGroupLabel">Alert!</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this role ? (including all user that this role)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" @click="deleteUserGroup()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -176,6 +200,12 @@
             this.validator = new Validator({
                 role_name: 'required'
             });
+
+            if(sessionStorage.getItem('role_deleted') === 'true') {
+                this.showAlertDelete = true;
+                this.alertDeleteContent = "Role has been deleted";
+                sessionStorage.removeItem('role_deleted');
+            }
         },
         data() {
             return {
@@ -211,9 +241,15 @@
                     customer_edit: '',
                     customer_delete: ''
                 },
-                showAlert: false,
+                showAlertUpdate: false,
+                showAlertDelete: false,
+                alertDeleteContent: '',
                 showLoading: false,
                 user_groups: [],
+                selectedUserGroup: {
+                    systemId: '',
+                    name: ''
+                },
                 validator: '',
                 add_url: window.location.protocol + "//" + window.location.host + "/user_group/create"
             }
@@ -304,6 +340,25 @@
                         }
                         let debounceFunction = _.debounce(sendRequest, 1000);
                         debounceFunction();
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            selectUserGroup: function(usergroup_id, usergroup_name) {
+                this.selectedUserGroup.systemId = usergroup_id;
+                this.selectedUserGroup.name = usergroup_name;
+            },
+            deleteUserGroup: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/api/user_group/delete-user-group";
+                console.log(vm.selectedUserGroup);
+                axios.post(url, {
+                    usergroup_id: vm.selectedUserGroup.systemId
+                }).then(response => {
+                    if(response.data.error === undefined) {
+                        sessionStorage.setItem('role_deleted', 'true');
+                        location.reload();
                     }
                 }).catch(error => {
                     console.log(error);
