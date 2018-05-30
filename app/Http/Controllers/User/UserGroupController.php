@@ -10,6 +10,7 @@ use App\Http\Resources\User\UserGroupCollection;
 use App\MasterDataRight;
 use App\QuestionCrudRight;
 use App\QuestionListCrudRight;
+use App\ReportViewRights;
 use App\User;
 use App\UserGroup;
 use Illuminate\Http\Request;
@@ -106,6 +107,11 @@ class UserGroupController extends Controller
         $customerCrudRights->delete = $request->user_group['customer_delete'];
         $customerCrudRights->update();
 
+        $reportViewRights = $userGroup->getReportViewRights;
+        $reportViewRights->view = $request->user_group['report_view'];
+        $reportViewRights->action = $request->user_group['report_action'];
+        $reportViewRights->update();
+
         return ['message' => 'Role updated!'];
     }
 
@@ -180,6 +186,13 @@ class UserGroupController extends Controller
                 'edit' => $request->user_group['customer_edit'],
                 'delete' => $request->user_group['customer_delete'],
             ]);
+
+            ReportViewRights::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['report_view'],
+                'action' => $request->user_group['report_action']
+            ]);
+
             return ['message' => 'Role has been added'];
         } else {
             return ['error' => 'There is something wrong within the process'];

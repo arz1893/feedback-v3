@@ -102,6 +102,26 @@
                     </form>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Report Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="report_view" id="report_view" v-model="user_group.report_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="report_action" id="report_action" v-model="user_group.report_action"> Action
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="col-lg-6">
@@ -194,45 +214,41 @@
                     </form>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Customer CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_view" id="customer_view" v-model="user_group.customer_view"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_create" id="customer_create" v-model="user_group.customer_create"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_edit" id="customer_edit" v-model="user_group.customer_edit"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_delete" id="customer_delete" v-model="user_group.customer_delete"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Customer CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_view" id="customer_view" v-model="user_group.customer_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_create" id="customer_create" v-model="user_group.customer_create"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_edit" id="customer_edit" v-model="user_group.customer_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_delete" id="customer_delete" v-model="user_group.customer_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
         </div>
 
         <div class="text-center">
             <button class="btn btn-success" @click="updateRoleRights()">
-                Save Changes
+                Update Permissions <i class="fa fa-refresh"></i>
             </button>
             <button class="btn btn-default">
                 Cancel
@@ -276,7 +292,9 @@
                     customer_view: '',
                     customer_create: '',
                     customer_edit: '',
-                    customer_delete: ''
+                    customer_delete: '',
+                    report_view: '',
+                    report_action: ''
                 },
                 showLoading: false,
                 showAlert: false
@@ -320,6 +338,8 @@
                     vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
                     vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
                     vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
+                    vm.user_group.report_view = response.data.data.report_view_rights.view;
+                    vm.user_group.report_action = response.data.data.report_view_rights.action;
                 }).catch(error => {
                     console.log(error);
                 });

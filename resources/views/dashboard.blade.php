@@ -25,49 +25,53 @@
         </a>
     @endif
 
-    <a href="{{ route('feedback.index') }}">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+    @if(Auth::user()->user_group->getFeedbackCrudRights->view == 1)
+        <a href="{{ route('feedback.index') }}">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box bg-red">
+                    <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
 
-                <div class="info-box-content">
-                    {{--<span class="info-box-text">FAQ</span>--}}
-                    <span class="info-box-number">Feedback</span>
+                    <div class="info-box-content">
+                        {{--<span class="info-box-text">FAQ</span>--}}
+                        <span class="info-box-number">Feedback</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                            customer's feedback
+                        </span>
                     </div>
-                    <span class="progress-description">
-                    customer's feedback
-                  </span>
+                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box-content -->
+                <!-- /.info-box -->
             </div>
-            <!-- /.info-box -->
-        </div>
-    </a>
+        </a>
+    @endif
 
-    <a href="{{ route('question.index') }}">
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="ion ion-help-circled"></i></span>
+    @if(Auth::user()->user_group->getQuestionCrudRights->view == 1)
+        <a href="{{ route('question.index') }}">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="ion ion-help-circled"></i></span>
 
-                <div class="info-box-content">
-                    {{--<span class="info-box-text">FAQ</span>--}}
-                    <span class="info-box-number">Questions</span>
+                    <div class="info-box-content">
+                        {{--<span class="info-box-text">FAQ</span>--}}
+                        <span class="info-box-number">Questions</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%"></div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                            customer's question
+                        </span>
                     </div>
-                    <span class="progress-description">
-                    customer's question
-                  </span>
+                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box-content -->
+                <!-- /.info-box -->
             </div>
-            <!-- /.info-box -->
-        </div>
-    </a>
+        </a>
+    @endif
 </div>
 <!-- /.row -->
 
@@ -140,45 +144,49 @@
                 </a>
             @endif
 
-            <a href="{{ route('customer.index') }}">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box bg-gray-light">
-                        <span class="info-box-icon bg-navy"><i class="fa fa-group"></i></span>
+            @if(Auth::user()->user_group->getCustomerCrudRights->view == 1)
+                <a href="{{ route('customer.index') }}">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box bg-gray-light">
+                            <span class="info-box-icon bg-navy"><i class="fa fa-group"></i></span>
 
-                        <div class="info-box-content">
-                            <b>Customer</b> <br>
-                            @if($totalTag == 0)
-                                <span class="info-box-text">You don't have any customer added yet</span>
-                            @else
-                                <span class="info-box-text">{{ 'You have :' . $totalCustomer . ' customer' }}</span>
-                            @endif
+                            <div class="info-box-content">
+                                <b>Customer</b> <br>
+                                @if($totalTag == 0)
+                                    <span class="info-box-text">You don't have any customer added yet</span>
+                                @else
+                                    <span class="info-box-text">{{ 'You have :' . $totalCustomer . ' customer' }}</span>
+                                @endif
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
+                        <!-- /.info-box -->
                     </div>
-                    <!-- /.info-box -->
-                </div>
-            </a>
+                </a>
+            @endif
         </div>
     </div>
 </div>
 
-<div class="row" style="margin-top: -4%;">
-    <section class="content-header">
-        <div class="page-header">
-            <h3>Report & Charts <small>All data information</small></h3>
+@if(Auth::user()->user_group->getReportViewRights->view == 1)
+    <div class="row" style="margin-top: -4%;">
+        <section class="content-header">
+            <div class="page-header">
+                <h3>Report & Charts <small>All data information</small></h3>
+            </div>
+        </section>
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-3">
+                    <a href="{{ url('/feedback_report_selection')  }}">
+                        <img class="img-circle center-block" src="{{ asset('default-images/chart-icon.png') }}" alt="Generic placeholder image" width="140" height="140">
+                    </a>
+                    <a href="{{ url('/feedback_report_selection')  }}">
+                        <h3 class="text-center">Feedback Report</h3>
+                    </a>
+                    <p align="center">Contains all feedback charts and statistic</p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
         </div>
-    </section>
-    <div class="content">
-        <div class="row">
-            <div class="col-lg-3">
-                <a href="{{ url('/feedback_report_selection')  }}">
-                    <img class="img-circle center-block" src="{{ asset('default-images/chart-icon.png') }}" alt="Generic placeholder image" width="140" height="140">
-                </a>
-                <a href="{{ url('/feedback_report_selection')  }}">
-                    <h3 class="text-center">Feedback Report</h3>
-                </a>
-                <p align="center">Contains all feedback charts and statistic</p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
     </div>
-</div>
+@endif

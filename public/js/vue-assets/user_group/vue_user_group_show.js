@@ -70049,7 +70049,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70060,6 +70060,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70338,7 +70354,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 customer_view: '',
                 customer_create: '',
                 customer_edit: '',
-                customer_delete: ''
+                customer_delete: '',
+                report_view: '',
+                report_action: ''
             },
             showLoading: false,
             showAlert: false
@@ -70383,6 +70401,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
                 vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
                 vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
+                vm.user_group.report_view = response.data.data.report_view_rights.view;
+                vm.user_group.report_action = response.data.data.report_view_rights.action;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -71127,12 +71147,129 @@ var render = function() {
             _vm._v("    \n                ")
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.report_view,
+                      expression: "user_group.report_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "report_view",
+                    id: "report_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.report_view)
+                      ? _vm._i(_vm.user_group.report_view, null) > -1
+                      : _vm.user_group.report_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.report_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_view",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.user_group, "report_view", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.report_action,
+                      expression: "user_group.report_action"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "report_action",
+                    id: "report_action"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.report_action)
+                      ? _vm._i(_vm.user_group.report_action, null) > -1
+                      : _vm.user_group.report_action
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.report_action,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_action",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_action",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.user_group, "report_action", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Action\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-6" }, [
       _c("div", { staticClass: "panel panel-default" }, [
-        _vm._m(3),
+        _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
           _c("form", { staticClass: "form-inline" }, [
@@ -71357,7 +71494,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "panel panel-default" }, [
-        _vm._m(4),
+        _vm._m(5),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
           _c("form", { staticClass: "form-inline" }, [
@@ -71582,7 +71719,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "panel panel-default" }, [
-        _vm._m(5),
+        _vm._m(6),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
           _c("form", { staticClass: "form-inline" }, [
@@ -71804,233 +71941,229 @@ var render = function() {
             _vm._v("    \n                ")
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6 col-lg-offset-3" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(6),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_view,
-                        expression: "user_group.customer_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_view",
-                      id: "customer_view"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_view)
-                        ? _vm._i(_vm.user_group.customer_view, null) > -1
-                        : _vm.user_group.customer_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(7),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_view,
+                      expression: "user_group.customer_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_view",
+                    id: "customer_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_view)
+                      ? _vm._i(_vm.user_group.customer_view, null) > -1
+                      : _vm.user_group.customer_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_create,
-                        expression: "user_group.customer_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_create",
-                      id: "customer_create"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_create)
-                        ? _vm._i(_vm.user_group.customer_create, null) > -1
-                        : _vm.user_group.customer_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_create,
+                      expression: "user_group.customer_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_create",
+                    id: "customer_create"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_create)
+                      ? _vm._i(_vm.user_group.customer_create, null) > -1
+                      : _vm.user_group.customer_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_edit,
-                        expression: "user_group.customer_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_edit",
-                      id: "customer_edit"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_edit)
-                        ? _vm._i(_vm.user_group.customer_edit, null) > -1
-                        : _vm.user_group.customer_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_edit,
+                      expression: "user_group.customer_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_edit",
+                    id: "customer_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_edit)
+                      ? _vm._i(_vm.user_group.customer_edit, null) > -1
+                      : _vm.user_group.customer_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_delete,
-                        expression: "user_group.customer_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_delete",
-                      id: "customer_delete"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_delete)
-                        ? _vm._i(_vm.user_group.customer_delete, null) > -1
-                        : _vm.user_group.customer_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_delete,
+                      expression: "user_group.customer_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_delete",
+                    id: "customer_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_delete)
+                      ? _vm._i(_vm.user_group.customer_delete, null) > -1
+                      : _vm.user_group.customer_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ])
@@ -72047,7 +72180,10 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n            Save Changes\n        ")]
+        [
+          _vm._v("\n            Update Permissions "),
+          _c("i", { staticClass: "fa fa-refresh" })
+        ]
       ),
       _vm._v(" "),
       _c("button", { staticClass: "btn btn-default" }, [
@@ -72081,6 +72217,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
       _c("strong", [_vm._v("Feedback CRUD Permissions")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("strong", [_vm._v("Report Permissions")])
     ])
   },
   function() {

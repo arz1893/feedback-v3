@@ -116,6 +116,13 @@
                                 Delete: <span class="text-green" v-if="user_group.customer_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Report Permissions</div>
+                            <div class="panel-body">
+                                View: <span class="text-green" v-if="user_group.report_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Create: <span class="text-green" v-if="user_group.report_action"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,7 +246,9 @@
                     customer_view: '',
                     customer_create: '',
                     customer_edit: '',
-                    customer_delete: ''
+                    customer_delete: '',
+                    report_view: '',
+                    report_action: ''
                 },
                 showAlertUpdate: false,
                 showAlertDelete: false,
@@ -303,6 +312,8 @@
                     vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
                     vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
                     vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
+                    vm.user_group.report_view = response.data.data.report_view_rights.view;
+                    vm.user_group.report_action = response.data.data.report_view_rights.action;
                 }).catch(error => {
                     console.log(error);
                 });

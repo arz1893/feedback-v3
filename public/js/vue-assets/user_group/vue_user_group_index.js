@@ -70233,6 +70233,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70295,7 +70302,9 @@ Vue.use(VeeValidate, {
                 customer_view: '',
                 customer_create: '',
                 customer_edit: '',
-                customer_delete: ''
+                customer_delete: '',
+                report_view: '',
+                report_action: ''
             },
             showAlertUpdate: false,
             showAlertDelete: false,
@@ -70362,6 +70371,8 @@ Vue.use(VeeValidate, {
                 vm.user_group.customer_create = response.data.data.customer_crud_rights.create;
                 vm.user_group.customer_edit = response.data.data.customer_crud_rights.edit;
                 vm.user_group.customer_delete = response.data.data.customer_crud_rights.delete;
+                vm.user_group.report_view = response.data.data.report_view_rights.view;
+                vm.user_group.report_action = response.data.data.report_view_rights.action;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70882,6 +70893,32 @@ var render = function() {
                         ]),
                     _vm._v("    \n                            Delete: "),
                     _vm.user_group.customer_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Report Permissions")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.report_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Create: "),
+                    _vm.user_group.report_action
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])

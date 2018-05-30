@@ -39,74 +39,87 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bars"></i> <span>Main Menu</span>
-                        <span class="pull-right-container">
+                @if(Auth::user()->user_group->getFaqCrudRights->view == 1 || Auth::user()->user_group->getFeedbackCrudRights->view == 1 || Auth::user()->user_group->getQuestionCrudRights->view == 1)
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-bars"></i> <span>Main Menu</span>
+                            <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        @if(Auth::user()->user_group->getFaqCrudRights->view == 1)
-                            <li class="treeview">
-                                <a href="#!">
-                                    <i class="ion ion-clipboard"></i> FAQ
-                                    <span class="pull-right-container">
+                        </a>
+                        <ul class="treeview-menu">
+                            @if(Auth::user()->user_group->getFaqCrudRights->view == 1)
+                                <li class="treeview">
+                                    <a href="#!">
+                                        <i class="ion ion-clipboard"></i> FAQ
+                                        <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
-                                </a>
+                                    </a>
 
-                                <ul class="treeview-menu">
-                                    <li><a href="{{ route('faq_product.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Product</a></li>
-                                    <li><a href="{{ route('faq_service.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Service</a></li>
-                                </ul>
-                            </li>
-                        @endif
-                        <li class="treeview">
-                            <a href="#!">
-                                <i class="fa fa-comments-o"></i> Feedback
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a role="button" href="{{ route('feedback_product.index') }}"><i class="fa fa-commenting"></i> Feedback Product</a></li>
-                                <li><a role="button" href="{{ route('feedback_service.index') }}"><i class="fa fa-commenting"></i> Feedback Service</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('question.index') }}"><i class="ion ion-help-circled"></i> Questions </a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#!">
-                        <i class="ion ion-ios-list-outline"></i> <span>List</span>
-                        <span class="pull-right-container">
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ route('faq_product.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Product</a></li>
+                                        <li><a href="{{ route('faq_service.index') }}"><i class="ion ion-android-bookmark"></i> FAQ Service</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                            @if(Auth::user()->user_group->getFeedbackCrudRights->view == 1)
+                                <li class="treeview">
+                                    <a href="#!">
+                                        <i class="fa fa-comments-o"></i> Feedback
+                                        <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a role="button" href="{{ route('feedback_product.index') }}"><i class="fa fa-commenting"></i> Feedback Product</a></li>
+                                        <li><a role="button" href="{{ route('feedback_service.index') }}"><i class="fa fa-commenting"></i> Feedback Service</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                            @if(Auth::user()->user_group->getQuestionCrudRights->view == 1)
+                                <li><a href="{{ route('question.index') }}"><i class="ion ion-help-circled"></i> Questions </a></li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+
+                @if(Auth::user()->user_group->getFeedbackListCrudRights->view == 1 || Auth::user()->user_group->getQuestionListCrudRights->view == 1)
+                    <li class="treeview">
+                        <a href="#!">
+                            <i class="ion ion-ios-list-outline"></i> <span>List</span>
+                            <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                    </a>
+                        </a>
 
-                    <ul class="treeview-menu">
-                        <li class="treeview">
-                            <a href="#!">
-                                <i class="ion ion-settings"></i> Feedback
-                                <span class="pull-right-container">
+                        <ul class="treeview-menu">
+                            @if(Auth::user()->user_group->getFeedbackListCrudRights->view == 1)
+                                <li class="treeview">
+                                    <a href="#!">
+                                        <i class="ion ion-settings"></i> Feedback
+                                        <span class="pull-right-container">
                                   <i class="fa fa-angle-left pull-right"></i>
                                 </span>
-                            </a>
+                                    </a>
 
-                            <ul class="treeview-menu">
-                                <li><a role="button" href="{{ route('feedback_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
-                                <li><a role="button" href="{{ route('feedback_service_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Service List</a></li>
-                            </ul>
-                        </li>
+                                    <ul class="treeview-menu">
+                                        <li><a role="button" href="{{ route('feedback_product_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Product List</a></li>
+                                        <li><a role="button" href="{{ route('feedback_service_list.index') }}"><i class="ion ion-ios-list-outline"></i> Feedback Service List</a></li>
+                                    </ul>
+                                </li>
+                            @endif
 
-                        <li>
-                            <a href="{{ route('question_list.index') }}">
-                                <i class="ion ion-help-circled"></i> Questions
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                            @if(Auth::user()->user_group->getQuestionListCrudRights->view == 1)
+                                <li>
+                                    <a href="{{ route('question_list.index') }}">
+                                        <i class="ion ion-help-circled"></i> Questions
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
 
                 @if(Auth::user()->user_group->getMasterDataRights->view == 1)
                     <li class="treeview">
@@ -123,6 +136,9 @@
                             <li><a href="{{ route('customer.index') }}"> <i class="ion ion-ios-people"></i> Customer List </a></li>
                         </ul>
                     </li>
+                @endif
+
+                @if(Auth::user()->user_group->getReportViewRights->view == 1)
                     <li>
                         <a href="{{ url('/feedback_report_selection') }}">
                             <i class="fa fa-pie-chart"></i>

@@ -17,228 +17,242 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Master Data CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="master_data_view" id="master_data_view" v-model="user_group.master_data_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="master_data_create" id="master_data_create" v-model="user_group.master_data_create" :disabled="!user_group.master_data_view" value="1"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="master_data_edit" id="master_data_edit" v-model="user_group.master_data_edit" :disabled="!user_group.master_data_view" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="master_data_delete" id="master_data_delete" v-model="user_group.master_data_delete" :disabled="!user_group.master_data_view" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Master Data CRUD Permissions (Products, Services, Tags)</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="master_data_view" id="master_data_view" v-model="user_group.master_data_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="master_data_create" id="master_data_create" v-model="user_group.master_data_create" :disabled="!user_group.master_data_view"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="master_data_edit" id="master_data_edit" v-model="user_group.master_data_edit" :disabled="!user_group.master_data_view"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="master_data_delete" id="master_data_delete" v-model="user_group.master_data_delete" :disabled="!user_group.master_data_view"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>FAQ CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="faq_view" id="faq_view" v-model="user_group.faq_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="faq_create" id="faq_create" v-model="user_group.faq_create" value="1"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="faq_edit" id="faq_edit" v-model="user_group.faq_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="faq_edit" id="faq_delete" v-model="user_group.faq_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>FAQ CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="faq_view" id="faq_view" v-model="user_group.faq_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="faq_create" id="faq_create" v-model="user_group.faq_create"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="faq_edit" id="faq_edit" v-model="user_group.faq_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="faq_edit" id="faq_delete" v-model="user_group.faq_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Feedback CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_view" id="feedback_view" v-model="user_group.feedback_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_create" id="feedback_create" v-model="user_group.feedback_create" value="1"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_edit" id="feedback_edit" v-model="user_group.feedback_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_delete" id="feedback_delete" v-model="user_group.feedback_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Feedback CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_view" id="feedback_view" v-model="user_group.feedback_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_create" id="feedback_create" v-model="user_group.feedback_create"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_edit" id="feedback_edit" v-model="user_group.feedback_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_delete" id="feedback_delete" v-model="user_group.feedback_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Feedback List Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_list_view" id="feedback_list_view" v-model="user_group.feedback_list_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_list_answer" id="feedback_list_answer" v-model="user_group.feedback_list_answer" value="1"> Answer
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_list_edit" id="feedback_list_edit" v-model="user_group.feedback_list_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="feedback_list_delete" id="feedback_list_delete" v-model="user_group.feedback_list_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Report Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="report_view" id="report_view" v-model="user_group.report_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="report_action" id="report_action" v-model="user_group.report_action"> Action
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Question CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_view" id="question_view" v-model="user_group.question_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_create" id="question_create" v-model="user_group.question_create" value="1"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_edit" id="question_edit" v-model="user_group.question_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_delete" id="question_delete" v-model="user_group.question_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Feedback List Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_list_view" id="feedback_list_view" v-model="user_group.feedback_list_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_list_answer" id="feedback_list_answer" v-model="user_group.feedback_list_answer"> Answer
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_list_edit" id="feedback_list_edit" v-model="user_group.feedback_list_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_list_delete" id="feedback_list_delete" v-model="user_group.feedback_list_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Question List Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_list_view" id="question_list_view" v-model="user_group.question_list_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_list_answer" id="question_list_answer" v-model="user_group.question_list_answer" value="1"> Answer
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_list_edit" id="question_list_edit" v-model="user_group.question_list_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="question_list_delete" id="question_list_delete" v-model="user_group.question_list_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Question CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_view" id="question_view" v-model="user_group.question_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_create" id="question_create" v-model="user_group.question_create"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_edit" id="question_edit" v-model="user_group.question_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_delete" id="question_delete" v-model="user_group.question_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Customer CRUD Permissions</strong>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-inline">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_view" id="customer_view" v-model="user_group.customer_view" value="1"> View
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_create" id="customer_create" v-model="user_group.customer_create" value="1"> Create
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_edit" id="customer_edit" v-model="user_group.customer_edit" value="1"> Edit
-                                </label>
-                            </div> &nbsp; &nbsp;
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="customer_delete" id="customer_delete" v-model="user_group.customer_delete" value="1"> Delete
-                                </label>
-                            </div> &nbsp; &nbsp;
-                        </form>
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Question List Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_list_view" id="question_list_view" v-model="user_group.question_list_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_list_answer" id="question_list_answer" v-model="user_group.question_list_answer"> Answer
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_list_edit" id="question_list_edit" v-model="user_group.question_list_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="question_list_delete" id="question_list_delete" v-model="user_group.question_list_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Customer CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_view" id="customer_view" v-model="user_group.customer_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_create" id="customer_create" v-model="user_group.customer_create"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_edit" id="customer_edit" v-model="user_group.customer_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="customer_delete" id="customer_delete" v-model="user_group.customer_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
                 </div>
             </div>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success" @click="validateBeforeSubmit()">
+            <button class="btn btn-primary" @click="validateBeforeSubmit()">
                 Add Role <i class="fa fa-plus-circle"></i>
             </button>
             <button class="btn btn-default">
@@ -260,25 +274,6 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                         <button type="button" class="btn btn-primary" @click="addUserGroup()">Yes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modal_confirm_delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -335,7 +330,9 @@
                     customer_view: false,
                     customer_create: false,
                     customer_edit: false,
-                    customer_delete: false
+                    customer_delete: false,
+                    report_view: false,
+                    report_action: false
                 },
                 validator: '',
                 showAlert: false,

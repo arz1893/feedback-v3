@@ -70351,11 +70351,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -70405,7 +70400,9 @@ Vue.use(VeeValidate, {
                 customer_view: false,
                 customer_create: false,
                 customer_edit: false,
-                customer_delete: false
+                customer_delete: false,
+                report_view: false,
+                report_action: false
             },
             validator: '',
             showAlert: false,
@@ -70570,1631 +70567,1692 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.master_data_view,
-                        expression: "user_group.master_data_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "master_data_view",
-                      id: "master_data_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.master_data_view)
-                        ? _vm._i(_vm.user_group.master_data_view, "1") > -1
-                        : _vm.user_group.master_data_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.master_data_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+    _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.master_data_view,
+                      expression: "user_group.master_data_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "master_data_view",
+                    id: "master_data_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.master_data_view)
+                      ? _vm._i(_vm.user_group.master_data_view, null) > -1
+                      : _vm.user_group.master_data_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.master_data_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "master_data_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "master_data_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.master_data_create,
-                        expression: "user_group.master_data_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "master_data_create",
-                      id: "master_data_create",
-                      disabled: !_vm.user_group.master_data_view,
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.master_data_create)
-                        ? _vm._i(_vm.user_group.master_data_create, "1") > -1
-                        : _vm.user_group.master_data_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.master_data_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.master_data_create,
+                      expression: "user_group.master_data_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "master_data_create",
+                    id: "master_data_create",
+                    disabled: !_vm.user_group.master_data_view
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.master_data_create)
+                      ? _vm._i(_vm.user_group.master_data_create, null) > -1
+                      : _vm.user_group.master_data_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.master_data_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "master_data_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "master_data_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.master_data_edit,
-                        expression: "user_group.master_data_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "master_data_edit",
-                      id: "master_data_edit",
-                      disabled: !_vm.user_group.master_data_view,
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.master_data_edit)
-                        ? _vm._i(_vm.user_group.master_data_edit, "1") > -1
-                        : _vm.user_group.master_data_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.master_data_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.master_data_edit,
+                      expression: "user_group.master_data_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "master_data_edit",
+                    id: "master_data_edit",
+                    disabled: !_vm.user_group.master_data_view
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.master_data_edit)
+                      ? _vm._i(_vm.user_group.master_data_edit, null) > -1
+                      : _vm.user_group.master_data_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.master_data_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "master_data_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "master_data_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.master_data_delete,
-                        expression: "user_group.master_data_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "master_data_delete",
-                      id: "master_data_delete",
-                      disabled: !_vm.user_group.master_data_view,
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.master_data_delete)
-                        ? _vm._i(_vm.user_group.master_data_delete, "1") > -1
-                        : _vm.user_group.master_data_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.master_data_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "master_data_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.master_data_delete,
+                      expression: "user_group.master_data_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "master_data_delete",
+                    id: "master_data_delete",
+                    disabled: !_vm.user_group.master_data_view
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.master_data_delete)
+                      ? _vm._i(_vm.user_group.master_data_delete, null) > -1
+                      : _vm.user_group.master_data_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.master_data_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "master_data_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "master_data_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "master_data_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.faq_view,
-                        expression: "user_group.faq_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "faq_view",
-                      id: "faq_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.faq_view)
-                        ? _vm._i(_vm.user_group.faq_view, "1") > -1
-                        : _vm.user_group.faq_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.faq_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.faq_view,
+                      expression: "user_group.faq_view"
+                    }
+                  ],
+                  attrs: { type: "checkbox", name: "faq_view", id: "faq_view" },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.faq_view)
+                      ? _vm._i(_vm.user_group.faq_view, null) > -1
+                      : _vm.user_group.faq_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.faq_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "faq_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "faq_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.faq_create,
-                        expression: "user_group.faq_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "faq_create",
-                      id: "faq_create",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.faq_create)
-                        ? _vm._i(_vm.user_group.faq_create, "1") > -1
-                        : _vm.user_group.faq_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.faq_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.faq_create,
+                      expression: "user_group.faq_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "faq_create",
+                    id: "faq_create"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.faq_create)
+                      ? _vm._i(_vm.user_group.faq_create, null) > -1
+                      : _vm.user_group.faq_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.faq_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "faq_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "faq_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.faq_edit,
-                        expression: "user_group.faq_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "faq_edit",
-                      id: "faq_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.faq_edit)
-                        ? _vm._i(_vm.user_group.faq_edit, "1") > -1
-                        : _vm.user_group.faq_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.faq_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.faq_edit,
+                      expression: "user_group.faq_edit"
+                    }
+                  ],
+                  attrs: { type: "checkbox", name: "faq_edit", id: "faq_edit" },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.faq_edit)
+                      ? _vm._i(_vm.user_group.faq_edit, null) > -1
+                      : _vm.user_group.faq_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.faq_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "faq_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "faq_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.faq_delete,
-                        expression: "user_group.faq_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "faq_edit",
-                      id: "faq_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.faq_delete)
-                        ? _vm._i(_vm.user_group.faq_delete, "1") > -1
-                        : _vm.user_group.faq_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.faq_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "faq_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.faq_delete,
+                      expression: "user_group.faq_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "faq_edit",
+                    id: "faq_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.faq_delete)
+                      ? _vm._i(_vm.user_group.faq_delete, null) > -1
+                      : _vm.user_group.faq_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.faq_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "faq_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "faq_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "faq_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_view,
-                        expression: "user_group.feedback_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_view",
-                      id: "feedback_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_view)
-                        ? _vm._i(_vm.user_group.feedback_view, "1") > -1
-                        : _vm.user_group.feedback_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_view,
+                      expression: "user_group.feedback_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_view",
+                    id: "feedback_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_view)
+                      ? _vm._i(_vm.user_group.feedback_view, null) > -1
+                      : _vm.user_group.feedback_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_create,
-                        expression: "user_group.feedback_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_create",
-                      id: "feedback_create",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_create)
-                        ? _vm._i(_vm.user_group.feedback_create, "1") > -1
-                        : _vm.user_group.feedback_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_create,
+                      expression: "user_group.feedback_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_create",
+                    id: "feedback_create"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_create)
+                      ? _vm._i(_vm.user_group.feedback_create, null) > -1
+                      : _vm.user_group.feedback_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_edit,
-                        expression: "user_group.feedback_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_edit",
-                      id: "feedback_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_edit)
-                        ? _vm._i(_vm.user_group.feedback_edit, "1") > -1
-                        : _vm.user_group.feedback_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_edit,
+                      expression: "user_group.feedback_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_edit",
+                    id: "feedback_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_edit)
+                      ? _vm._i(_vm.user_group.feedback_edit, null) > -1
+                      : _vm.user_group.feedback_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_delete,
-                        expression: "user_group.feedback_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_delete",
-                      id: "feedback_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_delete)
-                        ? _vm._i(_vm.user_group.feedback_delete, "1") > -1
-                        : _vm.user_group.feedback_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_delete,
+                      expression: "user_group.feedback_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_delete",
+                    id: "feedback_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_delete)
+                      ? _vm._i(_vm.user_group.feedback_delete, null) > -1
+                      : _vm.user_group.feedback_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_list_view,
-                        expression: "user_group.feedback_list_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_list_view",
-                      id: "feedback_list_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_list_view)
-                        ? _vm._i(_vm.user_group.feedback_list_view, "1") > -1
-                        : _vm.user_group.feedback_list_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_list_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.report_view,
+                      expression: "user_group.report_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "report_view",
+                    id: "report_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.report_view)
+                      ? _vm._i(_vm.user_group.report_view, null) > -1
+                      : _vm.user_group.report_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.report_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_list_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "report_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_list_answer,
-                        expression: "user_group.feedback_list_answer"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_list_answer",
-                      id: "feedback_list_answer",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(
-                        _vm.user_group.feedback_list_answer
-                      )
-                        ? _vm._i(_vm.user_group.feedback_list_answer, "1") > -1
-                        : _vm.user_group.feedback_list_answer
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_list_answer,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_answer",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_answer",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.report_action,
+                      expression: "user_group.report_action"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "report_action",
+                    id: "report_action"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.report_action)
+                      ? _vm._i(_vm.user_group.report_action, null) > -1
+                      : _vm.user_group.report_action
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.report_action,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_action",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_list_answer", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "report_action",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "report_action", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Answer\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_list_edit,
-                        expression: "user_group.feedback_list_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_list_edit",
-                      id: "feedback_list_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.feedback_list_edit)
-                        ? _vm._i(_vm.user_group.feedback_list_edit, "1") > -1
-                        : _vm.user_group.feedback_list_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_list_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Action\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_list_view,
+                      expression: "user_group.feedback_list_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_list_view",
+                    id: "feedback_list_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_list_view)
+                      ? _vm._i(_vm.user_group.feedback_list_view, null) > -1
+                      : _vm.user_group.feedback_list_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_list_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_list_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_list_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.feedback_list_delete,
-                        expression: "user_group.feedback_list_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "feedback_list_delete",
-                      id: "feedback_list_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(
-                        _vm.user_group.feedback_list_delete
-                      )
-                        ? _vm._i(_vm.user_group.feedback_list_delete, "1") > -1
-                        : _vm.user_group.feedback_list_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.feedback_list_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "feedback_list_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_list_answer,
+                      expression: "user_group.feedback_list_answer"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_list_answer",
+                    id: "feedback_list_answer"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_list_answer)
+                      ? _vm._i(_vm.user_group.feedback_list_answer, null) > -1
+                      : _vm.user_group.feedback_list_answer
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_list_answer,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_answer",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "feedback_list_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_answer",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_list_answer", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Answer\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_list_edit,
+                      expression: "user_group.feedback_list_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_list_edit",
+                    id: "feedback_list_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_list_edit)
+                      ? _vm._i(_vm.user_group.feedback_list_edit, null) > -1
+                      : _vm.user_group.feedback_list_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_list_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_edit",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_list_edit", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.feedback_list_delete,
+                      expression: "user_group.feedback_list_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "feedback_list_delete",
+                    id: "feedback_list_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.feedback_list_delete)
+                      ? _vm._i(_vm.user_group.feedback_list_delete, null) > -1
+                      : _vm.user_group.feedback_list_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.feedback_list_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_delete",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "feedback_list_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.user_group, "feedback_list_delete", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_view,
-                        expression: "user_group.question_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_view",
-                      id: "question_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_view)
-                        ? _vm._i(_vm.user_group.question_view, "1") > -1
-                        : _vm.user_group.question_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(5),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_view,
+                      expression: "user_group.question_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_view",
+                    id: "question_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_view)
+                      ? _vm._i(_vm.user_group.question_view, null) > -1
+                      : _vm.user_group.question_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_create,
-                        expression: "user_group.question_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_create",
-                      id: "question_create",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_create)
-                        ? _vm._i(_vm.user_group.question_create, "1") > -1
-                        : _vm.user_group.question_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_create,
+                      expression: "user_group.question_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_create",
+                    id: "question_create"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_create)
+                      ? _vm._i(_vm.user_group.question_create, null) > -1
+                      : _vm.user_group.question_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_edit,
-                        expression: "user_group.question_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_edit",
-                      id: "question_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_edit)
-                        ? _vm._i(_vm.user_group.question_edit, "1") > -1
-                        : _vm.user_group.question_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_edit,
+                      expression: "user_group.question_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_edit",
+                    id: "question_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_edit)
+                      ? _vm._i(_vm.user_group.question_edit, null) > -1
+                      : _vm.user_group.question_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_delete,
-                        expression: "user_group.question_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_delete",
-                      id: "question_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_delete)
-                        ? _vm._i(_vm.user_group.question_delete, "1") > -1
-                        : _vm.user_group.question_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_delete,
+                      expression: "user_group.question_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_delete",
+                    id: "question_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_delete)
+                      ? _vm._i(_vm.user_group.question_delete, null) > -1
+                      : _vm.user_group.question_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(5),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_list_view,
-                        expression: "user_group.question_list_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_list_view",
-                      id: "question_list_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_list_view)
-                        ? _vm._i(_vm.user_group.question_list_view, "1") > -1
-                        : _vm.user_group.question_list_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_list_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(6),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_list_view,
+                      expression: "user_group.question_list_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_list_view",
+                    id: "question_list_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_list_view)
+                      ? _vm._i(_vm.user_group.question_list_view, null) > -1
+                      : _vm.user_group.question_list_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_list_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_list_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_list_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_list_answer,
-                        expression: "user_group.question_list_answer"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_list_answer",
-                      id: "question_list_answer",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(
-                        _vm.user_group.question_list_answer
-                      )
-                        ? _vm._i(_vm.user_group.question_list_answer, "1") > -1
-                        : _vm.user_group.question_list_answer
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_list_answer,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_answer",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_answer",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_list_answer,
+                      expression: "user_group.question_list_answer"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_list_answer",
+                    id: "question_list_answer"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_list_answer)
+                      ? _vm._i(_vm.user_group.question_list_answer, null) > -1
+                      : _vm.user_group.question_list_answer
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_list_answer,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_answer",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_list_answer", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_answer",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_list_answer", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Answer\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_list_edit,
-                        expression: "user_group.question_list_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_list_edit",
-                      id: "question_list_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.question_list_edit)
-                        ? _vm._i(_vm.user_group.question_list_edit, "1") > -1
-                        : _vm.user_group.question_list_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_list_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Answer\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_list_edit,
+                      expression: "user_group.question_list_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_list_edit",
+                    id: "question_list_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_list_edit)
+                      ? _vm._i(_vm.user_group.question_list_edit, null) > -1
+                      : _vm.user_group.question_list_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_list_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_list_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_list_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.question_list_delete,
-                        expression: "user_group.question_list_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "question_list_delete",
-                      id: "question_list_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(
-                        _vm.user_group.question_list_delete
-                      )
-                        ? _vm._i(_vm.user_group.question_list_delete, "1") > -1
-                        : _vm.user_group.question_list_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.question_list_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "question_list_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.question_list_delete,
+                      expression: "user_group.question_list_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "question_list_delete",
+                    id: "question_list_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.question_list_delete)
+                      ? _vm._i(_vm.user_group.question_list_delete, null) > -1
+                      : _vm.user_group.question_list_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.question_list_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "question_list_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "question_list_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "question_list_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _vm._m(6),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_view,
-                        expression: "user_group.customer_view"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_view",
-                      id: "customer_view",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_view)
-                        ? _vm._i(_vm.user_group.customer_view, "1") > -1
-                        : _vm.user_group.customer_view
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_view,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_view",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_view",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+      _c("div", { staticClass: "panel panel-default" }, [
+        _vm._m(7),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("form", { staticClass: "form-inline" }, [
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_view,
+                      expression: "user_group.customer_view"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_view",
+                    id: "customer_view"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_view)
+                      ? _vm._i(_vm.user_group.customer_view, null) > -1
+                      : _vm.user_group.customer_view
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_view,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_view",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_view", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_view",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_view", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" View\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_create,
-                        expression: "user_group.customer_create"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_create",
-                      id: "customer_create",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_create)
-                        ? _vm._i(_vm.user_group.customer_create, "1") > -1
-                        : _vm.user_group.customer_create
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_create,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_create",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_create",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" View\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_create,
+                      expression: "user_group.customer_create"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_create",
+                    id: "customer_create"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_create)
+                      ? _vm._i(_vm.user_group.customer_create, null) > -1
+                      : _vm.user_group.customer_create
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_create,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_create",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_create", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_create",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_create", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Create\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_edit,
-                        expression: "user_group.customer_edit"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_edit",
-                      id: "customer_edit",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_edit)
-                        ? _vm._i(_vm.user_group.customer_edit, "1") > -1
-                        : _vm.user_group.customer_edit
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_edit,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_edit",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_edit",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Create\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_edit,
+                      expression: "user_group.customer_edit"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_edit",
+                    id: "customer_edit"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_edit)
+                      ? _vm._i(_vm.user_group.customer_edit, null) > -1
+                      : _vm.user_group.customer_edit
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_edit,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_edit",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_edit", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_edit",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_edit", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Edit\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                        "),
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user_group.customer_delete,
-                        expression: "user_group.customer_delete"
-                      }
-                    ],
-                    attrs: {
-                      type: "checkbox",
-                      name: "customer_delete",
-                      id: "customer_delete",
-                      value: "1"
-                    },
-                    domProps: {
-                      checked: Array.isArray(_vm.user_group.customer_delete)
-                        ? _vm._i(_vm.user_group.customer_delete, "1") > -1
-                        : _vm.user_group.customer_delete
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.user_group.customer_delete,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "1",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_delete",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.user_group,
-                                "customer_delete",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
+                  }
+                }),
+                _vm._v(" Edit\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                    "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_group.customer_delete,
+                      expression: "user_group.customer_delete"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: "customer_delete",
+                    id: "customer_delete"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user_group.customer_delete)
+                      ? _vm._i(_vm.user_group.customer_delete, null) > -1
+                      : _vm.user_group.customer_delete
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.user_group.customer_delete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_delete",
+                              $$a.concat([$$v])
+                            )
                         } else {
-                          _vm.$set(_vm.user_group, "customer_delete", $$c)
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user_group,
+                              "customer_delete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
+                      } else {
+                        _vm.$set(_vm.user_group, "customer_delete", $$c)
                       }
                     }
-                  }),
-                  _vm._v(" Delete\n                            ")
-                ])
-              ]),
-              _vm._v("    \n                    ")
-            ])
+                  }
+                }),
+                _vm._v(" Delete\n                        ")
+              ])
+            ]),
+            _vm._v("    \n                ")
           ])
         ])
       ])
@@ -72204,7 +72262,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-success",
+          staticClass: "btn btn-primary",
           on: {
             click: function($event) {
               _vm.validateBeforeSubmit()
@@ -72239,7 +72297,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(7),
+              _vm._m(8),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm._v(
@@ -72275,9 +72333,7 @@ var render = function() {
           ]
         )
       ]
-    ),
-    _vm._v(" "),
-    _vm._m(8)
+    )
   ])
 }
 var staticRenderFns = [
@@ -72286,7 +72342,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("strong", [_vm._v("Master Data CRUD Permissions")])
+      _c("strong", [
+        _vm._v("Master Data CRUD Permissions (Products, Services, Tags)")
+      ])
     ])
   },
   function() {
@@ -72303,6 +72361,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
       _c("strong", [_vm._v("Feedback CRUD Permissions")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("strong", [_vm._v("Report Permissions")])
     ])
   },
   function() {
@@ -72364,78 +72430,6 @@ var staticRenderFns = [
         [_vm._v("Alert!")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "modal_confirm_delete",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "myModalLabel"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h4",
-                  { staticClass: "modal-title", attrs: { id: "myModalLabel" } },
-                  [_vm._v("Modal title")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v("\n                    ...\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true

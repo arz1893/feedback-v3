@@ -27,6 +27,7 @@ class UserGroup extends JsonResource
             'question_crud_rights' => $this->getQuestionCrudRights,
             'question_list_crud_rights' => $this->getQuestionListCrudRights,
             'customer_crud_rights' => $this->getCustomerCrudRights,
+            'report_view_rights' => $this->getReportViewRights,
             'show_url' => route('user_group.show', $this->systemId)
         ];
     }
