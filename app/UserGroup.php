@@ -62,4 +62,8 @@ class UserGroup extends Model
     public function getCustomerCrudRights() {
         return $this->hasOne(CustomerCrudRight::class, 'usergroupid', 'systemId');
     }
+
+    public function getReportViewRights() {
+        return $this->hasOne(ReportViewRights::class, 'usergroupid', 'systemId');
+    }
 }

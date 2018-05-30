@@ -453,6 +453,7 @@ class ComposerStaticInit9060546d4ad1d617ba93be0c21f41f55
         'App\\Question' => __DIR__ . '/../..' . '/app/Question.php',
         'App\\QuestionCrudRight' => __DIR__ . '/../..' . '/app/QuestionCrudRight.php',
         'App\\QuestionListCrudRight' => __DIR__ . '/../..' . '/app/QuestionListCrudRight.php',
+        'App\\ReportViewRights' => __DIR__ . '/../..' . '/app/ReportViewRights.php',
         'App\\Service' => __DIR__ . '/../..' . '/app/Service.php',
         'App\\ServiceCategory' => __DIR__ . '/../..' . '/app/ServiceCategory.php',
         'App\\Tag' => __DIR__ . '/../..' . '/app/Tag.php',

@@ -106,6 +106,7 @@ return array(
     'App\\Question' => $baseDir . '/app/Question.php',
     'App\\QuestionCrudRight' => $baseDir . '/app/QuestionCrudRight.php',
     'App\\QuestionListCrudRight' => $baseDir . '/app/QuestionListCrudRight.php',
+    'App\\ReportViewRights' => $baseDir . '/app/ReportViewRights.php',
     'App\\Service' => $baseDir . '/app/Service.php',
     'App\\ServiceCategory' => $baseDir . '/app/ServiceCategory.php',
     'App\\Tag' => $baseDir . '/app/Tag.php',
