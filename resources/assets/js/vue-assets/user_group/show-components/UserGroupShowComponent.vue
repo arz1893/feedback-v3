@@ -75,28 +75,38 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong>Feedback CRUD Permissions</strong>
+                    <strong>Feedback Product CRUD Permissions</strong>
                 </div>
                 <div class="panel-body">
                     <form class="form-inline">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_view" id="feedback_view" v-model="user_group.feedback_view"> View
+                                <input type="checkbox" name="feedback_product_view" id="feedback_product_view" v-model="user_group.feedback_product_view"> View
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_create" id="feedback_create" v-model="user_group.feedback_create"> Create
+                                <input type="checkbox" name="feedback_product_show" id="feedback_product_show" v-model="user_group.feedback_product_show"> Show
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Feedback Service CRUD Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_service_view" id="feedback_service_view" v-model="user_group.feedback_service_view"> View
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_edit" id="feedback_edit" v-model="user_group.feedback_edit"> Edit
-                            </label>
-                        </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="feedback_delete" id="feedback_delete" v-model="user_group.feedback_delete"> Delete
+                                <input type="checkbox" name="feedback_service_show" id="feedback_service_show" v-model="user_group.feedback_service_show"> Show
                             </label>
                         </div> &nbsp; &nbsp;
                     </form>
@@ -127,36 +137,6 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong>Feedback List Permissions</strong>
-                </div>
-                <div class="panel-body">
-                    <form class="form-inline">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="feedback_list_view" id="feedback_list_view" v-model="user_group.feedback_list_view"> View
-                            </label>
-                        </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="feedback_list_answer" id="feedback_list_answer" v-model="user_group.feedback_list_answer"> Answer
-                            </label>
-                        </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="feedback_list_edit" id="feedback_list_edit" v-model="user_group.feedback_list_edit"> Edit
-                            </label>
-                        </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="feedback_list_delete" id="feedback_list_delete" v-model="user_group.feedback_list_delete"> Delete
-                            </label>
-                        </div> &nbsp; &nbsp;
-                    </form>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
                     <strong>Question CRUD Permissions</strong>
                 </div>
                 <div class="panel-body">
@@ -179,6 +159,66 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="question_delete" id="question_delete" v-model="user_group.question_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Feedback Product List Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_product_list_view" id="feedback_product_list_view" v-model="user_group.feedback_product_list_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_product_list_answer" id="feedback_product_list_answer" v-model="user_group.feedback_product_list_answer"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_product_list_edit" id="feedback_product_list_edit" v-model="user_group.feedback_product_list_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_product_list_delete" id="feedback_product_list_delete" v-model="user_group.feedback_product_list_delete"> Delete
+                            </label>
+                        </div> &nbsp; &nbsp;
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Feedback Service List Permissions</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_service_list_view" id="feedback_service_list_view" v-model="user_group.feedback_service_list_view"> View
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_service_list_answer" id="feedback_service_list_answer" v-model="user_group.feedback_service_list_answer"> Create
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_service_list_edit" id="feedback_service_list_edit" v-model="user_group.feedback_service_list_edit"> Edit
+                            </label>
+                        </div> &nbsp; &nbsp;
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="feedback_service_list_delete" id="feedback_service_list_delete" v-model="user_group.feedback_service_list_delete"> Delete
                             </label>
                         </div> &nbsp; &nbsp;
                     </form>
@@ -273,14 +313,18 @@
                     faq_create: '',
                     faq_edit: '',
                     faq_delete: '',
-                    feedback_view: '',
-                    feedback_create: '',
-                    feedback_edit: '',
-                    feedback_delete: '',
-                    feedback_list_view: '',
-                    feedback_list_answer: '',
-                    feedback_list_edit: '',
-                    feedback_list_delete: '',
+                    feedback_product_view: false,
+                    feedback_product_show: false,
+                    feedback_product_list_view: false,
+                    feedback_product_list_answer: false,
+                    feedback_product_list_edit: false,
+                    feedback_product_list_delete: false,
+                    feedback_service_view: false,
+                    feedback_service_show: false,
+                    feedback_service_list_view: false,
+                    feedback_service_list_answer: false,
+                    feedback_service_list_edit: false,
+                    feedback_service_list_delete: false,
                     question_view: '',
                     question_create: '',
                     question_edit: '',
@@ -318,14 +362,18 @@
                     vm.user_group.faq_create = response.data.data.faq_crud_rights.create;
                     vm.user_group.faq_edit = response.data.data.faq_crud_rights.edit;
                     vm.user_group.faq_delete = response.data.data.faq_crud_rights.delete;
-                    vm.user_group.feedback_view = response.data.data.feedback_crud_rights.view;
-                    vm.user_group.feedback_create = response.data.data.feedback_crud_rights.create;
-                    vm.user_group.feedback_edit = response.data.data.feedback_crud_rights.edit;
-                    vm.user_group.feedback_delete = response.data.data.feedback_crud_rights.delete;
-                    vm.user_group.feedback_list_view = response.data.data.feedback_list_crud_rights.view;
-                    vm.user_group.feedback_list_answer = response.data.data.feedback_list_crud_rights.answer;
-                    vm.user_group.feedback_list_edit = response.data.data.feedback_list_crud_rights.edit;
-                    vm.user_group.feedback_list_delete = response.data.data.feedback_list_crud_rights.delete;
+                    vm.user_group.feedback_product_view = response.data.data.feedback_product_crud_rights.view;
+                    vm.user_group.feedback_product_show = response.data.data.feedback_product_crud_rights.show;
+                    vm.user_group.feedback_product_list_view = response.data.data.feedback_product_list_crud_rights.view;
+                    vm.user_group.feedback_product_list_answer = response.data.data.feedback_product_list_crud_rights.answer;
+                    vm.user_group.feedback_product_list_edit = response.data.data.feedback_product_list_crud_rights.edit;
+                    vm.user_group.feedback_product_list_delete = response.data.data.feedback_product_list_crud_rights.delete;
+                    vm.user_group.feedback_service_view = response.data.data.feedback_service_crud_rights.view;
+                    vm.user_group.feedback_service_show = response.data.data.feedback_service_crud_rights.show;
+                    vm.user_group.feedback_service_list_view = response.data.data.feedback_service_list_crud_rights.view;
+                    vm.user_group.feedback_service_list_answer = response.data.data.feedback_service_list_crud_rights.answer;
+                    vm.user_group.feedback_service_list_edit = response.data.data.feedback_service_list_crud_rights.edit;
+                    vm.user_group.feedback_service_list_delete = response.data.data.feedback_service_list_crud_rights.delete;
                     vm.user_group.question_view = response.data.data.question_crud_rights.view;
                     vm.user_group.question_create = response.data.data.question_crud_rights.create;
                     vm.user_group.question_edit = response.data.data.question_crud_rights.edit;

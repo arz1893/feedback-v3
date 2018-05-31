@@ -6,6 +6,10 @@ use App\CustomerCrudRight;
 use App\FaqCrudRight;
 use App\FeedbackCrudRight;
 use App\FeedbackListCrudRight;
+use App\FeedbackProductCrudRight;
+use App\FeedbackProductListCrudRight;
+use App\FeedbackServiceCrudRight;
+use App\FeedbackServiceListCrudRight;
 use App\Http\Resources\User\UserGroupCollection;
 use App\MasterDataRight;
 use App\QuestionCrudRight;
@@ -72,19 +76,29 @@ class UserGroupController extends Controller
         $masterDataRight->delete = $request->user_group['master_data_delete'];
         $masterDataRight->update();
 
-        $feedbackRights = $userGroup->getFeedbackCrudRights;
-        $feedbackRights->view = $request->user_group['feedback_view'];
-        $feedbackRights->create = $request->user_group['feedback_create'];
-        $feedbackRights->edit = $request->user_group['feedback_edit'];
-        $feedbackRights->delete = $request->user_group['feedback_delete'];
-        $feedbackRights->update();
+        $feedbackProductCrudRight = $userGroup->getFeedbackProductCrudRights;
+        $feedbackProductCrudRight->view = $request->user_group['feedback_product_view'];
+        $feedbackProductCrudRight->show = $request->user_group['feedback_product_show'];
+        $feedbackProductCrudRight->update();
 
-        $feedbackListRights = $userGroup->getFeedbackListCrudRights;
-        $feedbackListRights->view = $request->user_group['feedback_list_view'];
-        $feedbackListRights->answer = $request->user_group['feedback_list_answer'];
-        $feedbackListRights->edit = $request->user_group['feedback_list_edit'];
-        $feedbackListRights->delete = $request->user_group['feedback_list_delete'];
-        $feedbackListRights->update();
+        $feedbackProductListCrudRight = $userGroup->getFeedbackProductListCrudRights;
+        $feedbackProductListCrudRight->view = $request->user_group['feedback_product_list_view'];
+        $feedbackProductListCrudRight->answer = $request->user_group['feedback_product_list_answer'];
+        $feedbackProductListCrudRight->edit = $request->user_group['feedback_product_list_edit'];
+        $feedbackProductListCrudRight->delete = $request->user_group['feedback_product_list_delete'];
+        $feedbackProductListCrudRight->update();
+
+        $feedbackServiceCrudRight = $userGroup->getFeedbackSerivceCrudRights;
+        $feedbackServiceCrudRight->view = $request->user_group['feedback_service_view'];
+        $feedbackServiceCrudRight->show = $request->user_group['feedback_service_show'];
+        $feedbackServiceCrudRight->update();
+
+        $feedbackServiceListCrudRight = $userGroup->getFeedbackServiceListCrudRights;
+        $feedbackServiceListCrudRight->view = $request->user_group['feedback_service_list_view'];
+        $feedbackServiceListCrudRight->answer = $request->user_group['feedback_service_list_view'];
+        $feedbackServiceListCrudRight->edit = $request->user_group['feedback_service_list_edit'];
+        $feedbackServiceListCrudRight->delete = $request->user_group['feedback_service_list_delete'];
+        $feedbackServiceListCrudRight->update();
 
         $questionCrudRights = $userGroup->getQuestionCrudRights;
         $questionCrudRights->view = $request->user_group['question_view'];
@@ -147,20 +161,32 @@ class UserGroupController extends Controller
                 'delete' => $request->user_group['master_data_delete']
             ]);
 
-            FeedbackCrudRight::create([
+            FeedbackProductCrudRight::create([
                 'usergroupid' => $userGroup->systemId,
-                'view' => $request->user_group['feedback_view'],
-                'create' => $request->user_group['feedback_create'],
-                'edit' => $request->user_group['feedback_edit'],
-                'delete' => $request->user_group['feedback_delete'],
+                'view' => $request->user_group['feedback_product_view'],
+                'show' => $request->user_group['feedback_product_show']
             ]);
 
-            FeedbackListCrudRight::create([
+            FeedbackProductListCrudRight::create([
                 'usergroupid' => $userGroup->systemId,
-                'view' => $request->user_group['feedback_list_view'],
-                'answer' => $request->user_group['feedback_list_answer'],
-                'edit' => $request->user_group['feedback_list_edit'],
-                'delete' => $request->user_group['feedback_list_delete'],
+                'view' => $request->user_group['feedback_product_list_view'],
+                'answer' => $request->user_group['feedback_product_list_answer'],
+                'edit' => $request->user_group['feedback_product_list_edit'],
+                'delete' => $request->user_group['feedback_product_list_delete']
+            ]);
+
+            FeedbackServiceCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['feedback_service_view'],
+                'show' => $request->user_group['feedback_service_show'],
+            ]);
+
+            FeedbackServiceListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => $request->user_group['feedback_service_list_view'],
+                'answer' => $request->user_group['feedback_service_list_answer'],
+                'edit' => $request->user_group['feedback_service_list_edit'],
+                'delete' => $request->user_group['feedback_service_list_delete']
             ]);
 
             QuestionCrudRight::create([

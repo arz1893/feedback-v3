@@ -72,21 +72,35 @@
                             </div>
                         </div>
                         <div class="panel panel-default">
-                            <div class="panel-heading">Feedback CRUD</div>
+                            <div class="panel-heading">Feedback Product CRUD</div>
                             <div class="panel-body">
-                                View: <span class="text-green" v-if="user_group.feedback_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Create: <span class="text-green" v-if="user_group.feedback_create"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Edit: <span class="text-green" v-if="user_group.feedback_edit"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Delete: <span class="text-green" v-if="user_group.feedback_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                View: <span class="text-green" v-if="user_group.feedback_product_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Show: <span class="text-green" v-if="user_group.feedback_product_show"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
                             </div>
                         </div>
                         <div class="panel panel-default">
-                            <div class="panel-heading">Feedback List</div>
+                            <div class="panel-heading">Feedback Product List</div>
                             <div class="panel-body">
-                                View: <span class="text-green" v-if="user_group.feedback_list_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Create: <span class="text-green" v-if="user_group.feedback_list_answer"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Edit: <span class="text-green" v-if="user_group.feedback_list_edit"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Delete: <span class="text-green" v-if="user_group.feedback_list_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                View: <span class="text-green" v-if="user_group.feedback_product_list_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Answer: <span class="text-green" v-if="user_group.feedback_product_list_answer"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Edit: <span class="text-green" v-if="user_group.feedback_product_list_edit"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Delete: <span class="text-green" v-if="user_group.feedback_product_list_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Feedback Service CRUD</div>
+                            <div class="panel-body">
+                                View: <span class="text-green" v-if="user_group.feedback_service_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Show: <span class="text-green" v-if="user_group.feedback_service_show"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Feedback Service List</div>
+                            <div class="panel-body">
+                                View: <span class="text-green" v-if="user_group.feedback_service_list_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Answer: <span class="text-green" v-if="user_group.feedback_service_list_answer"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Edit: <span class="text-green" v-if="user_group.feedback_service_list_edit"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
+                                Delete: <span class="text-green" v-if="user_group.feedback_service_list_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -227,14 +241,18 @@
                     faq_create: '',
                     faq_edit: '',
                     faq_delete: '',
-                    feedback_view: '',
-                    feedback_create: '',
-                    feedback_edit: '',
-                    feedback_delete: '',
-                    feedback_list_view: '',
-                    feedback_list_answer: '',
-                    feedback_list_edit: '',
-                    feedback_list_delete: '',
+                    feedback_product_view: '',
+                    feedback_product_show: '',
+                    feedback_product_list_view: '',
+                    feedback_product_list_answer: '',
+                    feedback_product_list_edit: '',
+                    feedback_product_list_delete: '',
+                    feedback_service_view: '',
+                    feedback_service_show: '',
+                    feedback_service_list_view: '',
+                    feedback_service_list_answer: '',
+                    feedback_service_list_edit: '',
+                    feedback_service_list_delete: '',
                     question_view: '',
                     question_create: '',
                     question_edit: '',
@@ -292,14 +310,18 @@
                     vm.user_group.faq_create = response.data.data.faq_crud_rights.create;
                     vm.user_group.faq_edit = response.data.data.faq_crud_rights.edit;
                     vm.user_group.faq_delete = response.data.data.faq_crud_rights.delete;
-                    vm.user_group.feedback_view = response.data.data.feedback_crud_rights.view;
-                    vm.user_group.feedback_create = response.data.data.feedback_crud_rights.create;
-                    vm.user_group.feedback_edit = response.data.data.feedback_crud_rights.edit;
-                    vm.user_group.feedback_delete = response.data.data.feedback_crud_rights.delete;
-                    vm.user_group.feedback_list_view = response.data.data.feedback_list_crud_rights.view;
-                    vm.user_group.feedback_list_answer = response.data.data.feedback_list_crud_rights.answer;
-                    vm.user_group.feedback_list_edit = response.data.data.feedback_list_crud_rights.edit;
-                    vm.user_group.feedback_list_delete = response.data.data.feedback_list_crud_rights.delete;
+                    vm.user_group.feedback_product_view = response.data.data.feedback_product_crud_rights.view;
+                    vm.user_group.feedback_product_show = response.data.data.feedback_product_crud_rights.show;
+                    vm.user_group.feedback_product_list_view = response.data.data.feedback_product_list_crud_rights.view;
+                    vm.user_group.feedback_product_list_answer = response.data.data.feedback_product_list_crud_rights.answer;
+                    vm.user_group.feedback_product_list_edit = response.data.data.feedback_product_list_crud_rights.edit;
+                    vm.user_group.feedback_product_list_delete = response.data.data.feedback_product_list_crud_rights.delete;
+                    vm.user_group.feedback_service_view = response.data.data.feedback_service_crud_rights.view;
+                    vm.user_group.feedback_service_show = response.data.data.feedback_service_crud_rights.show;
+                    vm.user_group.feedback_service_list_view = response.data.data.feedback_service_list_crud_rights.view;
+                    vm.user_group.feedback_service_list_answer = response.data.data.feedback_service_list_crud_rights.answer;
+                    vm.user_group.feedback_service_list_edit = response.data.data.feedback_service_list_crud_rights.edit;
+                    vm.user_group.feedback_service_list_delete = response.data.data.feedback_service_list_crud_rights.delete;
                     vm.user_group.question_view = response.data.data.question_crud_rights.view;
                     vm.user_group.question_create = response.data.data.question_crud_rights.create;
                     vm.user_group.question_edit = response.data.data.question_crud_rights.edit;

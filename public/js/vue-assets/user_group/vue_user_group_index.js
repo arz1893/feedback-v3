@@ -70240,6 +70240,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70283,14 +70297,18 @@ Vue.use(VeeValidate, {
                 faq_create: '',
                 faq_edit: '',
                 faq_delete: '',
-                feedback_view: '',
-                feedback_create: '',
-                feedback_edit: '',
-                feedback_delete: '',
-                feedback_list_view: '',
-                feedback_list_answer: '',
-                feedback_list_edit: '',
-                feedback_list_delete: '',
+                feedback_product_view: '',
+                feedback_product_show: '',
+                feedback_product_list_view: '',
+                feedback_product_list_answer: '',
+                feedback_product_list_edit: '',
+                feedback_product_list_delete: '',
+                feedback_service_view: '',
+                feedback_service_show: '',
+                feedback_service_list_view: '',
+                feedback_service_list_answer: '',
+                feedback_service_list_edit: '',
+                feedback_service_list_delete: '',
                 question_view: '',
                 question_create: '',
                 question_edit: '',
@@ -70351,14 +70369,18 @@ Vue.use(VeeValidate, {
                 vm.user_group.faq_create = response.data.data.faq_crud_rights.create;
                 vm.user_group.faq_edit = response.data.data.faq_crud_rights.edit;
                 vm.user_group.faq_delete = response.data.data.faq_crud_rights.delete;
-                vm.user_group.feedback_view = response.data.data.feedback_crud_rights.view;
-                vm.user_group.feedback_create = response.data.data.feedback_crud_rights.create;
-                vm.user_group.feedback_edit = response.data.data.feedback_crud_rights.edit;
-                vm.user_group.feedback_delete = response.data.data.feedback_crud_rights.delete;
-                vm.user_group.feedback_list_view = response.data.data.feedback_list_crud_rights.view;
-                vm.user_group.feedback_list_answer = response.data.data.feedback_list_crud_rights.answer;
-                vm.user_group.feedback_list_edit = response.data.data.feedback_list_crud_rights.edit;
-                vm.user_group.feedback_list_delete = response.data.data.feedback_list_crud_rights.delete;
+                vm.user_group.feedback_product_view = response.data.data.feedback_product_crud_rights.view;
+                vm.user_group.feedback_product_show = response.data.data.feedback_product_crud_rights.show;
+                vm.user_group.feedback_product_list_view = response.data.data.feedback_product_list_crud_rights.view;
+                vm.user_group.feedback_product_list_answer = response.data.data.feedback_product_list_crud_rights.answer;
+                vm.user_group.feedback_product_list_edit = response.data.data.feedback_product_list_crud_rights.edit;
+                vm.user_group.feedback_product_list_delete = response.data.data.feedback_product_list_crud_rights.delete;
+                vm.user_group.feedback_service_view = response.data.data.feedback_service_crud_rights.view;
+                vm.user_group.feedback_service_show = response.data.data.feedback_service_crud_rights.show;
+                vm.user_group.feedback_service_list_view = response.data.data.feedback_service_list_crud_rights.view;
+                vm.user_group.feedback_service_list_answer = response.data.data.feedback_service_list_crud_rights.answer;
+                vm.user_group.feedback_service_list_edit = response.data.data.feedback_service_list_crud_rights.edit;
+                vm.user_group.feedback_service_list_delete = response.data.data.feedback_service_list_crud_rights.delete;
                 vm.user_group.question_view = response.data.data.question_crud_rights.view;
                 vm.user_group.question_create = response.data.data.question_crud_rights.create;
                 vm.user_group.question_edit = response.data.data.question_crud_rights.edit;
@@ -70695,36 +70717,20 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "panel panel-default" }, [
                   _c("div", { staticClass: "panel-heading" }, [
-                    _vm._v("Feedback CRUD")
+                    _vm._v("Feedback Product CRUD")
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "panel-body" }, [
                     _vm._v("\n                            View: "),
-                    _vm.user_group.feedback_view
+                    _vm.user_group.feedback_product_view
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
                       : _c("span", { staticClass: "text-red" }, [
                           _c("i", { staticClass: "fa fa-close" })
                         ]),
-                    _vm._v("    \n                            Create: "),
-                    _vm.user_group.feedback_create
-                      ? _c("span", { staticClass: "text-green" }, [
-                          _c("i", { staticClass: "fa fa-check" })
-                        ])
-                      : _c("span", { staticClass: "text-red" }, [
-                          _c("i", { staticClass: "fa fa-close" })
-                        ]),
-                    _vm._v("    \n                            Edit: "),
-                    _vm.user_group.feedback_edit
-                      ? _c("span", { staticClass: "text-green" }, [
-                          _c("i", { staticClass: "fa fa-check" })
-                        ])
-                      : _c("span", { staticClass: "text-red" }, [
-                          _c("i", { staticClass: "fa fa-close" })
-                        ]),
-                    _vm._v("    \n                            Delete: "),
-                    _vm.user_group.feedback_delete
+                    _vm._v("    \n                            Show: "),
+                    _vm.user_group.feedback_product_show
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
@@ -70737,20 +70743,20 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "panel panel-default" }, [
                   _c("div", { staticClass: "panel-heading" }, [
-                    _vm._v("Feedback List")
+                    _vm._v("Feedback Product List")
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "panel-body" }, [
                     _vm._v("\n                            View: "),
-                    _vm.user_group.feedback_list_view
+                    _vm.user_group.feedback_product_list_view
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
                       : _c("span", { staticClass: "text-red" }, [
                           _c("i", { staticClass: "fa fa-close" })
                         ]),
-                    _vm._v("    \n                            Create: "),
-                    _vm.user_group.feedback_list_answer
+                    _vm._v("    \n                            Answer: "),
+                    _vm.user_group.feedback_product_list_answer
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
@@ -70758,7 +70764,7 @@ var render = function() {
                           _c("i", { staticClass: "fa fa-close" })
                         ]),
                     _vm._v("    \n                            Edit: "),
-                    _vm.user_group.feedback_list_edit
+                    _vm.user_group.feedback_product_list_edit
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
@@ -70766,7 +70772,75 @@ var render = function() {
                           _c("i", { staticClass: "fa fa-close" })
                         ]),
                     _vm._v("    \n                            Delete: "),
-                    _vm.user_group.feedback_list_delete
+                    _vm.user_group.feedback_product_list_delete
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Feedback Service CRUD")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.feedback_service_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Show: "),
+                    _vm.user_group.feedback_service_show
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                        ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "panel panel-default" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v("Feedback Service List")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel-body" }, [
+                    _vm._v("\n                            View: "),
+                    _vm.user_group.feedback_service_list_view
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Answer: "),
+                    _vm.user_group.feedback_service_list_answer
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Edit: "),
+                    _vm.user_group.feedback_service_list_edit
+                      ? _c("span", { staticClass: "text-green" }, [
+                          _c("i", { staticClass: "fa fa-check" })
+                        ])
+                      : _c("span", { staticClass: "text-red" }, [
+                          _c("i", { staticClass: "fa fa-close" })
+                        ]),
+                    _vm._v("    \n                            Delete: "),
+                    _vm.user_group.feedback_service_list_delete
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])
