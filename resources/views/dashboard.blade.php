@@ -25,29 +25,27 @@
         </a>
     @endif
 
-    @if(Auth::user()->user_group->getFeedbackCrudRights->view == 1)
-        <a href="{{ route('feedback.index') }}">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="info-box bg-red">
-                    <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+    <a href="{{ route('feedback.index') }}">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
 
-                    <div class="info-box-content">
-                        {{--<span class="info-box-text">FAQ</span>--}}
-                        <span class="info-box-number">Feedback</span>
+                <div class="info-box-content">
+                    {{--<span class="info-box-text">FAQ</span>--}}
+                    <span class="info-box-number">Feedback</span>
 
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 100%"></div>
-                        </div>
-                        <span class="progress-description">
-                            customer's feedback
-                        </span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
                     </div>
-                    <!-- /.info-box-content -->
+                    <span class="progress-description">
+                        customer's feedback
+                    </span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-        </a>
-    @endif
+            <!-- /.info-box -->
+        </div>
+    </a>
 
     @if(Auth::user()->user_group->getQuestionCrudRights->view == 1)
         <a href="{{ route('question.index') }}">

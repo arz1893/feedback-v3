@@ -4,18 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FeedbackCrudRight extends Model
+class FeedbackServiceListCrudRight extends Model
 {
-    protected $table = 'feedback_crud_rights';
+    protected $table = 'feedback_service_list_crud_rights';
     protected $primaryKey = 'usergroupid';
     public $incrementing = false;
 
     protected $fillable = [
         'usergroupid',
-        'create',
+        'view',
+        'answer',
         'edit',
-        'delete',
-        'view'
+        'delete'
     ];
 
     public function getUserGroup() {

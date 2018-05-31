@@ -39,12 +39,20 @@ class UserGroup extends Model
         return $this->hasOne(MasterDataRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getFeedbackCrudRights() {
-        return $this->hasOne(FeedbackCrudRight::class, 'usergroupid', 'systemId');
+    public function getFeedbackProductCrudRights() {
+        return $this->hasOne(FeedbackProductCrudRight::class, 'usergroupid', 'systemId');
     }
 
-    public function getFeedbackListCrudRights() {
-        return $this->hasOne(FeedbackListCrudRight::class, 'usergroupid', 'systemId');
+    public function getFeedbackProductListCrudRights() {
+        return $this->hasOne(FeedbackProductListCrudRight::class, 'usergroupid', 'systemId');
+    }
+
+    public function getFeedbackServiceCrudRights() {
+        return $this->hasOne(FeedbackServiceCrudRight::class, 'usergroupid', 'systemId');
+    }
+
+    public function getFeedbackServiceListCrudRights() {
+        return $this->hasOne(FeedbackServiceListCrudRight::class, 'usergroupid', 'systemId');
     }
 
     public function getFaqCrudRights() {
