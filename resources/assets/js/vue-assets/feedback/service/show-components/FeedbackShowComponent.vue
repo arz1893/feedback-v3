@@ -416,12 +416,19 @@
             getRootNodes: function () {
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/service_category/' + this.service_id + '/get-root-nodes';
-                vm.loadingState = true;
                 function sendRequest() {
                     axios.get(url).then(response => {
                         vm.serviceCategories = response.data.data;
-                        vm.showForm = false;
-                        vm.loadingState = false;
+                        if(vm.serviceCategories.length === 1) {
+                            vm.serviceCategory = vm.serviceCategories[0];
+                            vm.showForm = true;
+                            vm.showBack = true;
+                            vm.showNavigator = false;
+                            vm.loadingState = false;
+                        } else {
+                            vm.showForm = false;
+                            vm.loadingState = false;
+                        }
                     }).catch(error => {
                         console.log(error);
                     });
@@ -433,7 +440,6 @@
                 let vm = this;
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/customer/' + this.tenant_id + '/generate-select-customer';
                 axios.get(url).then(response => {
-                    console.log(response.data);
                     vm.selectCustomer = response.data;
                 }).catch(error => {
                     console.log(error);
@@ -502,8 +508,7 @@
                 vm.showForm = false;
                 vm.showBack = false;
                 console.log(vm.previousNode);
-                console.log(vm.previousNode.length);
-                if(vm.previousNode.parentId !== null && vm.previousNode.length === undefined) {
+                if(vm.previousNode.length === undefined) {
                     vm.showNavigator = true;
                 }
                 vm.feedbackService.customer = '';
