@@ -12,7 +12,7 @@ class MasterDataRight extends Model
 
     protected $fillable = [
         'usergroupid',
-        'created',
+        'create',
         'edit',
         'delete',
         'view'

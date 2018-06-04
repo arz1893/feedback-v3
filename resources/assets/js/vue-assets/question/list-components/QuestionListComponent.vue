@@ -13,6 +13,7 @@
                     <th>Customer</th>
                     <th>Question</th>
                     <th>Answered?</th>
+                    <th>Need Call?</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,6 +34,14 @@
                     </td>
                     <td>
                         <span v-if="question.is_answered === 1" class="text-green">
+                            Yes
+                        </span>
+                        <span v-else class="text-red">
+                            No
+                        </span>
+                    </td>
+                    <td>
+                        <span v-if="question.is_need_call === 1" class="text-green">
                             Yes
                         </span>
                         <span v-else class="text-red">

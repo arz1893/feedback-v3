@@ -27,12 +27,16 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="col-md-11 col-md-11">
             <div class="form-group">
+                {{ Form::label('phone', 'Phone Number') }}
+                <input name="phone" id="phone" type="text" class="form-control" data-inputmask="'mask': ['9999-9999-9999', '+62 999 9999 9999']" data-mask placeholder="Enter your phone address">
+            </div>
+            <div class="form-group">
                 {{ Form::label('address', 'Company Address') }}
                 {{ Form::textarea('address', null, ['class' => 'form-control', 'placeholder' => 'Enter Your Company Address', 'rows' => 5]) }}
             </div>
             <div class="form-group">
                 {{ Form::label('txt_description', 'Description') }}
-                {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'txt_description', 'placeholder' => 'Describe your business', 'rows' => 8]) }}
+                {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'txt_description', 'placeholder' => 'Describe your business', 'rows' => 4]) }}
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">

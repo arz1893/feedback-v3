@@ -2,6 +2,11 @@
 
 @push('scripts')
     <script src="{{ asset('js/jquery-validation/validate-register/form_register_validation.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/inputmask/jquery.inputmask.bundle.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/inputmask/phone.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('[data-mask]').inputmask();
+    </script>
 @endpush
 
 @section('content')

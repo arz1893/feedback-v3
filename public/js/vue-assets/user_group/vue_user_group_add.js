@@ -70381,16 +70381,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -70435,8 +70425,6 @@ Vue.use(VeeValidate, {
                 feedback_service_list_delete: false,
                 question_view: false,
                 question_create: false,
-                question_edit: false,
-                question_delete: false,
                 question_list_view: false,
                 question_list_answer: false,
                 question_list_edit: false,
@@ -71522,114 +71510,6 @@ var render = function() {
                 _vm._v(" Create\n                        ")
               ])
             ]),
-            _vm._v("    \n                    "),
-            _c("div", { staticClass: "checkbox" }, [
-              _c("label", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.user_group.question_edit,
-                      expression: "user_group.question_edit"
-                    }
-                  ],
-                  attrs: {
-                    type: "checkbox",
-                    name: "question_edit",
-                    id: "question_edit"
-                  },
-                  domProps: {
-                    checked: Array.isArray(_vm.user_group.question_edit)
-                      ? _vm._i(_vm.user_group.question_edit, null) > -1
-                      : _vm.user_group.question_edit
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.user_group.question_edit,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(
-                              _vm.user_group,
-                              "question_edit",
-                              $$a.concat([$$v])
-                            )
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.user_group,
-                              "question_edit",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(_vm.user_group, "question_edit", $$c)
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" Edit\n                        ")
-              ])
-            ]),
-            _vm._v("    \n                    "),
-            _c("div", { staticClass: "checkbox" }, [
-              _c("label", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.user_group.question_delete,
-                      expression: "user_group.question_delete"
-                    }
-                  ],
-                  attrs: {
-                    type: "checkbox",
-                    name: "question_delete",
-                    id: "question_delete"
-                  },
-                  domProps: {
-                    checked: Array.isArray(_vm.user_group.question_delete)
-                      ? _vm._i(_vm.user_group.question_delete, null) > -1
-                      : _vm.user_group.question_delete
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.user_group.question_delete,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(
-                              _vm.user_group,
-                              "question_delete",
-                              $$a.concat([$$v])
-                            )
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.user_group,
-                              "question_delete",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(_vm.user_group, "question_delete", $$c)
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" Delete\n                        ")
-              ])
-            ]),
             _vm._v("    \n                ")
           ])
         ])
@@ -71762,7 +71642,7 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" Create\n                        ")
+                _vm._v(" Answer\n                        ")
               ])
             ]),
             _vm._v("    \n                    "),
@@ -72023,7 +71903,7 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" Create\n                        ")
+                _vm._v(" Answer\n                        ")
               ])
             ]),
             _vm._v("    \n                    "),

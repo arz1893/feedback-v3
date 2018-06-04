@@ -2,7 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\CustomerCrudRight;
+use App\FaqCrudRight;
+use App\FeedbackProductCrudRight;
+use App\FeedbackProductListCrudRight;
+use App\FeedbackServiceCrudRight;
+use App\FeedbackServiceListCrudRight;
 use App\Invite;
+use App\MasterDataRight;
+use App\QuestionCrudRight;
+use App\QuestionListCrudRight;
+use App\ReportViewRights;
 use App\Tenant;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -86,23 +96,187 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'country_id' => $data['country_id'],
             'address' => $data['address'],
-            'description' => $data['description']
+            'description' => $data['description'],
+            'phone' => $data['phone']
         ]);
 
+        $userGroupAdmin = UserGroup::create([
+            'systemId' => Uuid::generate(4),
+            'name' => 'Administrator',
+            'recOwner' => $tenant->systemId,
+        ]);
 
-        $userGroup = UserGroup::where('name', 'Administrator')->first();
+        $this->createRoleRights($userGroupAdmin);
+
+        $userGroupCs = UserGroup::create([
+            'systemId' => Uuid::generate(4),
+            'name' => 'Customer Service',
+            'recOwner' => $tenant->systemId
+        ]);
+
+        $this->createRoleRights($userGroupCs);
 
         $user = User::create([
             'systemId' => Uuid::generate(4),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'usergroupId' => $userGroup->systemId,
+            'phone' => $data['phone'],
+            'usergroupId' => $userGroupAdmin->systemId,
             'tenantId' => $tenant->systemId,
             'active' => 1,
         ]);
 
         return $user;
+    }
+
+    protected function createRoleRights($userGroup) {
+
+        if($userGroup->name == 'Administrator') {
+            FaqCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            MasterDataRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            FeedbackProductCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'show' => true,
+            ]);
+
+            FeedbackProductListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            FeedbackServiceCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'show' => true
+            ]);
+
+            FeedbackServiceListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            QuestionCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true
+            ]);
+
+            QuestionListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            CustomerCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true,
+                'edit' => true,
+                'delete' => true
+            ]);
+
+            ReportViewRights::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'action' => true
+            ]);
+        } else if($userGroup->name == 'Customer Service') {
+            FaqCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => false,
+                'edit' => false,
+                'delete' => false
+            ]);
+
+            MasterDataRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => false,
+                'create' => false,
+                'edit' => false,
+                'delete' => false
+            ]);
+
+            FeedbackProductCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'show' => true,
+            ]);
+
+            FeedbackProductListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => false,
+                'edit' => true,
+                'delete' => false
+            ]);
+
+            FeedbackServiceCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'show' => true
+            ]);
+
+            FeedbackServiceListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => false,
+                'edit' => true,
+                'delete' => false
+            ]);
+
+            QuestionCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true
+            ]);
+
+            QuestionListCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'answer' => false,
+                'edit' => true,
+                'delete' => false
+            ]);
+
+            CustomerCrudRight::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => true,
+                'create' => true,
+                'edit' => true,
+                'delete' => false
+            ]);
+
+            ReportViewRights::create([
+                'usergroupid' => $userGroup->systemId,
+                'view' => false,
+                'action' => false
+            ]);
+        }
     }
 
     protected function acceptInvitation($token) {

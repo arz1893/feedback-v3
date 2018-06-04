@@ -305,7 +305,6 @@
                                     syscreator: vm.user
                                 }).then(response => {
                                     if(response.data.message === 'success') {
-                                        vm.clearState();
                                         vm.alertText = 'FAQ has been updated, now you can close this dialog';
                                         vm.showAlert = true;
                                         vm.showLoadingState = false;

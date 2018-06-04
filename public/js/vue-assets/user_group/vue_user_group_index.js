@@ -70252,8 +70252,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -70867,22 +70865,6 @@ var render = function() {
                         ]),
                     _vm._v("    \n                            Create: "),
                     _vm.user_group.question_create
-                      ? _c("span", { staticClass: "text-green" }, [
-                          _c("i", { staticClass: "fa fa-check" })
-                        ])
-                      : _c("span", { staticClass: "text-red" }, [
-                          _c("i", { staticClass: "fa fa-close" })
-                        ]),
-                    _vm._v("    \n                            Edit: "),
-                    _vm.user_group.question_edit
-                      ? _c("span", { staticClass: "text-green" }, [
-                          _c("i", { staticClass: "fa fa-check" })
-                        ])
-                      : _c("span", { staticClass: "text-red" }, [
-                          _c("i", { staticClass: "fa fa-close" })
-                        ]),
-                    _vm._v("    \n                            Delete: "),
-                    _vm.user_group.question_delete
                       ? _c("span", { staticClass: "text-green" }, [
                           _c("i", { staticClass: "fa fa-check" })
                         ])

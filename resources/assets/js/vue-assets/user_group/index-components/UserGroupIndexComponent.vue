@@ -108,8 +108,6 @@
                             <div class="panel-body">
                                 View: <span class="text-green" v-if="user_group.question_view"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
                                 Create: <span class="text-green" v-if="user_group.question_create"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Edit: <span class="text-green" v-if="user_group.question_edit"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
-                                Delete: <span class="text-green" v-if="user_group.question_delete"><i class="fa fa-check"></i></span> <span class="text-red" v-else><i class="fa fa-close"></i></span> &nbsp; &nbsp;
                             </div>
                         </div>
                         <div class="panel panel-default">

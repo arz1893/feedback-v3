@@ -156,16 +156,6 @@
                                 <input type="checkbox" name="question_create" id="question_create" v-model="user_group.question_create"> Create
                             </label>
                         </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="question_edit" id="question_edit" v-model="user_group.question_edit"> Edit
-                            </label>
-                        </div> &nbsp; &nbsp;
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="question_delete" id="question_delete" v-model="user_group.question_delete"> Delete
-                            </label>
-                        </div> &nbsp; &nbsp;
                     </form>
                 </div>
             </div>
@@ -183,7 +173,7 @@
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_product_list_answer" id="feedback_product_list_answer" v-model="user_group.feedback_product_list_answer"> Create
+                                <input type="checkbox" name="feedback_product_list_answer" id="feedback_product_list_answer" v-model="user_group.feedback_product_list_answer"> Answer
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
@@ -213,7 +203,7 @@
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="feedback_service_list_answer" id="feedback_service_list_answer" v-model="user_group.feedback_service_list_answer"> Create
+                                <input type="checkbox" name="feedback_service_list_answer" id="feedback_service_list_answer" v-model="user_group.feedback_service_list_answer"> Answer
                             </label>
                         </div> &nbsp; &nbsp;
                         <div class="checkbox">
@@ -365,8 +355,6 @@
                     feedback_service_list_delete: false,
                     question_view: false,
                     question_create: false,
-                    question_edit: false,
-                    question_delete: false,
                     question_list_view: false,
                     question_list_answer: false,
                     question_list_edit: false,

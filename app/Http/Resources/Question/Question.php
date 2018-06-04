@@ -22,7 +22,7 @@ class Question extends JsonResource
             'is_need_call' => $this->is_need_call,
             'tenantId' => $this->tenantId,
             'is_answered' => $this->is_answered,
-            'syscreator' => $this->created_by->name,
+            'syscreator' => $this->created_by,
             'created_at' => $this->created_at->format('d M Y H:i:sA'),
             'show_edit_url' => route('question_list.edit', $this->systemId)
         ];

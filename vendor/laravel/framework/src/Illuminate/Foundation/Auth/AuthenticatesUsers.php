@@ -21,6 +21,9 @@ trait AuthenticatesUsers
     public function showLoginForm(Request $request)
     {
         $tenant = Tenant::findOrFail($request->session()->get('tenant_id'));
+        if($tenant == null) {
+            return redirect()->route('company_login');
+        }
         return view('auth.login', compact('tenant'));
     }
 

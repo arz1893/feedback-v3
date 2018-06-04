@@ -13,8 +13,6 @@ class QuestionCrudRight extends Model
     protected $fillable = [
         'usergroupid',
         'create',
-        'edit',
-        'delete',
         'view'
     ];
 
