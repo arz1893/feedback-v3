@@ -428,9 +428,18 @@
                 vm.loadingState = true;
                 function sendRequest() {
                     axios.get(url).then(response => {
+                        console.log(response.data);
                         vm.productCategories = response.data.data;
-                        vm.showForm = false;
-                        vm.loadingState = false;
+                        if(response.data.data.length === 1) {
+                            vm.productCategory = response.data.data;
+                            vm.showForm = true;
+                            vm.showBack = true;
+                            vm.showNavigator = false;
+                            vm.loadingState = false;
+                        } else {
+                            vm.showForm = false;
+                            vm.loadingState = false;
+                        }
                     }).catch(error => {
                         console.log(error);
                     });

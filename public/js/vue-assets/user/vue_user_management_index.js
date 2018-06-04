@@ -70035,7 +70035,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70206,23 +70206,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -70232,9 +70215,6 @@ Vue.use(VeeValidate, {
             custom: {
                 name: {
                     required: "Please enter user's name"
-                },
-                phone: {
-                    required: "Please enter customer's phone number"
                 },
                 email: {
                     required: "Please enter customer's email address"
@@ -70294,11 +70274,6 @@ Vue.use(VeeValidate, {
                 this.validator.validate('email', this.user.email);
             }
         },
-        'user.phone': function userPhone() {
-            if (this.alert.showAlert === false) {
-                this.validator.validate('phone', this.user.phone);
-            }
-        },
         'user.role': function userRole() {
             if (this.alert.showAlert === false) {
                 this.validator.validate('role', this.user.role);
@@ -70331,7 +70306,6 @@ Vue.use(VeeValidate, {
             vm.validator.validateAll({
                 name: vm.user.name,
                 email: vm.user.email,
-                phone: vm.user.phone,
                 role: vm.user.role
             }).then(function (result) {
                 if (result) {
@@ -70757,82 +70731,6 @@ var render = function() {
                         {
                           staticClass: "form-group",
                           class: {
-                            "has-error": _vm.validator.errors.has("phone")
-                          }
-                        },
-                        [
-                          _c("label", { attrs: { for: "phone" } }, [
-                            _vm._v("Phone Number")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "input-group" }, [
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.user.phone,
-                                  expression: "user.phone"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "tel",
-                                name: "phone",
-                                id: "phone",
-                                placeholder: "Enter user's phone number"
-                              },
-                              domProps: { value: _vm.user.phone },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.user,
-                                    "phone",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.validator.errors.has("phone"),
-                                  expression: "validator.errors.has('phone')"
-                                }
-                              ],
-                              staticClass: "help-block text-red"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                        " +
-                                  _vm._s(_vm.validator.errors.first("phone")) +
-                                  "\n                                    "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-lg-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "form-group",
-                          class: {
                             "has-error": _vm.validator.errors.has("role")
                           }
                         },
@@ -70842,7 +70740,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "input-group" }, [
-                            _vm._m(7),
+                            _vm._m(6),
                             _vm._v(" "),
                             _c(
                               "select",
@@ -70990,7 +70888,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(8),
+              _vm._m(7),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm._v(
@@ -71134,14 +71032,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-envelope" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-addon" }, [
-      _c("i", { staticClass: "fa fa-phone" })
     ])
   },
   function() {

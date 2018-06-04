@@ -104,23 +104,6 @@
 
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group" v-bind:class="{'has-error': validator.errors.has('phone')}">
-                                        <label for="phone">Phone Number</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <input type="tel" name="phone" id="phone" class="form-control" placeholder="Enter user's phone number" v-model="user.phone"/>
-                                        </div>
-                                        <span class="help-block text-red" v-show="validator.errors.has('phone')">
-                                            {{ validator.errors.first('phone') }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
                                     <div class="form-group" v-bind:class="{'has-error': validator.errors.has('role')}">
                                         <label for="usergroupId">Role</label>
                                         <div class="input-group">
@@ -184,9 +167,6 @@
                     name: {
                         required: "Please enter user's name"
                     },
-                    phone: {
-                        required: "Please enter customer's phone number"
-                    },
                     email: {
                         required: "Please enter customer's email address"
                     },
@@ -244,11 +224,6 @@
                     this.validator.validate('email', this.user.email);
                 }
             },
-            'user.phone': function () {
-                if(this.alert.showAlert === false) {
-                    this.validator.validate('phone', this.user.phone);
-                }
-            },
             'user.role': function () {
                 if(this.alert.showAlert === false) {
                     this.validator.validate('role', this.user.role);
@@ -277,7 +252,6 @@
                 vm.validator.validateAll({
                     name: vm.user.name,
                     email: vm.user.email,
-                    phone: vm.user.phone,
                     role: vm.user.role
                 }).then(result => {
                     if(result) {
