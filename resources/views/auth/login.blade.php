@@ -5,11 +5,22 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Customer</b>Feedback</a>
+            @if($cookie != null || $cookie != '')
+                <a role="button"><b class="text-primary">Welcome</b><span class="text-muted"> Back</span></a>
+            @else
+                <a role="button"><b>Customer</b>Feedback</a>
+            @endif
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to <u class="text-info">{{ $tenant->name }}</u></p>
+            @if($cookie != null || $cookie != '')
+                <p class="login-box-msg">
+                    Sign in back to <u class="text-info">{{ $tenant->name }}</u> <br>
+                    or <br> <a href="{{ route('to_another_company') }}" role="button" class="text-center">Sign in to another company ?</a>
+                </p>
+            @else
+                <p class="login-box-msg">Sign in to <u class="text-info">{{ $tenant->name }}</u></p>
+            @endif
 
             <form role="form" method="POST" action="{{ route('login') }}" id="form_login">
                 @csrf

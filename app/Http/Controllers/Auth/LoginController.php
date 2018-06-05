@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Tenant;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -39,8 +40,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function companyLogin() {
-        return view('auth.company-login');
+    public function companyLogin(Request $request) {
+        $cookie = Cookie::get('company_email');
+        if($cookie != null) {
+            $tenant = Tenant::where('email', $cookie)->first();
+            if(is_null($tenant)) {
+                return redirect()->back()->withErrors(['error' => 'Sorry we couldn\'t find your company'])->withInput();
+            } else {
+                $request->session()->put('tenant_id', $tenant->systemId);
+                return redirect()->route('login');
+            }
+        } else {
+            return view('auth.company-login');
+        }
     }
 
     public function checkTenant(Request $request) {
@@ -51,5 +63,10 @@ class LoginController extends Controller
             $request->session()->put('tenant_id', $tenant->systemId);
             return redirect()->route('login');
         }
+    }
+
+    public function toAnotherCompany(Request $request) {
+        Cookie::queue(Cookie::forget('company_email'));
+        return redirect()->route('company_login');
     }
 }

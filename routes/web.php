@@ -28,6 +28,7 @@ Route::get('/feedback_report_selection', function () {
 /* Authentication Routes */
 Auth::routes();
 Route::get('/company-login', 'Auth\LoginController@companyLogin')->name('company_login');
+Route::get('/to-another-company', 'Auth\LoginController@toAnotherCompany')->name('to_another_company');
 Route::post('/check-tenant', 'Auth\LoginController@checkTenant')->name('check_tenant');
 /* end of authentication routes */
 

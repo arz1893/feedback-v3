@@ -6,6 +6,7 @@ use App\Tenant;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
 
@@ -24,7 +25,8 @@ trait AuthenticatesUsers
         if($tenant == null) {
             return redirect()->route('company_login');
         }
-        return view('auth.login', compact('tenant'));
+        $cookie = Cookie::get('company_email');
+        return view('auth.login', compact('tenant', 'cookie'));
     }
 
     /**
