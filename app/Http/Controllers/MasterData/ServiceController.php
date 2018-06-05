@@ -5,9 +5,11 @@ namespace App\Http\Controllers\MasterData;
 use App\Http\Resources\MasterData\ServiceCollection;
 use App\Service;
 use App\ServiceCategory;
+use App\Tag;
 use App\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 use Intervention\Image\ImageManagerStatic as InterventionImage;
 use App\Http\Resources\MasterData\Service as ServiceResource;
@@ -35,6 +37,35 @@ class ServiceController extends Controller
         }
         $serviceTags = $service->tags;
         return view('master_data.service.service_show', compact('service', 'serviceTags', 'hasCategory'));
+    }
+
+    /* Data Port Apong Boulevard */
+    public function portData() {
+        $currentTenant = Auth::user()->tenant;
+        $apongBppTenant = Tenant::where('name', 'Apong Balikpapan')->first();
+
+        $apongBppServices = Service::where('tenantId', $apongBppTenant->systemId)->get();
+
+        foreach ($apongBppServices as $service) {
+            $serviceTags = $service->tags;
+            foreach ($serviceTags as $serviceTag) {
+                $currentTag = Tag::where('recOwner', $currentTenant->systemId)->where('name', $serviceTag->name)->first();
+                $currentService = Service::create([
+                    'systemId' => Uuid::generate(4),
+                    'name' => $service->name,
+                    'description' => $service->description,
+                    'img' => $service->img,
+                    'tenantId' => $currentTenant->systemId
+                ]);
+
+                ServiceCategory::create([
+                    'name' => 'General',
+                    'serviceId' => $currentService->systemId
+                ]);
+
+                $currentService->tags()->sync($currentTag);
+            }
+        }
     }
 
     /* API Section */

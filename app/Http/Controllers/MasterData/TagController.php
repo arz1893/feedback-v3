@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MasterData;
 use App\Http\Requests\MasterData\TagRequest;
 use App\Http\Resources\MasterData\TagCollection;
 use App\Tag;
+use App\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

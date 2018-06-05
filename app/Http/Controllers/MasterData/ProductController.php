@@ -48,6 +48,114 @@ class ProductController extends Controller
         return view('master_data.product.product_edit', compact('product', 'selectTags', 'selectedTags'));
     }
 
+    /* Data Port Apong Boulevard */
+    public function portData() {
+        $currentTenant = Auth::user()->tenant;
+        $apongBppTenant = Tenant::where('name', 'Apong Balikpapan')->first();
+
+        $apongBppProducts = Product::where('tenantId', $apongBppTenant->systemId)->get();
+        if(!file_exists(public_path('uploaded_images/' . $currentTenant->email . '/'))) {
+            mkdir(public_path('uploaded_images/' . $currentTenant->email . '/'));
+        }
+        foreach ($apongBppProducts as $product) {
+            $productTags = $product->tags;
+            if(count($productTags) > 0) {
+                foreach ($productTags as $productTag) {
+                    $currentTag = Tag::where('recOwner', $currentTenant->systemId)->where('name', $productTag->name)->first();
+
+                    if($product->img != null) {
+                        if(file_exists(public_path($product->img))) {
+                            $id = Uuid::generate(4);
+                            $filename = explode('/uploaded_images/' . $apongBppTenant->email . '/' . $product->systemId . '_', $product->img);
+                            InterventionImage::make(public_path($product->img))->save(public_path('uploaded_images/' . $currentTenant->email . '/' . $id . '_' . $filename[1]));
+                            $currentProduct = Product::create([
+                                'systemId' => $id,
+                                'name' => $product->name,
+                                'description' => $product->description,
+                                'img' => 'uploaded_images/' . $currentTenant->email . '/' . $id . '_' . $filename[1],
+                                'tenantId' => $currentTenant->systemId
+                            ]);
+
+                            ProductCategory::create([
+                                'name' => 'General',
+                                'productId' => $currentProduct->systemId
+                            ]);
+
+                            $currentProduct->tags()->sync($currentTag);
+                        } else {
+                            $id = Uuid::generate(4);
+                            $currentProduct = Product::create([
+                                'systemId' => $id,
+                                'name' => $product->name,
+                                'description' => $product->description,
+                                'img' => null,
+                                'tenantId' => $currentTenant->systemId
+                            ]);
+
+                            ProductCategory::create([
+                                'name' => 'General',
+                                'productId' => $currentProduct->systemId
+                            ]);
+
+                            $currentProduct->tags()->sync($currentTag);
+                        }
+                    } else {
+                        $id = Uuid::generate(4);
+                        $currentProduct = Product::create([
+                            'systemId' => $id,
+                            'name' => $product->name,
+                            'description' => $product->description,
+                            'img' => null,
+                            'tenantId' => $currentTenant->systemId
+                        ]);
+
+                        ProductCategory::create([
+                            'name' => 'General',
+                            'productId' => $currentProduct->systemId
+                        ]);
+
+                        $currentProduct->tags()->sync($currentTag);
+                    }
+                }
+            } else {
+                if($product->img != null) {
+                    if(file_exists(public_path($product->img))) {
+                        $id = Uuid::generate(4);
+                        $filename = explode('/uploaded_images/' . $apongBppTenant->email . '/' . $product->systemId . '_', $product->img);
+                        InterventionImage::make(public_path($product->img))->save(public_path('uploaded_images/' . $currentTenant->email . '/' . $id . '_' . $filename[1]));
+                        $currentProduct = Product::create([
+                            'systemId' => $id,
+                            'name' => $product->name,
+                            'description' => $product->description,
+                            'img' => 'uploaded_images/' . $currentTenant->email . '/' . $id . '_' . $filename[1],
+                            'tenantId' => $currentTenant->systemId
+                        ]);
+
+                        ProductCategory::create([
+                            'name' => 'General',
+                            'productId' => $currentProduct->systemId
+                        ]);
+
+                    } else {
+                        $id = Uuid::generate(4);
+                        $currentProduct = Product::create([
+                            'systemId' => $id,
+                            'name' => $product->name,
+                            'description' => $product->description,
+                            'img' => $product->img,
+                            'tenantId' => $currentTenant->systemId
+                        ]);
+
+                        ProductCategory::create([
+                            'name' => 'General',
+                            'productId' => $currentProduct->systemId
+                        ]);
+                    }
+                }
+            }
+        }
+    }
+
     /* API Section */
     public function addProduct(Request $request) {
         $tags = [];
