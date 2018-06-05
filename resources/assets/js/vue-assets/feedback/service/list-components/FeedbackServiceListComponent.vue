@@ -109,10 +109,10 @@
                         <span v-else>No</span>
                     </td>
                     <td>
-                        <a role="button" class="btn btn-warning" v-bind:href="feedbackService.show_edit_url">
+                        <a role="button" class="btn btn-warning" v-bind:href="feedbackService.show_edit_url" v-if="feedbackServiceListRights.edit === 1">
                             <i class="ion ion-edit"></i>
                         </a>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_feedback_service" @click="showDetail(feedbackService)">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_feedback_service" @click="showDetail(feedbackService)" v-if="feedbackServiceListRights.delete === 1">
                             <i class="ion ion-ios-trash"></i>
                         </button>
                     </td>
@@ -186,7 +186,7 @@
                             </span>
                             <button class="btn btn-link" v-if="feedbackService.customer_rating === 1">
                                 <i class="text-center material-icons text-red" style="font-size: 2.5em;">
-                                    sentiment_very_dissatisfied
+                                    sentiment_dissatisfied
                                 </i>
                             </button>
                             <button class="btn btn-link" v-else-if="feedbackService.customer_rating === 2">
@@ -196,7 +196,7 @@
                             </button>
                             <button class="btn btn-link" v-else-if="feedbackService.customer_rating === 3">
                                 <i class="text-center material-icons text-green" style="font-size: 2.5em;">
-                                    sentiment_very_satisfied
+                                    sentiment_satisfied
                                 </i>
                             </button>
                         </div>
@@ -230,8 +230,8 @@
 
                         <div class="row" style="margin-top: 1%;">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <button v-if="feedbackService.customer !== null"
+                                <div class="form-group" v-if="feedbackServiceListRights.answer === 1">
+                                    <button v-if="feedbackService.customer !== null">
                                             class="btn btn-primary"
                                             type="button" @click="showReply = !showReply">
                                         <i class="ion ion-chatbubble-working"></i> Reply
@@ -301,7 +301,7 @@
                                             </div>
                                             <div class="panel-body">
                                                 <p>{{ feedbackServiceReply.reply_content }}</p>
-                                                <button v-bind:data-id="feedbackServiceReply.systemId" class="btn btn-sm btn-danger" onclick="$('div#'+$(this).data('id')).toggleClass('invisible')">
+                                                <button v-bind:data-id="feedbackServiceReply.systemId" class="btn btn-sm btn-danger" onclick="$('div#'+$(this).data('id')).toggleClass('invisible')" v-if="feedbackServiceListRights.answer === 1">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                                 <div class="inline invisible" v-bind:id="feedbackServiceReply.systemId">
@@ -374,7 +374,7 @@
 
     export default {
         name: "feedback-list",
-        props: ['tenant_id', 'user_id'],
+        props: ['tenant_id', 'user_id', 'user_group_id'],
         components: { datePicker },
         data() {
             return {
@@ -392,6 +392,11 @@
                     is_urgent: 0,
                     creator: [],
                     attachment: ''
+                },
+                feedbackServiceListRights: {
+                    answer: 0,
+                    edit: 0,
+                    delete: 0
                 },
                 startDate: moment(new Date()).format('DD MMMM YYYY'),
                 endDate: moment(new Date()).format('DD MMMM YYYY'),
@@ -423,6 +428,7 @@
         created() {
             this.getFeedbackServiceList();
             this.generateSelectService();
+            this.getRoleRights();
         },
         watch: {
             showReplyList: function () {
@@ -454,6 +460,18 @@
                 const url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenant_id + '/generate-select-service';
                 axios.get(url).then(response => {
                     vm.serviceOptions = response.data;
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            getRoleRights: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + vm.user_group_id + '/get-role-rights';
+                axios.get(url).then(response => {
+                    console.log(response.data.data);
+                    vm.feedbackServiceListRights.answer = response.data.data.feedback_service_list_crud_rights.answer;
+                    vm.feedbackServiceListRights.edit = response.data.data.feedback_service_list_crud_rights.edit;
+                    vm.feedbackServiceListRights.delete = response.data.data.feedback_service_list_crud_rights.delete;
                 }).catch(error => {
                     console.log(error);
                 });

@@ -73482,7 +73482,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73873,7 +73873,7 @@ Vue.use(VeeValidate, {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "feedback-list",
-    props: ['tenant_id', 'user_id'],
+    props: ['tenant_id', 'user_id', 'user_group_id'],
     components: { datePicker: __WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker___default.a },
     data: function data() {
         return {
@@ -73891,6 +73891,11 @@ Vue.use(VeeValidate, {
                 is_urgent: 0,
                 creator: [],
                 attachment: ''
+            },
+            feedbackServiceListRights: {
+                answer: 0,
+                edit: 0,
+                delete: 0
             },
             startDate: moment(new Date()).format('DD MMMM YYYY'),
             endDate: moment(new Date()).format('DD MMMM YYYY'),
@@ -73922,6 +73927,7 @@ Vue.use(VeeValidate, {
     created: function created() {
         this.getFeedbackServiceList();
         this.generateSelectService();
+        this.getRoleRights();
     },
 
     watch: {
@@ -73954,6 +73960,18 @@ Vue.use(VeeValidate, {
             var url = window.location.protocol + "//" + window.location.host + "/" + 'api/service/' + vm.tenant_id + '/generate-select-service';
             axios.get(url).then(function (response) {
                 vm.serviceOptions = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getRoleRights: function getRoleRights() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + vm.user_group_id + '/get-role-rights';
+            axios.get(url).then(function (response) {
+                console.log(response.data.data);
+                vm.feedbackServiceListRights.answer = response.data.data.feedback_service_list_crud_rights.answer;
+                vm.feedbackServiceListRights.edit = response.data.data.feedback_service_list_crud_rights.edit;
+                vm.feedbackServiceListRights.delete = response.data.data.feedback_service_list_crud_rights.delete;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -74488,34 +74506,38 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-warning",
-                      attrs: {
-                        role: "button",
-                        href: feedbackService.show_edit_url
-                      }
-                    },
-                    [_c("i", { staticClass: "ion ion-edit" })]
-                  ),
+                  _vm.feedbackServiceListRights.edit === 1
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-warning",
+                          attrs: {
+                            role: "button",
+                            href: feedbackService.show_edit_url
+                          }
+                        },
+                        [_c("i", { staticClass: "ion ion-edit" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#modal_delete_feedback_service"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.showDetail(feedbackService)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "ion ion-ios-trash" })]
-                  )
+                  _vm.feedbackServiceListRights.delete === 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#modal_delete_feedback_service"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.showDetail(feedbackService)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "ion ion-ios-trash" })]
+                      )
+                    : _vm._e()
                 ])
               ])
             })
@@ -74749,7 +74771,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                sentiment_very_dissatisfied\n                            "
+                              "\n                                sentiment_dissatisfied\n                            "
                             )
                           ]
                         )
@@ -74781,7 +74803,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                sentiment_very_satisfied\n                            "
+                                  "\n                                sentiment_satisfied\n                            "
                                 )
                               ]
                             )
@@ -74869,49 +74891,42 @@ var render = function() {
                   { staticClass: "row", staticStyle: { "margin-top": "1%" } },
                   [
                     _c("div", { staticClass: "col-lg-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _vm.feedbackService.customer !== null
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.showReply = !_vm.showReply
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "ion ion-chatbubble-working"
-                                }),
-                                _vm._v(
-                                  " Reply\n                                "
+                      _vm.feedbackServiceListRights.answer === 1
+                        ? _c("div", { staticClass: "form-group" }, [
+                            _vm.feedbackService.customer !== null
+                              ? _c("button", [
+                                  _vm._v(
+                                    '\n                                        class="btn btn-primary"\n                                        type="button" @click="showReply = !showReply">\n                                    '
+                                  ),
+                                  _c("i", {
+                                    staticClass: "ion ion-chatbubble-working"
+                                  }),
+                                  _vm._v(
+                                    " Reply\n                                "
+                                  )
+                                ])
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary disabled",
+                                    attrs: {
+                                      type: "button",
+                                      "data-toggle": "tooltip",
+                                      "data-placement": "bottom",
+                                      title: "Can't reply on anonymous"
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ion ion-chatbubble-working"
+                                    }),
+                                    _vm._v(
+                                      " Reply\n                                "
+                                    )
+                                  ]
                                 )
-                              ]
-                            )
-                          : _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary disabled",
-                                attrs: {
-                                  type: "button",
-                                  "data-toggle": "tooltip",
-                                  "data-placement": "bottom",
-                                  title: "Can't reply on anonymous"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "ion ion-chatbubble-working"
-                                }),
-                                _vm._v(
-                                  " Reply\n                                "
-                                )
-                              ]
-                            )
-                      ]),
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -75186,24 +75201,28 @@ var render = function() {
                                               )
                                             ]),
                                             _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-sm btn-danger",
-                                                attrs: {
-                                                  "data-id":
-                                                    feedbackServiceReply.systemId,
-                                                  onclick:
-                                                    "$('div#'+$(this).data('id')).toggleClass('invisible')"
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fa fa-trash-o"
-                                                })
-                                              ]
-                                            ),
+                                            _vm.feedbackServiceListRights
+                                              .answer === 1
+                                              ? _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-danger",
+                                                    attrs: {
+                                                      "data-id":
+                                                        feedbackServiceReply.systemId,
+                                                      onclick:
+                                                        "$('div#'+$(this).data('id')).toggleClass('invisible')"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass:
+                                                        "fa fa-trash-o"
+                                                    })
+                                                  ]
+                                                )
+                                              : _vm._e(),
                                             _vm._v(" "),
                                             _c(
                                               "div",
