@@ -49,10 +49,10 @@
                         </span>
                     </td>
                     <td>
-                        <a role="button" class="btn btn-warning" v-bind:href="question.show_edit_url">
+                        <a role="button" class="btn btn-warning" v-bind:href="question.show_edit_url" v-if="questionListRights.edit === 1">
                             <i class="fa fa-pencil-square"></i>
                         </a>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_question" @click="getQuestion(question)">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal_delete_question" @click="getQuestion(question)" v-if="questionListRights.delete === 1">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </td>
@@ -75,6 +75,9 @@
                         </div>
 
                         <h4 class="text-center text-navy">Q: {{ question.question }}</h4>
+                        <p align="center">
+                            <strong>Answer: </strong> {{ question.answer }}
+                        </p>
                         <div class="form-group" v-bind:class="{ 'has-error': validator.errors.has('answer') }">
                             <label for="answer">Answer :</label>
                             <textarea class="form-control" id="answer" name="answer" placeholder="What is you answer ?" v-model="question.answer" rows="4"></textarea>
@@ -130,7 +133,7 @@
 
     export default {
         name: "question-list",
-        props: ['tenant_id', 'user'],
+        props: ['tenant_id', 'user', 'user_group_id'],
         data() {
             return {
                 questions: [],
@@ -141,6 +144,11 @@
                     answer: '',
                     is_need_call: ''
                 },
+                questionListRights: {
+                    answer: 0,
+                    edit: 0,
+                    delete: 0
+                },
                 selectCustomer: [],
                 alertQuestion: false,
                 validator: ''
@@ -149,6 +157,7 @@
         created() {
             this.getAllQuestion();
             this.generateSelectCustomer();
+            this.getRoleRights();
             this.validator = new Validator({
                 answer: 'required'
             });
@@ -166,7 +175,6 @@
                 const url = window.location.protocol + "//" + window.location.host + "/api/question/" + this.tenant_id + '/get-all-question';
 
                 axios.get(url).then(response => {
-                    console.log(response.data);
                     vm.questions = response.data.data;
                     console.log(vm.questions);
                 }).catch(error => {
@@ -180,13 +188,25 @@
                     vm.selectCustomer = response.data;
                 }).catch(error => {
                     console.log(error);
-                })
+                });
             },
             getQuestion: function (selectedQuestion) {
                 this.question.systemId = selectedQuestion.systemId;
                 this.question.customerId = selectedQuestion.customerId;
                 this.question.question = selectedQuestion.question;
                 this.question.answer = selectedQuestion.answer;
+            },
+            getRoleRights: function () {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + vm.user_group_id + '/get-role-rights';
+                axios.get(url).then(response => {
+                    console.log(response.data.data);
+                    vm.questionListRights.answer = response.data.data.question_list_crud_rights.answer;
+                    vm.questionListRights.edit = response.data.data.question_list_crud_rights.edit;
+                    vm.questionListRights.delete = response.data.data.question_list_crud_rights.delete;
+                }).catch(error => {
+                    console.log(error);
+                });
             },
             answerQuestion: function () {
                 let vm = this;

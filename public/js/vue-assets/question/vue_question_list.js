@@ -70000,7 +70000,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70012,6 +70012,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
+//
+//
+//
 //
 //
 //
@@ -70144,7 +70147,7 @@ Vue.use(VeeValidate, {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "question-list",
-    props: ['tenant_id', 'user'],
+    props: ['tenant_id', 'user', 'user_group_id'],
     data: function data() {
         return {
             questions: [],
@@ -70155,6 +70158,11 @@ Vue.use(VeeValidate, {
                 answer: '',
                 is_need_call: ''
             },
+            questionListRights: {
+                answer: 0,
+                edit: 0,
+                delete: 0
+            },
             selectCustomer: [],
             alertQuestion: false,
             validator: ''
@@ -70163,6 +70171,7 @@ Vue.use(VeeValidate, {
     created: function created() {
         this.getAllQuestion();
         this.generateSelectCustomer();
+        this.getRoleRights();
         this.validator = new __WEBPACK_IMPORTED_MODULE_0_vee_validate__["Validator"]({
             answer: 'required'
         });
@@ -70181,7 +70190,6 @@ Vue.use(VeeValidate, {
             var url = window.location.protocol + "//" + window.location.host + "/api/question/" + this.tenant_id + '/get-all-question';
 
             axios.get(url).then(function (response) {
-                console.log(response.data);
                 vm.questions = response.data.data;
                 console.log(vm.questions);
             }).catch(function (error) {
@@ -70202,6 +70210,18 @@ Vue.use(VeeValidate, {
             this.question.customerId = selectedQuestion.customerId;
             this.question.question = selectedQuestion.question;
             this.question.answer = selectedQuestion.answer;
+        },
+        getRoleRights: function getRoleRights() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/api/user_group/" + vm.user_group_id + '/get-role-rights';
+            axios.get(url).then(function (response) {
+                console.log(response.data.data);
+                vm.questionListRights.answer = response.data.data.question_list_crud_rights.answer;
+                vm.questionListRights.edit = response.data.data.question_list_crud_rights.edit;
+                vm.questionListRights.delete = response.data.data.question_list_crud_rights.delete;
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
         answerQuestion: function answerQuestion() {
             var vm = this;
@@ -70374,31 +70394,38 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-warning",
-                      attrs: { role: "button", href: question.show_edit_url }
-                    },
-                    [_c("i", { staticClass: "fa fa-pencil-square" })]
-                  ),
+                  _vm.questionListRights.edit === 1
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-warning",
+                          attrs: {
+                            role: "button",
+                            href: question.show_edit_url
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-pencil-square" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#modal_delete_question"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.getQuestion(question)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-trash-o" })]
-                  )
+                  _vm.questionListRights.delete === 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#modal_delete_question"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.getQuestion(question)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash-o" })]
+                      )
+                    : _vm._e()
                 ])
               ])
             })
@@ -70468,6 +70495,13 @@ var render = function() {
                 _vm._v(" "),
                 _c("h4", { staticClass: "text-center text-navy" }, [
                   _vm._v("Q: " + _vm._s(_vm.question.question))
+                ]),
+                _vm._v(" "),
+                _c("p", { attrs: { align: "center" } }, [
+                  _c("strong", [_vm._v("Answer: ")]),
+                  _vm._v(
+                    " " + _vm._s(_vm.question.answer) + "\n                    "
+                  )
                 ]),
                 _vm._v(" "),
                 _c(

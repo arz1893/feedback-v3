@@ -5,7 +5,7 @@
 
                 <div class="alert alert-success" role="alert" id="alert_success" v-show="alertSuccess" @click="alertSuccess = false">
                     <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Info!</strong> Question has been added, please look at <a role="button" class="alert-link">question list</a> to see all question from customer
+                    <strong>Info!</strong> Question has been added, please look at <a :href="question_list_url" role="button" class="alert-link">question list</a> to see all question from customer
                 </div>
 
                 <div class="form-group"  v-bind:class="{'has-error': validator.errors.has('customer')}">
@@ -232,7 +232,7 @@
                     customer: '',
                     content: '',
                     answer: '',
-                    is_need_call: '',
+                    is_need_call: 0,
                     tenantId: '',
                     is_answered: '',
                     syscreator: '',
@@ -252,7 +252,8 @@
                 },
                 alertCustomer: false,
                 alertSuccess: false,
-                validator: ''
+                validator: '',
+                question_list_url: window.location.protocol + "//" + window.location.host + "/question_list"
             }
         },
         created() {

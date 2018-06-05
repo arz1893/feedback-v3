@@ -14,6 +14,6 @@
 
 @section('main-content')
     <div id="question_list">
-        <question-list tenant_id="{{ Auth::user()->tenantId }}" user="{{ Auth::user()->systemId }}"></question-list>
+        <question-list tenant_id="{{ Auth::user()->tenantId }}" user="{{ Auth::user()->systemId }}" user_group_id="{{ Auth::user()->user_group->systemId }}"></question-list>
     </div>
 @endsection
