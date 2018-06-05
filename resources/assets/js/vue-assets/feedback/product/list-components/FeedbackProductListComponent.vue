@@ -109,10 +109,10 @@
                             <span v-else>No</span>
                         </td>
                         <td>
-                            <a role="button" class="btn btn-warning" v-bind:href="feedbackProduct.show_edit_url">
+                            <a role="button" class="btn btn-warning" v-if="feedbackProductListRights.edit === 1" v-bind:href="feedbackProduct.show_edit_url">
                                 <i class="ion ion-edit"></i>
                             </a>
-                            <button class="btn btn-danger" @click="showDetail(feedbackProduct)" data-toggle="modal" data-target="#modal_delete_feedback_product">
+                            <button class="btn btn-danger" v-if="feedbackProductListRights.delete === 1" @click="showDetail(feedbackProduct)" data-toggle="modal" data-target="#modal_delete_feedback_product">
                                 <i class="ion ion-ios-trash"></i>
                             </button>
                         </td>
@@ -186,7 +186,7 @@
                             </span>
                             <button class="btn btn-link" v-if="feedbackProduct.customer_rating === 1">
                                 <i class="text-center material-icons text-red" style="font-size: 2.5em;">
-                                    sentiment_very_dissatisfied
+                                    sentiment_dissatisfied
                                 </i>
                             </button>
                             <button class="btn btn-link" v-else-if="feedbackProduct.customer_rating === 2">
@@ -196,7 +196,7 @@
                             </button>
                             <button class="btn btn-link" v-else-if="feedbackProduct.customer_rating === 3">
                                 <i class="text-center material-icons text-green" style="font-size: 2.5em;">
-                                    sentiment_very_satisfied
+                                    sentiment_satisfied
                                 </i>
                             </button>
                         </div>
@@ -230,7 +230,7 @@
 
                         <div class="row" style="margin-top: 1%;">
                             <div class="col-lg-12">
-                                <div class="form-group">
+                                <div class="form-group" v-if="feedbackProductListRights.answer === 1">
                                     <button v-if="feedbackProduct.customer !== null"
                                             class="btn btn-primary"
                                             type="button" @click="showReply = !showReply">
@@ -301,7 +301,7 @@
                                             </div>
                                             <div class="panel-body">
                                                 <p>{{ feedbackProductReply.reply_content }}</p>
-                                                <button v-bind:data-id="feedbackProductReply.systemId" class="btn btn-sm btn-danger" onclick="$('div#'+$(this).data('id')).toggleClass('invisible')">
+                                                <button v-bind:data-id="feedbackProductReply.systemId" class="btn btn-sm btn-danger" onclick="$('div#'+$(this).data('id')).toggleClass('invisible')" v-if="feedbackProductListRights.answer === 1">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                                 <div class="inline invisible" v-bind:id="feedbackProductReply.systemId">
@@ -327,7 +327,6 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -375,7 +374,7 @@
 
     export default {
         name: "feedback-list",
-        props: ['tenant_id', 'user_id'],
+        props: ['tenant_id', 'user_id', 'user_group_id'],
         components: { datePicker },
         watch: {
             showReplyList: function () {
@@ -388,6 +387,7 @@
         created() {
             this.getFeedbackProductList();
             this.generateSelectProduct();
+            this.getRoleRights();
         },
         data() {
             return {
@@ -405,6 +405,11 @@
                     is_urgent: 0,
                     creator: [],
                     attachment: ''
+                },
+                feedbackProductListRights: {
+                    answer: 0,
+                    edit: 0,
+                    delete: 0
                 },
                 startDate: moment(new Date()).format('DD MMMM YYYY'),
                 endDate: moment(new Date()).format('DD MMMM YYYY'),
@@ -459,6 +464,18 @@
                     console.log(error);
                 });
             },
+            getRoleRights: function() {
+                let vm = this;
+                const url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + vm.user_group_id + '/get-role-rights';
+                axios.get(url).then(response => {
+                    vm.feedbackProductListRights.answer = response.data.data.feedback_product_list_crud_rights.answer;
+                    vm.feedbackProductListRights.edit = response.data.data.feedback_product_list_crud_rights.edit;
+                    vm.feedbackProductListRights.delete = response.data.data.feedback_product_list_crud_rights.delete;
+                    console.log(vm.feedbackProductListRights);
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
             makePagination: function (data) {
                 let vm = this;
                 vm.pagination.currentPage = data.meta.current_page;
@@ -496,7 +513,6 @@
                     const url = window.location.protocol + "//" + window.location.host + "/" + 'api/feedback_product/' + vm.tenant_id + '/filter-by-product/' + start_date + '/' + end_date + '/' + product_id;
                     function filterByProduct() {
                         axios.get(url).then(response => {
-                            console.log(response.data);
                             vm.feedbackProducts = response.data.data;
                             vm.makePagination(response.data);
                             vm.searchStatus = '';
@@ -546,7 +562,6 @@
             showDetail: function(selectedFeedback) {
                 let vm = this;
                 vm.feedbackProduct = selectedFeedback;
-                console.log(vm.feedbackProduct);
             },
             clearState: function () {
                 let vm = this;
@@ -584,7 +599,6 @@
 
                 function sendRequest() {
                     axios.get(url).then(response => {
-                        console.log(response.data.data);
                         vm.feedbackProductReplies = response.data.data;
                         vm.loadReply = '';
                     }).catch(error => {

@@ -73447,7 +73447,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73462,7 +73462,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_eonasdan_bootstrap_datetimepicker_build_css_bootstrap_datetimepicker_min_css__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_eonasdan_bootstrap_datetimepicker_build_css_bootstrap_datetimepicker_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_eonasdan_bootstrap_datetimepicker_build_css_bootstrap_datetimepicker_min_css__);
-//
 //
 //
 //
@@ -73839,7 +73838,7 @@ Vue.use(VeeValidate, {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "feedback-list",
-    props: ['tenant_id', 'user_id'],
+    props: ['tenant_id', 'user_id', 'user_group_id'],
     components: { datePicker: __WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker___default.a },
     watch: {
         showReplyList: function showReplyList() {
@@ -73852,6 +73851,7 @@ Vue.use(VeeValidate, {
     created: function created() {
         this.getFeedbackProductList();
         this.generateSelectProduct();
+        this.getRoleRights();
     },
     data: function data() {
         return {
@@ -73869,6 +73869,11 @@ Vue.use(VeeValidate, {
                 is_urgent: 0,
                 creator: [],
                 attachment: ''
+            },
+            feedbackProductListRights: {
+                answer: 0,
+                edit: 0,
+                delete: 0
             },
             startDate: moment(new Date()).format('DD MMMM YYYY'),
             endDate: moment(new Date()).format('DD MMMM YYYY'),
@@ -73924,6 +73929,18 @@ Vue.use(VeeValidate, {
                 console.log(error);
             });
         },
+        getRoleRights: function getRoleRights() {
+            var vm = this;
+            var url = window.location.protocol + "//" + window.location.host + "/" + 'api/user_group/' + vm.user_group_id + '/get-role-rights';
+            axios.get(url).then(function (response) {
+                vm.feedbackProductListRights.answer = response.data.data.feedback_product_list_crud_rights.answer;
+                vm.feedbackProductListRights.edit = response.data.data.feedback_product_list_crud_rights.edit;
+                vm.feedbackProductListRights.delete = response.data.data.feedback_product_list_crud_rights.delete;
+                console.log(vm.feedbackProductListRights);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         makePagination: function makePagination(data) {
             var vm = this;
             vm.pagination.currentPage = data.meta.current_page;
@@ -73960,7 +73977,6 @@ Vue.use(VeeValidate, {
             if (product_id !== '') {
                 var filterByProduct = function filterByProduct() {
                     axios.get(url).then(function (response) {
-                        console.log(response.data);
                         vm.feedbackProducts = response.data.data;
                         vm.makePagination(response.data);
                         vm.searchStatus = '';
@@ -74016,7 +74032,6 @@ Vue.use(VeeValidate, {
         showDetail: function showDetail(selectedFeedback) {
             var vm = this;
             vm.feedbackProduct = selectedFeedback;
-            console.log(vm.feedbackProduct);
         },
         clearState: function clearState() {
             var vm = this;
@@ -74054,7 +74069,6 @@ Vue.use(VeeValidate, {
 
             function sendRequest() {
                 axios.get(url).then(function (response) {
-                    console.log(response.data.data);
                     vm.feedbackProductReplies = response.data.data;
                     vm.loadReply = '';
                 }).catch(function (error) {
@@ -74413,34 +74427,38 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-warning",
-                      attrs: {
-                        role: "button",
-                        href: feedbackProduct.show_edit_url
-                      }
-                    },
-                    [_c("i", { staticClass: "ion ion-edit" })]
-                  ),
+                  _vm.feedbackProductListRights.edit === 1
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-warning",
+                          attrs: {
+                            role: "button",
+                            href: feedbackProduct.show_edit_url
+                          }
+                        },
+                        [_c("i", { staticClass: "ion ion-edit" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#modal_delete_feedback_product"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.showDetail(feedbackProduct)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "ion ion-ios-trash" })]
-                  )
+                  _vm.feedbackProductListRights.delete === 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#modal_delete_feedback_product"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.showDetail(feedbackProduct)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "ion ion-ios-trash" })]
+                      )
+                    : _vm._e()
                 ])
               ])
             })
@@ -74674,7 +74692,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                sentiment_very_dissatisfied\n                            "
+                              "\n                                sentiment_dissatisfied\n                            "
                             )
                           ]
                         )
@@ -74706,7 +74724,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                sentiment_very_satisfied\n                            "
+                                  "\n                                sentiment_satisfied\n                            "
                                 )
                               ]
                             )
@@ -74794,49 +74812,51 @@ var render = function() {
                   { staticClass: "row", staticStyle: { "margin-top": "1%" } },
                   [
                     _c("div", { staticClass: "col-lg-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _vm.feedbackProduct.customer !== null
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.showReply = !_vm.showReply
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "ion ion-chatbubble-working"
-                                }),
-                                _vm._v(
-                                  " Reply\n                                "
+                      _vm.feedbackProductListRights.answer === 1
+                        ? _c("div", { staticClass: "form-group" }, [
+                            _vm.feedbackProduct.customer !== null
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showReply = !_vm.showReply
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ion ion-chatbubble-working"
+                                    }),
+                                    _vm._v(
+                                      " Reply\n                                "
+                                    )
+                                  ]
                                 )
-                              ]
-                            )
-                          : _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary disabled",
-                                attrs: {
-                                  type: "button",
-                                  "data-toggle": "tooltip",
-                                  "data-placement": "bottom",
-                                  title: "Can't reply on anonymous"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "ion ion-chatbubble-working"
-                                }),
-                                _vm._v(
-                                  " Reply\n                                "
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary disabled",
+                                    attrs: {
+                                      type: "button",
+                                      "data-toggle": "tooltip",
+                                      "data-placement": "bottom",
+                                      title: "Can't reply on anonymous"
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ion ion-chatbubble-working"
+                                    }),
+                                    _vm._v(
+                                      " Reply\n                                "
+                                    )
+                                  ]
                                 )
-                              ]
-                            )
-                      ]),
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -75111,24 +75131,28 @@ var render = function() {
                                               )
                                             ]),
                                             _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-sm btn-danger",
-                                                attrs: {
-                                                  "data-id":
-                                                    feedbackProductReply.systemId,
-                                                  onclick:
-                                                    "$('div#'+$(this).data('id')).toggleClass('invisible')"
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fa fa-trash-o"
-                                                })
-                                              ]
-                                            ),
+                                            _vm.feedbackProductListRights
+                                              .answer === 1
+                                              ? _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-sm btn-danger",
+                                                    attrs: {
+                                                      "data-id":
+                                                        feedbackProductReply.systemId,
+                                                      onclick:
+                                                        "$('div#'+$(this).data('id')).toggleClass('invisible')"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass:
+                                                        "fa fa-trash-o"
+                                                    })
+                                                  ]
+                                                )
+                                              : _vm._e(),
                                             _vm._v(" "),
                                             _c(
                                               "div",
@@ -75251,15 +75275,6 @@ var render = function() {
                       }
                     },
                     [_vm._v("Close")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Save changes")]
                   )
                 ])
               ])
