@@ -75,11 +75,16 @@
                         </div>
 
                         <h4 class="text-center text-navy">Q: {{ question.question }}</h4>
-                        <p align="center">
+                        <p align="center" v-if="question.answer !== ''">
                             <strong>Answer: </strong> {{ question.answer }}
                         </p>
-                        <div class="form-group" v-bind:class="{ 'has-error': validator.errors.has('answer') }">
-                            <label for="answer">Answer :</label>
+                        <p align="center" v-else>
+                            There is no answer for the current question
+                        </p>
+                        <button type="button" class="btn btn-warning" @click="showReplyForm = !showReplyForm" v-if="questionListRights.answer === 1">
+                            Answer <i class="fa fa-commenting-o"></i>
+                        </button>
+                        <div v-show="showReplyForm" class="form-group" v-bind:class="{ 'has-error': validator.errors.has('answer') }">
                             <textarea class="form-control" id="answer" name="answer" placeholder="What is you answer ?" v-model="question.answer" rows="4"></textarea>
                             <span class="help-block text-red" v-show="validator.errors.has('answer')">
                                 {{ validator.errors.first('answer') }}
@@ -88,7 +93,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" @click="clearState()">Close</button>
-                        <button type="button" class="btn btn-primary" @click="answerQuestion()">Save</button>
+                        <button type="button" class="btn btn-primary" @click="answerQuestion()" v-if="questionListRights.answer === 1">Save</button>
                     </div>
                 </div>
             </div>
@@ -151,7 +156,8 @@
                 },
                 selectCustomer: [],
                 alertQuestion: false,
-                validator: ''
+                validator: '',
+                showReplyForm: false
             }
         },
         created() {

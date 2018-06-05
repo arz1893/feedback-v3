@@ -70000,7 +70000,7 @@ exports = module.exports = __webpack_require__(175)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70012,6 +70012,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(178);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70165,7 +70170,8 @@ Vue.use(VeeValidate, {
             },
             selectCustomer: [],
             alertQuestion: false,
-            validator: ''
+            validator: '',
+            showReplyForm: false
         };
     },
     created: function created() {
@@ -70497,24 +70503,55 @@ var render = function() {
                   _vm._v("Q: " + _vm._s(_vm.question.question))
                 ]),
                 _vm._v(" "),
-                _c("p", { attrs: { align: "center" } }, [
-                  _c("strong", [_vm._v("Answer: ")]),
-                  _vm._v(
-                    " " + _vm._s(_vm.question.answer) + "\n                    "
-                  )
-                ]),
+                _vm.question.answer !== ""
+                  ? _c("p", { attrs: { align: "center" } }, [
+                      _c("strong", [_vm._v("Answer: ")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.question.answer) +
+                          "\n                    "
+                      )
+                    ])
+                  : _c("p", { attrs: { align: "center" } }, [
+                      _vm._v(
+                        "\n                        There is no answer for the current question\n                    "
+                      )
+                    ]),
+                _vm._v(" "),
+                _vm.questionListRights.answer === 1
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-warning",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.showReplyForm = !_vm.showReplyForm
+                          }
+                        }
+                      },
+                      [
+                        _vm._v("\n                        Answer "),
+                        _c("i", { staticClass: "fa fa-commenting-o" })
+                      ]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showReplyForm,
+                        expression: "showReplyForm"
+                      }
+                    ],
                     staticClass: "form-group",
                     class: { "has-error": _vm.validator.errors.has("answer") }
                   },
                   [
-                    _c("label", { attrs: { for: "answer" } }, [
-                      _vm._v("Answer :")
-                    ]),
-                    _vm._v(" "),
                     _c("textarea", {
                       directives: [
                         {
@@ -70582,19 +70619,21 @@ var render = function() {
                   [_vm._v("Close")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.answerQuestion()
-                      }
-                    }
-                  },
-                  [_vm._v("Save")]
-                )
+                _vm.questionListRights.answer === 1
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.answerQuestion()
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  : _vm._e()
               ])
             ])
           ]
